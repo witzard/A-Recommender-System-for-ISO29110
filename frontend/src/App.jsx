@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import './App.css';
 import {
@@ -18,6 +18,7 @@ import {
 } from '@mui/material';
 
 const API_URL = 'http://localhost:8080/api/recommend';
+const OPTIONS_URL = 'http://localhost:8080/api/options';
 
 const initialForm = {
   process: 'PM',
@@ -26,11 +27,71 @@ const initialForm = {
   situation: 'NOT_APPROVED',
 };
 
+function findDefault(options, preferredValue) {
+  return (
+    options.find((item) => item.value === preferredValue) ||
+    options[0] ||
+    null
+  );
+}
+
 function App() {
   const [form, setForm] = useState(initialForm);
+  const [options, setOptions] = useState({
+    processes: [],
+    roles: [],
+    workProducts: [],
+    situations: [],
+  });
+  const [optionsLoading, setOptionsLoading] = useState(true);
   const [results, setResults] = useState(null);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const loadOptions = async () => {
+      try {
+        const response = await axios.get(OPTIONS_URL);
+        const loadedOptions = response.data;
+
+        setOptions(loadedOptions);
+
+        const defaultProcess = findDefault(
+          loadedOptions.processes,
+          initialForm.process
+        );
+        const defaultRole = findDefault(
+          loadedOptions.roles,
+          initialForm.role
+        );
+        const defaultTopic = findDefault(
+          loadedOptions.workProducts,
+          initialForm.topic
+        );
+        const defaultSituation = findDefault(
+          loadedOptions.situations,
+          initialForm.situation
+        );
+
+        setForm({
+          process: defaultProcess?.value || '',
+          role: defaultRole?.value || '',
+          topic: defaultTopic?.value || '',
+          situation: defaultSituation?.value || '',
+        });
+      } catch (err) {
+        setError(
+          err.response?.data?.error ||
+            err.message ||
+            'Unable to load recommendation options from the ontology.'
+        );
+      } finally {
+        setOptionsLoading(false);
+      }
+    };
+
+    loadOptions();
+  }, []);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -63,6 +124,9 @@ function App() {
     }
   };
 
+  const getLabel = (items, value) =>
+    items.find((item) => item.value === value)?.label || value;
+
   return (
     <Box className="app-shell">
       <Box className="hero-section">
@@ -87,75 +151,94 @@ function App() {
           </Typography>
 
           <Typography className="section-description">
-            Provide four structured inputs for the recommendation query.
+            Select structured project information retrieved from the ontology.
           </Typography>
 
           <Divider sx={{ my: 3 }} />
 
-          <Box className="input-grid">
-            <FormControl fullWidth>
-              <InputLabel id="process-label">Process</InputLabel>
-              <Select
-                labelId="process-label"
-                name="process"
-                value={form.process}
-                label="Process"
-                onChange={handleChange}
-              >
-                <MenuItem value="PM">Project Management (PM)</MenuItem>
-                <MenuItem value="SI">Software Implementation (SI)</MenuItem>
-              </Select>
-            </FormControl>
+          {optionsLoading ? (
+            <Box className="options-loading">
+              <CircularProgress size={28} />
+              <Typography>Loading options from the ontology...</Typography>
+            </Box>
+          ) : (
+            <Box className="input-grid">
+              <FormControl fullWidth>
+                <InputLabel id="process-label">Process</InputLabel>
+                <Select
+                  labelId="process-label"
+                  name="process"
+                  value={form.process}
+                  label="Process"
+                  onChange={handleChange}
+                >
+                  {options.processes.map((item) => (
+                    <MenuItem key={item.value} value={item.value}>
+                      {item.label}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
 
-            <FormControl fullWidth>
-              <InputLabel id="role-label">Role</InputLabel>
-              <Select
-                labelId="role-label"
-                name="role"
-                value={form.role}
-                label="Role"
-                onChange={handleChange}
-              >
-                <MenuItem value="Project manager">Project manager</MenuItem>
-              </Select>
-            </FormControl>
+              <FormControl fullWidth>
+                <InputLabel id="role-label">Role</InputLabel>
+                <Select
+                  labelId="role-label"
+                  name="role"
+                  value={form.role}
+                  label="Role"
+                  onChange={handleChange}
+                >
+                  {options.roles.map((item) => (
+                    <MenuItem key={item.value} value={item.value}>
+                      {item.label}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
 
-            <FormControl fullWidth>
-              <InputLabel id="topic-label">Topic / Work Product</InputLabel>
-              <Select
-                labelId="topic-label"
-                name="topic"
-                value={form.topic}
-                label="Topic / Work Product"
-                onChange={handleChange}
-              >
-                <MenuItem value="Project Plan">Project Plan</MenuItem>
-              </Select>
-            </FormControl>
+              <FormControl fullWidth>
+                <InputLabel id="topic-label">Topic / Work Product</InputLabel>
+                <Select
+                  labelId="topic-label"
+                  name="topic"
+                  value={form.topic}
+                  label="Topic / Work Product"
+                  onChange={handleChange}
+                >
+                  {options.workProducts.map((item) => (
+                    <MenuItem key={item.value} value={item.value}>
+                      {item.value}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
 
-            <FormControl fullWidth>
-              <InputLabel id="situation-label">Situation</InputLabel>
-              <Select
-                labelId="situation-label"
-                name="situation"
-                value={form.situation}
-                label="Situation"
-                onChange={handleChange}
-              >
-                <MenuItem value="NOT_APPROVED">
-                  Not approved / requires approval
-                </MenuItem>
-                <MenuItem value="APPROVED">Already approved</MenuItem>
-              </Select>
-            </FormControl>
-          </Box>
+              <FormControl fullWidth>
+                <InputLabel id="situation-label">Situation</InputLabel>
+                <Select
+                  labelId="situation-label"
+                  name="situation"
+                  value={form.situation}
+                  label="Situation"
+                  onChange={handleChange}
+                >
+                  {options.situations.map((item) => (
+                    <MenuItem key={item.value} value={item.value}>
+                      {item.label}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            </Box>
+          )}
 
           <Button
             className="recommend-button"
             variant="contained"
             size="large"
             onClick={handleRecommend}
-            disabled={loading}
+            disabled={loading || optionsLoading || !form.process || !form.role || !form.topic}
           >
             {loading ? (
               <>
