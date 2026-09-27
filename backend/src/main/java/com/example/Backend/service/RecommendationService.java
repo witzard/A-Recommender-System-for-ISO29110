@@ -39,7 +39,7 @@ public class RecommendationService {
                     "Unsupported process: " + request.getProcess());
         };
 
-        String topicLiteral = escapeSparqlLiteral(request.getTopic());
+        String topicLiteral = request.getTopic().trim();
 
         String sparql = ISO_PREFIX + """
             SELECT DISTINCT
