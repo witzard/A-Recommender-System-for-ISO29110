@@ -29,7 +29,10 @@ const initialForm = {
 
 function findDefault(options, preferredValue) {
   return (
-    options.find((item) => item.value === preferredValue) ||
+    options.find(
+      (item) =>
+        item.value?.toLowerCase() === preferredValue?.toLowerCase()
+    ) ||
     options[0] ||
     null
   );
