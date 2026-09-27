@@ -69,6 +69,6 @@ public class RecommendationService {
     }
 
     private String normalize(String value) {
-        return value.replace("\\", "\\\\");
+        return value == null ? "" : value.trim().toUpperCase(Locale.ROOT);
     }
 }
