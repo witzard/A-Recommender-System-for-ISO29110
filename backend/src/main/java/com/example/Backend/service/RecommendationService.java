@@ -69,16 +69,6 @@ public class RecommendationService {
     }
 
     private String normalize(String value) {
-        return value == null ? "" : value.trim().toUpperCase(Locale.ROOT);
-    }
-
-    private String escapeSparqlLiteral(String value) {
-        if (value == null) {
-            return "";
-        }
-
-        return value
-                .replace("\\", "\\\\")
-                .replace(""", "\"");
+        return value.replace("\\", "\\\\");
     }
 }
