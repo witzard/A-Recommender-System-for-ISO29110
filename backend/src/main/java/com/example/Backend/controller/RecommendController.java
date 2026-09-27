@@ -1,8 +1,11 @@
 package com.example.Backend.controller;
 
-
-import com.example.Backend.service.FusekiService;
+import com.example.Backend.dto.RecommendRequest;
+import com.example.Backend.service.RecommendationService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,43 +17,20 @@ import java.util.Map;
 @RequestMapping("/api/recommend")
 public class RecommendController {
 
-    private final FusekiService fusekiService;
+    private final RecommendationService recommendationService;
 
-    public RecommendController(FusekiService fusekiService) {
-        this.fusekiService = fusekiService;
+    public RecommendController(RecommendationService recommendationService) {
+        this.recommendationService = recommendationService;
     }
 
     @GetMapping("/test")
     public Map<String, Object> testFuseki() {
-
-        String sparql = """
-            PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>
-
-            SELECT DISTINCT
-                ?bpID
-                ?bpDesc
-                ?wpName
-            WHERE {
-                iso:PM iso:hasBasePractice ?bp .
-
-                ?bp iso:hasBasePracticeID ?bpID ;
-                    iso:hasBasePracticeDescription ?bpDesc ;
-                    iso:hasOutputWorkProduct ?owp .
-
-                ?owp iso:hasOutputWorkProductName ?wpName .
-
-                FILTER(
-                    CONTAINS(
-                        LCASE(STR(?wpName)),
-                        "project plan"
-                    )
-                )
-            }
-            ORDER BY ?bpID
-            """;
+        RecommendRequest request = new RecommendRequest();
+        request.setProcess("PM");
+        request.setTopic("Project Plan");
 
         List<Map<String, String>> results =
-                fusekiService.executeQuery(sparql);
+                recommendationService.recommend(request);
 
         Map<String, Object> response = new LinkedHashMap<>();
 
@@ -60,5 +40,29 @@ public class RecommendController {
         response.put("results", results);
 
         return response;
+    }
+
+    @PostMapping
+    public ResponseEntity<Map<String, Object>> recommend(
+            @RequestBody RecommendRequest request) {
+
+        Map<String, Object> response = new LinkedHashMap<>();
+
+        try {
+            List<Map<String, String>> results =
+                    recommendationService.recommend(request);
+
+            response.put("success", true);
+            response.put("count", results.size());
+            response.put("results", results);
+
+            return ResponseEntity.ok(response);
+
+        } catch (IllegalArgumentException e) {
+            response.put("success", false);
+            response.put("error", e.getMessage());
+
+            return ResponseEntity.badRequest().body(response);
+        }
     }
 }
