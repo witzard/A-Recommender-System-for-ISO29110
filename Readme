@@ -1,1 +1,28 @@
-how to run for maven .\mvnw.cmd spring-boot:run
+Fontend 
+//Run React Node.js 
+PS C:\Users\mrwit\Documents\vscode\research\frontend> 
+
+Cd C:\Users\mrwit\Documents\vscode\research\frontend
+npm run dev
+http://localhost:5173/
+http://localhost:5174/
+
+
+Backend
+https://start.spring.io/ 
+https://jena.apache.org/getting_started/index.html
+
+//Run Apache Jena  
+Cd C:\apache-jena-fuseki-6.2.0
+ .\fuseki-server.bat
+http://localhost:3030/#/dataset/ISO29110_RecommenderSystems/query
+http://localhost:3030/ISO29110_RecommenderSystems/query
+
+//Run Spring-boot backend
+Cd C:\Users\mrwit\Documents\vscode\research\backend
+.\mvnw.cmd spring-boot:run
+http://localhost:8080/api/tasks
+
+cd C:\Users\mrwit\Documents\vscode\research\backend
+.\mvnw.cmd clean compile
+
