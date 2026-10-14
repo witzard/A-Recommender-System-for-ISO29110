@@ -16,8 +16,8 @@ Backend (from `backend/`):
 
 ```powershell
 $env:FUSEKI_QUERY_ENDPOINT="http://localhost:3030/ISO29110_RecommenderSystems/query"
-.mvnw.cmd test
-.mvnw.cmd spring-boot:run
+.\mvnw.cmd test
+.\mvnw.cmd spring-boot:run
 ```
 
 Frontend (from `frontend/`):
@@ -25,6 +25,7 @@ Frontend (from `frontend/`):
 ```powershell
 Copy-Item .env.example .env
 npm ci
+npm run validate:groups
 npm run lint
 npm run build
 npm run dev
