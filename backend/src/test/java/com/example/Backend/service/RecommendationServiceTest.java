@@ -33,11 +33,16 @@ class RecommendationServiceTest {
         ArgumentCaptor<String> queryCaptor = ArgumentCaptor.forClass(String.class);
         verify(fusekiService, times(2)).executeQuery(queryCaptor.capture());
 
+        String basePracticeQuery = queryCaptor.getAllValues().get(0);
         String taskQuery = queryCaptor.getAllValues().get(1);
+        assertTrue(basePracticeQuery.contains("LCASE(STR(?wpName)) = LCASE(\"Project Plan\")"),
+                "Base-practice retrieval should match the selected ontology label exactly");
         assertTrue(taskQuery.contains("iso:PM iso:hasActivity ?activity"),
                 "Task retrieval should use the selected process");
         assertTrue(taskQuery.contains("?activity iso:hasTask ?task"),
                 "Task retrieval should follow the ontology's activity-task relationship");
+        assertTrue(taskQuery.contains("LCASE(STR(?wpName)) = LCASE(\"Project Plan\")"),
+                "Task retrieval should match the selected ontology label exactly");
     }
 
     @Test
