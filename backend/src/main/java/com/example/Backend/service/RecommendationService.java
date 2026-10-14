@@ -192,6 +192,9 @@ public class RecommendationService {
     private String escapeSparqlLiteral(String value) {
         return value
                 .replace("\\", "\\\\")
-                .replace("\"", "\\\"");
+                .replace("\"", "\\\"")
+                .replace("\n", "\\n")
+                .replace("\r", "\\r")
+                .replace("\t", "\\t");
     }
 }
