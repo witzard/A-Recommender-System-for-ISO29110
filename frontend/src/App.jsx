@@ -23,7 +23,7 @@ import {
   Typography,
 } from '@mui/material';
 
-const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080/api').replace(/\\/$/, '');
+const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080/api').replace(/\/$/, '');
 const API_URL = `${API_BASE_URL}/recommend`;
 const OPTIONS_URL = `${API_BASE_URL}/options`;
 
