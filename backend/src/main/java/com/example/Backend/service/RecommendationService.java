@@ -104,6 +104,9 @@ public class RecommendationService {
                 ?currentState
                 ?finalState
             WHERE {
+                %s iso:hasActivity ?activity .
+                ?activity iso:hasTask ?task .
+
                 ?task a iso:Task ;
                       iso:hasTaskID ?taskID ;
                       iso:hasOutputWorkProduct ?owp ;
@@ -138,6 +141,7 @@ public class RecommendationService {
             }
             ORDER BY ?taskID
             """.formatted(
+                processIndividual,
                 topicLiteral,
                 roleLiteral,
                 situationCondition
