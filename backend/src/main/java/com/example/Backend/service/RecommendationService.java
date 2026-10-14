@@ -81,10 +81,7 @@ public class RecommendationService {
                 }
 
                 FILTER(
-                    CONTAINS(
-                        LCASE(STR(?wpName)),
-                        LCASE("%s")
-                    )
+                    LCASE(STR(?wpName)) = LCASE("%s")
                 )
 
                 %s
@@ -127,10 +124,7 @@ public class RecommendationService {
                 }
 
                 FILTER(
-                    CONTAINS(
-                        LCASE(STR(?wpName)),
-                        LCASE("%s")
-                    )
+                    LCASE(STR(?wpName)) = LCASE("%s")
                 )
 
                 FILTER(
