@@ -5,6 +5,7 @@
 - The supporting-task SPARQL pattern now scopes tasks through the selected process:
   `Process -> hasActivity -> Activity -> hasTask -> Task`.
   This prevents a selection for PM from returning SI tasks (and vice versa) solely because role and work-product names match.
+- Work-product matching uses the exact selected ontology label (case-insensitive) rather than partial substring matching, reducing accidental matches to similarly named artifacts.
 - Recommendation query literal escaping covers backslash, double quote, newline, carriage return, and tab characters.
 - The Fuseki query endpoint can be overridden through `FUSEKI_QUERY_ENDPOINT`; local default remains `http://localhost:3030/ISO29110_RecommenderSystems/query`.
 - The frontend API base URL can be overridden through `VITE_API_BASE_URL`.
