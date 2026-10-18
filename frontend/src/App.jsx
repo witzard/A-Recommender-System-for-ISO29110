@@ -1,12 +1,18 @@
 import { useEffect, useState } from 'react';
+import { competencyGroups, competencyQuestions } from './data/competencyQuestions';
 import axios from 'axios';
 import './App.css';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
   Alert,
   Box,
   Button,
   Card,
   CardContent,
+  Chip,
   CircularProgress,
   Divider,
   FormControl,
@@ -17,8 +23,9 @@ import {
   Typography,
 } from '@mui/material';
 
-const API_URL = 'http://localhost:8080/api/recommend';
-const OPTIONS_URL = 'http://localhost:8080/api/options';
+const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080/api').replace(/\/$/, '');
+const API_URL = `${API_BASE_URL}/recommend`;
+const OPTIONS_URL = `${API_BASE_URL}/options`;
 
 const initialForm = {
   process: 'PM',
@@ -241,7 +248,7 @@ function App() {
             variant="contained"
             size="large"
             onClick={handleRecommend}
-            disabled={loading || optionsLoading || !form.process || !form.role || !form.topic}
+            disabled={loading || optionsLoading || !form.process || !form.role || !form.topic || !form.situation}
           >
             {loading ? (
               <>
@@ -334,6 +341,48 @@ function App() {
           </Card>
         </Stack>
       )}
+
+      <Card className="input-card coverage-card" elevation={0}>
+        <CardContent>
+          <Typography variant="h5" className="section-title">
+            Competency Question Groups
+          </Typography>
+          <Typography className="section-description">
+            Browse the 34 evaluation questions by knowledge area. This catalogue is a QA/navigation aid and does not imply that the question has been semantically validated.
+          </Typography>
+          <Divider sx={{ my: 2.5 }} />
+          <Stack spacing={1.25}>
+            {competencyGroups.map((group) => {
+              const questions = competencyQuestions.filter(
+                (question) => group.questionIds.includes(question.id)
+              );
+              return (
+                <Accordion key={group.id} disableGutters elevation={0} className="group-accordion">
+                  <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                    <Box className="group-summary">
+                      <Box>
+                        <Typography className="group-title">{group.name}</Typography>
+                        <Typography className="group-description">{group.description}</Typography>
+                      </Box>
+                      <Chip label={`${questions.length} questions`} size="small" />
+                    </Box>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <Stack spacing={1}>
+                      {questions.map((question) => (
+                        <Box key={question.id} className="question-list-item">
+                          <Typography className="result-id">{question.qid}</Typography>
+                          <Typography>{question.question}</Typography>
+                        </Box>
+                      ))}
+                    </Stack>
+                  </AccordionDetails>
+                </Accordion>
+              );
+            })}
+          </Stack>
+        </CardContent>
+      </Card>
 
       <Typography className="footer-note">
         Prototype retrieval layer · Spring Boot + Apache Jena Fuseki + ISO/IEC
