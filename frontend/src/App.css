@@ -233,3 +233,62 @@
     width: 100%;
   }
 }
+
+
+/* Competency-question catalogue */
+.coverage-card {
+  margin-top: 28px;
+}
+.group-accordion {
+  border: 1px solid var(--border);
+  border-radius: 12px !important;
+  background: var(--surface);
+}
+.group-accordion::before {
+  display: none;
+}
+.group-accordion .MuiAccordionSummary-root {
+  min-height: 68px;
+  padding: 0 18px;
+}
+.group-accordion .MuiAccordionSummary-content {
+  margin: 14px 0;
+}
+.group-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+}
+.group-title {
+  color: var(--text-h);
+  font-weight: 750 !important;
+}
+.group-description {
+  margin-top: 2px !important;
+  color: var(--text);
+  font-size: 0.86rem !important;
+}
+.question-list-item {
+  display: grid;
+  grid-template-columns: 54px minmax(0, 1fr);
+  align-items: start;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface-muted);
+}
+.question-list-item .result-id {
+  margin: 0 !important;
+}
+@media (max-width: 520px) {
+  .group-summary {
+    align-items: flex-start;
+  }
+  .question-list-item {
+    grid-template-columns: 1fr;
+    gap: 7px;
+  }
+}
