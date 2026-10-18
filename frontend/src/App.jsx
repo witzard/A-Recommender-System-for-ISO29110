@@ -15,6 +15,10 @@ import {
   Chip,
   CircularProgress,
   Divider,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
   FormControl,
   InputLabel,
   MenuItem,
@@ -57,6 +61,10 @@ function App() {
   const [results, setResults] = useState(null);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [selectedQuestion, setSelectedQuestion] = useState(null);
+  const [questionAnswer, setQuestionAnswer] = useState(null);
+  const [questionLoading, setQuestionLoading] = useState(false);
+  const [questionError, setQuestionError] = useState('');
 
   useEffect(() => {
     const loadOptions = async () => {
@@ -134,8 +142,25 @@ function App() {
     }
   };
 
-  const getLabel = (items, value) =>
-    items.find((item) => item.value === value)?.label || value;
+  const handleQuestionClick = async (question) => {
+    setSelectedQuestion(question);
+    setQuestionAnswer(null);
+    setQuestionError('');
+    setQuestionLoading(true);
+
+    try {
+      const response = await axios.get(`${API_BASE_URL}/questions/${question.id}/answer`);
+      setQuestionAnswer(response.data);
+    } catch (err) {
+      setQuestionError(
+        err.response?.data?.message ||
+        err.response?.data?.error ||
+        'ไม่สามารถดึงข้อมูลคำตอบจาก Ontology ได้ กรุณาตรวจสอบการเชื่อมต่อ Backend และ Fuseki'
+      );
+    } finally {
+      setQuestionLoading(false);
+    }
+  };
 
   return (
     <Box className="app-shell">
@@ -348,7 +373,7 @@ function App() {
             Competency Question Groups
           </Typography>
           <Typography className="section-description">
-            Browse the 34 evaluation questions by knowledge area. This catalogue is a QA/navigation aid and does not imply that the question has been semantically validated.
+            Select any question to search the connected ISO/IEC 29110 ontology for supporting tasks and Base Practices.
           </Typography>
           <Divider sx={{ my: 2.5 }} />
           <Stack spacing={1.25}>
@@ -370,10 +395,18 @@ function App() {
                   <AccordionDetails>
                     <Stack spacing={1}>
                       {questions.map((question) => (
-                        <Box key={question.id} className="question-list-item">
+                        <Button
+                          key={question.id}
+                          className="question-list-item question-button"
+                          onClick={() => handleQuestionClick(question)}
+                          aria-label={`Open answer for ${question.qid}`}
+                        >
                           <Typography className="result-id">{question.qid}</Typography>
-                          <Typography>{question.question}</Typography>
-                        </Box>
+                          <Box className="question-button-copy">
+                            <Typography>{question.question}</Typography>
+                            <Typography className="question-hint">Click to view ontology evidence →</Typography>
+                          </Box>
+                        </Button>
                       ))}
                     </Stack>
                   </AccordionDetails>
@@ -384,9 +417,76 @@ function App() {
         </CardContent>
       </Card>
 
+      <Dialog
+        open={Boolean(selectedQuestion)}
+        onClose={() => setSelectedQuestion(null)}
+        fullWidth
+        maxWidth="md"
+        aria-labelledby="question-answer-title"
+      >
+        <DialogTitle id="question-answer-title">
+          {selectedQuestion ? `${selectedQuestion.qid} · Answer and Ontology Evidence` : 'Question answer'}
+        </DialogTitle>
+        <DialogContent dividers>
+          {selectedQuestion && (
+            <Typography className="answer-question">{selectedQuestion.question}</Typography>
+          )}
+          {questionLoading && (
+            <Box className="options-loading">
+              <CircularProgress size={24} />
+              <Typography>Searching the ISO/IEC 29110 ontology...</Typography>
+            </Box>
+          )}
+          {questionError && <Alert severity="error">{questionError}</Alert>}
+          {questionAnswer && (
+            <Stack spacing={2}>
+              <Alert severity={questionAnswer.hasEvidence ? 'info' : 'warning'}>
+                {questionAnswer.message}
+              </Alert>
+              {questionAnswer.basePractices?.length > 0 && (
+                <Box>
+                  <Typography variant="h6" className="answer-section-title">Related Base Practices</Typography>
+                  <Stack spacing={1}>
+                    {questionAnswer.basePractices.map((item, index) => (
+                      <Box className="answer-evidence-item" key={`${item.bpID}-${index}`}>
+                        <Typography className="result-id">{item.bpID}</Typography>
+                        <Typography>{item.bpDescription}</Typography>
+                      </Box>
+                    ))}
+                  </Stack>
+                </Box>
+              )}
+              {questionAnswer.tasks?.length > 0 && (
+                <Box>
+                  <Typography variant="h6" className="answer-section-title">Related Tasks and Work Products</Typography>
+                  <Stack spacing={1}>
+                    {questionAnswer.tasks.map((item, index) => (
+                      <Box className="answer-evidence-item" key={`${item.taskID}-${index}`}>
+                        <Typography className="result-id">{item.taskID}</Typography>
+                        <Typography>{item.taskDescription}</Typography>
+                        {item.roleName && <Typography className="answer-meta">Role: {item.roleName}</Typography>}
+                        {item.inputName && <Typography className="answer-meta">Input Work Product: {item.inputName}</Typography>}
+                        {item.outputName && <Typography className="answer-meta">Output Work Product: {item.outputName}</Typography>}
+                      </Box>
+                    ))}
+                  </Stack>
+                </Box>
+              )}
+              {questionAnswer.searchTerms?.length > 0 && (
+                <Typography className="answer-meta">
+                  Ontology search terms: {questionAnswer.searchTerms.join(', ')}
+                </Typography>
+              )}
+            </Stack>
+          )}
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => setSelectedQuestion(null)}>Close</Button>
+        </DialogActions>
+      </Dialog>
+
       <Typography className="footer-note">
-        Prototype retrieval layer · Spring Boot + Apache Jena Fuseki + ISO/IEC
-        29110 ontology
+        Spring Boot + Apache Jena Fuseki + ISO/IEC 29110 ontology
       </Typography>
     </Box>
   );
