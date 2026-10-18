@@ -292,3 +292,53 @@
     gap: 7px;
   }
 }
+
+
+/* Clickable competency questions and ontology-backed answer dialog */
+.question-button {
+  width: 100%;
+  text-align: left !important;
+  justify-content: start !important;
+  align-items: start !important;
+  color: var(--text-h) !important;
+  font: inherit !important;
+  text-transform: none !important;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.question-button:hover {
+  border-color: #93aef8;
+  background: #f7f9ff;
+}
+.question-button-copy {
+  min-width: 0;
+}
+.question-hint {
+  margin-top: 5px !important;
+  color: var(--accent);
+  font-size: 0.8rem !important;
+  font-weight: 650 !important;
+}
+.answer-question {
+  margin-bottom: 18px !important;
+  color: var(--text-h);
+  font-weight: 650 !important;
+  line-height: 1.6 !important;
+}
+.answer-section-title {
+  margin-bottom: 10px !important;
+  color: var(--text-h);
+  font-weight: 750 !important;
+}
+.answer-evidence-item {
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface-muted);
+}
+.answer-meta {
+  margin-top: 6px !important;
+  color: var(--text);
+  font-size: 0.85rem !important;
+  overflow-wrap: anywhere;
+}
