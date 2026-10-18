@@ -31,6 +31,13 @@ const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL || 'http://localhost:808
 const API_URL = `${API_BASE_URL}/recommend`;
 const OPTIONS_URL = `${API_BASE_URL}/options`;
 
+function sanitizeUserFacingText(value, fallback = 'The request could not be completed. Please check the backend logs.') {
+  if (typeof value !== 'string') return fallback;
+  // Never render Thai-language text returned by older backend builds or ontology annotations.
+  if (/[\\u0E00-\\u0E7F]/.test(value)) return fallback;
+  return value;
+}
+
 function getEnglishError(error, context) {
   const status = error?.response?.status;
   if (!error?.response) {
@@ -447,7 +454,10 @@ function App() {
               <Box>
                 <Typography variant="h6" className="answer-section-title">Answer</Typography>
                 <Typography className="answer-summary">
-                  {questionAnswer.answer || questionAnswer.message}
+                  {sanitizeUserFacingText(
+                    questionAnswer.answer || questionAnswer.message,
+                    'Ontology evidence was retrieved, but its summary contains unsupported language. Please rebuild and restart the latest backend.'
+                  )}
                 </Typography>
                 <Typography className="answer-meta">
                   This answer summarizes the ontology guidance. It does not verify whether a specific company follows the process.
@@ -460,7 +470,7 @@ function App() {
                     {questionAnswer.basePractices.slice(0, 5).map((item, index) => (
                       <Box className="answer-evidence-item" key={`${item.bpID}-${index}`}>
                         <Typography className="result-id">{item.bpID}</Typography>
-                        <Typography>{item.bpDescription}</Typography>
+                        <Typography>{sanitizeUserFacingText(item.bpDescription, 'This evidence description contains unsupported language and has been hidden.')}</Typography>
                       </Box>
                     ))}
                   </Stack>
@@ -473,7 +483,7 @@ function App() {
                     {questionAnswer.tasks.slice(0, 6).map((item, index) => (
                       <Box className="answer-evidence-item" key={`${item.taskID}-${index}`}>
                         <Typography className="result-id">{item.taskID}</Typography>
-                        <Typography>{item.taskDescription}</Typography>
+                        <Typography>{sanitizeUserFacingText(item.taskDescription, 'This task description contains unsupported language and has been hidden.')}</Typography>
                         {item.roleName && <Typography className="answer-meta">Role: {item.roleName}</Typography>}
                         {item.inputName && <Typography className="answer-meta">Input: {item.inputName}</Typography>}
                         {item.outputName && <Typography className="answer-meta">Output: {item.outputName}</Typography>}
