@@ -107,15 +107,19 @@ public class CompetencyQuestionService {
                 : "The ontology evidence below identifies relevant ISO/IEC 29110 Base Practices and Tasks for this question. Use the most directly related records to determine the process; these records do not establish whether a company has followed it.");
         response.put("tasks", questionId == 2
                 ? prioritizeTasks(tasks, List.of("PM.1.12", "PM.1.3", "PM.1.13", "PM.1.14"))
-                : tasks);
+                : limitRecords(tasks, 8));
         response.put("basePractices", questionId == 2
                 ? prioritizeBasePractices(basePractices, List.of("PM.BP12", "PM.BP3", "PM.BP13", "PM.BP14"))
-                : basePractices);
+                : limitRecords(basePractices, 8));
         response.put("hasEvidence", !tasks.isEmpty() || !basePractices.isEmpty());
         response.put("message", tasks.isEmpty() && basePractices.isEmpty()
                 ? "No matching Tasks or Base Practices were found in the connected ontology. This may mean the search terms need refinement; it does not necessarily mean the ontology has no relevant information."
                 : "These are matching records retrieved from the ontology. Use them as supporting evidence; they do not prove that the company follows the practice.");
         return response;
+    }
+
+    private List<Map<String, String>> limitRecords(List<Map<String, String>> records, int limit) {
+        return records.stream().limit(limit).toList();
     }
 
     private List<Map<String, String>> prioritizeBasePractices(List<Map<String, String>> records, List<String> preferredIds) {
