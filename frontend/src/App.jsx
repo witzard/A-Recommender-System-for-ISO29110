@@ -449,12 +449,18 @@ function App() {
           {questionError && <Alert severity="error">{questionError}</Alert>}
           {questionAnswer && (
             <Stack spacing={2}>
-              <Alert severity={questionAnswer.hasEvidence ? 'info' : 'warning'}>
-                {questionAnswer.message}
-              </Alert>
+              <Box>
+                <Typography variant="h6" className="answer-section-title">Answer</Typography>
+                <Typography className="answer-summary">
+                  {questionAnswer.answer || questionAnswer.message}
+                </Typography>
+                <Typography className="answer-meta">
+                  This answer summarizes the ontology guidance. It does not verify whether a specific company follows the process.
+                </Typography>
+              </Box>
               {questionAnswer.basePractices?.length > 0 && (
                 <Box>
-                  <Typography variant="h6" className="answer-section-title">Related Base Practices</Typography>
+                  <Typography variant="h6" className="answer-section-title">Key Base Practices</Typography>
                   <Stack spacing={1}>
                     {questionAnswer.basePractices.map((item, index) => (
                       <Box className="answer-evidence-item" key={`${item.bpID}-${index}`}>
@@ -467,15 +473,15 @@ function App() {
               )}
               {questionAnswer.tasks?.length > 0 && (
                 <Box>
-                  <Typography variant="h6" className="answer-section-title">Related Tasks and Work Products</Typography>
+                  <Typography variant="h6" className="answer-section-title">Related Tasks</Typography>
                   <Stack spacing={1}>
                     {questionAnswer.tasks.map((item, index) => (
                       <Box className="answer-evidence-item" key={`${item.taskID}-${index}`}>
                         <Typography className="result-id">{item.taskID}</Typography>
                         <Typography>{item.taskDescription}</Typography>
                         {item.roleName && <Typography className="answer-meta">Role: {item.roleName}</Typography>}
-                        {item.inputName && <Typography className="answer-meta">Input Work Product: {item.inputName}</Typography>}
-                        {item.outputName && <Typography className="answer-meta">Output Work Product: {item.outputName}</Typography>}
+                        {item.inputName && <Typography className="answer-meta">Input: {item.inputName}</Typography>}
+                        {item.outputName && <Typography className="answer-meta">Output: {item.outputName}</Typography>}
                       </Box>
                     ))}
                   </Stack>
@@ -483,7 +489,7 @@ function App() {
               )}
               {questionAnswer.searchTerms?.length > 0 && (
                 <Typography className="answer-meta">
-                  Ontology search terms: {questionAnswer.searchTerms.join(', ')}
+                  Search terms used: {questionAnswer.searchTerms.join(', ')}
                 </Typography>
               )}
             </Stack>
