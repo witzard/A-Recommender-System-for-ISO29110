@@ -11,7 +11,7 @@ import java.util.Map;
 @Service
 public class RecommendationService {
     private static final String ISO_PREFIX =
-            "PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>\\n";
+            "PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>\n";
     private final FusekiService fusekiService;
 
     public RecommendationService(FusekiService fusekiService) {
@@ -118,10 +118,7 @@ public class RecommendationService {
     }
 
     private String escapeSparqlLiteral(String value) {
-        return value.replace("\\\\", "\\\\\\\\")
-                    .replace("\\\"", "\\\\\\"")
-                    .replace("\\n", "\\\\n")
-                    .replace("\\r", "\\\\r")
-                    .replace("\\t", "\\\\t");
+        return value.replace("\\", "\\\\")
+                    .replace("\"", "\\\"");
     }
 }
