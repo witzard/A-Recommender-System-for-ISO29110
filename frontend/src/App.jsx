@@ -31,6 +31,23 @@ const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL || 'http://localhost:808
 const API_URL = `${API_BASE_URL}/recommend`;
 const OPTIONS_URL = `${API_BASE_URL}/options`;
 
+function getEnglishError(error, context) {
+  const status = error?.response?.status;
+  if (!error?.response) {
+    return `Cannot connect to the backend while ${context}. Check that the Spring Boot service is running at ${API_BASE_URL}.`;
+  }
+  if (status === 404) {
+    return 'The requested API endpoint was not found (HTTP 404). Restart the backend and verify that the latest API routes are deployed.';
+  }
+  if (status >= 500) {
+    return 'The backend could not complete the request. Check the Spring Boot logs and confirm that Fuseki is running and the dataset endpoint is configured correctly.';
+  }
+  if (status === 400) {
+    return 'The request was rejected as invalid. Check the selected values and the backend validation details.';
+  }
+  return `The request failed with HTTP ${status || 'an unknown status'} while ${context}.`;
+}
+
 const initialForm = {
   process: 'PM',
   role: 'Project manager',
@@ -98,11 +115,7 @@ function App() {
           situation: defaultSituation?.value || '',
         });
       } catch (err) {
-        setError(
-          err.response?.data?.error ||
-            err.message ||
-            'Unable to load recommendation options from the ontology.'
-        );
+        setError(getEnglishError(err, 'loading recommendation options'));
       } finally {
         setOptionsLoading(false);
       }
@@ -131,12 +144,7 @@ function App() {
       const response = await axios.post(API_URL, form);
       setResults(response.data.results);
     } catch (err) {
-      const message =
-        err.response?.data?.error ||
-        err.message ||
-        'Unable to connect to the recommendation service.';
-
-      setError(message);
+      setError(getEnglishError(err, 'retrieving recommendations'));
     } finally {
       setLoading(false);
     }
@@ -152,20 +160,7 @@ function App() {
       const response = await axios.get(`${API_BASE_URL}/questions/${question.id}/answer`);
       setQuestionAnswer(response.data);
     } catch (err) {
-      const status = err.response?.status;
-      let message = err.response?.data?.message || err.response?.data?.error;
-
-      if (status === 404) {
-        message = 'The competency-question API was not found (HTTP 404). Restart the Spring Boot backend so it loads the new /api/questions endpoint.';
-      } else if (status === 500) {
-        message = message || 'The backend could not query Fuseki. Check that Fuseki is running, the configured dataset endpoint is correct, and the backend log contains no SPARQL errors.';
-      } else if (!err.response) {
-        message = 'Cannot reach the Spring Boot backend. Check that it is running at ' + API_BASE_URL + ' and that the browser can connect to it.';
-      } else {
-        message = message || `The request failed with HTTP ${status}.`;
-      }
-
-      setQuestionError(message);
+      setQuestionError(getEnglishError(err, 'searching the ontology'));
     } finally {
       setQuestionLoading(false);
     }
@@ -462,7 +457,7 @@ function App() {
                 <Box>
                   <Typography variant="h6" className="answer-section-title">Key Base Practices</Typography>
                   <Stack spacing={1}>
-                    {questionAnswer.basePractices.map((item, index) => (
+                    {questionAnswer.basePractices.slice(0, 5).map((item, index) => (
                       <Box className="answer-evidence-item" key={`${item.bpID}-${index}`}>
                         <Typography className="result-id">{item.bpID}</Typography>
                         <Typography>{item.bpDescription}</Typography>
@@ -475,7 +470,7 @@ function App() {
                 <Box>
                   <Typography variant="h6" className="answer-section-title">Related Tasks</Typography>
                   <Stack spacing={1}>
-                    {questionAnswer.tasks.map((item, index) => (
+                    {questionAnswer.tasks.slice(0, 6).map((item, index) => (
                       <Box className="answer-evidence-item" key={`${item.taskID}-${index}`}>
                         <Typography className="result-id">{item.taskID}</Typography>
                         <Typography>{item.taskDescription}</Typography>
@@ -487,9 +482,14 @@ function App() {
                   </Stack>
                 </Box>
               )}
+              {(questionAnswer.basePractices?.length > 5 || questionAnswer.tasks?.length > 6) && (
+                <Typography className="answer-meta">
+                  Showing the most relevant evidence only to keep the answer focused.
+                </Typography>
+              )}
               {questionAnswer.searchTerms?.length > 0 && (
                 <Typography className="answer-meta">
-                  Search terms used: {questionAnswer.searchTerms.join(', ')}
+                  Ontology search terms: {questionAnswer.searchTerms.join(', ')}
                 </Typography>
               )}
             </Stack>
