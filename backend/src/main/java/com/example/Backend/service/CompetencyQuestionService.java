@@ -106,8 +106,8 @@ public class CompetencyQuestionService {
         response.put("basePractices", basePractices);
         response.put("hasEvidence", !tasks.isEmpty() || !basePractices.isEmpty());
         response.put("message", tasks.isEmpty() && basePractices.isEmpty()
-                ? "ไม่พบรายการที่ตรงกับคำค้นในข้อมูล Ontology ที่เชื่อมต่ออยู่"
-                : "ผลลัพธ์ด้านล่างเป็นรายการที่ค้นพบใน Ontology ใช้เป็นหลักฐานประกอบการตอบคำถาม ไม่ใช่การยืนยันว่าบริษัทปฏิบัติตามแล้ว");
+                ? "No matching Tasks or Base Practices were found in the connected ontology. This may mean the search terms need refinement; it does not necessarily mean the ontology has no relevant information."
+                : "These are matching records retrieved from the ontology. Use them as supporting evidence; they do not prove that the company follows the practice.");
         return response;
     }
 
