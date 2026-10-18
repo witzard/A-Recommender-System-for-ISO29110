@@ -152,11 +152,20 @@ function App() {
       const response = await axios.get(`${API_BASE_URL}/questions/${question.id}/answer`);
       setQuestionAnswer(response.data);
     } catch (err) {
-      setQuestionError(
-        err.response?.data?.message ||
-        err.response?.data?.error ||
-        'ไม่สามารถดึงข้อมูลคำตอบจาก Ontology ได้ กรุณาตรวจสอบการเชื่อมต่อ Backend และ Fuseki'
-      );
+      const status = err.response?.status;
+      let message = err.response?.data?.message || err.response?.data?.error;
+
+      if (status === 404) {
+        message = 'The competency-question API was not found (HTTP 404). Restart the Spring Boot backend so it loads the new /api/questions endpoint.';
+      } else if (status === 500) {
+        message = message || 'The backend could not query Fuseki. Check that Fuseki is running, the configured dataset endpoint is correct, and the backend log contains no SPARQL errors.';
+      } else if (!err.response) {
+        message = 'Cannot reach the Spring Boot backend. Check that it is running at ' + API_BASE_URL + ' and that the browser can connect to it.';
+      } else {
+        message = message || `The request failed with HTTP ${status}.`;
+      }
+
+      setQuestionError(message);
     } finally {
       setQuestionLoading(false);
     }
