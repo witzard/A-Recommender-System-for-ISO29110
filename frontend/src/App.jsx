@@ -34,7 +34,7 @@ const OPTIONS_URL = `${API_BASE_URL}/options`;
 function sanitizeUserFacingText(value, fallback = 'The request could not be completed. Please check the backend logs.') {
   if (typeof value !== 'string') return fallback;
   // Never render Thai-language text returned by older backend builds or ontology annotations.
-  if (/[\\u0E00-\\u0E7F]/.test(value)) return fallback;
+  if (/[\u0E00-\u0E7F]/.test(value)) return fallback;
   return value;
 }
 
