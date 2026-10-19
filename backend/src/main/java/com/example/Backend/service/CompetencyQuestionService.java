@@ -75,8 +75,9 @@ public class CompetencyQuestionService {
                 OPTIONAL { ?task iso:hasRole ?role . ?role iso:hasRoleName ?roleName . }
                 OPTIONAL { ?task iso:hasInputWorkProduct ?input . ?input iso:hasInputWorkProductName ?inputName . }
                 OPTIONAL { ?task iso:hasOutputWorkProduct ?output . ?output iso:hasOutputWorkProductName ?outputName . }
-                BIND(CONCAT(STR(?taskDescription), " ", COALESCE(STR(?roleName), ""), " ",
-                    COALESCE(STR(?inputName), ""), " ", COALESCE(STR(?outputName), "")) AS ?searchText)
+                # Match the competency question against the task's actual description.
+                # Do not match only because a task's output list happens to mention a keyword.
+                BIND(STR(?taskDescription) AS ?searchText)
                 FILTER(%s)
             }
             ORDER BY ?taskID
@@ -102,15 +103,21 @@ public class CompetencyQuestionService {
         Map<String, Object> response = new LinkedHashMap<>();
         response.put("questionId", "Q" + questionId);
         response.put("searchTerms", terms);
-        response.put("answer", questionId == 2
-                ? "The team identifies the deliverables specified in the Agreement, records them in the Project Plan, and identifies the tasks needed to produce them. The Project Plan is then verified and approved, including customer acceptance against the Statement of Work."
-                : "The ontology evidence below identifies relevant ISO/IEC 29110 Base Practices and Tasks for this question. Use the most directly related records to determine the process; these records do not establish whether a company has followed it.");
-        response.put("tasks", questionId == 2
-                ? prioritizeTasks(tasks, List.of("PM.1.12", "PM.1.3", "PM.1.13", "PM.1.14"))
-                : limitRecords(tasks, 8));
-        response.put("basePractices", questionId == 2
-                ? prioritizeBasePractices(basePractices, List.of("PM.BP12", "PM.BP3", "PM.BP13", "PM.BP14"))
-                : limitRecords(basePractices, 8));
+        response.put("answer", questionId == 1
+                ? "Identify and document the risks that may affect the project. Record them in the Project Plan under Identification of Project Risks."
+                : questionId == 2
+                    ? "The team identifies the deliverables specified in the Agreement, records them in the Project Plan, and identifies the tasks needed to produce them. The Project Plan is then verified and approved, including customer acceptance against the Statement of Work."
+                    : "The ontology evidence below identifies the most relevant ISO/IEC 29110 Tasks and Base Practices for this question. These records describe the process guidance; they do not establish whether a company has followed it.");
+        response.put("tasks", questionId == 1
+                ? prioritizeTasks(tasks, List.of("PM.1.9"))
+                : questionId == 2
+                    ? prioritizeTasks(tasks, List.of("PM.1.12", "PM.1.3", "PM.1.13", "PM.1.14"))
+                    : limitRecords(tasks, 5));
+        response.put("basePractices", questionId == 1
+                ? prioritizeBasePractices(basePractices, List.of("PM.BP9"))
+                : questionId == 2
+                    ? prioritizeBasePractices(basePractices, List.of("PM.BP12", "PM.BP3", "PM.BP13", "PM.BP14"))
+                    : limitRecords(basePractices, 5));
         response.put("hasEvidence", !tasks.isEmpty() || !basePractices.isEmpty());
         response.put("message", tasks.isEmpty() && basePractices.isEmpty()
                 ? "No matching Tasks or Base Practices were found in the connected ontology. This may mean the search terms need refinement; it does not necessarily mean the ontology has no relevant information."
