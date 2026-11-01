@@ -1,9 +1,9 @@
 {
-  "builtAt": "2026-11-01T12:37:50.094576+00:00",
+  "builtAt": "2026-11-01T13:46:04.252020+00:00",
   "reasoner": "Pellet 2.3.1 via OWL API 3.4.3",
   "consistent": true,
   "inputs": {
-    "ontology-merged.ttl": "2bffdbee2353f9a2871100413076c67e31026c6dec0d149f4cfc22c02cdc4942",
+    "ontology-merged.ttl": "c15f0881bdebbd246b9d57e55dc81f73e8d6413f7ce0876871447dac1a2f87de",
     "qa-practices.ttl": "2bf93c0a7e85adb0c20006e29429c1079ac8e58e584b07adc6b159c4409001e3",
     "mock-companies.ttl": "58bbb7aaac2528c6751629a82c55161c63bea59d488f45a55543718a014caf2e"
   },

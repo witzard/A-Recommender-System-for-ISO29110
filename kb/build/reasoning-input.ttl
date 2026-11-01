@@ -17339,6 +17339,58 @@ iso:Process a owl:Class ;
 iso:WorkProductState a owl:Class .
 
 [] a swrl:Imp ;
+    rdfs:label "ImprovementRecommendationRule" ;
+    swrla:isRuleEnabled true ;
+    rdfs:comment "REVISED 2026-11: recommend only the practice(s) addressing the Base Practice rated Not_achieved." ;
+    swrl:body ( [ a swrl:ClassAtom ;
+                swrl:argument1 var:ae ;
+                swrl:classPredicate iso:AssessedEntity ] [ a swrl:IndividualPropertyAtom ;
+                swrl:argument1 var:ae ;
+                swrl:argument2 var:ar ;
+                swrl:propertyPredicate iso:hasAssessmentResult ] [ a swrl:IndividualPropertyAtom ;
+                swrl:argument1 var:ar ;
+                swrl:argument2 iso:Not_achieved ;
+                swrl:propertyPredicate iso:hasDegreeAchievement ] [ a swrl:IndividualPropertyAtom ;
+                swrl:argument1 var:ar ;
+                swrl:argument2 var:bp ;
+                swrl:propertyPredicate iso:assessesBasePractice ] [ a swrl:ClassAtom ;
+                swrl:argument1 var:rp ;
+                swrl:classPredicate iso:RecommendedPractice ] [ a swrl:IndividualPropertyAtom ;
+                swrl:argument1 var:rp ;
+                swrl:argument2 var:bp ;
+                swrl:propertyPredicate iso:addressesBasePractice ] ) ;
+    swrl:head ( [ a swrl:IndividualPropertyAtom ;
+                swrl:argument1 var:ae ;
+                swrl:argument2 var:rp ;
+                swrl:propertyPredicate iso:recommend ] ) .
+
+[] a swrl:Imp ;
+    rdfs:label "PartialImprovementRecommendationRule" ;
+    swrla:isRuleEnabled true ;
+    rdfs:comment "NEW 2026-11: recommend the practice(s) addressing a Base Practice rated Partially_achieved." ;
+    swrl:body ( [ a swrl:ClassAtom ;
+                swrl:argument1 var:ae ;
+                swrl:classPredicate iso:AssessedEntity ] [ a swrl:IndividualPropertyAtom ;
+                swrl:argument1 var:ae ;
+                swrl:argument2 var:ar ;
+                swrl:propertyPredicate iso:hasAssessmentResult ] [ a swrl:IndividualPropertyAtom ;
+                swrl:argument1 var:ar ;
+                swrl:argument2 iso:Partially_achieved ;
+                swrl:propertyPredicate iso:hasDegreeAchievement ] [ a swrl:IndividualPropertyAtom ;
+                swrl:argument1 var:ar ;
+                swrl:argument2 var:bp ;
+                swrl:propertyPredicate iso:assessesBasePractice ] [ a swrl:ClassAtom ;
+                swrl:argument1 var:rp ;
+                swrl:classPredicate iso:RecommendedPractice ] [ a swrl:IndividualPropertyAtom ;
+                swrl:argument1 var:rp ;
+                swrl:argument2 var:bp ;
+                swrl:propertyPredicate iso:addressesBasePractice ] ) ;
+    swrl:head ( [ a swrl:IndividualPropertyAtom ;
+                swrl:argument1 var:ae ;
+                swrl:argument2 var:rp ;
+                swrl:propertyPredicate iso:recommend ] ) .
+
+[] a swrl:Imp ;
     rdfs:label "RatingPartiallyAchievedRule" ;
     swrla:isRuleEnabled true ;
     rdfs:comment "" ;
@@ -17611,56 +17663,4 @@ iso:WorkProductState a owl:Class .
                     swrl:argument2 var:owp ;
                     swrl:propertyPredicate iso:hasEntity ] ;
             rdf:rest () ] .
-
-[] a swrl:Imp ;
-    rdfs:label "ImprovementRecommendationRule" ;
-    swrla:isRuleEnabled true ;
-    rdfs:comment "REVISED 2026-11: recommend only the practice(s) addressing the Base Practice rated Not_achieved." ;
-    swrl:body ( [ a swrl:ClassAtom ;
-                swrl:argument1 var:ae ;
-                swrl:classPredicate iso:AssessedEntity ] [ a swrl:IndividualPropertyAtom ;
-                swrl:argument1 var:ae ;
-                swrl:argument2 var:ar ;
-                swrl:propertyPredicate iso:hasAssessmentResult ] [ a swrl:IndividualPropertyAtom ;
-                swrl:argument1 var:ar ;
-                swrl:argument2 iso:Not_achieved ;
-                swrl:propertyPredicate iso:hasDegreeAchievement ] [ a swrl:IndividualPropertyAtom ;
-                swrl:argument1 var:ar ;
-                swrl:argument2 var:bp ;
-                swrl:propertyPredicate iso:assessesBasePractice ] [ a swrl:ClassAtom ;
-                swrl:argument1 var:rp ;
-                swrl:classPredicate iso:RecommendedPractice ] [ a swrl:IndividualPropertyAtom ;
-                swrl:argument1 var:rp ;
-                swrl:argument2 var:bp ;
-                swrl:propertyPredicate iso:addressesBasePractice ] ) ;
-    swrl:head ( [ a swrl:IndividualPropertyAtom ;
-                swrl:argument1 var:ae ;
-                swrl:argument2 var:rp ;
-                swrl:propertyPredicate iso:recommend ] ) .
-
-[] a swrl:Imp ;
-    rdfs:label "PartialImprovementRecommendationRule" ;
-    swrla:isRuleEnabled true ;
-    rdfs:comment "NEW 2026-11: recommend the practice(s) addressing a Base Practice rated Partially_achieved." ;
-    swrl:body ( [ a swrl:ClassAtom ;
-                swrl:argument1 var:ae ;
-                swrl:classPredicate iso:AssessedEntity ] [ a swrl:IndividualPropertyAtom ;
-                swrl:argument1 var:ae ;
-                swrl:argument2 var:ar ;
-                swrl:propertyPredicate iso:hasAssessmentResult ] [ a swrl:IndividualPropertyAtom ;
-                swrl:argument1 var:ar ;
-                swrl:argument2 iso:Partially_achieved ;
-                swrl:propertyPredicate iso:hasDegreeAchievement ] [ a swrl:IndividualPropertyAtom ;
-                swrl:argument1 var:ar ;
-                swrl:argument2 var:bp ;
-                swrl:propertyPredicate iso:assessesBasePractice ] [ a swrl:ClassAtom ;
-                swrl:argument1 var:rp ;
-                swrl:classPredicate iso:RecommendedPractice ] [ a swrl:IndividualPropertyAtom ;
-                swrl:argument1 var:rp ;
-                swrl:argument2 var:bp ;
-                swrl:propertyPredicate iso:addressesBasePractice ] ) ;
-    swrl:head ( [ a swrl:IndividualPropertyAtom ;
-                swrl:argument1 var:ae ;
-                swrl:argument2 var:rp ;
-                swrl:propertyPredicate iso:recommend ] ) .
 
