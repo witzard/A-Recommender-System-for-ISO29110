@@ -9,13 +9,13 @@ import java.util.regex.Pattern;
 
 /**
  * Loads a SPARQL file from src/main/resources/sparql and keeps "#BEGIN name ... #END" blocks only for
- * parameters that were supplied. The same files and the same rule are used by
+ * parameters that were supplied ("#BEGIN a+b" = only when all of a and b were supplied). The same files and the same rule are used by
  * evaluation/run_cq_evaluation.py, so the evaluation measures exactly what the application runs.
  * Values are NEVER inserted here: they are bound afterwards with ParameterizedSparqlString.
  */
 public final class SparqlTemplate {
 
-    private static final Pattern BEGIN = Pattern.compile("^\\s*#BEGIN\\s+(\\w+)");
+    private static final Pattern BEGIN = Pattern.compile("^\\s*#BEGIN\\s+([\\w+]+)");
     private static final Pattern END = Pattern.compile("^\\s*#END");
 
     private SparqlTemplate() {
@@ -38,7 +38,7 @@ public final class SparqlTemplate {
         for (String line : template.split("\\R")) {
             Matcher b = BEGIN.matcher(line);
             if (b.find()) {
-                keep = suppliedParameters.contains(b.group(1));
+                keep = suppliedParameters.containsAll(java.util.Arrays.asList(b.group(1).split("\\+")));
                 continue;
             }
             if (END.matcher(line).find()) {

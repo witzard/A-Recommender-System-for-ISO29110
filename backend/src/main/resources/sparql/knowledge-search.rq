@@ -1,6 +1,7 @@
 # Parameter-based knowledge search (Capability A).
 # Shared by the Java backend (KnowledgeSearchService) and evaluation/run_cq_evaluation.py.
-# Lines between "#BEGIN <param>" and "#END" are kept only when that parameter is supplied.
+# Lines between "#BEGIN <param>" and "#END" are kept only when that parameter is supplied
+# ("#BEGIN a+b": only when ALL listed parameters are supplied).
 # Parameters are bound, never concatenated:  ?pProcess ?pActivity ?pWorkProduct ?pState = IRIs
 #                                              ?pRole ?pKeyword = plain literals
 PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>
@@ -30,6 +31,9 @@ WHERE {
 #END
 #BEGIN state
   FILTER EXISTS { ?task iso:hasOutputWorkProduct ?fs . ?fs iso:hasFinalState ?pState . }
+#END
+#BEGIN workProduct+state
+  FILTER EXISTS { ?task iso:hasOutputWorkProduct ?fj . ?fj iso:hasFinalState ?pState ; iso:representsWorkProduct ?pWorkProduct . }
 #END
 #BEGIN keyword
   FILTER(CONTAINS(LCASE(STR(?taskDescription)), LCASE(STR(?pKeyword))))

@@ -2,29 +2,29 @@
  "summary": {
   "questions": 34,
   "macro": {
-   "precision": 0.5663897377132671,
+   "precision": 0.5835530630985176,
    "recall": 0.8771241830065359,
-   "f1": 0.6374281235872932
+   "f1": 0.6567441273323626
   },
   "macroUndefinedExcluded": {
-   "precision": 0,
+   "precision": 1,
    "recall": 0,
-   "f1": 0
+   "f1": 1
   },
   "micro": {
-   "precision": 0.4492753623188406,
+   "precision": 0.45255474452554745,
    "recall": 0.8493150684931506,
-   "f1": 0.5876777251184833,
+   "f1": 0.5904761904761905,
    "TP": 62,
-   "FP": 76,
+   "FP": 75,
    "FN": 11
   },
   "byAnswerability": {
    "answerable": {
     "count": 23,
-    "precision": 0.5915678524374176,
+    "precision": 0.6184573002754821,
     "recall": 0.8913043478260869,
-    "f1": 0.6687370600414079
+    "f1": 0.6991341991341992
    },
    "partial": {
     "count": 11,
@@ -849,18 +849,14 @@
    "expected": [
     "SI.5.10"
    ],
-   "retrieved": [
-    "SI.2.7"
-   ],
+   "retrieved": [],
    "TP": 0,
-   "FP": 1,
+   "FP": 0,
    "FN": 1,
-   "precision": 0.0,
+   "precision": null,
    "recall": 0.0,
-   "f1": 0.0,
-   "falsePositives": [
-    "SI.2.7"
-   ],
+   "f1": null,
+   "falsePositives": [],
    "missed": [
     "SI.5.10"
    ]
