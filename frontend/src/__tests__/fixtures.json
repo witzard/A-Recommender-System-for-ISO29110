@@ -1,0 +1,1122 @@
+{
+ "companies": [
+  {
+   "id": "ENT-A",
+   "name": "Company A",
+   "profile": "Synthetic demo company. Mature practices: every assessed Base Practice is Largely or Completely achieved. Expected to receive no improvement recommendation."
+  },
+  {
+   "id": "ENT-B",
+   "name": "Company B",
+   "profile": "Synthetic demo company. Mixed maturity: most practices achieved, a few clear gaps, and one result with no recorded percentage."
+  },
+  {
+   "id": "ENT-C",
+   "name": "Company C",
+   "profile": "Synthetic demo company. Low maturity: several Base Practices are Not or Partially achieved."
+  }
+ ],
+ "assessments": {
+  "ENT-A": {
+   "company": {
+    "id": "ENT-A",
+    "name": "Company A",
+    "profile": "Synthetic demo company. Mature practices: every assessed Base Practice is Largely or Completely achieved. Expected to receive no improvement recommendation."
+   },
+   "project": {
+    "project": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#PJ-A1",
+    "projectName": "Online Clinic Appointment System",
+    "projectDescription": "Web system for booking and managing clinic appointments.",
+    "start": "2026-03-02",
+    "end": "2026-09-30",
+    "staff": "6"
+   },
+   "assessment": {
+    "assessment": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#PAS-A1",
+    "assessmentDate": "2026-09-14",
+    "consultantName": "Demo Assessor (synthetic)",
+    "assessedEntity": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#AE-A1"
+   },
+   "ratingCounts": {
+    "Completely_achieved": 9,
+    "Largely_achieved": 3
+   },
+   "results": [
+    {
+     "result": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#AR-A1-PM.BP.10",
+     "bp": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#PM.BP.10",
+     "bpID": "PM.BP10",
+     "bpDescription": "Document the Version Control Strategy in the Project Plan.",
+     "percentage": "100",
+     "rating": "Completely_achieved",
+     "ratingSource": "inferred",
+     "ratingRule": "RatingCompletelyAchievedRule",
+     "evidence": "Version control strategy documented in the project plan and followed in the repository.",
+     "evidenceWp": "Project Plan"
+    },
+    {
+     "result": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#AR-A1-PM.BP.13",
+     "bp": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#PM.BP.13",
+     "bpID": "PM.BP13",
+     "bpDescription": "Verify and obtain approval of the Project Plan. Verify that all Project\nPlan elements are viable and consistent. The results found are documented in a\nVerification Results and corrections are made until the document is approved\nby PM.",
+     "percentage": "92",
+     "rating": "Completely_achieved",
+     "ratingSource": "inferred",
+     "ratingRule": "RatingCompletelyAchievedRule",
+     "evidence": "Verification record shows the project plan was reviewed and approved by the project manager.",
+     "evidenceWp": "Verification Record"
+    },
+    {
+     "result": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#AR-A1-PM.BP.14",
+     "bp": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#PM.BP.14",
+     "bpID": "PM.BP14",
+     "bpDescription": "Review and accept the Project Plan. Customer reviews and accepts\nthe Project Plan, making sure that the Project Plan elements match with the\nStatement of Work.",
+     "percentage": "100",
+     "rating": "Completely_achieved",
+     "ratingSource": "inferred",
+     "ratingRule": "RatingCompletelyAchievedRule",
+     "evidence": "Customer signed the project plan acceptance.",
+     "evidenceWp": "Project Plan"
+    },
+    {
+     "result": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#AR-A1-PM.BP.16",
+     "bp": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#PM.BP.16",
+     "bpID": "PM.BP16",
+     "bpDescription": "Monitor the Project Plan execution and record actual data in Progress\nStatus Record.",
+     "percentage": "85",
+     "rating": "Largely_achieved",
+     "ratingSource": "inferred",
+     "ratingRule": "RatingLargelyAchievedRule",
+     "evidence": "Progress status records exist for most weeks; two weeks missing.",
+     "evidenceWp": "Progress Status Record"
+    },
+    {
+     "result": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#AR-A1-PM.BP.25",
+     "bp": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#PM.BP.25",
+     "bpID": "PM.BP25",
+     "bpDescription": "Formalize the completion of the project according to the Delivery\nInstructions established in the Project Plan, providing acceptance support and\ngetting the Acceptance Record signed.",
+     "percentage": "100",
+     "rating": "Completely_achieved",
+     "ratingSource": "inferred",
+     "ratingRule": "RatingCompletelyAchievedRule",
+     "evidence": "Acceptance record signed by the customer at project closure.",
+     "evidenceWp": "Acceptance Record"
+    },
+    {
+     "result": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#AR-A1-PM.BP.09",
+     "bp": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#PM.BP.09",
+     "bpID": "PM.BP9",
+     "bpDescription": "Identify and document the risks which may affect the project.",
+     "percentage": "95",
+     "rating": "Completely_achieved",
+     "ratingSource": "inferred",
+     "ratingRule": "RatingCompletelyAchievedRule",
+     "evidence": "Project plan has a maintained risk register with owners and mitigation actions.",
+     "evidenceWp": "Project Plan"
+    },
+    {
+     "result": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#AR-A1-SI.BP.17",
+     "bp": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#SI.BP.17",
+     "bpID": "SI.BP17",
+     "bpDescription": "Perform Software tests using Test Cases and Test Procedures for\nintegration and document results in Test Report.",
+     "percentage": "88",
+     "rating": "Largely_achieved",
+     "ratingSource": "inferred",
+     "ratingRule": "RatingLargelyAchievedRule",
+     "evidence": "Integration tests executed and test report produced; one test run not documented.",
+     "evidenceWp": "Test Report"
+    },
+    {
+     "result": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#AR-A1-SI.BP.02",
+     "bp": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#SI.BP.02",
+     "bpID": "SI.BP2",
+     "bpDescription": "Verify and obtain approval of the Requirements Specification.Verify the\ncorrectness and testability of the Requirements Specification and its\nconsistency with the Product Description. Additionally, review that\nrequirements are complete, unambiguous, and not contradictory. The results\nfound are documented in a Verification Results and corrections are made until\nthe document is approved by AN. If significant changes were needed, initiate a\nChange Request.",
+     "percentage": "91",
+     "rating": "Completely_achieved",
+     "ratingSource": "inferred",
+     "ratingRule": "RatingCompletelyAchievedRule",
+     "evidence": "Requirements specification verified; verification record attached.",
+     "evidenceWp": "Requirement Specification"
+    },
+    {
+     "result": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#AR-A1-SI.BP.20",
+     "bp": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#SI.BP.20",
+     "bpID": "SI.BP20",
+     "bpDescription": "Incorporate the Test Cases and Test Procedures, Software, Traceability\nRecord, Test Report to the Software Configuration as part of the baseline.",
+     "percentage": "100",
+     "rating": "Completely_achieved",
+     "ratingSource": "inferred",
+     "ratingRule": "RatingCompletelyAchievedRule",
+     "evidence": "Baseline contains test cases, software, traceability record and test report.",
+     "evidenceWp": "Software Product"
+    },
+    {
+     "result": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#AR-A1-SI.BP.03",
+     "bp": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#SI.BP.03",
+     "bpID": "SI.BP3",
+     "bpDescription": "Validate and obtain approval of the Requirements Specification .\nValidate that Requirements Specification satisfies needs and agreed upon\nexpectations, including the user interface usability. The results found are\ndocumented in a Validation Results and corrections are made until the\ndocument is approved by the CUS.",
+     "percentage": "96",
+     "rating": "Completely_achieved",
+     "ratingSource": "inferred",
+     "ratingRule": "RatingCompletelyAchievedRule",
+     "evidence": "Validation record with customer sign-off available.",
+     "evidenceWp": "Validation Record"
+    },
+    {
+     "result": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#AR-A1-SI.BP.06",
+     "bp": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#SI.BP.06",
+     "bpID": "SI.BP6",
+     "bpDescription": "Verify and obtain approval of the Software Design. Verify correctness of\nSoftware Design documentation, its feasibility and consistency with their\nRequirement Specification. Verify that the Traceability Record contains the\nadequate relationships between requirements and the Software Design\nelements. The results found are documented in a Verification Results and\ncorrections are made until the document is approved by DES. If significant\nchanges were needed, initiate a Change Request.",
+     "percentage": "90",
+     "rating": "Largely_achieved",
+     "ratingSource": "inferred",
+     "ratingRule": "RatingLargelyAchievedRule",
+     "evidence": "Software design verified; minor traceability gaps noted and corrected.",
+     "evidenceWp": "Software Design"
+    },
+    {
+     "result": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#AR-A1-SI.BP.08",
+     "bp": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#SI.BP.08",
+     "bpID": "SI.BP8",
+     "bpDescription": "Verify and obtain approval of the Test Cases and Test Procedures. Verify\nconsistency among Requirements Specification, Software Design and Test\nCases and Test Procedures. The results found are documented in a Verification\nResults and corrections are made until the document is approved.",
+     "percentage": "93",
+     "rating": "Completely_achieved",
+     "ratingSource": "inferred",
+     "ratingRule": "RatingCompletelyAchievedRule",
+     "evidence": "Test cases verified against requirements and design.",
+     "evidenceWp": "Test Cases and Test Procedures"
+    }
+   ],
+   "recommendations": []
+  },
+  "ENT-B": {
+   "company": {
+    "id": "ENT-B",
+    "name": "Company B",
+    "profile": "Synthetic demo company. Mixed maturity: most practices achieved, a few clear gaps, and one result with no recorded percentage."
+   },
+   "project": {
+    "project": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#PJ-B1",
+    "projectName": "Inventory Management Web Application",
+    "projectDescription": "Stock and supplier management for a small retailer.",
+    "start": "2026-04-01",
+    "end": "2026-10-15",
+    "staff": "5"
+   },
+   "assessment": {
+    "assessment": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#PAS-B1",
+    "assessmentDate": "2026-09-21",
+    "consultantName": "Demo Assessor (synthetic)",
+    "assessedEntity": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#AE-B1"
+   },
+   "ratingCounts": {
+    "Completely_achieved": 4,
+    "Largely_achieved": 3,
+    "Partially_achieved": 3,
+    "Not_rated": 1,
+    "Not_achieved": 1
+   },
+   "results": [
+    {
+     "result": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#AR-B1-PM.BP.10",
+     "bp": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#PM.BP.10",
+     "bpID": "PM.BP10",
+     "bpDescription": "Document the Version Control Strategy in the Project Plan.",
+     "percentage": "96",
+     "rating": "Completely_achieved",
+     "ratingSource": "inferred",
+     "ratingRule": "RatingCompletelyAchievedRule",
+     "evidence": "Version control strategy documented and used.",
+     "evidenceWp": "Project Plan"
+    },
+    {
+     "result": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#AR-B1-PM.BP.13",
+     "bp": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#PM.BP.13",
+     "bpID": "PM.BP13",
+     "bpDescription": "Verify and obtain approval of the Project Plan. Verify that all Project\nPlan elements are viable and consistent. The results found are documented in a\nVerification Results and corrections are made until the document is approved\nby PM.",
+     "percentage": "51",
+     "rating": "Largely_achieved",
+     "ratingSource": "inferred",
+     "ratingRule": "RatingLargelyAchievedRule",
+     "evidence": "Project plan reviewed, but verification results were only partly recorded.",
+     "evidenceWp": "Verification Record"
+    },
+    {
+     "result": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#AR-B1-PM.BP.14",
+     "bp": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#PM.BP.14",
+     "bpID": "PM.BP14",
+     "bpDescription": "Review and accept the Project Plan. Customer reviews and accepts\nthe Project Plan, making sure that the Project Plan elements match with the\nStatement of Work.",
+     "percentage": "100",
+     "rating": "Completely_achieved",
+     "ratingSource": "inferred",
+     "ratingRule": "RatingCompletelyAchievedRule",
+     "evidence": "Customer accepted the project plan by signed e-mail.",
+     "evidenceWp": "Project Plan"
+    },
+    {
+     "result": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#AR-B1-PM.BP.16",
+     "bp": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#PM.BP.16",
+     "bpID": "PM.BP16",
+     "bpDescription": "Monitor the Project Plan execution and record actual data in Progress\nStatus Record.",
+     "percentage": "70",
+     "rating": "Largely_achieved",
+     "ratingSource": "inferred",
+     "ratingRule": "RatingLargelyAchievedRule",
+     "evidence": "Progress is tracked in a spreadsheet; actual effort is not always recorded.",
+     "evidenceWp": "Progress Status Record"
+    },
+    {
+     "result": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#AR-B1-PM.BP.25",
+     "bp": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#PM.BP.25",
+     "bpID": "PM.BP25",
+     "bpDescription": "Formalize the completion of the project according to the Delivery\nInstructions established in the Project Plan, providing acceptance support and\ngetting the Acceptance Record signed.",
+     "percentage": "92",
+     "rating": "Completely_achieved",
+     "ratingSource": "inferred",
+     "ratingRule": "RatingCompletelyAchievedRule",
+     "evidence": "Acceptance record signed at the end of the project.",
+     "evidenceWp": "Acceptance Record"
+    },
+    {
+     "result": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#AR-B1-PM.BP.09",
+     "bp": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#PM.BP.09",
+     "bpID": "PM.BP9",
+     "bpDescription": "Identify and document the risks which may affect the project.",
+     "percentage": "40",
+     "rating": "Partially_achieved",
+     "ratingSource": "inferred",
+     "ratingRule": "RatingPartiallyAchievedRule",
+     "evidence": "Risks are mentioned in meeting notes but are not documented in the project plan.",
+     "evidenceWp": "Project Plan"
+    },
+    {
+     "result": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#AR-B1-SI.BP.17",
+     "bp": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#SI.BP.17",
+     "bpID": "SI.BP17",
+     "bpDescription": "Perform Software tests using Test Cases and Test Procedures for\nintegration and document results in Test Report.",
+     "percentage": "16",
+     "rating": "Partially_achieved",
+     "ratingSource": "inferred",
+     "ratingRule": "RatingPartiallyAchievedRule",
+     "evidence": "Integration testing done ad hoc; no test report produced.",
+     "evidenceWp": "Test Report"
+    },
+    {
+     "result": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#AR-B1-SI.BP.02",
+     "bp": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#SI.BP.02",
+     "bpID": "SI.BP2",
+     "bpDescription": "Verify and obtain approval of the Requirements Specification.Verify the\ncorrectness and testability of the Requirements Specification and its\nconsistency with the Product Description. Additionally, review that\nrequirements are complete, unambiguous, and not contradictory. The results\nfound are documented in a Verification Results and corrections are made until\nthe document is approved by AN. If significant changes were needed, initiate a\nChange Request.",
+     "percentage": "50",
+     "rating": "Partially_achieved",
+     "ratingSource": "inferred",
+     "ratingRule": "RatingPartiallyAchievedRule",
+     "evidence": "Requirements were reviewed informally; correctness and testability checks are not documented.",
+     "evidenceWp": "Requirement Specification"
+    },
+    {
+     "result": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#AR-B1-SI.BP.20",
+     "bp": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#SI.BP.20",
+     "bpID": "SI.BP20",
+     "bpDescription": "Incorporate the Test Cases and Test Procedures, Software, Traceability\nRecord, Test Report to the Software Configuration as part of the baseline.",
+     "evidence": "Not yet assessed: the assessor could not inspect the repository (percentage not recorded).",
+     "evidenceWp": "Software Product",
+     "rating": "Not_rated",
+     "ratingSource": "none"
+    },
+    {
+     "result": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#AR-B1-SI.BP.03",
+     "bp": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#SI.BP.03",
+     "bpID": "SI.BP3",
+     "bpDescription": "Validate and obtain approval of the Requirements Specification .\nValidate that Requirements Specification satisfies needs and agreed upon\nexpectations, including the user interface usability. The results found are\ndocumented in a Validation Results and corrections are made until the\ndocument is approved by the CUS.",
+     "percentage": "80",
+     "rating": "Largely_achieved",
+     "ratingSource": "inferred",
+     "ratingRule": "RatingLargelyAchievedRule",
+     "evidence": "Customer validated most requirements in a workshop; validation record available.",
+     "evidenceWp": "Validation Record"
+    },
+    {
+     "result": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#AR-B1-SI.BP.06",
+     "bp": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#SI.BP.06",
+     "bpID": "SI.BP6",
+     "bpDescription": "Verify and obtain approval of the Software Design. Verify correctness of\nSoftware Design documentation, its feasibility and consistency with their\nRequirement Specification. Verify that the Traceability Record contains the\nadequate relationships between requirements and the Software Design\nelements. The results found are documented in a Verification Results and\ncorrections are made until the document is approved by DES. If significant\nchanges were needed, initiate a Change Request.",
+     "percentage": "91",
+     "rating": "Completely_achieved",
+     "ratingSource": "inferred",
+     "ratingRule": "RatingCompletelyAchievedRule",
+     "evidence": "Software design verified and approved by the designer.",
+     "evidenceWp": "Software Design"
+    },
+    {
+     "result": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#AR-B1-SI.BP.08",
+     "bp": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#SI.BP.08",
+     "bpID": "SI.BP8",
+     "bpDescription": "Verify and obtain approval of the Test Cases and Test Procedures. Verify\nconsistency among Requirements Specification, Software Design and Test\nCases and Test Procedures. The results found are documented in a Verification\nResults and corrections are made until the document is approved.",
+     "percentage": "10",
+     "rating": "Not_achieved",
+     "ratingSource": "inferred",
+     "ratingRule": "RatingNotAchievedRule",
+     "evidence": "Test cases exist but were never verified against the requirements or design.",
+     "evidenceWp": "Test Cases and Test Procedures"
+    }
+   ],
+   "recommendations": [
+    {
+     "practice": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#RP-SI.BP.08",
+     "practiceName": "Strengthen SI.BP8: Verify and obtain approval of the Test Cases and Test Procedures",
+     "practiceDescription": "Verify and obtain approval of the Test Cases and Test Procedures. Verify consistency among Requirements Specification, Software Design and Test Cases and Test Procedures. The results found are documented in a Verification Results and corrections are made until the document is approved.",
+     "bp": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#SI.BP.08",
+     "bpID": "SI.BP8",
+     "result": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#AR-B1-SI.BP.08",
+     "percentage": "10",
+     "rating": "Not_achieved",
+     "ratingRule": "RatingNotAchievedRule",
+     "recommendationRule": "ImprovementRecommendationRule",
+     "necessaryRules": [
+      "ImprovementRecommendationRule",
+      "RatingNotAchievedRule"
+     ],
+     "evidence": "Test cases exist but were never verified against the requirements or design.",
+     "runAt": "2026-11-01T12:36:50.295535+00:00",
+     "reasoner": "Pellet 2.3.1 via OWL API 3.4.3"
+    },
+    {
+     "practice": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#RP-PM.BP.09",
+     "practiceName": "Strengthen PM.BP9: Identify and document the risks which may affect the project",
+     "practiceDescription": "Identify and document the risks which may affect the project.",
+     "bp": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#PM.BP.09",
+     "bpID": "PM.BP9",
+     "result": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#AR-B1-PM.BP.09",
+     "percentage": "40",
+     "rating": "Partially_achieved",
+     "ratingRule": "RatingPartiallyAchievedRule",
+     "recommendationRule": "PartialImprovementRecommendationRule",
+     "necessaryRules": [
+      "RatingPartiallyAchievedRule",
+      "PartialImprovementRecommendationRule"
+     ],
+     "evidence": "Risks are mentioned in meeting notes but are not documented in the project plan.",
+     "runAt": "2026-11-01T12:36:50.295535+00:00",
+     "reasoner": "Pellet 2.3.1 via OWL API 3.4.3"
+    },
+    {
+     "practice": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#RP-SI.BP.17",
+     "practiceName": "Strengthen SI.BP17: Perform Software tests using Test Cases and Test Procedures for integration and document results in Test Report",
+     "practiceDescription": "Perform Software tests using Test Cases and Test Procedures for integration and document results in Test Report.",
+     "bp": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#SI.BP.17",
+     "bpID": "SI.BP17",
+     "result": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#AR-B1-SI.BP.17",
+     "percentage": "16",
+     "rating": "Partially_achieved",
+     "ratingRule": "RatingPartiallyAchievedRule",
+     "recommendationRule": "PartialImprovementRecommendationRule",
+     "necessaryRules": [
+      "PartialImprovementRecommendationRule",
+      "RatingPartiallyAchievedRule"
+     ],
+     "evidence": "Integration testing done ad hoc; no test report produced.",
+     "runAt": "2026-11-01T12:36:50.295535+00:00",
+     "reasoner": "Pellet 2.3.1 via OWL API 3.4.3"
+    },
+    {
+     "practice": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#RP-SI.BP.02",
+     "practiceName": "Strengthen SI.BP2: Verify and obtain approval of the Requirements Specification.Verify the correctness and testability of the Requirements Specification and its consistency with the Product Description",
+     "practiceDescription": "Verify and obtain approval of the Requirements Specification.Verify the correctness and testability of the Requirements Specification and its consistency with the Product Description. Additionally, review that requirements are complete, unambiguous, and not contradictory. The results found are documented in a Verification Results and corrections are made until the document is approved by AN. If significant changes were needed, initiate a Change Request.",
+     "bp": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#SI.BP.02",
+     "bpID": "SI.BP2",
+     "result": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#AR-B1-SI.BP.02",
+     "percentage": "50",
+     "rating": "Partially_achieved",
+     "ratingRule": "RatingPartiallyAchievedRule",
+     "recommendationRule": "PartialImprovementRecommendationRule",
+     "necessaryRules": [
+      "RatingPartiallyAchievedRule",
+      "PartialImprovementRecommendationRule"
+     ],
+     "evidence": "Requirements were reviewed informally; correctness and testability checks are not documented.",
+     "runAt": "2026-11-01T12:36:50.295535+00:00",
+     "reasoner": "Pellet 2.3.1 via OWL API 3.4.3"
+    }
+   ]
+  },
+  "ENT-C": {
+   "company": {
+    "id": "ENT-C",
+    "name": "Company C",
+    "profile": "Synthetic demo company. Low maturity: several Base Practices are Not or Partially achieved."
+   },
+   "project": {
+    "project": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#PJ-C1",
+    "projectName": "School Fee Payment Mobile App",
+    "projectDescription": "Mobile application for parents to pay school fees.",
+    "start": "2026-05-04",
+    "end": "2026-11-30",
+    "staff": "4"
+   },
+   "assessment": {
+    "assessment": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#PAS-C1",
+    "assessmentDate": "2026-09-28",
+    "consultantName": "Demo Assessor (synthetic)",
+    "assessedEntity": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#AE-C1"
+   },
+   "ratingCounts": {
+    "Not_achieved": 4,
+    "Partially_achieved": 5,
+    "Largely_achieved": 2,
+    "Completely_achieved": 1
+   },
+   "results": [
+    {
+     "result": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#AR-C1-PM.BP.10",
+     "bp": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#PM.BP.10",
+     "bpID": "PM.BP10",
+     "bpDescription": "Document the Version Control Strategy in the Project Plan.",
+     "percentage": "5",
+     "rating": "Not_achieved",
+     "ratingSource": "inferred",
+     "ratingRule": "RatingNotAchievedRule",
+     "evidence": "No version control strategy; source code shared by copying folders.",
+     "evidenceWp": "Project Plan"
+    },
+    {
+     "result": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#AR-C1-PM.BP.13",
+     "bp": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#PM.BP.13",
+     "bpID": "PM.BP13",
+     "bpDescription": "Verify and obtain approval of the Project Plan. Verify that all Project\nPlan elements are viable and consistent. The results found are documented in a\nVerification Results and corrections are made until the document is approved\nby PM.",
+     "percentage": "30",
+     "rating": "Partially_achieved",
+     "ratingSource": "inferred",
+     "ratingRule": "RatingPartiallyAchievedRule",
+     "evidence": "Project plan exists but was never verified or approved.",
+     "evidenceWp": "Verification Record"
+    },
+    {
+     "result": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#AR-C1-PM.BP.14",
+     "bp": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#PM.BP.14",
+     "bpID": "PM.BP14",
+     "bpDescription": "Review and accept the Project Plan. Customer reviews and accepts\nthe Project Plan, making sure that the Project Plan elements match with the\nStatement of Work.",
+     "percentage": "60",
+     "rating": "Largely_achieved",
+     "ratingSource": "inferred",
+     "ratingRule": "RatingLargelyAchievedRule",
+     "evidence": "Customer saw the plan in a meeting; acceptance only partly documented.",
+     "evidenceWp": "Project Plan"
+    },
+    {
+     "result": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#AR-C1-PM.BP.16",
+     "bp": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#PM.BP.16",
+     "bpID": "PM.BP16",
+     "bpDescription": "Monitor the Project Plan execution and record actual data in Progress\nStatus Record.",
+     "percentage": "25",
+     "rating": "Partially_achieved",
+     "ratingSource": "inferred",
+     "ratingRule": "RatingPartiallyAchievedRule",
+     "evidence": "Progress is discussed verbally; very few progress status records.",
+     "evidenceWp": "Progress Status Record"
+    },
+    {
+     "result": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#AR-C1-PM.BP.25",
+     "bp": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#PM.BP.25",
+     "bpID": "PM.BP25",
+     "bpDescription": "Formalize the completion of the project according to the Delivery\nInstructions established in the Project Plan, providing acceptance support and\ngetting the Acceptance Record signed.",
+     "percentage": "92",
+     "rating": "Completely_achieved",
+     "ratingSource": "inferred",
+     "ratingRule": "RatingCompletelyAchievedRule",
+     "evidence": "Acceptance record signed by the customer.",
+     "evidenceWp": "Acceptance Record"
+    },
+    {
+     "result": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#AR-C1-PM.BP.09",
+     "bp": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#PM.BP.09",
+     "bpID": "PM.BP9",
+     "bpDescription": "Identify and document the risks which may affect the project.",
+     "percentage": "0",
+     "rating": "Not_achieved",
+     "ratingSource": "inferred",
+     "ratingRule": "RatingNotAchievedRule",
+     "evidence": "No risk identification found in any project document.",
+     "evidenceWp": "Project Plan"
+    },
+    {
+     "result": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#AR-C1-SI.BP.17",
+     "bp": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#SI.BP.17",
+     "bpID": "SI.BP17",
+     "bpDescription": "Perform Software tests using Test Cases and Test Procedures for\nintegration and document results in Test Report.",
+     "percentage": "20",
+     "rating": "Partially_achieved",
+     "ratingSource": "inferred",
+     "ratingRule": "RatingPartiallyAchievedRule",
+     "evidence": "Some integration tests run; results not recorded in a test report.",
+     "evidenceWp": "Test Report"
+    },
+    {
+     "result": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#AR-C1-SI.BP.02",
+     "bp": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#SI.BP.02",
+     "bpID": "SI.BP2",
+     "bpDescription": "Verify and obtain approval of the Requirements Specification.Verify the\ncorrectness and testability of the Requirements Specification and its\nconsistency with the Product Description. Additionally, review that\nrequirements are complete, unambiguous, and not contradictory. The results\nfound are documented in a Verification Results and corrections are made until\nthe document is approved by AN. If significant changes were needed, initiate a\nChange Request.",
+     "percentage": "45",
+     "rating": "Partially_achieved",
+     "ratingSource": "inferred",
+     "ratingRule": "RatingPartiallyAchievedRule",
+     "evidence": "Requirements document exists; some requirements are ambiguous and untestable.",
+     "evidenceWp": "Requirement Specification"
+    },
+    {
+     "result": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#AR-C1-SI.BP.20",
+     "bp": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#SI.BP.20",
+     "bpID": "SI.BP20",
+     "bpDescription": "Incorporate the Test Cases and Test Procedures, Software, Traceability\nRecord, Test Report to the Software Configuration as part of the baseline.",
+     "percentage": "35",
+     "rating": "Partially_achieved",
+     "ratingSource": "inferred",
+     "ratingRule": "RatingPartiallyAchievedRule",
+     "evidence": "Only the source code is stored; test and traceability records are missing from the baseline.",
+     "evidenceWp": "Software Product"
+    },
+    {
+     "result": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#AR-C1-SI.BP.03",
+     "bp": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#SI.BP.03",
+     "bpID": "SI.BP3",
+     "bpDescription": "Validate and obtain approval of the Requirements Specification .\nValidate that Requirements Specification satisfies needs and agreed upon\nexpectations, including the user interface usability. The results found are\ndocumented in a Validation Results and corrections are made until the\ndocument is approved by the CUS.",
+     "percentage": "55",
+     "rating": "Largely_achieved",
+     "ratingSource": "inferred",
+     "ratingRule": "RatingLargelyAchievedRule",
+     "evidence": "Customer reviewed screen mock-ups; formal validation record incomplete.",
+     "evidenceWp": "Validation Record"
+    },
+    {
+     "result": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#AR-C1-SI.BP.06",
+     "bp": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#SI.BP.06",
+     "bpID": "SI.BP6",
+     "bpDescription": "Verify and obtain approval of the Software Design. Verify correctness of\nSoftware Design documentation, its feasibility and consistency with their\nRequirement Specification. Verify that the Traceability Record contains the\nadequate relationships between requirements and the Software Design\nelements. The results found are documented in a Verification Results and\ncorrections are made until the document is approved by DES. If significant\nchanges were needed, initiate a Change Request.",
+     "percentage": "15",
+     "rating": "Not_achieved",
+     "ratingSource": "inferred",
+     "ratingRule": "RatingNotAchievedRule",
+     "evidence": "Design document is outdated and was not verified.",
+     "evidenceWp": "Software Design"
+    },
+    {
+     "result": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#AR-C1-SI.BP.08",
+     "bp": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#SI.BP.08",
+     "bpID": "SI.BP8",
+     "bpDescription": "Verify and obtain approval of the Test Cases and Test Procedures. Verify\nconsistency among Requirements Specification, Software Design and Test\nCases and Test Procedures. The results found are documented in a Verification\nResults and corrections are made until the document is approved.",
+     "percentage": "0",
+     "rating": "Not_achieved",
+     "ratingSource": "inferred",
+     "ratingRule": "RatingNotAchievedRule",
+     "evidence": "No test cases or test procedures were written before integration.",
+     "evidenceWp": "Test Cases and Test Procedures"
+    }
+   ],
+   "recommendations": [
+    {
+     "practice": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#RP-PM.BP.10",
+     "practiceName": "Strengthen PM.BP10: Document the Version Control Strategy in the Project Plan",
+     "practiceDescription": "Document the Version Control Strategy in the Project Plan.",
+     "bp": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#PM.BP.10",
+     "bpID": "PM.BP10",
+     "result": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#AR-C1-PM.BP.10",
+     "percentage": "5",
+     "rating": "Not_achieved",
+     "ratingRule": "RatingNotAchievedRule",
+     "recommendationRule": "ImprovementRecommendationRule",
+     "necessaryRules": [
+      "RatingNotAchievedRule",
+      "ImprovementRecommendationRule"
+     ],
+     "evidence": "No version control strategy; source code shared by copying folders.",
+     "runAt": "2026-11-01T12:36:50.295535+00:00",
+     "reasoner": "Pellet 2.3.1 via OWL API 3.4.3"
+    },
+    {
+     "practice": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#RP-PM.BP.09",
+     "practiceName": "Strengthen PM.BP9: Identify and document the risks which may affect the project",
+     "practiceDescription": "Identify and document the risks which may affect the project.",
+     "bp": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#PM.BP.09",
+     "bpID": "PM.BP9",
+     "result": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#AR-C1-PM.BP.09",
+     "percentage": "0",
+     "rating": "Not_achieved",
+     "ratingRule": "RatingNotAchievedRule",
+     "recommendationRule": "ImprovementRecommendationRule",
+     "necessaryRules": [
+      "RatingNotAchievedRule",
+      "ImprovementRecommendationRule"
+     ],
+     "evidence": "No risk identification found in any project document.",
+     "runAt": "2026-11-01T12:36:50.295535+00:00",
+     "reasoner": "Pellet 2.3.1 via OWL API 3.4.3"
+    },
+    {
+     "practice": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#RP-SI.BP.06",
+     "practiceName": "Strengthen SI.BP6: Verify and obtain approval of the Software Design",
+     "practiceDescription": "Verify and obtain approval of the Software Design. Verify correctness of Software Design documentation, its feasibility and consistency with their Requirement Specification. Verify that the Traceability Record contains the adequate relationships between requirements and the Software Design elements. The results found are documented in a Verification Results and corrections are made until the document is approved by DES. If significant changes were needed, initiate a Change Request.",
+     "bp": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#SI.BP.06",
+     "bpID": "SI.BP6",
+     "result": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#AR-C1-SI.BP.06",
+     "percentage": "15",
+     "rating": "Not_achieved",
+     "ratingRule": "RatingNotAchievedRule",
+     "recommendationRule": "ImprovementRecommendationRule",
+     "necessaryRules": [
+      "RatingNotAchievedRule",
+      "ImprovementRecommendationRule"
+     ],
+     "evidence": "Design document is outdated and was not verified.",
+     "runAt": "2026-11-01T12:36:50.295535+00:00",
+     "reasoner": "Pellet 2.3.1 via OWL API 3.4.3"
+    },
+    {
+     "practice": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#RP-SI.BP.08",
+     "practiceName": "Strengthen SI.BP8: Verify and obtain approval of the Test Cases and Test Procedures",
+     "practiceDescription": "Verify and obtain approval of the Test Cases and Test Procedures. Verify consistency among Requirements Specification, Software Design and Test Cases and Test Procedures. The results found are documented in a Verification Results and corrections are made until the document is approved.",
+     "bp": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#SI.BP.08",
+     "bpID": "SI.BP8",
+     "result": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#AR-C1-SI.BP.08",
+     "percentage": "0",
+     "rating": "Not_achieved",
+     "ratingRule": "RatingNotAchievedRule",
+     "recommendationRule": "ImprovementRecommendationRule",
+     "necessaryRules": [
+      "ImprovementRecommendationRule",
+      "RatingNotAchievedRule"
+     ],
+     "evidence": "No test cases or test procedures were written before integration.",
+     "runAt": "2026-11-01T12:36:50.295535+00:00",
+     "reasoner": "Pellet 2.3.1 via OWL API 3.4.3"
+    },
+    {
+     "practice": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#RP-PM.BP.13",
+     "practiceName": "Strengthen PM.BP13: Verify and obtain approval of the Project Plan",
+     "practiceDescription": "Verify and obtain approval of the Project Plan. Verify that all Project Plan elements are viable and consistent. The results found are documented in a Verification Results and corrections are made until the document is approved by PM.",
+     "bp": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#PM.BP.13",
+     "bpID": "PM.BP13",
+     "result": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#AR-C1-PM.BP.13",
+     "percentage": "30",
+     "rating": "Partially_achieved",
+     "ratingRule": "RatingPartiallyAchievedRule",
+     "recommendationRule": "PartialImprovementRecommendationRule",
+     "necessaryRules": [
+      "RatingPartiallyAchievedRule",
+      "PartialImprovementRecommendationRule"
+     ],
+     "evidence": "Project plan exists but was never verified or approved.",
+     "runAt": "2026-11-01T12:36:50.295535+00:00",
+     "reasoner": "Pellet 2.3.1 via OWL API 3.4.3"
+    },
+    {
+     "practice": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#RP-PM.BP.16",
+     "practiceName": "Strengthen PM.BP16: Monitor the Project Plan execution and record actual data in Progress Status Record",
+     "practiceDescription": "Monitor the Project Plan execution and record actual data in Progress Status Record.",
+     "bp": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#PM.BP.16",
+     "bpID": "PM.BP16",
+     "result": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#AR-C1-PM.BP.16",
+     "percentage": "25",
+     "rating": "Partially_achieved",
+     "ratingRule": "RatingPartiallyAchievedRule",
+     "recommendationRule": "PartialImprovementRecommendationRule",
+     "necessaryRules": [
+      "PartialImprovementRecommendationRule",
+      "RatingPartiallyAchievedRule"
+     ],
+     "evidence": "Progress is discussed verbally; very few progress status records.",
+     "runAt": "2026-11-01T12:36:50.295535+00:00",
+     "reasoner": "Pellet 2.3.1 via OWL API 3.4.3"
+    },
+    {
+     "practice": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#RP-SI.BP.17",
+     "practiceName": "Strengthen SI.BP17: Perform Software tests using Test Cases and Test Procedures for integration and document results in Test Report",
+     "practiceDescription": "Perform Software tests using Test Cases and Test Procedures for integration and document results in Test Report.",
+     "bp": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#SI.BP.17",
+     "bpID": "SI.BP17",
+     "result": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#AR-C1-SI.BP.17",
+     "percentage": "20",
+     "rating": "Partially_achieved",
+     "ratingRule": "RatingPartiallyAchievedRule",
+     "recommendationRule": "PartialImprovementRecommendationRule",
+     "necessaryRules": [
+      "RatingPartiallyAchievedRule",
+      "PartialImprovementRecommendationRule"
+     ],
+     "evidence": "Some integration tests run; results not recorded in a test report.",
+     "runAt": "2026-11-01T12:36:50.295535+00:00",
+     "reasoner": "Pellet 2.3.1 via OWL API 3.4.3"
+    },
+    {
+     "practice": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#RP-SI.BP.02",
+     "practiceName": "Strengthen SI.BP2: Verify and obtain approval of the Requirements Specification.Verify the correctness and testability of the Requirements Specification and its consistency with the Product Description",
+     "practiceDescription": "Verify and obtain approval of the Requirements Specification.Verify the correctness and testability of the Requirements Specification and its consistency with the Product Description. Additionally, review that requirements are complete, unambiguous, and not contradictory. The results found are documented in a Verification Results and corrections are made until the document is approved by AN. If significant changes were needed, initiate a Change Request.",
+     "bp": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#SI.BP.02",
+     "bpID": "SI.BP2",
+     "result": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#AR-C1-SI.BP.02",
+     "percentage": "45",
+     "rating": "Partially_achieved",
+     "ratingRule": "RatingPartiallyAchievedRule",
+     "recommendationRule": "PartialImprovementRecommendationRule",
+     "necessaryRules": [
+      "PartialImprovementRecommendationRule",
+      "RatingPartiallyAchievedRule"
+     ],
+     "evidence": "Requirements document exists; some requirements are ambiguous and untestable.",
+     "runAt": "2026-11-01T12:36:50.295535+00:00",
+     "reasoner": "Pellet 2.3.1 via OWL API 3.4.3"
+    },
+    {
+     "practice": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#RP-SI.BP.20",
+     "practiceName": "Strengthen SI.BP20: Incorporate the Test Cases and Test Procedures, Software, Traceability Record, Test Report to the Software Configuration as part of the baseline",
+     "practiceDescription": "Incorporate the Test Cases and Test Procedures, Software, Traceability Record, Test Report to the Software Configuration as part of the baseline.",
+     "bp": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#SI.BP.20",
+     "bpID": "SI.BP20",
+     "result": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#AR-C1-SI.BP.20",
+     "percentage": "35",
+     "rating": "Partially_achieved",
+     "ratingRule": "RatingPartiallyAchievedRule",
+     "recommendationRule": "PartialImprovementRecommendationRule",
+     "necessaryRules": [
+      "RatingPartiallyAchievedRule",
+      "PartialImprovementRecommendationRule"
+     ],
+     "evidence": "Only the source code is stored; test and traceability records are missing from the baseline.",
+     "runAt": "2026-11-01T12:36:50.295535+00:00",
+     "reasoner": "Pellet 2.3.1 via OWL API 3.4.3"
+    }
+   ]
+  }
+ },
+ "status": {
+  "run": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2-app#run-20261101T123748Z",
+  "runAt": "2026-11-01T12:36:50.295535+00:00",
+  "reasoner": "Pellet 2.3.1 via OWL API 3.4.3",
+  "consistent": "true",
+  "swrlInferredCount": "96",
+  "enabledRules": "ApprovedRequirementSpecRule|ApprovedTestCaseRule|BasePracticeOutputWPRule|ImprovementRecommendationRule|PartialImprovementRecommendationRule|RatingCompletelyAchievedRule|RatingLargelyAchievedRule|RatingNotAchievedRule|RatingPartiallyAchievedRule"
+ },
+ "options": {
+  "process": [
+   {
+    "value": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#PM",
+    "label": "Project Management (PM)"
+   },
+   {
+    "value": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#SI",
+    "label": "Software Implementation (SI)"
+   }
+  ],
+  "activity": [
+   {
+    "value": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#PM.ACT.01",
+    "label": "PM.01 Project planning",
+    "process": "PM"
+   },
+   {
+    "value": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#PM.ACT.02",
+    "label": "PM.02 Project plan execution",
+    "process": "PM"
+   },
+   {
+    "value": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#PM.ACT.03",
+    "label": "PM.03 Project assessment and control",
+    "process": "PM"
+   },
+   {
+    "value": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#PM.ACT.04",
+    "label": "PM.04 Project closure",
+    "process": "PM"
+   },
+   {
+    "value": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#SI.ACT.01",
+    "label": "SI.01 Software implementation initiation",
+    "process": "SI"
+   },
+   {
+    "value": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#SI.ACT.02",
+    "label": "SI.02 Software requirements analysis",
+    "process": "SI"
+   },
+   {
+    "value": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#SI.ACT.03",
+    "label": "SI.03 Software architectural and detailed design",
+    "process": "SI"
+   },
+   {
+    "value": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#SI.ACT.04",
+    "label": "SI.04 Software construction",
+    "process": "SI"
+   },
+   {
+    "value": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#SI.ACT.05",
+    "label": "SI.05 Software integration and tests",
+    "process": "SI"
+   },
+   {
+    "value": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#SI.ACT.06",
+    "label": "SI.06 Software product assembly",
+    "process": "SI"
+   }
+  ],
+  "role": [
+   {
+    "value": "AN",
+    "label": "Analyst (AN)"
+   },
+   {
+    "value": "CUS",
+    "label": "Customer (CUS)"
+   },
+   {
+    "value": "DES",
+    "label": "Designer (DES)"
+   },
+   {
+    "value": "PR",
+    "label": "Programmer (PR)"
+   },
+   {
+    "value": "PJM",
+    "label": "Project manager (PJM)"
+   },
+   {
+    "value": "TL",
+    "label": "Technical leader (TL)"
+   },
+   {
+    "value": "WT",
+    "label": "Work team (WT)"
+   }
+  ],
+  "workProduct": [
+   {
+    "value": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#WP.01",
+    "label": "Acceptance Record"
+   },
+   {
+    "value": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#WP.02",
+    "label": "Agreement"
+   },
+   {
+    "value": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#WP.03",
+    "label": "Change Request"
+   },
+   {
+    "value": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#WP.04",
+    "label": "Correction Register"
+   },
+   {
+    "value": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#WP.05",
+    "label": "Implementation Environment"
+   },
+   {
+    "value": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#WP.06",
+    "label": "Maintenance Documentation"
+   },
+   {
+    "value": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#WP.07",
+    "label": "Meeting Record"
+   },
+   {
+    "value": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#WP.08",
+    "label": "Product Operation Guide"
+   },
+   {
+    "value": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#WP.09",
+    "label": "Progress Status Record"
+   },
+   {
+    "value": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#WP.10",
+    "label": "Project Plan"
+   },
+   {
+    "value": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#WP.11",
+    "label": "Project Repository"
+   },
+   {
+    "value": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#WP.12",
+    "label": "Project Repository Backup"
+   },
+   {
+    "value": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#WP.13",
+    "label": "Requirement Specification"
+   },
+   {
+    "value": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#WP.14",
+    "label": "Software"
+   },
+   {
+    "value": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#WP.15",
+    "label": "Software Components"
+   },
+   {
+    "value": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#WP.16",
+    "label": "Software Design"
+   },
+   {
+    "value": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#WP.17",
+    "label": "Software Product"
+   },
+   {
+    "value": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#WP.18",
+    "label": "Software User Documentation"
+   },
+   {
+    "value": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#WP.19",
+    "label": "Test Cases and Test Procedures"
+   },
+   {
+    "value": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#WP.20",
+    "label": "Test Report"
+   },
+   {
+    "value": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#WP.21",
+    "label": "Traceability Record"
+   },
+   {
+    "value": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#WP.22",
+    "label": "Validation Record"
+   },
+   {
+    "value": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#WP.23",
+    "label": "Verification Record"
+   }
+  ],
+  "state": [
+   {
+    "value": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#WPS.02",
+    "label": "Approved"
+   },
+   {
+    "value": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#WPS.03",
+    "label": "Baselined"
+   },
+   {
+    "value": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#WPS.06",
+    "label": "Corrected"
+   },
+   {
+    "value": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#WPS.08",
+    "label": "Delivered"
+   },
+   {
+    "value": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#WPS.09",
+    "label": "Established"
+   },
+   {
+    "value": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#WPS.10",
+    "label": "Evaluated"
+   },
+   {
+    "value": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#WPS.11",
+    "label": "Implemented"
+   },
+   {
+    "value": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#WPS.12",
+    "label": "Initiated"
+   },
+   {
+    "value": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#WPS.14",
+    "label": "Preliminary"
+   },
+   {
+    "value": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#WPS.15",
+    "label": "Published"
+   },
+   {
+    "value": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#WPS.16",
+    "label": "Recovered"
+   },
+   {
+    "value": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#WPS.17",
+    "label": "Rejected"
+   },
+   {
+    "value": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#WPS.19",
+    "label": "Tested"
+   },
+   {
+    "value": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#WPS.20",
+    "label": "Unit Tested"
+   },
+   {
+    "value": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#WPS.21",
+    "label": "Updated"
+   },
+   {
+    "value": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#WPS.23",
+    "label": "Validated"
+   },
+   {
+    "value": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#WPS.22",
+    "label": "Verified"
+   }
+  ]
+ },
+ "searchExample": {
+  "request": {
+   "role": "PR",
+   "keyword": "defect"
+  },
+  "response": {
+   "parameters": {
+    "role": "PR",
+    "keyword": "defect"
+   },
+   "query": "knowledge-search.rq",
+   "results": [
+    {
+     "task": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#SI.PT.04.05",
+     "taskID": "SI.4.5",
+     "taskDescription": "Execute the unit test cases:\n- Correct the defects detected by the unit tests.",
+     "activity": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#SI.ACT.04",
+     "activityID": "SI.04",
+     "activityName": "Software construction",
+     "processCode": "SI",
+     "roles": "PR"
+    },
+    {
+     "task": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#SI.PT.05.05",
+     "taskID": "SI.5.5",
+     "taskDescription": "Correct the defects detected.\n\u2013 Perform tests until defects are corrected.",
+     "activity": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#SI.ACT.05",
+     "activityID": "SI.05",
+     "activityName": "Software integration and tests",
+     "processCode": "SI",
+     "roles": "PR"
+    }
+   ]
+  }
+ },
+ "taskDetailsExample": {
+  "task": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#SI.PT.04.05",
+  "inputs": [
+   {
+    "kind": "input",
+    "wpName": "Software components",
+    "genericWp": "Software Components",
+    "stateName": "Initiated"
+   },
+   {
+    "kind": "input",
+    "wpName": "Test cases and test procedures (Unit test cases)",
+    "genericWp": "Test Cases and Test Procedures",
+    "stateName": "Initiated"
+   },
+   {
+    "kind": "input",
+    "wpName": "Traceability record",
+    "genericWp": "Traceability Record",
+    "stateName": "Updated"
+   }
+  ],
+  "outputs": [
+   {
+    "kind": "output",
+    "wpName": "Software components",
+    "genericWp": "Software Components",
+    "stateName": "Validated"
+   }
+  ],
+  "relatedBasePractices": []
+ }
+}

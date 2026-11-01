@@ -1,0 +1,21 @@
+# Assessment results of ONE assessed entity (?pAssessedEntity bound as IRI).
+# Asserted data (default graph) + SWRL-inferred rating (named graph) + rule attribution (explanation graph).
+PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>
+PREFIX app: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2-app#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+SELECT ?result ?bp ?bpID ?bpDescription ?percentage ?rating ?ratingSource ?ratingRule ?evidence ?evidenceWp WHERE {
+  ?pAssessedEntity iso:hasAssessmentResult ?result .
+  ?result iso:assessesBasePractice ?bp .
+  ?bp iso:hasBasePracticeID ?bpID ; iso:hasBasePracticeDescription ?bpDescription .
+  OPTIONAL { ?result iso:hasPercentageAchievement ?percentage }
+  OPTIONAL {
+    { GRAPH <urn:iso29110:graph:inferred-swrl> { ?result iso:hasDegreeAchievement ?r1 } BIND(?r1 AS ?rating) BIND("inferred" AS ?ratingSource)
+      OPTIONAL { GRAPH <urn:iso29110:graph:explanation> {
+        ?st rdf:subject ?result ; rdf:predicate iso:hasDegreeAchievement ; rdf:object ?r1 ; app:concludedByRule ?ratingRule } } }
+    UNION
+    { ?result iso:hasDegreeAchievement ?r2 . BIND(?r2 AS ?rating) BIND("asserted" AS ?ratingSource) }
+  }
+  OPTIONAL { ?result iso:hasEvidence ?ev . ?ev iso:hasEvidenceDescription ?evidence .
+             OPTIONAL { ?ev iso:concernsWorkProduct ?w . ?w iso:hasWorkProductName ?evidenceWp } }
+}
+ORDER BY ?bpID

@@ -1,520 +1,278 @@
-import { useEffect, useState } from 'react';
-import { competencyGroups, competencyQuestions } from './data/competencyQuestions';
-import axios from 'axios';
-import './App.css';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
-  Alert,
-  Box,
-  Button,
-  Card,
-  CardContent,
-  Chip,
-  CircularProgress,
-  Divider,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
-  Stack,
-  Typography,
+  Accordion, AccordionDetails, AccordionSummary, Alert, Button, CircularProgress,
+  FormControl, InputLabel, List, ListItemButton, ListItemText, MenuItem, Select, TextField, Tooltip, Typography,
 } from '@mui/material';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { api, describeError } from './api';
+import { RATINGS, ratingInfo } from './ratings';
+import './App.css';
 
-const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080/api').replace(/\/$/, '');
-const API_URL = `${API_BASE_URL}/recommend`;
-const OPTIONS_URL = `${API_BASE_URL}/options`;
+/* ------------------------------------------------------------------ small pieces */
 
-function sanitizeUserFacingText(value, fallback = 'The request could not be completed. Please check the backend logs.') {
-  if (typeof value !== 'string') return fallback;
-  // Never render Thai-language text returned by older backend builds or ontology annotations.
-  if (/[\u0E00-\u0E7F]/.test(value)) return fallback;
-  return value;
+function RatingChip({ rating }) {
+  const r = ratingInfo(rating);
+  return <span className="rating-chip" style={{ color: r.color, background: r.tint }}>{r.label}</span>;
 }
 
-function getEnglishError(error, context) {
-  const status = error?.response?.status;
-  if (!error?.response) {
-    return `Cannot connect to the backend while ${context}. Check that the Spring Boot service is running at ${API_BASE_URL}.`;
-  }
-  if (status === 404) {
-    return 'The requested API endpoint was not found (HTTP 404). Restart the backend and verify that the latest API routes are deployed.';
-  }
-  if (status >= 500) {
-    return 'The backend could not complete the request. Check the Spring Boot logs and confirm that Fuseki is running and the dataset endpoint is configured correctly.';
-  }
-  if (status === 400) {
-    return 'The request was rejected as invalid. Check the selected values and the backend validation details.';
-  }
-  return `The request failed with HTTP ${status || 'an unknown status'} while ${context}.`;
-}
-
-const initialForm = {
-  process: 'PM',
-  role: 'Project manager',
-  topic: 'Project Plan',
-  situation: 'NOT_APPROVED',
-};
-
-function findDefault(options, preferredValue) {
+/** The 0–100 scale with the four rating bands and the company's score. */
+function ScoreStrip({ percentage, rating }) {
+  const bands = ['Not_achieved', 'Partially_achieved', 'Largely_achieved', 'Completely_achieved'];
+  const value = percentage === undefined || percentage === null ? null : Number(percentage);
   return (
-    options.find(
-      (item) =>
-        item.value?.toLowerCase() === preferredValue?.toLowerCase()
-    ) ||
-    options[0] ||
-    null
+    <div className="strip" aria-label={value === null ? 'No percentage recorded' : `${value} percent`}>
+      {bands.map((b) => {
+        const r = RATINGS[b];
+        const width = r.max - r.min + (b === 'Not_achieved' ? 1 : 0);
+        return <span key={b} className={`band ${b === rating ? 'band-on' : ''}`} style={{ flexGrow: width, '--c': r.color, '--t': r.tint }} />;
+      })}
+      {value !== null && <span className="marker" style={{ left: `${value}%`, '--c': ratingInfo(rating).color }} />}
+    </div>
   );
 }
 
-function App() {
-  const [form, setForm] = useState(initialForm);
-  const [options, setOptions] = useState({
-    processes: [],
-    roles: [],
-    workProducts: [],
-    situations: [],
-  });
-  const [optionsLoading, setOptionsLoading] = useState(true);
-  const [results, setResults] = useState(null);
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [selectedQuestion, setSelectedQuestion] = useState(null);
-  const [questionAnswer, setQuestionAnswer] = useState(null);
-  const [questionLoading, setQuestionLoading] = useState(false);
-  const [questionError, setQuestionError] = useState('');
-
-  useEffect(() => {
-    const loadOptions = async () => {
-      try {
-        const response = await axios.get(OPTIONS_URL);
-        const loadedOptions = response.data;
-
-        setOptions(loadedOptions);
-
-        const defaultProcess = findDefault(
-          loadedOptions.processes,
-          initialForm.process
-        );
-        const defaultRole = findDefault(
-          loadedOptions.roles,
-          initialForm.role
-        );
-        const defaultTopic = findDefault(
-          loadedOptions.workProducts,
-          initialForm.topic
-        );
-        const defaultSituation = findDefault(
-          loadedOptions.situations,
-          initialForm.situation
-        );
-
-        setForm({
-          process: defaultProcess?.value || '',
-          role: defaultRole?.value || '',
-          topic: defaultTopic?.value || '',
-          situation: defaultSituation?.value || '',
-        });
-      } catch (err) {
-        setError(getEnglishError(err, 'loading recommendation options'));
-      } finally {
-        setOptionsLoading(false);
-      }
-    };
-
-    loadOptions();
-  }, []);
-
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-
-    setForm((current) => ({
-      ...current,
-      [name]: value,
-    }));
-
-    setError('');
-  };
-
-  const handleRecommend = async () => {
-    setLoading(true);
-    setError('');
-    setResults(null);
-
-    try {
-      const response = await axios.post(API_URL, form);
-      setResults(response.data.results);
-    } catch (err) {
-      setError(getEnglishError(err, 'retrieving recommendations'));
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleQuestionClick = async (question) => {
-    setSelectedQuestion(question);
-    setQuestionAnswer(null);
-    setQuestionError('');
-    setQuestionLoading(true);
-
-    try {
-      const response = await axios.get(`${API_BASE_URL}/questions/${question.id}/answer`);
-      setQuestionAnswer(response.data);
-    } catch (err) {
-      setQuestionError(getEnglishError(err, 'searching the ontology'));
-    } finally {
-      setQuestionLoading(false);
-    }
-  };
-
+function Section({ id, title, intro, children, aside }) {
   return (
-    <Box className="app-shell">
-      <Box className="hero-section">
-        <Typography variant="overline" className="eyebrow">
-          ISO/IEC 29110 · Quality Assurance
-        </Typography>
+    <section className="section" id={id} aria-labelledby={`${id}-title`}>
+      <div className="section-head">
+        <div>
+          <h2 id={`${id}-title`}>{title}</h2>
+          {intro && <p className="intro">{intro}</p>}
+        </div>
+        {aside}
+      </div>
+      {children}
+    </section>
+  );
+}
 
-        <Typography component="h1" className="page-title">
-          Recommendation System
-        </Typography>
+/* ------------------------------------------------------------------ company assessment */
 
-        <Typography className="page-subtitle">
-          Select a project context to retrieve relevant Base Practices and
-          supporting Tasks from the ISO/IEC 29110 ontology.
-        </Typography>
-      </Box>
+function CompanyPanel({ data }) {
+  const { company, project, assessment, ratingCounts, results } = data;
+  return (
+    <>
+      <header className="company-head">
+        <h1>{company.name}</h1>
+        <p className="profile">{company.profile}</p>
+        <dl className="facts">
+          <div><dt>Project</dt><dd>{project.projectName}</dd></div>
+          <div><dt>Period</dt><dd>{project.start} to {project.end}</dd></div>
+          <div><dt>Team size</dt><dd>{project.staff}</dd></div>
+          <div><dt>Assessed on</dt><dd>{assessment.assessmentDate}</dd></div>
+          <div><dt>Assessor</dt><dd>{assessment.consultantName}</dd></div>
+        </dl>
+        {project.projectDescription && <p className="project-desc">{project.projectDescription}</p>}
+      </header>
 
-      <Card className="input-card" elevation={0}>
-        <CardContent>
-          <Typography variant="h5" className="section-title">
-            Project Context
-          </Typography>
+      <Section id="results" title="Assessment results"
+        intro="Each Base Practice was scored as a percentage. The rating was not entered by hand: the SWRL rating rules assigned it when the reasoner ran."
+        aside={<div className="counts">{Object.entries(ratingCounts).map(([k, n]) => (
+          <span key={k} className="count" style={{ color: ratingInfo(k).color }}><b>{n}</b> {ratingInfo(k).label}</span>))}</div>}>
+        <div className="results" role="table" aria-label="Assessment results">
+          <div className="row row-head" role="row">
+            <span role="columnheader">Base Practice</span><span role="columnheader">Score</span>
+            <span role="columnheader">Rating</span><span role="columnheader">Evidence</span>
+          </div>
+          {results.map((r) => (
+            <div className="row" role="row" key={r.result}>
+              <span role="cell" className="bp"><b>{r.bpID}</b><small>{r.bpDescription}</small></span>
+              <span role="cell" className="score">
+                <span className="pct">{r.percentage ?? '—'}{r.percentage !== undefined && '%'}</span>
+                <ScoreStrip percentage={r.percentage} rating={r.rating} />
+              </span>
+              <span role="cell">
+                <RatingChip rating={r.rating} />
+                <small className="source">
+                  {r.ratingSource === 'inferred' ? `Inferred by ${r.ratingRule}` : r.ratingSource === 'asserted' ? 'Entered as data' : 'No score, so no rule could fire'}
+                </small>
+              </span>
+              <span role="cell" className="evidence">{r.evidence}{r.evidenceWp && <small>About: {r.evidenceWp}</small>}</span>
+            </div>
+          ))}
+        </div>
+      </Section>
+    </>
+  );
+}
 
-          <Typography className="section-description">
-            Select structured project information retrieved from the ontology.
-          </Typography>
-
-          <Divider sx={{ my: 3 }} />
-
-          {optionsLoading ? (
-            <Box className="options-loading">
-              <CircularProgress size={28} />
-              <Typography>Loading options from the ontology...</Typography>
-            </Box>
-          ) : (
-            <Box className="input-grid">
-              <FormControl fullWidth>
-                <InputLabel id="process-label">Process</InputLabel>
-                <Select
-                  labelId="process-label"
-                  name="process"
-                  value={form.process}
-                  label="Process"
-                  onChange={handleChange}
-                >
-                  {options.processes.map((item) => (
-                    <MenuItem key={item.value} value={item.value}>
-                      {item.label}
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
-
-              <FormControl fullWidth>
-                <InputLabel id="role-label">Role</InputLabel>
-                <Select
-                  labelId="role-label"
-                  name="role"
-                  value={form.role}
-                  label="Role"
-                  onChange={handleChange}
-                >
-                  {options.roles.map((item) => (
-                    <MenuItem key={item.value} value={item.value}>
-                      {item.label}
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
-
-              <FormControl fullWidth>
-                <InputLabel id="topic-label">Topic / Work Product</InputLabel>
-                <Select
-                  labelId="topic-label"
-                  name="topic"
-                  value={form.topic}
-                  label="Topic / Work Product"
-                  onChange={handleChange}
-                >
-                  {options.workProducts.map((item) => (
-                    <MenuItem key={item.value} value={item.value}>
-                      {item.value}
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
-
-              <FormControl fullWidth>
-                <InputLabel id="situation-label">Situation</InputLabel>
-                <Select
-                  labelId="situation-label"
-                  name="situation"
-                  value={form.situation}
-                  label="Situation"
-                  onChange={handleChange}
-                >
-                  {options.situations.map((item) => (
-                    <MenuItem key={item.value} value={item.value}>
-                      {item.label}
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
-            </Box>
-          )}
-
-          <Button
-            className="recommend-button"
-            variant="contained"
-            size="large"
-            onClick={handleRecommend}
-            disabled={loading || optionsLoading || !form.process || !form.role || !form.topic || !form.situation}
-          >
-            {loading ? (
-              <>
-                <CircularProgress size={20} color="inherit" />
-                <span>Retrieving recommendations...</span>
-              </>
-            ) : (
-              'Get Recommendations'
-            )}
-          </Button>
-        </CardContent>
-      </Card>
-
-      {error && (
-        <Alert severity="error" className="result-card">
-          {error}
+function Recommendations({ data, status }) {
+  const recs = data.recommendations;
+  return (
+    <Section id="recommendations" title={`QA practice recommendations (${recs.length})`}
+      intro="A recommendation appears only when the reasoner inferred recommend(assessed entity, practice). Open one to see how it was derived.">
+      {recs.length === 0 && (
+        <Alert severity="success" variant="outlined">
+          The reasoner inferred no recommendation for {data.company.name}: no assessed Base Practice is rated Not achieved or Partially achieved.
         </Alert>
       )}
-
-      {results && (
-        <Stack spacing={2.5} className="results-section">
-          <Box>
-            <Typography variant="h5" className="section-title">
-              Recommendation Results
-            </Typography>
-            <Typography className="section-description">
-              Retrieved from the ISO/IEC 29110 ontology through the backend
-              SPARQL service.
-            </Typography>
-          </Box>
-
-          <Card className="result-card" elevation={0}>
-            <CardContent>
-              <Typography variant="h6" className="result-heading">
-                Base Practices
-              </Typography>
-
-              {results.basePractices?.length ? (
-                <Stack spacing={1.5}>
-                  {results.basePractices.map((item) => (
-                    <Box key={item.bpID} className="result-item">
-                      <Typography className="result-id">
-                        {item.bpID}
-                      </Typography>
-                      <Typography>{item.bpDesc}</Typography>
-                    </Box>
-                  ))}
-                </Stack>
-              ) : (
-                <Typography className="empty-result">
-                  No matching Base Practices were found.
-                </Typography>
-              )}
-            </CardContent>
-          </Card>
-
-          <Card className="result-card" elevation={0}>
-            <CardContent>
-              <Typography variant="h6" className="result-heading">
-                Supporting Tasks
-              </Typography>
-
-              {results.supportingTasks?.length ? (
-                <Stack spacing={1.5}>
-                  {results.supportingTasks.map((item) => (
-                    <Box key={item.taskID} className="result-item">
-                      <Typography className="result-id">
-                        {item.taskID}
-                      </Typography>
-                      <Typography>
-                        {item.roleName} · {item.wpName}
-                      </Typography>
-                      {(item.currentState || item.finalState) && (
-                        <Typography className="state-text">
-                          {item.currentState || 'Current state unavailable'}
-                          {' → '}
-                          {item.finalState || 'Final state unavailable'}
-                        </Typography>
-                      )}
-                    </Box>
-                  ))}
-                </Stack>
-              ) : (
-                <Typography className="empty-result">
-                  No supporting Tasks were found for the selected role and
-                  situation.
-                </Typography>
-              )}
-            </CardContent>
-          </Card>
-        </Stack>
-      )}
-
-      <Card className="input-card coverage-card" elevation={0}>
-        <CardContent>
-          <Typography variant="h5" className="section-title">
-            Competency Question Groups
-          </Typography>
-          <Typography className="section-description">
-            Select any question to search the connected ISO/IEC 29110 ontology for supporting tasks and Base Practices.
-          </Typography>
-          <Divider sx={{ my: 2.5 }} />
-          <Stack spacing={1.25}>
-            {competencyGroups.map((group) => {
-              const questions = competencyQuestions.filter(
-                (question) => group.questionIds.includes(question.id)
-              );
-              return (
-                <Accordion key={group.id} disableGutters elevation={0} className="group-accordion">
-                  <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                    <Box className="group-summary">
-                      <Box>
-                        <Typography className="group-title">{group.name}</Typography>
-                        <Typography className="group-description">{group.description}</Typography>
-                      </Box>
-                      <Chip label={`${questions.length} questions`} size="small" />
-                    </Box>
-                  </AccordionSummary>
-                  <AccordionDetails>
-                    <Stack spacing={1}>
-                      {questions.map((question) => (
-                        <Button
-                          key={question.id}
-                          className="question-list-item question-button"
-                          onClick={() => handleQuestionClick(question)}
-                          aria-label={`Open answer for ${question.qid}`}
-                        >
-                          <Typography className="result-id">{question.qid}</Typography>
-                          <Box className="question-button-copy">
-                            <Typography>{question.question}</Typography>
-                            <Typography className="question-hint">Click to view ontology evidence →</Typography>
-                          </Box>
-                        </Button>
-                      ))}
-                    </Stack>
-                  </AccordionDetails>
-                </Accordion>
-              );
-            })}
-          </Stack>
-        </CardContent>
-      </Card>
-
-      <Dialog
-        open={Boolean(selectedQuestion)}
-        onClose={() => setSelectedQuestion(null)}
-        fullWidth
-        maxWidth="md"
-        aria-labelledby="question-answer-title"
-      >
-        <DialogTitle id="question-answer-title">
-          {selectedQuestion ? `${selectedQuestion.qid} · Answer and Ontology Evidence` : 'Question answer'}
-        </DialogTitle>
-        <DialogContent dividers>
-          {selectedQuestion && (
-            <Typography className="answer-question">{selectedQuestion.question}</Typography>
-          )}
-          {questionLoading && (
-            <Box className="options-loading">
-              <CircularProgress size={24} />
-              <Typography>Searching the ISO/IEC 29110 ontology...</Typography>
-            </Box>
-          )}
-          {questionError && <Alert severity="error">{questionError}</Alert>}
-          {questionAnswer && (
-            <Stack spacing={2}>
-              <Box>
-                <Typography variant="h6" className="answer-section-title">Answer</Typography>
-                <Typography className="answer-summary">
-                  {sanitizeUserFacingText(
-                    questionAnswer.answer || questionAnswer.message,
-                    'Ontology evidence was retrieved, but its summary contains unsupported language. Please rebuild and restart the latest backend.'
-                  )}
-                </Typography>
-                <Typography className="answer-meta">
-                  This answer summarizes the ontology guidance. It does not verify whether a specific company follows the process.
-                </Typography>
-              </Box>
-              {questionAnswer.basePractices?.length > 0 && (
-                <Box>
-                  <Typography variant="h6" className="answer-section-title">Key Base Practices</Typography>
-                  <Stack spacing={1}>
-                    {questionAnswer.basePractices.slice(0, 5).map((item, index) => (
-                      <Box className="answer-evidence-item" key={`${item.bpID}-${index}`}>
-                        <Typography className="result-id">{item.bpID}</Typography>
-                        <Typography>{sanitizeUserFacingText(item.bpDescription, 'This evidence description contains unsupported language and has been hidden.')}</Typography>
-                      </Box>
-                    ))}
-                  </Stack>
-                </Box>
-              )}
-              {questionAnswer.tasks?.length > 0 && (
-                <Box>
-                  <Typography variant="h6" className="answer-section-title">Related Tasks</Typography>
-                  <Stack spacing={1}>
-                    {questionAnswer.tasks.slice(0, 6).map((item, index) => (
-                      <Box className="answer-evidence-item" key={`${item.taskID}-${index}`}>
-                        <Typography className="result-id">{item.taskID}</Typography>
-                        <Typography>{sanitizeUserFacingText(item.taskDescription, 'This task description contains unsupported language and has been hidden.')}</Typography>
-                        {item.roleName && <Typography className="answer-meta">Role: {item.roleName}</Typography>}
-                        {item.inputName && <Typography className="answer-meta">Input: {item.inputName}</Typography>}
-                        {item.outputName && <Typography className="answer-meta">Output: {item.outputName}</Typography>}
-                      </Box>
-                    ))}
-                  </Stack>
-                </Box>
-              )}
-              {(questionAnswer.basePractices?.length > 5 || questionAnswer.tasks?.length > 6) && (
-                <Typography className="answer-meta">
-                  Showing the most relevant evidence only to keep the answer focused.
-                </Typography>
-              )}
-              {questionAnswer.searchTerms?.length > 0 && (
-                <Typography className="answer-meta">
-                  Ontology search terms: {questionAnswer.searchTerms.join(', ')}
-                </Typography>
-              )}
-            </Stack>
-          )}
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={() => setSelectedQuestion(null)}>Close</Button>
-        </DialogActions>
-      </Dialog>
-
-      <Typography className="footer-note">
-        Spring Boot + Apache Jena Fuseki + ISO/IEC 29110 ontology
-      </Typography>
-    </Box>
+      {recs.map((r) => (
+        <Accordion key={r.practice} disableGutters elevation={0} className="rec">
+          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+            <span className="rec-sum">
+              <RatingChip rating={r.rating} />
+              <span className="rec-title">{r.practiceName}</span>
+            </span>
+          </AccordionSummary>
+          <AccordionDetails>
+            <ol className="chain">
+              <li><b>Assessment finding.</b> {r.bpID} scored {r.percentage}% for this project.
+                {r.evidence && <> Evidence: “{r.evidence}”</>}</li>
+              <li><b>Rule {r.ratingRule}</b> fired because the score falls in the {ratingInfo(r.rating).label} band
+                ({ratingInfo(r.rating).min}–{ratingInfo(r.rating).max}%). Inferred: <code>{r.bpID} result → {r.rating}</code>.</li>
+              <li><b>Rule {r.recommendationRule}</b> fired because the assessed entity has this result, the result assesses {r.bpID},
+                and this practice addresses {r.bpID}. Inferred: <code>recommend(assessed entity, practice)</code>.</li>
+              <li><b>What to improve.</b> {r.practiceDescription}</li>
+            </ol>
+            <p className="proof">
+              Rules this recommendation depends on (each was switched off in a separate reasoner run and the recommendation disappeared):{' '}
+              {r.necessaryRules.join(', ')}. Reasoner: {r.reasoner}, run {new Date(r.runAt).toLocaleString()}.
+            </p>
+          </AccordionDetails>
+        </Accordion>
+      ))}
+      {status?.runAt && <p className="run-note">Knowledge base reasoned by {status.reasoner}; {status.swrlInferredCount} facts were inferred by SWRL rules.</p>}
+    </Section>
   );
 }
 
-export default App;
+/* ------------------------------------------------------------------ knowledge search */
+
+const FIELDS = [
+  ['process', 'Process'], ['activity', 'Activity'], ['role', 'Role'], ['workProduct', 'Work product'], ['state', 'Work product ends as'],
+];
+
+function TaskResult({ task }) {
+  const [details, setDetails] = useState(null);
+  const [error, setError] = useState('');
+  const load = (_, expanded) => {
+    if (expanded && !details) api.taskDetails(task.task).then(setDetails).catch((e) => setError(describeError(e)));
+  };
+  const wpList = (items) => [...new Map(items.map((w) => [w.genericWp || w.wpName, w])).values()];
+  return (
+    <Accordion disableGutters elevation={0} className="task" onChange={load}>
+      <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+        <span className="task-sum">
+          <b>{task.taskID}</b>
+          <span>{task.taskDescription.split(':')[0]}</span>
+          <small>{task.activityID} {task.activityName}</small>
+          <small>Roles: {task.roles || 'none recorded'}</small>
+        </span>
+      </AccordionSummary>
+      <AccordionDetails>
+        <p className="task-full">{task.taskDescription}</p>
+        {error && <Alert severity="error">{error}</Alert>}
+        {!details && !error && <CircularProgress size={18} />}
+        {details && (
+          <div className="task-grid">
+            <div><h4>Uses</h4><ul>{wpList(details.inputs).map((w) => <li key={w.wpName}>{w.genericWp || w.wpName}</li>)}</ul></div>
+            <div><h4>Produces</h4><ul>{wpList(details.outputs).map((w) => (
+              <li key={w.wpName}>{w.genericWp || w.wpName}{w.stateName && <small> (ends {w.stateName.toLowerCase()})</small>}</li>))}</ul></div>
+            <div><h4>Related Base Practices</h4><ul>{details.relatedBasePractices.map((b) => (
+              <li key={b.bpID}><Tooltip title={b.bpDescription}><span>{b.bpID.trim()}</span></Tooltip></li>))}</ul></div>
+          </div>
+        )}
+      </AccordionDetails>
+    </Accordion>
+  );
+}
+
+function KnowledgeSearch() {
+  const [options, setOptions] = useState(null);
+  const [form, setForm] = useState({ process: '', activity: '', role: '', workProduct: '', state: '', keyword: '' });
+  const [result, setResult] = useState(null);
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState('');
+
+  useEffect(() => { api.searchOptions().then(setOptions).catch((e) => setError(describeError(e))); }, []);
+
+  const processCode = useMemo(() => options?.process.find((p) => p.value === form.process)?.label.match(/\((\w+)\)$/)?.[1], [options, form.process]);
+  const choices = (name) => (name === 'activity' && processCode ? options.activity.filter((a) => a.process === processCode) : options?.[name] || []);
+  const set = (name, value) => setForm((f) => ({ ...f, [name]: value, ...(name === 'process' ? { activity: '' } : {}) }));
+  const anySet = Object.values(form).some((v) => v.trim());
+
+  const run = async () => {
+    setBusy(true); setError('');
+    try { setResult(await api.search(form)); } catch (e) { setError(describeError(e)); setResult(null); } finally { setBusy(false); }
+  };
+
+  return (
+    <Section id="search" title="Search ISO/IEC 29110 knowledge"
+      intro="Choose any combination of parameters. Every option comes from the ontology; fields you leave empty are not used.">
+      {!options && !error && <CircularProgress size={22} />}
+      {options && (
+        <form className="search-form" onSubmit={(e) => { e.preventDefault(); if (anySet) run(); }}>
+          {FIELDS.map(([name, label]) => (
+            <FormControl key={name} size="small">
+              <InputLabel id={`${name}-l`}>{label}</InputLabel>
+              <Select labelId={`${name}-l`} label={label} value={form[name]} onChange={(e) => set(name, e.target.value)}>
+                <MenuItem value=""><em>Any</em></MenuItem>
+                {choices(name).map((o) => <MenuItem key={o.value} value={o.value}>{o.label}</MenuItem>)}
+              </Select>
+            </FormControl>
+          ))}
+          <TextField size="small" label="Word in task description" value={form.keyword} slotProps={{ htmlInput: { maxLength: 60 } }}
+            onChange={(e) => set('keyword', e.target.value)} />
+          <Button type="submit" variant="contained" disableElevation disabled={!anySet || busy}>{busy ? 'Searching…' : 'Search'}</Button>
+          <Button type="button" onClick={() => { setForm({ process: '', activity: '', role: '', workProduct: '', state: '', keyword: '' }); setResult(null); }}>Clear</Button>
+        </form>
+      )}
+      {error && <Alert severity="error">{error}</Alert>}
+      {result && (
+        <div className="search-results" aria-live="polite">
+          <p className="intro">{result.results.length === 0
+            ? 'No task matches all selected parameters. Remove one parameter to widen the search.'
+            : `${result.results.length} task${result.results.length > 1 ? 's' : ''} match all selected parameters.`}</p>
+          {result.results.map((t) => <TaskResult key={t.task} task={t} />)}
+        </div>
+      )}
+    </Section>
+  );
+}
+
+/* ------------------------------------------------------------------ page */
+
+export default function App() {
+  const [companies, setCompanies] = useState([]);
+  const [selected, setSelected] = useState('');
+  const [data, setData] = useState(null);
+  const [status, setStatus] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+
+  const select = useCallback((id) => {
+    setSelected(id); setLoading(true); setError('');
+    api.assessment(id).then(setData).catch((e) => { setError(describeError(e)); setData(null); }).finally(() => setLoading(false));
+  }, []);
+
+  useEffect(() => {
+    api.companies().then((list) => { setCompanies(list); if (list[0]) select(list[0].id); }).catch((e) => setError(describeError(e)));
+    api.reasoningStatus().then(setStatus).catch(() => {});
+  }, [select]);
+
+  return (
+    <div className="shell">
+      <aside className="sidebar" aria-label="Companies">
+        <p className="brand">ISO/IEC 29110<br /><span>QA recommendation</span></p>
+        <Typography component="h2" className="side-title">Assessed companies</Typography>
+        <List dense disablePadding>
+          {companies.map((c) => (
+            <ListItemButton key={c.id} selected={c.id === selected} onClick={() => select(c.id)} className="company-btn">
+              <ListItemText primary={c.name} secondary={c.id} />
+            </ListItemButton>
+          ))}
+        </List>
+        <nav className="jump" aria-label="On this page">
+          <a href="#results">Results</a><a href="#recommendations">Recommendations</a><a href="#search">Knowledge search</a>
+        </nav>
+        <p className="side-note">Company data is maintained in Protégé and loaded into the knowledge base. It cannot be edited here.</p>
+      </aside>
+      <main className="main">
+        {error && <Alert severity="error" className="top-error">{error}</Alert>}
+        {loading && <div className="loading"><CircularProgress size={24} /> Loading assessment…</div>}
+        {data && !loading && <><CompanyPanel data={data} /><Recommendations data={data} status={status} /></>}
+        <KnowledgeSearch />
+      </main>
+    </div>
+  );
+}
