@@ -1,3 +1,5 @@
+:root { --ink: #1B2333; --ink-2: #5B6475; --white: #FFFFFF; --line: #E4E7EC; --paper: #F2F4F7; }
+
 .shell { display: grid; grid-template-columns: 264px minmax(0, 1fr); min-height: 100vh; }
 .sidebar { position: sticky; top: 0; height: 100vh; overflow-y: auto; background: var(--ink); color: #E8ECF3; padding: 28px 16px; display: flex; flex-direction: column; gap: 12px; }
 .brand { margin: 0 8px 12px; font-size: 1.15rem; font-weight: 600; line-height: 1.25; }
@@ -66,7 +68,7 @@
 .task-grid ul { margin: 0; padding-left: 18px; font-size: .9rem; }
 
 @media (max-width: 860px) {
-  .shell { grid-template-columns: 1fr; }
+  .shell { grid-template-columns: minmax(0, 1fr); }
   .sidebar { position: static; height: auto; }
   .side-note { margin-top: 8px; }
 }
