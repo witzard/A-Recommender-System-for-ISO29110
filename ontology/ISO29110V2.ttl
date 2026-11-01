@@ -1234,7 +1234,7 @@ ISO29110V2:hasPercentageAchievement rdf:type owl:DatatypeProperty ;
                                                   owl:onProperty ISO29110V2:isAssessmentResultOf ;
                                                   owl:someValuesFrom ISO29110V2:AssessedEntity
                                                 ] ;
-                                    rdfs:range xsd:decimal .
+                                    rdfs:range xsd:integer .
 
 
 ###  http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#hasPracticeDescription
@@ -2202,26 +2202,128 @@ ISO29110V2:AE.01 rdf:type owl:NamedIndividual ,
                             owl:onProperty ISO29110V2:recommend ;
                             owl:someValuesFrom ISO29110V2:RecommendedPractice
                           ] ;
-                 ISO29110V2:hasAssessmentResult ISO29110V2:AR.01 ;
                  ISO29110V2:recommend ISO29110V2:RP.01 ;
                  ISO29110V2:responsibleFor ISO29110V2:PJ.01 .
 
 
-###  http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#AR.01
-ISO29110V2:AR.01 rdf:type owl:NamedIndividual ,
-                          ISO29110V2:AssessmentResult ,
-                          [ rdf:type owl:Restriction ;
-                            owl:onProperty ISO29110V2:hasDegreeAchievement ;
-                            owl:someValuesFrom ISO29110V2:Rating
-                          ] ,
-                          [ rdf:type owl:Restriction ;
-                            owl:onProperty ISO29110V2:isAssessmentResultOf ;
-                            owl:someValuesFrom ISO29110V2:AssessedEntity
-                          ] ;
-                 ISO29110V2:hasDegreeAchievement ISO29110V2:Not_achieved ;
-                 ISO29110V2:isAssessmentResultOf ISO29110V2:AE.01 ;
-                 ISO29110V2:hasAchievementScore 0 ;
-                 ISO29110V2:hasPercentageAchievement 0 .
+###  http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#AR-T01
+ISO29110V2:AR-T01 rdf:type owl:NamedIndividual ,
+                           ISO29110V2:AssessmentResult ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty ISO29110V2:hasDegreeAchievement ;
+                             owl:someValuesFrom ISO29110V2:Rating
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty ISO29110V2:isAssessmentResultOf ;
+                             owl:someValuesFrom ISO29110V2:AssessedEntity
+                           ] ;
+                  ISO29110V2:hasDegreeAchievement ISO29110V2:Not_achieved ;
+                  ISO29110V2:hasPercentageAchievement 0 .
+
+
+###  http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#AR-T02
+ISO29110V2:AR-T02 rdf:type owl:NamedIndividual ,
+                           ISO29110V2:AssessmentResult ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty ISO29110V2:hasDegreeAchievement ;
+                             owl:someValuesFrom ISO29110V2:Rating
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty ISO29110V2:isAssessmentResultOf ;
+                             owl:someValuesFrom ISO29110V2:AssessedEntity
+                           ] ;
+                  ISO29110V2:hasDegreeAchievement ISO29110V2:Not_achieved ;
+                  ISO29110V2:hasPercentageAchievement 15 .
+
+
+###  http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#AR-T03
+ISO29110V2:AR-T03 rdf:type owl:NamedIndividual ,
+                           ISO29110V2:AssessmentResult ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty ISO29110V2:hasDegreeAchievement ;
+                             owl:someValuesFrom ISO29110V2:Rating
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty ISO29110V2:isAssessmentResultOf ;
+                             owl:someValuesFrom ISO29110V2:AssessedEntity
+                           ] ;
+                  ISO29110V2:hasDegreeAchievement ISO29110V2:Partially_achieved ;
+                  ISO29110V2:hasPercentageAchievement 16 .
+
+
+###  http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#AR-T04
+ISO29110V2:AR-T04 rdf:type owl:NamedIndividual ,
+                           ISO29110V2:AssessmentResult ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty ISO29110V2:hasDegreeAchievement ;
+                             owl:someValuesFrom ISO29110V2:Rating
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty ISO29110V2:isAssessmentResultOf ;
+                             owl:someValuesFrom ISO29110V2:AssessedEntity
+                           ] ;
+                  ISO29110V2:hasDegreeAchievement ISO29110V2:Partially_achieved ;
+                  ISO29110V2:hasPercentageAchievement 50 .
+
+
+###  http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#AR-T05
+ISO29110V2:AR-T05 rdf:type owl:NamedIndividual ,
+                           ISO29110V2:AssessmentResult ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty ISO29110V2:hasDegreeAchievement ;
+                             owl:someValuesFrom ISO29110V2:Rating
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty ISO29110V2:isAssessmentResultOf ;
+                             owl:someValuesFrom ISO29110V2:AssessedEntity
+                           ] ;
+                  ISO29110V2:hasDegreeAchievement ISO29110V2:Largely_achieved ;
+                  ISO29110V2:hasPercentageAchievement 51 .
+
+
+###  http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#AR-T06
+ISO29110V2:AR-T06 rdf:type owl:NamedIndividual ,
+                           ISO29110V2:AssessmentResult ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty ISO29110V2:hasDegreeAchievement ;
+                             owl:someValuesFrom ISO29110V2:Rating
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty ISO29110V2:isAssessmentResultOf ;
+                             owl:someValuesFrom ISO29110V2:AssessedEntity
+                           ] ;
+                  ISO29110V2:hasDegreeAchievement ISO29110V2:Largely_achieved ;
+                  ISO29110V2:hasPercentageAchievement 90 .
+
+
+###  http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#AR-T07
+ISO29110V2:AR-T07 rdf:type owl:NamedIndividual ,
+                           ISO29110V2:AssessmentResult ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty ISO29110V2:hasDegreeAchievement ;
+                             owl:someValuesFrom ISO29110V2:Rating
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty ISO29110V2:isAssessmentResultOf ;
+                             owl:someValuesFrom ISO29110V2:AssessedEntity
+                           ] ;
+                  ISO29110V2:hasDegreeAchievement ISO29110V2:Completely_achieved ;
+                  ISO29110V2:hasPercentageAchievement 91 .
+
+
+###  http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#AR-T08
+ISO29110V2:AR-T08 rdf:type owl:NamedIndividual ,
+                           ISO29110V2:AssessmentResult ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty ISO29110V2:hasDegreeAchievement ;
+                             owl:someValuesFrom ISO29110V2:Rating
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty ISO29110V2:isAssessmentResultOf ;
+                             owl:someValuesFrom ISO29110V2:AssessedEntity
+                           ] ;
+                  ISO29110V2:hasDegreeAchievement ISO29110V2:Completely_achieved ;
+                  ISO29110V2:hasPercentageAchievement 100 .
 
 
 ###  http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#CS.01
@@ -2244,6 +2346,8 @@ ISO29110V2:Completely_achieved rdf:type owl:NamedIndividual ,
                                           owl:onProperty ISO29110V2:isDegreeAchievementOf ;
                                           owl:someValuesFrom ISO29110V2:AssessmentResult
                                         ] ;
+                               ISO29110V2:isDegreeAchievementOf ISO29110V2:AR-T07 ,
+                                                                ISO29110V2:AR-T08 ;
                                ISO29110V2:hasAssignedScore 1 ;
                                ISO29110V2:hasMaxPercentage 100 ;
                                ISO29110V2:hasMinPercentage 91 .
@@ -2266,6 +2370,8 @@ ISO29110V2:Largely_achieved rdf:type owl:NamedIndividual ,
                                        owl:onProperty ISO29110V2:isDegreeAchievementOf ;
                                        owl:someValuesFrom ISO29110V2:AssessmentResult
                                      ] ;
+                            ISO29110V2:isDegreeAchievementOf ISO29110V2:AR-T05 ,
+                                                             ISO29110V2:AR-T06 ;
                             ISO29110V2:hasAssignedScore 0.7 ;
                             ISO29110V2:hasMaxPercentage 90 ;
                             ISO29110V2:hasMinPercentage 51 .
@@ -2278,7 +2384,8 @@ ISO29110V2:Not_achieved rdf:type owl:NamedIndividual ,
                                    owl:onProperty ISO29110V2:isDegreeAchievementOf ;
                                    owl:someValuesFrom ISO29110V2:AssessmentResult
                                  ] ;
-                        ISO29110V2:isDegreeAchievementOf ISO29110V2:AR.01 ;
+                        ISO29110V2:isDegreeAchievementOf ISO29110V2:AR-T01 ,
+                                                         ISO29110V2:AR-T02 ;
                         ISO29110V2:hasAssignedScore 0 ;
                         ISO29110V2:hasMaxPercentage 15 ;
                         ISO29110V2:hasMinPercentage 0 .
@@ -8759,6 +8866,8 @@ ISO29110V2:Partially_achieved rdf:type owl:NamedIndividual ,
                                          owl:onProperty ISO29110V2:isDegreeAchievementOf ;
                                          owl:someValuesFrom ISO29110V2:AssessmentResult
                                        ] ;
+                              ISO29110V2:isDegreeAchievementOf ISO29110V2:AR-T03 ,
+                                                               ISO29110V2:AR-T04 ;
                               ISO29110V2:hasAssignedScore 0.3 ;
                               ISO29110V2:hasMaxPercentage 50 ;
                               ISO29110V2:hasMinPercentage 16 .
@@ -8881,6 +8990,7 @@ ISO29110V2:SI.ACT.02 rdf:type owl:NamedIndividual ,
                                         ISO29110V2:SI.PT.02.05 ,
                                         ISO29110V2:SI.PT.02.06 ,
                                         ISO29110V2:SI.PT.02.07 ;
+                     ISO29110V2:isActivityOf ISO29110V2:SI ;
                      ISO29110V2:hasActivityID "SI.02" ;
                      ISO29110V2:hasActivityName "Software requirements analysis" .
 
@@ -8904,6 +9014,7 @@ ISO29110V2:SI.ACT.03 rdf:type owl:NamedIndividual ,
                                         ISO29110V2:SI.PT.03.06 ,
                                         ISO29110V2:SI.PT.03.07 ,
                                         ISO29110V2:SI.PT.03.08 ;
+                     ISO29110V2:isActivityOf ISO29110V2:SI ;
                      ISO29110V2:hasActivityID "SI.03" ;
                      ISO29110V2:hasActivityName "Software architectural and detailed design" .
 
@@ -8926,6 +9037,7 @@ ISO29110V2:SI.ACT.04 rdf:type owl:NamedIndividual ,
                                         ISO29110V2:SI.PT.04.05 ,
                                         ISO29110V2:SI.PT.04.06 ,
                                         ISO29110V2:SI.PT.04.07 ;
+                     ISO29110V2:isActivityOf ISO29110V2:SI ;
                      ISO29110V2:hasActivityID "SI.04" ;
                      ISO29110V2:hasActivityName "Software construction" .
 
@@ -8952,6 +9064,7 @@ ISO29110V2:SI.ACT.05 rdf:type owl:NamedIndividual ,
                                         ISO29110V2:SI.PT.05.09 ,
                                         ISO29110V2:SI.PT.05.10 ,
                                         ISO29110V2:SI.PT.05.11 ;
+                     ISO29110V2:isActivityOf ISO29110V2:SI ;
                      ISO29110V2:hasActivityID "SI.05" ;
                      ISO29110V2:hasActivityName "Software integration and tests" .
 
@@ -8973,6 +9086,7 @@ ISO29110V2:SI.ACT.06 rdf:type owl:NamedIndividual ,
                                         ISO29110V2:SI.PT.06.04 ,
                                         ISO29110V2:SI.PT.06.05 ,
                                         ISO29110V2:SI.PT.06.06 ;
+                     ISO29110V2:isActivityOf ISO29110V2:SI ;
                      ISO29110V2:hasActivityID "SI.06" ;
                      ISO29110V2:hasActivityName "Software product assembly" .
 
