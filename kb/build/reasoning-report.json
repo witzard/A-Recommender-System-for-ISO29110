@@ -1,0 +1,108 @@
+{
+  "builtAt": "2026-11-01T12:37:50.094576+00:00",
+  "reasoner": "Pellet 2.3.1 via OWL API 3.4.3",
+  "consistent": true,
+  "inputs": {
+    "ontology-merged.ttl": "2bffdbee2353f9a2871100413076c67e31026c6dec0d149f4cfc22c02cdc4942",
+    "qa-practices.ttl": "2bf93c0a7e85adb0c20006e29429c1079ac8e58e584b07adc6b159c4409001e3",
+    "mock-companies.ttl": "58bbb7aaac2528c6751629a82c55161c63bea59d488f45a55543718a014caf2e"
+  },
+  "merge": {
+    "supersededBaselineRules": [
+      "ImprovementRecommendationRule"
+    ],
+    "removedPlaceholderAssertions": [
+      [
+        "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#AE.01",
+        "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#recommend",
+        "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#RP.01"
+      ],
+      [
+        "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#RP.01",
+        "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#recommendedBy",
+        "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#AE.01"
+      ]
+    ],
+    "rules": {
+      "RatingPartiallyAchievedRule": {
+        "head": [
+          "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#hasDegreeAchievement"
+        ],
+        "source": "baseline"
+      },
+      "RatingLargelyAchievedRule": {
+        "head": [
+          "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#hasDegreeAchievement"
+        ],
+        "source": "baseline"
+      },
+      "RatingCompletelyAchievedRule": {
+        "head": [
+          "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#hasDegreeAchievement"
+        ],
+        "source": "baseline"
+      },
+      "RatingNotAchievedRule": {
+        "head": [
+          "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#hasDegreeAchievement"
+        ],
+        "source": "baseline"
+      },
+      "BasePracticeOutputWPRule": {
+        "head": [
+          "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#isOutputWorkProductOf"
+        ],
+        "source": "baseline"
+      },
+      "ApprovedRequirementSpecRule": {
+        "head": [
+          "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#hasEntity"
+        ],
+        "source": "baseline"
+      },
+      "ApprovedTestCaseRule": {
+        "head": [
+          "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#hasEntity"
+        ],
+        "source": "baseline"
+      },
+      "ImprovementRecommendationRule": {
+        "head": [
+          "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#recommend"
+        ],
+        "source": "extension"
+      },
+      "PartialImprovementRecommendationRule": {
+        "head": [
+          "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#recommend"
+        ],
+        "source": "extension"
+      }
+    },
+    "excludedByUser": []
+  },
+  "counts": {
+    "asserted": 22696,
+    "inferredFull": 152,
+    "inferredOwlOnly": 56,
+    "inferredSwrl": 96,
+    "recommendationExplanations": 13
+  },
+  "ruleAblation_factsLostWhenDisabled": {
+    "ApprovedRequirementSpecRule": 0,
+    "ApprovedTestCaseRule": 0,
+    "BasePracticeOutputWPRule": 0,
+    "ImprovementRecommendationRule": 10,
+    "PartialImprovementRecommendationRule": 16,
+    "RatingCompletelyAchievedRule": 28,
+    "RatingLargelyAchievedRule": 16,
+    "RatingNotAchievedRule": 20,
+    "RatingPartiallyAchievedRule": 32
+  },
+  "graphs": {
+    "asserted": "default graph",
+    "inferredSwrl": "urn:iso29110:graph:inferred-swrl",
+    "inferredOwl": "urn:iso29110:graph:inferred-owl",
+    "explanation": "urn:iso29110:graph:explanation"
+  }
+}

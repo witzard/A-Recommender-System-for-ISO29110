@@ -1,4 +1,6 @@
 .vscode/
 .idea/
 .DS_Store
-Thumbs.db
+Thumbs.dbreasoner/build/
+kb/build/ablation/
+kb/build/report-*.json

@@ -1,0 +1,925 @@
+@prefix app: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2-app#> .
+@prefix iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+app:exp-AE-B1-RP-PM.BP.09 a app:RecommendationExplanation ;
+    app:assessedEntity iso:AE-B1 ;
+    app:basePractice iso:PM.BP.09 ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:inferredRating iso:Partially_achieved ;
+    app:matchMethod "Antecedent bindings reconstructed by SPARQL over asserted+inferred data; rule attribution from Pellet ablation runs." ;
+    app:percentageAchievement 40 ;
+    app:ratingInference app:stmt-afff6f83c8a1 ;
+    app:recommendationInference app:stmt-27bc3274e792 ;
+    app:recommendedPractice iso:RP-PM.BP.09 ;
+    app:triggeringResult iso:AR-B1-PM.BP.09 .
+
+app:exp-AE-B1-RP-SI.BP.02 a app:RecommendationExplanation ;
+    app:assessedEntity iso:AE-B1 ;
+    app:basePractice iso:SI.BP.02 ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:inferredRating iso:Partially_achieved ;
+    app:matchMethod "Antecedent bindings reconstructed by SPARQL over asserted+inferred data; rule attribution from Pellet ablation runs." ;
+    app:percentageAchievement 50 ;
+    app:ratingInference app:stmt-30b4aa23851d ;
+    app:recommendationInference app:stmt-190edbfbc73b ;
+    app:recommendedPractice iso:RP-SI.BP.02 ;
+    app:triggeringResult iso:AR-B1-SI.BP.02 .
+
+app:exp-AE-B1-RP-SI.BP.08 a app:RecommendationExplanation ;
+    app:assessedEntity iso:AE-B1 ;
+    app:basePractice iso:SI.BP.08 ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:inferredRating iso:Not_achieved ;
+    app:matchMethod "Antecedent bindings reconstructed by SPARQL over asserted+inferred data; rule attribution from Pellet ablation runs." ;
+    app:percentageAchievement 10 ;
+    app:ratingInference app:stmt-906b56fee60c ;
+    app:recommendationInference app:stmt-6eb6cc7be504 ;
+    app:recommendedPractice iso:RP-SI.BP.08 ;
+    app:triggeringResult iso:AR-B1-SI.BP.08 .
+
+app:exp-AE-B1-RP-SI.BP.17 a app:RecommendationExplanation ;
+    app:assessedEntity iso:AE-B1 ;
+    app:basePractice iso:SI.BP.17 ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:inferredRating iso:Partially_achieved ;
+    app:matchMethod "Antecedent bindings reconstructed by SPARQL over asserted+inferred data; rule attribution from Pellet ablation runs." ;
+    app:percentageAchievement 16 ;
+    app:ratingInference app:stmt-377b61af5d45 ;
+    app:recommendationInference app:stmt-5460da3cfce2 ;
+    app:recommendedPractice iso:RP-SI.BP.17 ;
+    app:triggeringResult iso:AR-B1-SI.BP.17 .
+
+app:exp-AE-C1-RP-PM.BP.09 a app:RecommendationExplanation ;
+    app:assessedEntity iso:AE-C1 ;
+    app:basePractice iso:PM.BP.09 ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:inferredRating iso:Not_achieved ;
+    app:matchMethod "Antecedent bindings reconstructed by SPARQL over asserted+inferred data; rule attribution from Pellet ablation runs." ;
+    app:percentageAchievement 0 ;
+    app:ratingInference app:stmt-bc828331291c ;
+    app:recommendationInference app:stmt-6261d9836048 ;
+    app:recommendedPractice iso:RP-PM.BP.09 ;
+    app:triggeringResult iso:AR-C1-PM.BP.09 .
+
+app:exp-AE-C1-RP-PM.BP.10 a app:RecommendationExplanation ;
+    app:assessedEntity iso:AE-C1 ;
+    app:basePractice iso:PM.BP.10 ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:inferredRating iso:Not_achieved ;
+    app:matchMethod "Antecedent bindings reconstructed by SPARQL over asserted+inferred data; rule attribution from Pellet ablation runs." ;
+    app:percentageAchievement 5 ;
+    app:ratingInference app:stmt-26627cd99702 ;
+    app:recommendationInference app:stmt-cfa935bd874a ;
+    app:recommendedPractice iso:RP-PM.BP.10 ;
+    app:triggeringResult iso:AR-C1-PM.BP.10 .
+
+app:exp-AE-C1-RP-PM.BP.13 a app:RecommendationExplanation ;
+    app:assessedEntity iso:AE-C1 ;
+    app:basePractice iso:PM.BP.13 ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:inferredRating iso:Partially_achieved ;
+    app:matchMethod "Antecedent bindings reconstructed by SPARQL over asserted+inferred data; rule attribution from Pellet ablation runs." ;
+    app:percentageAchievement 30 ;
+    app:ratingInference app:stmt-b060f1ec43fa ;
+    app:recommendationInference app:stmt-4ffe619b78ad ;
+    app:recommendedPractice iso:RP-PM.BP.13 ;
+    app:triggeringResult iso:AR-C1-PM.BP.13 .
+
+app:exp-AE-C1-RP-PM.BP.16 a app:RecommendationExplanation ;
+    app:assessedEntity iso:AE-C1 ;
+    app:basePractice iso:PM.BP.16 ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:inferredRating iso:Partially_achieved ;
+    app:matchMethod "Antecedent bindings reconstructed by SPARQL over asserted+inferred data; rule attribution from Pellet ablation runs." ;
+    app:percentageAchievement 25 ;
+    app:ratingInference app:stmt-ec2eec07f89f ;
+    app:recommendationInference app:stmt-a67ca7250754 ;
+    app:recommendedPractice iso:RP-PM.BP.16 ;
+    app:triggeringResult iso:AR-C1-PM.BP.16 .
+
+app:exp-AE-C1-RP-SI.BP.02 a app:RecommendationExplanation ;
+    app:assessedEntity iso:AE-C1 ;
+    app:basePractice iso:SI.BP.02 ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:inferredRating iso:Partially_achieved ;
+    app:matchMethod "Antecedent bindings reconstructed by SPARQL over asserted+inferred data; rule attribution from Pellet ablation runs." ;
+    app:percentageAchievement 45 ;
+    app:ratingInference app:stmt-5dd2873e9f7c ;
+    app:recommendationInference app:stmt-56e552ded005 ;
+    app:recommendedPractice iso:RP-SI.BP.02 ;
+    app:triggeringResult iso:AR-C1-SI.BP.02 .
+
+app:exp-AE-C1-RP-SI.BP.06 a app:RecommendationExplanation ;
+    app:assessedEntity iso:AE-C1 ;
+    app:basePractice iso:SI.BP.06 ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:inferredRating iso:Not_achieved ;
+    app:matchMethod "Antecedent bindings reconstructed by SPARQL over asserted+inferred data; rule attribution from Pellet ablation runs." ;
+    app:percentageAchievement 15 ;
+    app:ratingInference app:stmt-1c12a08b9252 ;
+    app:recommendationInference app:stmt-1afd9fe63d91 ;
+    app:recommendedPractice iso:RP-SI.BP.06 ;
+    app:triggeringResult iso:AR-C1-SI.BP.06 .
+
+app:exp-AE-C1-RP-SI.BP.08 a app:RecommendationExplanation ;
+    app:assessedEntity iso:AE-C1 ;
+    app:basePractice iso:SI.BP.08 ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:inferredRating iso:Not_achieved ;
+    app:matchMethod "Antecedent bindings reconstructed by SPARQL over asserted+inferred data; rule attribution from Pellet ablation runs." ;
+    app:percentageAchievement 0 ;
+    app:ratingInference app:stmt-9521e82d3ddb ;
+    app:recommendationInference app:stmt-b4126c71471e ;
+    app:recommendedPractice iso:RP-SI.BP.08 ;
+    app:triggeringResult iso:AR-C1-SI.BP.08 .
+
+app:exp-AE-C1-RP-SI.BP.17 a app:RecommendationExplanation ;
+    app:assessedEntity iso:AE-C1 ;
+    app:basePractice iso:SI.BP.17 ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:inferredRating iso:Partially_achieved ;
+    app:matchMethod "Antecedent bindings reconstructed by SPARQL over asserted+inferred data; rule attribution from Pellet ablation runs." ;
+    app:percentageAchievement 20 ;
+    app:ratingInference app:stmt-5738e2c09f0d ;
+    app:recommendationInference app:stmt-471e831c2fbc ;
+    app:recommendedPractice iso:RP-SI.BP.17 ;
+    app:triggeringResult iso:AR-C1-SI.BP.17 .
+
+app:exp-AE-C1-RP-SI.BP.20 a app:RecommendationExplanation ;
+    app:assessedEntity iso:AE-C1 ;
+    app:basePractice iso:SI.BP.20 ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:inferredRating iso:Partially_achieved ;
+    app:matchMethod "Antecedent bindings reconstructed by SPARQL over asserted+inferred data; rule attribution from Pellet ablation runs." ;
+    app:percentageAchievement 35 ;
+    app:ratingInference app:stmt-2d7068b58ce9 ;
+    app:recommendationInference app:stmt-b22eee7f7eb5 ;
+    app:recommendedPractice iso:RP-SI.BP.20 ;
+    app:triggeringResult iso:AR-C1-SI.BP.20 .
+
+app:stmt-0152b62df0eb a app:InferredStatement ;
+    app:concludedByRule "RatingCompletelyAchievedRule" ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingCompletelyAchievedRule" ;
+    rdf:object iso:Completely_achieved ;
+    rdf:predicate iso:hasDegreeAchievement ;
+    rdf:subject iso:AR-A1-SI.BP.03 .
+
+app:stmt-039786314546 a app:InferredStatement ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingLargelyAchievedRule" ;
+    rdf:object iso:AR-A1-PM.BP.16 ;
+    rdf:predicate iso:isDegreeAchievementOf ;
+    rdf:subject iso:Largely_achieved .
+
+app:stmt-0b94b6fef476 a app:InferredStatement ;
+    app:concludedByRule "RatingCompletelyAchievedRule" ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingCompletelyAchievedRule" ;
+    rdf:object iso:Completely_achieved ;
+    rdf:predicate iso:hasDegreeAchievement ;
+    rdf:subject iso:AR-A1-SI.BP.08 .
+
+app:stmt-0d4e456f744e a app:InferredStatement ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "ImprovementRecommendationRule",
+        "RatingNotAchievedRule" ;
+    rdf:object iso:AE-C1 ;
+    rdf:predicate iso:recommendedBy ;
+    rdf:subject iso:RP-SI.BP.06 .
+
+app:stmt-138a3e350626 a app:InferredStatement ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingLargelyAchievedRule" ;
+    rdf:object iso:AR-B1-SI.BP.03 ;
+    rdf:predicate iso:isDegreeAchievementOf ;
+    rdf:subject iso:Largely_achieved .
+
+app:stmt-13bfe9624bfe a app:InferredStatement ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingPartiallyAchievedRule" ;
+    rdf:object iso:AR-B1-PM.BP.09 ;
+    rdf:predicate iso:isDegreeAchievementOf ;
+    rdf:subject iso:Partially_achieved .
+
+app:stmt-16732b8b4256 a app:InferredStatement ;
+    app:concludedByRule "RatingLargelyAchievedRule" ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingLargelyAchievedRule" ;
+    rdf:object iso:Largely_achieved ;
+    rdf:predicate iso:hasDegreeAchievement ;
+    rdf:subject iso:AR-C1-PM.BP.14 .
+
+app:stmt-168e14e70b7e a app:InferredStatement ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "ImprovementRecommendationRule",
+        "RatingNotAchievedRule" ;
+    rdf:object iso:AE-C1 ;
+    rdf:predicate iso:recommendedBy ;
+    rdf:subject iso:RP-PM.BP.10 .
+
+app:stmt-1818b7bb3e48 a app:InferredStatement ;
+    app:concludedByRule "RatingCompletelyAchievedRule" ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingCompletelyAchievedRule" ;
+    rdf:object iso:Completely_achieved ;
+    rdf:predicate iso:hasDegreeAchievement ;
+    rdf:subject iso:AR-A1-PM.BP.09 .
+
+app:stmt-24fb0d9ce836 a app:InferredStatement ;
+    app:concludedByRule "RatingLargelyAchievedRule" ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingLargelyAchievedRule" ;
+    rdf:object iso:Largely_achieved ;
+    rdf:predicate iso:hasDegreeAchievement ;
+    rdf:subject iso:AR-B1-PM.BP.13 .
+
+app:stmt-255293b22262 a app:InferredStatement ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "PartialImprovementRecommendationRule",
+        "RatingPartiallyAchievedRule" ;
+    rdf:object iso:AE-C1 ;
+    rdf:predicate iso:recommendedBy ;
+    rdf:subject iso:RP-SI.BP.02 .
+
+app:stmt-29ac659e39eb a app:InferredStatement ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingNotAchievedRule" ;
+    rdf:object iso:AR-C1-SI.BP.08 ;
+    rdf:predicate iso:isDegreeAchievementOf ;
+    rdf:subject iso:Not_achieved .
+
+app:stmt-308e0a14342f a app:InferredStatement ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingCompletelyAchievedRule" ;
+    rdf:object iso:AR-A1-PM.BP.10 ;
+    rdf:predicate iso:isDegreeAchievementOf ;
+    rdf:subject iso:Completely_achieved .
+
+app:stmt-30ee6d87480f a app:InferredStatement ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "PartialImprovementRecommendationRule",
+        "RatingPartiallyAchievedRule" ;
+    rdf:object iso:AE-C1 ;
+    rdf:predicate iso:recommendedBy ;
+    rdf:subject iso:RP-PM.BP.16 .
+
+app:stmt-3e2ebb51e234 a app:InferredStatement ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingCompletelyAchievedRule" ;
+    rdf:object iso:AR-A1-PM.BP.09 ;
+    rdf:predicate iso:isDegreeAchievementOf ;
+    rdf:subject iso:Completely_achieved .
+
+app:stmt-3edc8a333627 a app:InferredStatement ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingCompletelyAchievedRule" ;
+    rdf:object iso:AR-B1-PM.BP.25 ;
+    rdf:predicate iso:isDegreeAchievementOf ;
+    rdf:subject iso:Completely_achieved .
+
+app:stmt-400edb8057f8 a app:InferredStatement ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingPartiallyAchievedRule" ;
+    rdf:object iso:AR-C1-SI.BP.17 ;
+    rdf:predicate iso:isDegreeAchievementOf ;
+    rdf:subject iso:Partially_achieved .
+
+app:stmt-42c52ad3ec23 a app:InferredStatement ;
+    app:concludedByRule "RatingCompletelyAchievedRule" ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingCompletelyAchievedRule" ;
+    rdf:object iso:Completely_achieved ;
+    rdf:predicate iso:hasDegreeAchievement ;
+    rdf:subject iso:AR-B1-PM.BP.14 .
+
+app:stmt-441c8291096e a app:InferredStatement ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingCompletelyAchievedRule" ;
+    rdf:object iso:AR-C1-PM.BP.25 ;
+    rdf:predicate iso:isDegreeAchievementOf ;
+    rdf:subject iso:Completely_achieved .
+
+app:stmt-469389677018 a app:InferredStatement ;
+    app:concludedByRule "RatingCompletelyAchievedRule" ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingCompletelyAchievedRule" ;
+    rdf:object iso:Completely_achieved ;
+    rdf:predicate iso:hasDegreeAchievement ;
+    rdf:subject iso:AR-A1-PM.BP.13 .
+
+app:stmt-503eea74393a a app:InferredStatement ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingCompletelyAchievedRule" ;
+    rdf:object iso:AR-B1-PM.BP.14 ;
+    rdf:predicate iso:isDegreeAchievementOf ;
+    rdf:subject iso:Completely_achieved .
+
+app:stmt-508a183ece86 a app:InferredStatement ;
+    app:concludedByRule "RatingCompletelyAchievedRule" ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingCompletelyAchievedRule" ;
+    rdf:object iso:Completely_achieved ;
+    rdf:predicate iso:hasDegreeAchievement ;
+    rdf:subject iso:AR-A1-SI.BP.20 .
+
+app:stmt-52eefa15a2bd a app:InferredStatement ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingCompletelyAchievedRule" ;
+    rdf:object iso:AR-A1-PM.BP.13 ;
+    rdf:predicate iso:isDegreeAchievementOf ;
+    rdf:subject iso:Completely_achieved .
+
+app:stmt-5306b94f719e a app:InferredStatement ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingCompletelyAchievedRule" ;
+    rdf:object iso:AR-A1-PM.BP.14 ;
+    rdf:predicate iso:isDegreeAchievementOf ;
+    rdf:subject iso:Completely_achieved .
+
+app:stmt-544d60b4ac09 a app:InferredStatement ;
+    app:concludedByRule "RatingLargelyAchievedRule" ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingLargelyAchievedRule" ;
+    rdf:object iso:Largely_achieved ;
+    rdf:predicate iso:hasDegreeAchievement ;
+    rdf:subject iso:AR-C1-SI.BP.03 .
+
+app:stmt-5499832e6164 a app:InferredStatement ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingPartiallyAchievedRule" ;
+    rdf:object iso:AR-C1-SI.BP.20 ;
+    rdf:predicate iso:isDegreeAchievementOf ;
+    rdf:subject iso:Partially_achieved .
+
+app:stmt-590c35c63928 a app:InferredStatement ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingNotAchievedRule" ;
+    rdf:object iso:AR-C1-PM.BP.09 ;
+    rdf:predicate iso:isDegreeAchievementOf ;
+    rdf:subject iso:Not_achieved .
+
+app:stmt-5a026fcd2635 a app:InferredStatement ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingPartiallyAchievedRule" ;
+    rdf:object iso:AR-B1-SI.BP.17 ;
+    rdf:predicate iso:isDegreeAchievementOf ;
+    rdf:subject iso:Partially_achieved .
+
+app:stmt-5e606279a325 a app:InferredStatement ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingLargelyAchievedRule" ;
+    rdf:object iso:AR-A1-SI.BP.17 ;
+    rdf:predicate iso:isDegreeAchievementOf ;
+    rdf:subject iso:Largely_achieved .
+
+app:stmt-61357dcac50b a app:InferredStatement ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingNotAchievedRule" ;
+    rdf:object iso:AR-B1-SI.BP.08 ;
+    rdf:predicate iso:isDegreeAchievementOf ;
+    rdf:subject iso:Not_achieved .
+
+app:stmt-61ce9868ec29 a app:InferredStatement ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingCompletelyAchievedRule" ;
+    rdf:object iso:AR-A1-SI.BP.20 ;
+    rdf:predicate iso:isDegreeAchievementOf ;
+    rdf:subject iso:Completely_achieved .
+
+app:stmt-629f5fbf44ec a app:InferredStatement ;
+    app:concludedByRule "RatingLargelyAchievedRule" ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingLargelyAchievedRule" ;
+    rdf:object iso:Largely_achieved ;
+    rdf:predicate iso:hasDegreeAchievement ;
+    rdf:subject iso:AR-A1-SI.BP.17 .
+
+app:stmt-6ff354d88906 a app:InferredStatement ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "PartialImprovementRecommendationRule",
+        "RatingPartiallyAchievedRule" ;
+    rdf:object iso:AE-B1 ;
+    rdf:predicate iso:recommendedBy ;
+    rdf:subject iso:RP-PM.BP.09 .
+
+app:stmt-720181ad8a7d a app:InferredStatement ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "PartialImprovementRecommendationRule",
+        "RatingPartiallyAchievedRule" ;
+    rdf:object iso:AE-C1 ;
+    rdf:predicate iso:recommendedBy ;
+    rdf:subject iso:RP-SI.BP.17 .
+
+app:stmt-732e10fb9aaf a app:InferredStatement ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingLargelyAchievedRule" ;
+    rdf:object iso:AR-A1-SI.BP.06 ;
+    rdf:predicate iso:isDegreeAchievementOf ;
+    rdf:subject iso:Largely_achieved .
+
+app:stmt-7b5376eebb46 a app:InferredStatement ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "ImprovementRecommendationRule",
+        "RatingNotAchievedRule" ;
+    rdf:object iso:AE-C1 ;
+    rdf:predicate iso:recommendedBy ;
+    rdf:subject iso:RP-PM.BP.09 .
+
+app:stmt-830a6c7e1707 a app:InferredStatement ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "PartialImprovementRecommendationRule",
+        "RatingPartiallyAchievedRule" ;
+    rdf:object iso:AE-C1 ;
+    rdf:predicate iso:recommendedBy ;
+    rdf:subject iso:RP-PM.BP.13 .
+
+app:stmt-8355eb68c391 a app:InferredStatement ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingPartiallyAchievedRule" ;
+    rdf:object iso:AR-B1-SI.BP.02 ;
+    rdf:predicate iso:isDegreeAchievementOf ;
+    rdf:subject iso:Partially_achieved .
+
+app:stmt-8640e74f8bb6 a app:InferredStatement ;
+    app:concludedByRule "RatingCompletelyAchievedRule" ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingCompletelyAchievedRule" ;
+    rdf:object iso:Completely_achieved ;
+    rdf:predicate iso:hasDegreeAchievement ;
+    rdf:subject iso:AR-B1-SI.BP.06 .
+
+app:stmt-8ba8d3e63dc1 a app:InferredStatement ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "PartialImprovementRecommendationRule",
+        "RatingPartiallyAchievedRule" ;
+    rdf:object iso:AE-C1 ;
+    rdf:predicate iso:recommendedBy ;
+    rdf:subject iso:RP-SI.BP.20 .
+
+app:stmt-9082a560209c a app:InferredStatement ;
+    app:concludedByRule "RatingLargelyAchievedRule" ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingLargelyAchievedRule" ;
+    rdf:object iso:Largely_achieved ;
+    rdf:predicate iso:hasDegreeAchievement ;
+    rdf:subject iso:AR-A1-SI.BP.06 .
+
+app:stmt-945f429cf282 a app:InferredStatement ;
+    app:concludedByRule "RatingLargelyAchievedRule" ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingLargelyAchievedRule" ;
+    rdf:object iso:Largely_achieved ;
+    rdf:predicate iso:hasDegreeAchievement ;
+    rdf:subject iso:AR-B1-SI.BP.03 .
+
+app:stmt-9547b3e3f81a a app:InferredStatement ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingLargelyAchievedRule" ;
+    rdf:object iso:AR-B1-PM.BP.13 ;
+    rdf:predicate iso:isDegreeAchievementOf ;
+    rdf:subject iso:Largely_achieved .
+
+app:stmt-9640ffea8c1c a app:InferredStatement ;
+    app:concludedByRule "RatingCompletelyAchievedRule" ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingCompletelyAchievedRule" ;
+    rdf:object iso:Completely_achieved ;
+    rdf:predicate iso:hasDegreeAchievement ;
+    rdf:subject iso:AR-A1-SI.BP.02 .
+
+app:stmt-9796f43b71ab a app:InferredStatement ;
+    app:concludedByRule "RatingCompletelyAchievedRule" ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingCompletelyAchievedRule" ;
+    rdf:object iso:Completely_achieved ;
+    rdf:predicate iso:hasDegreeAchievement ;
+    rdf:subject iso:AR-B1-PM.BP.10 .
+
+app:stmt-9c3148ba4756 a app:InferredStatement ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "PartialImprovementRecommendationRule",
+        "RatingPartiallyAchievedRule" ;
+    rdf:object iso:AE-B1 ;
+    rdf:predicate iso:recommendedBy ;
+    rdf:subject iso:RP-SI.BP.02 .
+
+app:stmt-9ed3b9fe2804 a app:InferredStatement ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingPartiallyAchievedRule" ;
+    rdf:object iso:AR-C1-SI.BP.02 ;
+    rdf:predicate iso:isDegreeAchievementOf ;
+    rdf:subject iso:Partially_achieved .
+
+app:stmt-a0531fb847d8 a app:InferredStatement ;
+    app:concludedByRule "RatingCompletelyAchievedRule" ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingCompletelyAchievedRule" ;
+    rdf:object iso:Completely_achieved ;
+    rdf:predicate iso:hasDegreeAchievement ;
+    rdf:subject iso:AR-A1-PM.BP.14 .
+
+app:stmt-a651ee728351 a app:InferredStatement ;
+    app:concludedByRule "RatingCompletelyAchievedRule" ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingCompletelyAchievedRule" ;
+    rdf:object iso:Completely_achieved ;
+    rdf:predicate iso:hasDegreeAchievement ;
+    rdf:subject iso:AR-B1-PM.BP.25 .
+
+app:stmt-a8e26dafb0e6 a app:InferredStatement ;
+    app:concludedByRule "RatingCompletelyAchievedRule" ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingCompletelyAchievedRule" ;
+    rdf:object iso:Completely_achieved ;
+    rdf:predicate iso:hasDegreeAchievement ;
+    rdf:subject iso:AR-C1-PM.BP.25 .
+
+app:stmt-a96d03ce60bc a app:InferredStatement ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "ImprovementRecommendationRule",
+        "RatingNotAchievedRule" ;
+    rdf:object iso:AE-C1 ;
+    rdf:predicate iso:recommendedBy ;
+    rdf:subject iso:RP-SI.BP.08 .
+
+app:stmt-b2f74f86a789 a app:InferredStatement ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "ImprovementRecommendationRule",
+        "RatingNotAchievedRule" ;
+    rdf:object iso:AE-B1 ;
+    rdf:predicate iso:recommendedBy ;
+    rdf:subject iso:RP-SI.BP.08 .
+
+app:stmt-b8836ad21306 a app:InferredStatement ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingCompletelyAchievedRule" ;
+    rdf:object iso:AR-A1-SI.BP.08 ;
+    rdf:predicate iso:isDegreeAchievementOf ;
+    rdf:subject iso:Completely_achieved .
+
+app:stmt-bb9052a1d756 a app:InferredStatement ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingPartiallyAchievedRule" ;
+    rdf:object iso:AR-C1-PM.BP.16 ;
+    rdf:predicate iso:isDegreeAchievementOf ;
+    rdf:subject iso:Partially_achieved .
+
+app:stmt-c05e71e2c8ba a app:InferredStatement ;
+    app:concludedByRule "RatingCompletelyAchievedRule" ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingCompletelyAchievedRule" ;
+    rdf:object iso:Completely_achieved ;
+    rdf:predicate iso:hasDegreeAchievement ;
+    rdf:subject iso:AR-A1-PM.BP.10 .
+
+app:stmt-cb053ff873fb a app:InferredStatement ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingCompletelyAchievedRule" ;
+    rdf:object iso:AR-A1-SI.BP.03 ;
+    rdf:predicate iso:isDegreeAchievementOf ;
+    rdf:subject iso:Completely_achieved .
+
+app:stmt-cd43807bf3a1 a app:InferredStatement ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingNotAchievedRule" ;
+    rdf:object iso:AR-C1-SI.BP.06 ;
+    rdf:predicate iso:isDegreeAchievementOf ;
+    rdf:subject iso:Not_achieved .
+
+app:stmt-d153c9ae1e17 a app:InferredStatement ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingCompletelyAchievedRule" ;
+    rdf:object iso:AR-B1-SI.BP.06 ;
+    rdf:predicate iso:isDegreeAchievementOf ;
+    rdf:subject iso:Completely_achieved .
+
+app:stmt-d25b0d11f43d a app:InferredStatement ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingLargelyAchievedRule" ;
+    rdf:object iso:AR-C1-SI.BP.03 ;
+    rdf:predicate iso:isDegreeAchievementOf ;
+    rdf:subject iso:Largely_achieved .
+
+app:stmt-d720cdd71b87 a app:InferredStatement ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingCompletelyAchievedRule" ;
+    rdf:object iso:AR-A1-PM.BP.25 ;
+    rdf:predicate iso:isDegreeAchievementOf ;
+    rdf:subject iso:Completely_achieved .
+
+app:stmt-d908055c36f3 a app:InferredStatement ;
+    app:concludedByRule "RatingLargelyAchievedRule" ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingLargelyAchievedRule" ;
+    rdf:object iso:Largely_achieved ;
+    rdf:predicate iso:hasDegreeAchievement ;
+    rdf:subject iso:AR-B1-PM.BP.16 .
+
+app:stmt-e16aefd584fc a app:InferredStatement ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingPartiallyAchievedRule" ;
+    rdf:object iso:AR-C1-PM.BP.13 ;
+    rdf:predicate iso:isDegreeAchievementOf ;
+    rdf:subject iso:Partially_achieved .
+
+app:stmt-e197ca370108 a app:InferredStatement ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingCompletelyAchievedRule" ;
+    rdf:object iso:AR-A1-SI.BP.02 ;
+    rdf:predicate iso:isDegreeAchievementOf ;
+    rdf:subject iso:Completely_achieved .
+
+app:stmt-e579a931a988 a app:InferredStatement ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingCompletelyAchievedRule" ;
+    rdf:object iso:AR-B1-PM.BP.10 ;
+    rdf:predicate iso:isDegreeAchievementOf ;
+    rdf:subject iso:Completely_achieved .
+
+app:stmt-e64443e0e6cf a app:InferredStatement ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingNotAchievedRule" ;
+    rdf:object iso:AR-C1-PM.BP.10 ;
+    rdf:predicate iso:isDegreeAchievementOf ;
+    rdf:subject iso:Not_achieved .
+
+app:stmt-e644fd62f042 a app:InferredStatement ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "PartialImprovementRecommendationRule",
+        "RatingPartiallyAchievedRule" ;
+    rdf:object iso:AE-B1 ;
+    rdf:predicate iso:recommendedBy ;
+    rdf:subject iso:RP-SI.BP.17 .
+
+app:stmt-e7f8e8b2da13 a app:InferredStatement ;
+    app:concludedByRule "RatingLargelyAchievedRule" ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingLargelyAchievedRule" ;
+    rdf:object iso:Largely_achieved ;
+    rdf:predicate iso:hasDegreeAchievement ;
+    rdf:subject iso:AR-A1-PM.BP.16 .
+
+app:stmt-fb2b67b794df a app:InferredStatement ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingLargelyAchievedRule" ;
+    rdf:object iso:AR-B1-PM.BP.16 ;
+    rdf:predicate iso:isDegreeAchievementOf ;
+    rdf:subject iso:Largely_achieved .
+
+app:stmt-fc289ffc03b6 a app:InferredStatement ;
+    app:concludedByRule "RatingCompletelyAchievedRule" ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingCompletelyAchievedRule" ;
+    rdf:object iso:Completely_achieved ;
+    rdf:predicate iso:hasDegreeAchievement ;
+    rdf:subject iso:AR-A1-PM.BP.25 .
+
+app:stmt-fdde6bab262b a app:InferredStatement ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingLargelyAchievedRule" ;
+    rdf:object iso:AR-C1-PM.BP.14 ;
+    rdf:predicate iso:isDegreeAchievementOf ;
+    rdf:subject iso:Largely_achieved .
+
+app:stmt-190edbfbc73b a app:InferredStatement ;
+    app:concludedByRule "PartialImprovementRecommendationRule" ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "PartialImprovementRecommendationRule",
+        "RatingPartiallyAchievedRule" ;
+    rdf:object iso:RP-SI.BP.02 ;
+    rdf:predicate iso:recommend ;
+    rdf:subject iso:AE-B1 .
+
+app:stmt-1afd9fe63d91 a app:InferredStatement ;
+    app:concludedByRule "ImprovementRecommendationRule" ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "ImprovementRecommendationRule",
+        "RatingNotAchievedRule" ;
+    rdf:object iso:RP-SI.BP.06 ;
+    rdf:predicate iso:recommend ;
+    rdf:subject iso:AE-C1 .
+
+app:stmt-1c12a08b9252 a app:InferredStatement ;
+    app:concludedByRule "RatingNotAchievedRule" ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingNotAchievedRule" ;
+    rdf:object iso:Not_achieved ;
+    rdf:predicate iso:hasDegreeAchievement ;
+    rdf:subject iso:AR-C1-SI.BP.06 .
+
+app:stmt-26627cd99702 a app:InferredStatement ;
+    app:concludedByRule "RatingNotAchievedRule" ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingNotAchievedRule" ;
+    rdf:object iso:Not_achieved ;
+    rdf:predicate iso:hasDegreeAchievement ;
+    rdf:subject iso:AR-C1-PM.BP.10 .
+
+app:stmt-27bc3274e792 a app:InferredStatement ;
+    app:concludedByRule "PartialImprovementRecommendationRule" ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "PartialImprovementRecommendationRule",
+        "RatingPartiallyAchievedRule" ;
+    rdf:object iso:RP-PM.BP.09 ;
+    rdf:predicate iso:recommend ;
+    rdf:subject iso:AE-B1 .
+
+app:stmt-2d7068b58ce9 a app:InferredStatement ;
+    app:concludedByRule "RatingPartiallyAchievedRule" ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingPartiallyAchievedRule" ;
+    rdf:object iso:Partially_achieved ;
+    rdf:predicate iso:hasDegreeAchievement ;
+    rdf:subject iso:AR-C1-SI.BP.20 .
+
+app:stmt-30b4aa23851d a app:InferredStatement ;
+    app:concludedByRule "RatingPartiallyAchievedRule" ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingPartiallyAchievedRule" ;
+    rdf:object iso:Partially_achieved ;
+    rdf:predicate iso:hasDegreeAchievement ;
+    rdf:subject iso:AR-B1-SI.BP.02 .
+
+app:stmt-377b61af5d45 a app:InferredStatement ;
+    app:concludedByRule "RatingPartiallyAchievedRule" ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingPartiallyAchievedRule" ;
+    rdf:object iso:Partially_achieved ;
+    rdf:predicate iso:hasDegreeAchievement ;
+    rdf:subject iso:AR-B1-SI.BP.17 .
+
+app:stmt-471e831c2fbc a app:InferredStatement ;
+    app:concludedByRule "PartialImprovementRecommendationRule" ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "PartialImprovementRecommendationRule",
+        "RatingPartiallyAchievedRule" ;
+    rdf:object iso:RP-SI.BP.17 ;
+    rdf:predicate iso:recommend ;
+    rdf:subject iso:AE-C1 .
+
+app:stmt-4ffe619b78ad a app:InferredStatement ;
+    app:concludedByRule "PartialImprovementRecommendationRule" ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "PartialImprovementRecommendationRule",
+        "RatingPartiallyAchievedRule" ;
+    rdf:object iso:RP-PM.BP.13 ;
+    rdf:predicate iso:recommend ;
+    rdf:subject iso:AE-C1 .
+
+app:stmt-5460da3cfce2 a app:InferredStatement ;
+    app:concludedByRule "PartialImprovementRecommendationRule" ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "PartialImprovementRecommendationRule",
+        "RatingPartiallyAchievedRule" ;
+    rdf:object iso:RP-SI.BP.17 ;
+    rdf:predicate iso:recommend ;
+    rdf:subject iso:AE-B1 .
+
+app:stmt-56e552ded005 a app:InferredStatement ;
+    app:concludedByRule "PartialImprovementRecommendationRule" ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "PartialImprovementRecommendationRule",
+        "RatingPartiallyAchievedRule" ;
+    rdf:object iso:RP-SI.BP.02 ;
+    rdf:predicate iso:recommend ;
+    rdf:subject iso:AE-C1 .
+
+app:stmt-5738e2c09f0d a app:InferredStatement ;
+    app:concludedByRule "RatingPartiallyAchievedRule" ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingPartiallyAchievedRule" ;
+    rdf:object iso:Partially_achieved ;
+    rdf:predicate iso:hasDegreeAchievement ;
+    rdf:subject iso:AR-C1-SI.BP.17 .
+
+app:stmt-5dd2873e9f7c a app:InferredStatement ;
+    app:concludedByRule "RatingPartiallyAchievedRule" ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingPartiallyAchievedRule" ;
+    rdf:object iso:Partially_achieved ;
+    rdf:predicate iso:hasDegreeAchievement ;
+    rdf:subject iso:AR-C1-SI.BP.02 .
+
+app:stmt-6261d9836048 a app:InferredStatement ;
+    app:concludedByRule "ImprovementRecommendationRule" ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "ImprovementRecommendationRule",
+        "RatingNotAchievedRule" ;
+    rdf:object iso:RP-PM.BP.09 ;
+    rdf:predicate iso:recommend ;
+    rdf:subject iso:AE-C1 .
+
+app:stmt-6eb6cc7be504 a app:InferredStatement ;
+    app:concludedByRule "ImprovementRecommendationRule" ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "ImprovementRecommendationRule",
+        "RatingNotAchievedRule" ;
+    rdf:object iso:RP-SI.BP.08 ;
+    rdf:predicate iso:recommend ;
+    rdf:subject iso:AE-B1 .
+
+app:stmt-906b56fee60c a app:InferredStatement ;
+    app:concludedByRule "RatingNotAchievedRule" ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingNotAchievedRule" ;
+    rdf:object iso:Not_achieved ;
+    rdf:predicate iso:hasDegreeAchievement ;
+    rdf:subject iso:AR-B1-SI.BP.08 .
+
+app:stmt-9521e82d3ddb a app:InferredStatement ;
+    app:concludedByRule "RatingNotAchievedRule" ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingNotAchievedRule" ;
+    rdf:object iso:Not_achieved ;
+    rdf:predicate iso:hasDegreeAchievement ;
+    rdf:subject iso:AR-C1-SI.BP.08 .
+
+app:stmt-a67ca7250754 a app:InferredStatement ;
+    app:concludedByRule "PartialImprovementRecommendationRule" ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "PartialImprovementRecommendationRule",
+        "RatingPartiallyAchievedRule" ;
+    rdf:object iso:RP-PM.BP.16 ;
+    rdf:predicate iso:recommend ;
+    rdf:subject iso:AE-C1 .
+
+app:stmt-afff6f83c8a1 a app:InferredStatement ;
+    app:concludedByRule "RatingPartiallyAchievedRule" ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingPartiallyAchievedRule" ;
+    rdf:object iso:Partially_achieved ;
+    rdf:predicate iso:hasDegreeAchievement ;
+    rdf:subject iso:AR-B1-PM.BP.09 .
+
+app:stmt-b060f1ec43fa a app:InferredStatement ;
+    app:concludedByRule "RatingPartiallyAchievedRule" ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingPartiallyAchievedRule" ;
+    rdf:object iso:Partially_achieved ;
+    rdf:predicate iso:hasDegreeAchievement ;
+    rdf:subject iso:AR-C1-PM.BP.13 .
+
+app:stmt-b22eee7f7eb5 a app:InferredStatement ;
+    app:concludedByRule "PartialImprovementRecommendationRule" ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "PartialImprovementRecommendationRule",
+        "RatingPartiallyAchievedRule" ;
+    rdf:object iso:RP-SI.BP.20 ;
+    rdf:predicate iso:recommend ;
+    rdf:subject iso:AE-C1 .
+
+app:stmt-b4126c71471e a app:InferredStatement ;
+    app:concludedByRule "ImprovementRecommendationRule" ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "ImprovementRecommendationRule",
+        "RatingNotAchievedRule" ;
+    rdf:object iso:RP-SI.BP.08 ;
+    rdf:predicate iso:recommend ;
+    rdf:subject iso:AE-C1 .
+
+app:stmt-bc828331291c a app:InferredStatement ;
+    app:concludedByRule "RatingNotAchievedRule" ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingNotAchievedRule" ;
+    rdf:object iso:Not_achieved ;
+    rdf:predicate iso:hasDegreeAchievement ;
+    rdf:subject iso:AR-C1-PM.BP.09 .
+
+app:stmt-cfa935bd874a a app:InferredStatement ;
+    app:concludedByRule "ImprovementRecommendationRule" ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "ImprovementRecommendationRule",
+        "RatingNotAchievedRule" ;
+    rdf:object iso:RP-PM.BP.10 ;
+    rdf:predicate iso:recommend ;
+    rdf:subject iso:AE-C1 .
+
+app:stmt-ec2eec07f89f a app:InferredStatement ;
+    app:concludedByRule "RatingPartiallyAchievedRule" ;
+    app:inReasoningRun app:run-20261101T123748Z ;
+    app:necessaryRule "RatingPartiallyAchievedRule" ;
+    rdf:object iso:Partially_achieved ;
+    rdf:predicate iso:hasDegreeAchievement ;
+    rdf:subject iso:AR-C1-PM.BP.16 .
+
+app:run-20261101T123748Z a app:ReasoningRun ;
+    app:consistent true ;
+    app:enabledRule "ApprovedRequirementSpecRule",
+        "ApprovedTestCaseRule",
+        "BasePracticeOutputWPRule",
+        "ImprovementRecommendationRule",
+        "PartialImprovementRecommendationRule",
+        "RatingCompletelyAchievedRule",
+        "RatingLargelyAchievedRule",
+        "RatingNotAchievedRule",
+        "RatingPartiallyAchievedRule" ;
+    app:inputSha256 "mock-companies.ttl:58bbb7aaac2528c6751629a82c55161c63bea59d488f45a55543718a014caf2e",
+        "ontology-merged.ttl:2bffdbee2353f9a2871100413076c67e31026c6dec0d149f4cfc22c02cdc4942",
+        "qa-practices.ttl:2bf93c0a7e85adb0c20006e29429c1079ac8e58e584b07adc6b159c4409001e3" ;
+    app:reasoner "Pellet 2.3.1 via OWL API 3.4.3" ;
+    app:runAt "2026-11-01T12:36:50.295535+00:00"^^xsd:dateTime ;
+    app:swrlInferredCount 96 .
+
