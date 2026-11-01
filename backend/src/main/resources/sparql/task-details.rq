@@ -1,0 +1,20 @@
+# Supporting evidence for one retrieved task: input/output work products (generic WP + state) and
+# Base Practices that share a Process Outcome with the task.  ?pTask is bound as an IRI.
+PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>
+SELECT ?kind ?wpName ?genericWp ?stateName ?bpID ?bpDescription WHERE {
+  {
+    ?pTask iso:hasInputWorkProduct ?w . BIND("input" AS ?kind)
+    OPTIONAL { ?w iso:hasInputWorkProductName ?wpName }
+    OPTIONAL { ?w iso:representsWorkProduct ?g . ?g iso:hasWorkProductName ?genericWp }
+    OPTIONAL { ?w iso:hasCurrentState ?s . ?s iso:hasWorkProductStateName ?stateName }
+  } UNION {
+    ?pTask iso:hasOutputWorkProduct ?w . BIND("output" AS ?kind)
+    OPTIONAL { ?w iso:hasOutputWorkProductName ?wpName }
+    OPTIONAL { ?w iso:representsWorkProduct ?g . ?g iso:hasWorkProductName ?genericWp }
+    OPTIONAL { ?w iso:hasFinalState ?s . ?s iso:hasWorkProductStateName ?stateName }
+  } UNION {
+    ?pTask iso:hasProcessOutcome ?po . ?bp a iso:BasePractice ; iso:hasProcessOutcome ?po ;
+        iso:hasBasePracticeID ?bpID ; iso:hasBasePracticeDescription ?bpDescription .
+    BIND("basePractice" AS ?kind)
+  }
+}

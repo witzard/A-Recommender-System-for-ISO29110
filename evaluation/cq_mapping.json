@@ -1,0 +1,506 @@
+[
+ {
+  "id": "Q1",
+  "question": "What criteria are used to select risk topics for project risk analysis?",
+  "group": "Project Management",
+  "parameters": {
+   "process": "PM",
+   "keyword": "risk"
+  },
+  "expectedTaskIDs": [
+   "PM.1.9"
+  ],
+  "answerability": "partial",
+  "rationale": "PM.1.9 identifies/documents risks. The ontology has NO selection criteria for risk topics, so the 'criteria' part is unsupported."
+ },
+ {
+  "id": "Q2",
+  "question": "As a PM, how does the team know project details, specifically deliverables?",
+  "group": "Project Management",
+  "parameters": {
+   "role": "PJM",
+   "process": "PM",
+   "keyword": "deliver"
+  },
+  "expectedTaskIDs": [
+   "PM.1.2",
+   "PM.1.3",
+   "PM.1.12"
+  ],
+  "answerability": "answerable",
+  "rationale": "Deliverables enter the plan via PM.1.12; delivery instructions agreed in PM.1.2; tasks to produce them identified in PM.1.3."
+ },
+ {
+  "id": "Q3",
+  "question": "As a PM, what is the process for customer acceptance and project closure?",
+  "group": "Project Management",
+  "parameters": {
+   "role": "PJM",
+   "activity": "PM.04"
+  },
+  "expectedTaskIDs": [
+   "PM.4.1",
+   "PM.4.2"
+  ],
+  "answerability": "answerable",
+  "rationale": "Activity PM.04 Project closure: customer signs acceptance record (PM.4.1) and it is stored (PM.4.2)."
+ },
+ {
+  "id": "Q4",
+  "question": "As an SA, how is the project plan reviewed with the PM?",
+  "group": "Project Management",
+  "parameters": {
+   "workProduct": "WP.10",
+   "keyword": "review"
+  },
+  "expectedTaskIDs": [
+   "PM.1.13",
+   "SI.1.1"
+  ],
+  "answerability": "answerable",
+  "rationale": "Plan verified (PM.1.13) and reviewed with the work team (SI.1.1). 'SA' has no ontology role -> no role filter (ambiguity A-01)."
+ },
+ {
+  "id": "Q5",
+  "question": "As an SA, how is it ensured that the team understands the development environment setup?",
+  "group": "Development Environment",
+  "parameters": {
+   "workProduct": "WP.05"
+  },
+  "expectedTaskIDs": [
+   "SI.1.2"
+  ],
+  "answerability": "partial",
+  "rationale": "SI.1.2 sets up the implementation environment. How the team's understanding is ensured is not modelled."
+ },
+ {
+  "id": "Q6",
+  "question": "As an SA, what is the process for updating the SRS document?",
+  "group": "Software Requirements & Traceability",
+  "parameters": {
+   "activity": "SI.02",
+   "workProduct": "WP.13"
+  },
+  "expectedTaskIDs": [
+   "SI.2.2",
+   "SI.2.3",
+   "SI.2.4",
+   "PM.3.3"
+  ],
+  "answerability": "answerable",
+  "rationale": "SRS documented/updated (SI.2.2), verified (SI.2.3), validated (SI.2.4); requirement changes are identified via change requests (PM.3.3)."
+ },
+ {
+  "id": "Q7",
+  "question": "How is it ensured that the Requirement Spec matches customer needs and is accepted?",
+  "group": "Software Requirements & Traceability",
+  "parameters": {
+   "role": "CUS",
+   "workProduct": "WP.13"
+  },
+  "expectedTaskIDs": [
+   "SI.2.4"
+  ],
+  "answerability": "answerable",
+  "rationale": "Customer validates and approves the requirements specification (SI.2.4)."
+ },
+ {
+  "id": "Q8",
+  "question": "As an SA, how is the baselined version prepared for the design phase?",
+  "group": "Software Design & Construction",
+  "parameters": {
+   "process": "SI",
+   "keyword": "baseline"
+  },
+  "expectedTaskIDs": [
+   "SI.2.7",
+   "SI.3.8"
+  ],
+  "answerability": "answerable",
+  "rationale": "Specification baseline that design starts from (SI.2.7) and the design baseline (SI.3.8). Question is ambiguous between the two; both kept."
+ },
+ {
+  "id": "Q9",
+  "question": "As an SA, how is it ensured that the team understands the system design as planned?",
+  "group": "Software Design & Construction",
+  "parameters": {
+   "workProduct": "WP.16",
+   "keyword": "review"
+  },
+  "expectedTaskIDs": [
+   "SI.3.1",
+   "SI.4.2"
+  ],
+  "answerability": "partial",
+  "rationale": "Tasks assigned per plan (SI.3.1); programmer and designer review the design (SI.4.2). 'Understanding' itself is not modelled."
+ },
+ {
+  "id": "Q10",
+  "question": "How does Testing ensure the test plan matches the Req Spec / SW Design?",
+  "group": "Testing & Defect Management",
+  "parameters": {
+   "workProduct": "WP.19",
+   "keyword": "consisten"
+  },
+  "expectedTaskIDs": [
+   "SI.3.7"
+  ],
+  "answerability": "answerable",
+  "rationale": "SI.3.7 verifies consistency among requirements, design and test cases/procedures."
+ },
+ {
+  "id": "Q11",
+  "question": "As an SA, how is the Traceability Record updated if requirements change?",
+  "group": "Software Requirements & Traceability",
+  "parameters": {
+   "workProduct": "WP.21",
+   "keyword": "update"
+  },
+  "expectedTaskIDs": [
+   "SI.3.6",
+   "SI.4.6",
+   "SI.5.6"
+  ],
+  "answerability": "partial",
+  "rationale": "Traceability record updated in SI.3.6/SI.4.6/SI.5.6. No explicit link from a requirement CHANGE to these updates."
+ },
+ {
+  "id": "Q12",
+  "question": "How does Dev know which system functions to design and develop?",
+  "group": "Software Design & Construction",
+  "parameters": {
+   "role": "PR",
+   "workProduct": "WP.16"
+  },
+  "expectedTaskIDs": [
+   "SI.4.1",
+   "SI.4.2"
+  ],
+  "answerability": "answerable",
+  "rationale": "Programmer receives tasks (SI.4.1) and reviews the software design (SI.4.2) to know what to build."
+ },
+ {
+  "id": "Q13",
+  "question": "How do SA or Dev know the system design fully covers the requirements?",
+  "group": "Software Design & Construction",
+  "parameters": {
+   "workProduct": "WP.16",
+   "keyword": "requirement"
+  },
+  "expectedTaskIDs": [
+   "SI.3.4"
+  ],
+  "answerability": "answerable",
+  "rationale": "SI.3.4 verifies design consistency with the requirements specification and traceability record."
+ },
+ {
+  "id": "Q14",
+  "question": "As a Programmer, how does the team know what is being developed and when it is finished?",
+  "group": "Software Design & Construction",
+  "parameters": {
+   "role": "PR",
+   "activity": "SI.04"
+  },
+  "expectedTaskIDs": [
+   "SI.4.1"
+  ],
+  "answerability": "partial",
+  "rationale": "Work assigned in SI.4.1. 'When it is finished' (exit criteria/progress) is only indirectly modelled."
+ },
+ {
+  "id": "Q15",
+  "question": "As a developer, how is it known that the program is fully tested and displays correctly?",
+  "group": "Testing & Defect Management",
+  "parameters": {
+   "role": "PR",
+   "keyword": "test"
+  },
+  "expectedTaskIDs": [
+   "SI.4.4",
+   "SI.4.5"
+  ],
+  "answerability": "partial",
+  "rationale": "Unit test cases developed (SI.4.4) and executed (SI.4.5). 'Displays correctly' (UI checks) not modelled."
+ },
+ {
+  "id": "Q16",
+  "question": "How is one informed of their duty to perform system testing?",
+  "group": "Testing & Defect Management",
+  "parameters": {
+   "activity": "SI.05",
+   "keyword": "assign"
+  },
+  "expectedTaskIDs": [
+   "SI.5.1"
+  ],
+  "answerability": "answerable",
+  "rationale": "Duties for integration/testing are assigned in SI.5.1."
+ },
+ {
+  "id": "Q17",
+  "question": "How is it known that the program functions correctly?",
+  "group": "Testing & Defect Management",
+  "parameters": {
+   "process": "SI",
+   "keyword": "test"
+  },
+  "expectedTaskIDs": [
+   "SI.4.5",
+   "SI.5.4"
+  ],
+  "answerability": "answerable",
+  "rationale": "Correct functioning is shown by unit tests (SI.4.5) and integration tests (SI.5.4)."
+ },
+ {
+  "id": "Q18",
+  "question": "As a Programmer, how are bugs identified and what is the fix process?",
+  "group": "Testing & Defect Management",
+  "parameters": {
+   "role": "PR",
+   "keyword": "defect"
+  },
+  "expectedTaskIDs": [
+   "SI.4.5",
+   "SI.5.5"
+  ],
+  "answerability": "answerable",
+  "rationale": "Defects found by unit tests and corrected (SI.4.5); defects corrected and re-tested (SI.5.5)."
+ },
+ {
+  "id": "Q19",
+  "question": "How is it known if delivery is on schedule according to the plan?",
+  "group": "Project Management",
+  "parameters": {
+   "workProduct": "WP.09"
+  },
+  "expectedTaskIDs": [
+   "PM.2.1",
+   "PM.3.1"
+  ],
+  "answerability": "answerable",
+  "rationale": "Execution monitored (PM.2.1) and progress evaluated against the plan/schedule (PM.3.1)."
+ },
+ {
+  "id": "Q20",
+  "question": "As a Tester, how is the system testing methodology understood?",
+  "group": "Testing & Defect Management",
+  "parameters": {
+   "activity": "SI.05",
+   "workProduct": "WP.19"
+  },
+  "expectedTaskIDs": [
+   "SI.5.2"
+  ],
+  "answerability": "partial",
+  "rationale": "SI.5.2 reviews test cases/procedures and sets the test environment. 'Tester' is not an ontology role (ambiguity A-02)."
+ },
+ {
+  "id": "Q21",
+  "question": "How is the system tested against requirements and how is accuracy verified?",
+  "group": "Testing & Defect Management",
+  "parameters": {
+   "workProduct": "WP.19"
+  },
+  "expectedTaskIDs": [
+   "SI.3.5",
+   "SI.3.7",
+   "SI.5.4"
+  ],
+  "answerability": "answerable",
+  "rationale": "Test cases from requirements (SI.3.5), verified for consistency (SI.3.7), executed (SI.5.4)."
+ },
+ {
+  "id": "Q22",
+  "question": "How is the Test Report prepared according to requirements?",
+  "group": "Testing & Defect Management",
+  "parameters": {
+   "workProduct": "WP.20"
+  },
+  "expectedTaskIDs": [
+   "SI.5.4"
+  ],
+  "answerability": "answerable",
+  "rationale": "Integration test results are documented in the test report (SI.5.4)."
+ },
+ {
+  "id": "Q23",
+  "question": "How is it known that a software version has had its bugs fixed?",
+  "group": "Testing & Defect Management",
+  "parameters": {
+   "keyword": "defect"
+  },
+  "expectedTaskIDs": [
+   "SI.4.5",
+   "SI.5.5"
+  ],
+  "answerability": "partial",
+  "rationale": "Defect correction with re-testing (SI.4.5, SI.5.5). Versions of software are not modelled."
+ },
+ {
+  "id": "Q24",
+  "question": "As a Tester, how is the consistency between Test Case, Software Design, and User Req known?",
+  "group": "Testing & Defect Management",
+  "parameters": {
+   "workProduct": "WP.19",
+   "keyword": "consisten"
+  },
+  "expectedTaskIDs": [
+   "SI.3.7"
+  ],
+  "answerability": "answerable",
+  "rationale": "Same knowledge as Q10 from the tester's viewpoint: SI.3.7."
+ },
+ {
+  "id": "Q25",
+  "question": "Who is responsible for developing the Product Operation Doc, and what is the approach taken to develop it?",
+  "group": "Documentation & Maintenance",
+  "parameters": {
+   "workProduct": "WP.08"
+  },
+  "expectedTaskIDs": [
+   "SI.5.7"
+  ],
+  "answerability": "answerable",
+  "rationale": "Programmer documents the product operation guide (SI.5.7)."
+ },
+ {
+  "id": "Q26",
+  "question": "How is it verified that the Product Operation Doc is the post-test version?",
+  "group": "Documentation & Maintenance",
+  "parameters": {
+   "workProduct": "WP.08",
+   "keyword": "verify"
+  },
+  "expectedTaskIDs": [
+   "SI.5.8"
+  ],
+  "answerability": "answerable",
+  "rationale": "SI.5.8 verifies the guide against the software and obtains approval."
+ },
+ {
+  "id": "Q27",
+  "question": "Who develops the Software User Doc and what is the approach?",
+  "group": "Documentation & Maintenance",
+  "parameters": {
+   "workProduct": "WP.18"
+  },
+  "expectedTaskIDs": [
+   "SI.2.5",
+   "SI.5.9"
+  ],
+  "answerability": "answerable",
+  "rationale": "Analyst documents the preliminary (SI.2.5) and final (SI.5.9) software user documentation."
+ },
+ {
+  "id": "Q28",
+  "question": "How does the team know the Software User Document is ready for use?",
+  "group": "Documentation & Maintenance",
+  "parameters": {
+   "workProduct": "WP.18",
+   "state": "WPS.02"
+  },
+  "expectedTaskIDs": [
+   "SI.5.10"
+  ],
+  "answerability": "answerable",
+  "rationale": "Ready for use when verified and approved by the customer (SI.5.10)."
+ },
+ {
+  "id": "Q29",
+  "question": "How does the team know what must be delivered to the customer?",
+  "group": "Delivery & Baseline Management",
+  "parameters": {
+   "keyword": "deliver"
+  },
+  "expectedTaskIDs": [
+   "PM.1.2",
+   "PM.1.12",
+   "SI.6.5",
+   "SI.6.6"
+  ],
+  "answerability": "answerable",
+  "rationale": "Delivery instructions (PM.1.2), deliverables in plan (PM.1.12), product baseline contents (SI.6.5), delivery preparation (SI.6.6)."
+ },
+ {
+  "id": "Q30",
+  "question": "How does the team communicate that work is ready for delivery?",
+  "group": "Delivery & Baseline Management",
+  "parameters": {
+   "activity": "SI.06",
+   "keyword": "deliver"
+  },
+  "expectedTaskIDs": [
+   "SI.6.6"
+  ],
+  "answerability": "answerable",
+  "rationale": "TL assembles and prepares the delivery for the PJM (SI.6.6)."
+ },
+ {
+  "id": "Q31",
+  "question": "Where are project docs/software stored and how is maintenance handled?",
+  "group": "Documentation & Maintenance",
+  "parameters": {
+   "workProduct": "WP.11"
+  },
+  "expectedTaskIDs": [
+   "PM.1.15",
+   "PM.1.16",
+   "PM.2.6",
+   "PM.2.7",
+   "SI.6.4"
+  ],
+  "answerability": "partial",
+  "rationale": "Repository established/filled/backed up/recovered (PM.1.15, 1.16, 2.6, 2.7); maintenance documentation baselined (SI.6.4). 'Maintenance handling' beyond documentation is not modelled."
+ },
+ {
+  "id": "Q32",
+  "question": "What is the Maintenance Documentation process and where is the latest version?",
+  "group": "Documentation & Maintenance",
+  "parameters": {
+   "workProduct": "WP.06"
+  },
+  "expectedTaskIDs": [
+   "SI.6.2",
+   "SI.6.3",
+   "SI.6.4"
+  ],
+  "answerability": "answerable",
+  "rationale": "Maintenance documentation written (SI.6.2), verified/approved (SI.6.3), added to the baseline (SI.6.4)."
+ },
+ {
+  "id": "Q33",
+  "question": "What are the methods and criteria for evaluating each Work Product?",
+  "group": "Work Product Evaluation",
+  "parameters": {
+   "workProduct": "WP.23"
+  },
+  "expectedTaskIDs": [
+   "PM.1.13",
+   "SI.2.3",
+   "SI.2.4",
+   "SI.2.6",
+   "SI.3.4",
+   "SI.3.7",
+   "SI.5.8",
+   "SI.5.10",
+   "SI.6.3"
+  ],
+  "answerability": "partial",
+  "rationale": "Verification/validation tasks per work product. The evaluation CRITERIA (WorkProductCharacteristic, 134 individuals) are not linked to any work product (hasCharacteristics has 0 uses) -> criteria part unsupported."
+ },
+ {
+  "id": "Q34",
+  "question": "How does the team know where the baseline is stored and how is its use controlled?",
+  "group": "Delivery & Baseline Management",
+  "parameters": {
+   "keyword": "baseline"
+  },
+  "expectedTaskIDs": [
+   "PM.1.10",
+   "PM.1.15",
+   "SI.6.5"
+  ],
+  "answerability": "partial",
+  "rationale": "Use controlled by the version control strategy (PM.1.10) and repository (PM.1.15); baseline contents identified in SI.6.5. Access control is not modelled."
+ }
+]

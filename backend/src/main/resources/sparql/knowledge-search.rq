@@ -1,0 +1,43 @@
+# Parameter-based knowledge search (Capability A).
+# Shared by the Java backend (KnowledgeSearchService) and evaluation/run_cq_evaluation.py.
+# Lines between "#BEGIN <param>" and "#END" are kept only when that parameter is supplied
+# ("#BEGIN a+b": only when ALL listed parameters are supplied).
+# Parameters are bound, never concatenated:  ?pProcess ?pActivity ?pWorkProduct ?pState = IRIs
+#                                              ?pRole ?pKeyword = plain literals
+PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>
+SELECT ?task ?taskID ?taskDescription ?activity ?activityID ?activityName ?processCode
+       (GROUP_CONCAT(DISTINCT ?roleAbbr; separator=", ") AS ?roles)
+WHERE {
+  ?task iso:hasTaskID ?taskID ;
+        iso:hasTaskDescription ?taskDescription .
+  ?activity iso:hasTask ?task ;
+            iso:hasActivityID ?activityID ;
+            iso:hasActivityName ?activityName .
+  ?process iso:hasActivity ?activity ;
+           iso:hasProcessCode ?processCode .
+  OPTIONAL { ?task iso:hasRole ?r . ?r iso:hasRoleAbbreviation ?roleAbbr . }
+#BEGIN process
+  FILTER(?process = ?pProcess)
+#END
+#BEGIN activity
+  FILTER(?activity = ?pActivity)
+#END
+#BEGIN role
+  FILTER EXISTS { ?task iso:hasRole ?fr . ?fr iso:hasRoleAbbreviation ?fra . FILTER(STR(?fra) = STR(?pRole)) }
+#END
+#BEGIN workProduct
+  FILTER EXISTS { { ?task iso:hasInputWorkProduct ?fw } UNION { ?task iso:hasOutputWorkProduct ?fw }
+                  ?fw iso:representsWorkProduct ?pWorkProduct . }
+#END
+#BEGIN state
+  FILTER EXISTS { ?task iso:hasOutputWorkProduct ?fs . ?fs iso:hasFinalState ?pState . }
+#END
+#BEGIN workProduct+state
+  FILTER EXISTS { ?task iso:hasOutputWorkProduct ?fj . ?fj iso:hasFinalState ?pState ; iso:representsWorkProduct ?pWorkProduct . }
+#END
+#BEGIN keyword
+  FILTER(CONTAINS(LCASE(STR(?taskDescription)), LCASE(STR(?pKeyword))))
+#END
+}
+GROUP BY ?task ?taskID ?taskDescription ?activity ?activityID ?activityName ?processCode
+ORDER BY ?processCode ?activityID ?taskID

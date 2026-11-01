@@ -1,0 +1,126 @@
+@prefix :      <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#> .
+@prefix iso:   <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#> .
+@prefix var:   <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2/> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix swrl:  <http://www.w3.org/2003/11/swrl#> .
+@prefix swrla: <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#> .
+
+#################################################################################
+# Assessment & Recommendation extension for ISO29110V2
+#
+# Purpose: add ONLY the links that the baseline ontology lacks and that the
+# assessment -> SWRL -> recommendation workflow cannot work without.
+# Every term below is new; no baseline term is redefined.
+#
+#  Gap found in the baseline (see docs/AUDIT_REPORT.md, issues O-01..O-03):
+#   O-01  An AssessmentResult is not linked to WHAT was assessed (no Base Practice).
+#   O-02  A RecommendedPractice is not linked to the gap it addresses.
+#   O-03  No place to record company-specific evidence for a result.
+#################################################################################
+
+<http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2/extension/assessment-recommendation>
+    a owl:Ontology ;
+    rdfs:comment "Prototype extension (2026-11). Adds assessment-to-practice traceability, recommendation mapping, evidence records and the SWRL rules used by the recommendation workflow." .
+
+### O-01 -----------------------------------------------------------------------
+iso:assessesBasePractice a owl:ObjectProperty ;
+    rdfs:domain iso:AssessmentResult ;
+    rdfs:range  iso:BasePractice ;
+    rdfs:label "assessesBasePractice" ;
+    rdfs:comment "Links an assessment result to the ISO/IEC 29110 Base Practice whose achievement it rates." .
+
+### O-02 -----------------------------------------------------------------------
+iso:addressesBasePractice a owl:ObjectProperty ;
+    rdfs:domain iso:RecommendedPractice ;
+    rdfs:range  iso:BasePractice ;
+    rdfs:label "addressesBasePractice" ;
+    rdfs:comment "Links a QA (recommended) practice to the Base Practice it helps to achieve. In this prototype the mapping is 1:1 and generated from the Base Practices (data/qa-practices.ttl); it is NOT an expert-validated mapping." .
+
+### O-03 -----------------------------------------------------------------------
+iso:AssessmentEvidence a owl:Class ;
+    rdfs:label "AssessmentEvidence" ;
+    rdfs:comment "A company-specific observation that supports an assessment result (e.g. 'project plan exists but has no risk section'). Deliberately NOT a subclass of WorkProduct: the WorkProduct individuals in the baseline describe the standard, not a company's documents." .
+
+iso:hasEvidence a owl:ObjectProperty ;
+    rdfs:domain iso:AssessmentResult ;
+    rdfs:range  iso:AssessmentEvidence ;
+    rdfs:label "hasEvidence" .
+
+iso:concernsWorkProduct a owl:ObjectProperty ;
+    rdfs:domain iso:AssessmentEvidence ;
+    rdfs:range  iso:WorkProduct ;
+    rdfs:label "concernsWorkProduct" ;
+    rdfs:comment "Which ISO/IEC 29110 work product (WP.01..WP.23) the evidence is about." .
+
+iso:hasEvidenceDescription a owl:DatatypeProperty ;
+    rdfs:domain iso:AssessmentEvidence ;
+    rdfs:range  xsd:string ;
+    rdfs:label "hasEvidenceDescription" .
+
+iso:hasAssessmentDate a owl:DatatypeProperty ;
+    rdfs:domain iso:PreAssessment ;
+    rdfs:range  xsd:date ;
+    rdfs:label "hasAssessmentDate" .
+
+#################################################################################
+# SWRL rules
+#
+# ImprovementRecommendationRule (REVISED - replaces the baseline rule of the same
+# label; the build script removes the baseline version from the merged ontology,
+# ontology/ISO29110V2.ttl itself is left untouched).
+#   Baseline:  AssessedEntity(?ae) ^ hasAssessmentResult(?ae, ?ar)
+#              ^ hasDegreeAchievement(?ar, Not_achieved) ^ RecommendedPractice(?rp)
+#              -> recommend(?ae, ?rp)
+#   Problem :  ?rp is unconstrained, so ONE Not_achieved result recommends EVERY
+#              RecommendedPractice in the knowledge base (cartesian product).
+#   Revision:  only the practice(s) that address the assessed Base Practice.
+#
+# PartialImprovementRecommendationRule (NEW)
+#   Same pattern for Partially_achieved (16-50%). Added because a Partially
+#   achieved Base Practice is still an implementation gap; without this rule a
+#   result of 16% would never produce a recommendation while 15% would.
+#   This is a research decision: disable with --exclude-rule if the advisor
+#   wants recommendations for Not_achieved only.
+#################################################################################
+
+var:ae a swrl:Variable .
+var:ar a swrl:Variable .
+var:bp a swrl:Variable .
+var:rp a swrl:Variable .
+
+[ a swrl:Imp ;
+  rdfs:label "ImprovementRecommendationRule" ;
+  rdfs:comment "REVISED 2026-11: recommend only the practice(s) addressing the Base Practice rated Not_achieved." ;
+  swrla:isRuleEnabled true ;
+  swrl:body (
+      [ a swrl:ClassAtom ; swrl:classPredicate iso:AssessedEntity ; swrl:argument1 var:ae ]
+      [ a swrl:IndividualPropertyAtom ; swrl:propertyPredicate iso:hasAssessmentResult ; swrl:argument1 var:ae ; swrl:argument2 var:ar ]
+      [ a swrl:IndividualPropertyAtom ; swrl:propertyPredicate iso:hasDegreeAchievement ; swrl:argument1 var:ar ; swrl:argument2 iso:Not_achieved ]
+      [ a swrl:IndividualPropertyAtom ; swrl:propertyPredicate iso:assessesBasePractice ; swrl:argument1 var:ar ; swrl:argument2 var:bp ]
+      [ a swrl:ClassAtom ; swrl:classPredicate iso:RecommendedPractice ; swrl:argument1 var:rp ]
+      [ a swrl:IndividualPropertyAtom ; swrl:propertyPredicate iso:addressesBasePractice ; swrl:argument1 var:rp ; swrl:argument2 var:bp ]
+  ) ;
+  swrl:head (
+      [ a swrl:IndividualPropertyAtom ; swrl:propertyPredicate iso:recommend ; swrl:argument1 var:ae ; swrl:argument2 var:rp ]
+  )
+] .
+
+[ a swrl:Imp ;
+  rdfs:label "PartialImprovementRecommendationRule" ;
+  rdfs:comment "NEW 2026-11: recommend the practice(s) addressing a Base Practice rated Partially_achieved." ;
+  swrla:isRuleEnabled true ;
+  swrl:body (
+      [ a swrl:ClassAtom ; swrl:classPredicate iso:AssessedEntity ; swrl:argument1 var:ae ]
+      [ a swrl:IndividualPropertyAtom ; swrl:propertyPredicate iso:hasAssessmentResult ; swrl:argument1 var:ae ; swrl:argument2 var:ar ]
+      [ a swrl:IndividualPropertyAtom ; swrl:propertyPredicate iso:hasDegreeAchievement ; swrl:argument1 var:ar ; swrl:argument2 iso:Partially_achieved ]
+      [ a swrl:IndividualPropertyAtom ; swrl:propertyPredicate iso:assessesBasePractice ; swrl:argument1 var:ar ; swrl:argument2 var:bp ]
+      [ a swrl:ClassAtom ; swrl:classPredicate iso:RecommendedPractice ; swrl:argument1 var:rp ]
+      [ a swrl:IndividualPropertyAtom ; swrl:propertyPredicate iso:addressesBasePractice ; swrl:argument1 var:rp ; swrl:argument2 var:bp ]
+  ) ;
+  swrl:head (
+      [ a swrl:IndividualPropertyAtom ; swrl:propertyPredicate iso:recommend ; swrl:argument1 var:ae ; swrl:argument2 var:rp ]
+  )
+] .
