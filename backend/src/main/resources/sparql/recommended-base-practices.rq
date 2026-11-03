@@ -1,0 +1,7 @@
+# Base Practices recommended for the assessed entities of one project (?pPj): recommendBasePractice is inferred by Pellet (SWRL).
+PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>
+SELECT ?ae ?bp ?bpID ?description WHERE {
+  ?ae iso:responsibleFor ?pPj .
+  GRAPH <urn:iso29110:graph:inferred> { ?ae iso:recommendBasePractice ?bp }
+  ?bp iso:hasBasePracticeID ?bpID ; iso:hasBasePracticeDescription ?description .
+}

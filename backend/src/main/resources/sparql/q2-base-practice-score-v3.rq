@@ -1,0 +1,15 @@
+PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>
+# v3 (rev06): BP score = mean of WP scores of the pre-assessment, per project
+SELECT ?pj ?pas ?bp (COUNT(?ae) AS ?nWP) (AVG(?wpScore) AS ?bpScore)
+WHERE {
+  ?pas a iso:PreAssessment ; iso:hasBasePractice ?bp ; iso:hasAssessedEntity ?ae .
+  ?ae iso:responsibleFor ?pj .
+  { SELECT ?ae (SUM(?s) / COUNT(?ar) AS ?wpScore)
+    WHERE {
+      ?ae iso:hasAssessmentResult ?ar .
+      OPTIONAL { ?ar iso:hasPercentageAchievement ?pct . ?r a iso:Rating ; iso:hasMinPercentage ?mn ; iso:hasMaxPercentage ?mx ; iso:hasAssignedScore ?sc . FILTER (?pct >= ?mn && ?pct <= ?mx) }
+      BIND (COALESCE(?sc, 0) AS ?s)
+    } GROUP BY ?ae }
+}
+GROUP BY ?pj ?pas ?bp
+ORDER BY ?pj ?bp

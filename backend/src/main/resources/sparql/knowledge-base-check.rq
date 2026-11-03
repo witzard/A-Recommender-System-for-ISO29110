@@ -1,0 +1,5 @@
+# Number of facts in each graph; used by /api/status.
+SELECT ?graph (COUNT(*) AS ?triples) WHERE {
+  { ?s ?p ?o . BIND("default" AS ?graph) } UNION { GRAPH <urn:iso29110:graph:inferred> { ?s ?p ?o } BIND("inferred" AS ?graph) }
+}
+GROUP BY ?graph

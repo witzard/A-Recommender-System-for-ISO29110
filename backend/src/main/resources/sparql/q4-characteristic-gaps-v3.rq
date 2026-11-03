@@ -1,0 +1,12 @@
+PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>
+# v3 (rev06): characteristics rated N or P, per project (same input as the recommendation rules)
+SELECT ?pj ?wp ?wpc ?item ?rating ?pct
+WHERE {
+  ?ae iso:responsibleFor ?pj ; iso:hasEntity ?wp ; iso:hasAssessmentResult ?ar .
+  ?ar iso:hasPercentageAchievement ?pct .
+  ?rating a iso:Rating ; iso:hasMinPercentage ?mn ; iso:hasMaxPercentage ?mx .
+  FILTER (?pct >= ?mn && ?pct <= ?mx)
+  FILTER (?rating IN (iso:Not_achieved, iso:Partially_achieved))
+  OPTIONAL { ?ar iso:hasAssessedCharacteristic ?wpc . ?wpc iso:hasWorkProductCharacteristicList ?item . }
+}
+ORDER BY ?pj ?wp ?wpc

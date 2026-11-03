@@ -1,0 +1,11 @@
+# Profile of one project (?pPj). excludesWorkProduct = work products not in the delivery instructions.
+PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>
+SELECT ?property ?value ?wpID WHERE {
+  { ?pPj ?p ?v . FILTER(?p IN (iso:hasProjectName, iso:hasProjectDescription, iso:hasNumberofStaff, iso:hasTotalDuration,
+                               iso:hasStartingDate, iso:hasEndingDate, iso:hasReason))
+    BIND(STRAFTER(STR(?p), "#") AS ?property) BIND(STR(?v) AS ?value) }
+  UNION
+  { ?pPj iso:excludesWorkProduct ?wp . ?wp iso:hasWorkProductName ?n ; iso:hasWorkProductID ?id .
+    BIND("excludesWorkProduct" AS ?property) BIND(STR(?n) AS ?value) BIND(STR(?id) AS ?wpID) }
+}
+ORDER BY ?property ?wpID

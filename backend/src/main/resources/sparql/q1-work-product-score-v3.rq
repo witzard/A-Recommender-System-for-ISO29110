@@ -1,0 +1,10 @@
+PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>
+# v3 (rev06): as v2, grouped by project (several companies in one ontology). N/A or blank item = 0 (advisor convention)
+SELECT ?pj ?ae ?wp (COUNT(?ar) AS ?nItems) (SUM(?s) / COUNT(?ar) AS ?wpScore)
+WHERE {
+  ?ae a iso:AssessedEntity ; iso:responsibleFor ?pj ; iso:hasEntity ?wp ; iso:hasAssessmentResult ?ar .
+  OPTIONAL { ?ar iso:hasPercentageAchievement ?pct . ?r a iso:Rating ; iso:hasMinPercentage ?mn ; iso:hasMaxPercentage ?mx ; iso:hasAssignedScore ?sc . FILTER (?pct >= ?mn && ?pct <= ?mx) }
+  BIND (COALESCE(?sc, 0) AS ?s)
+}
+GROUP BY ?pj ?ae ?wp
+ORDER BY ?pj ?wp

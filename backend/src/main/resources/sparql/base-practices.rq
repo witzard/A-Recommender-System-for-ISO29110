@@ -1,0 +1,2 @@
+PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>
+SELECT ?bp ?bpID ?description WHERE { ?bp a iso:BasePractice ; iso:hasBasePracticeID ?bpID ; iso:hasBasePracticeDescription ?description . }

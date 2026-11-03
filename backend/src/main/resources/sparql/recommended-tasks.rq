@@ -1,0 +1,13 @@
+# Tasks recommended for the assessed entities of one project (?pPj): recommendTask is inferred by Pellet (SWRL).
+# producesWP / usesWP only describe how the task is linked to the work product in the ontology (for display).
+PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>
+SELECT ?ae ?task ?taskID ?description ?producesWP ?usesWP
+       (GROUP_CONCAT(DISTINCT ?roleAbbr; separator=", ") AS ?roles) WHERE {
+  ?ae iso:responsibleFor ?pPj ; iso:hasEntity ?wp .
+  GRAPH <urn:iso29110:graph:inferred> { ?ae iso:recommendTask ?task }
+  ?task iso:hasTaskID ?taskID ; iso:hasTaskDescription ?description .
+  BIND(EXISTS { ?task iso:hasOutputWorkProduct ?o . ?o iso:representsWorkProduct ?wp } AS ?producesWP)
+  BIND(EXISTS { ?task iso:hasInputWorkProduct ?i . ?i iso:representsWorkProduct ?wp } AS ?usesWP)
+  OPTIONAL { ?task iso:hasRole ?r . ?r iso:hasRoleAbbreviation ?roleAbbr . }
+}
+GROUP BY ?ae ?task ?taskID ?description ?producesWP ?usesWP

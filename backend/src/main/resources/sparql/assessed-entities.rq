@@ -1,0 +1,10 @@
+# Assessed entities of one project (?pPj) with their work product and the ratings inferred by the reasoner.
+PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>
+SELECT ?ae ?wp ?wpID ?wpName ?rating (COUNT(DISTINCT ?ar) AS ?nItems) WHERE {
+  ?ae iso:responsibleFor ?pPj ; iso:hasEntity ?wp ; iso:hasAssessmentResult ?ar .
+  ?wp iso:hasWorkProductID ?wpID ; iso:hasWorkProductName ?wpName .
+  OPTIONAL { GRAPH <urn:iso29110:graph:inferred> { ?ar iso:hasDegreeAchievement ?r } }
+  BIND(COALESCE(STRAFTER(STR(?r), "#"), "Not_rated") AS ?rating)
+}
+GROUP BY ?ae ?wp ?wpID ?wpName ?rating
+ORDER BY ?wpID ?rating

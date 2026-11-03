@@ -1,0 +1,10 @@
+# Values of the knowledge-search drop-downs, read from the ontology.
+PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>
+SELECT DISTINCT ?kind ?value ?sortKey WHERE {
+  { ?x iso:hasRoleName ?v . BIND("role" AS ?kind) BIND(STR(?v) AS ?sortKey) }
+  UNION { ?x iso:hasActivityName ?v ; iso:hasActivityID ?id . BIND("activity" AS ?kind) BIND(STR(?id) AS ?sortKey) }
+  UNION { ?x iso:hasWorkProductName ?v ; iso:hasWorkProductID ?id . BIND("workProduct" AS ?kind) BIND(STR(?id) AS ?sortKey) }
+  UNION { ?x iso:hasWorkProductStateName ?v . BIND("state" AS ?kind) BIND(STR(?v) AS ?sortKey) }
+  BIND(STR(?v) AS ?value)
+}
+ORDER BY ?kind ?sortKey

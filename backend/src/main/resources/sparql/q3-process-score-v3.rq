@@ -1,0 +1,19 @@
+PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>
+# v3 (rev06): process score = mean of BP scores, per project
+SELECT ?pj ?proc (COUNT(?bp) AS ?nBP) (SUM(?bpScore) AS ?sumBP) (AVG(?bpScore) AS ?processScore)
+WHERE {
+  { SELECT ?pj ?pas ?bp (AVG(?wpScore) AS ?bpScore)
+    WHERE {
+      ?pas a iso:PreAssessment ; iso:hasBasePractice ?bp ; iso:hasAssessedEntity ?ae .
+      ?ae iso:responsibleFor ?pj .
+      { SELECT ?ae (SUM(?s) / COUNT(?ar) AS ?wpScore)
+        WHERE {
+          ?ae iso:hasAssessmentResult ?ar .
+          OPTIONAL { ?ar iso:hasPercentageAchievement ?pct . ?r a iso:Rating ; iso:hasMinPercentage ?mn ; iso:hasMaxPercentage ?mx ; iso:hasAssignedScore ?sc . FILTER (?pct >= ?mn && ?pct <= ?mx) }
+          BIND (COALESCE(?sc, 0) AS ?s)
+        } GROUP BY ?ae }
+    } GROUP BY ?pj ?pas ?bp }
+  ?pas iso:hasProcess ?proc .
+}
+GROUP BY ?pj ?proc
+ORDER BY ?pj ?proc

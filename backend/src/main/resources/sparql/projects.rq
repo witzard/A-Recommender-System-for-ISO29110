@@ -1,0 +1,11 @@
+# Projects that have assessed entities, with their enterprise. rdfs:comment carries the "MOCK DATA" flag.
+PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT ?pj ?projectName ?ent ?enterpriseName ?projectComment ?enterpriseComment WHERE {
+  ?ent a iso:Enterprise ; iso:hasEnterpriseName ?enterpriseName ; iso:hasProject ?pj .
+  ?pj iso:hasProjectName ?projectName .
+  FILTER EXISTS { ?ae iso:responsibleFor ?pj ; iso:hasAssessmentResult ?ar . }
+  OPTIONAL { ?pj rdfs:comment ?projectComment . }
+  OPTIONAL { ?ent rdfs:comment ?enterpriseComment . }
+}
+ORDER BY ?pj

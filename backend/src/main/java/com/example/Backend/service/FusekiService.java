@@ -16,8 +16,8 @@ import java.util.Map;
 
 /**
  * Executes SELECT queries against the Fuseki dataset.
- * Fuseki does NOT run SWRL: inferred knowledge is produced offline by the Pellet pipeline
- * (scripts/build_knowledge_base.py) and loaded into the named graph urn:iso29110:graph:inferred-swrl.
+ * Fuseki does NOT run SWRL: inferred facts are produced by Pellet (scripts/reason.cmd)
+ * and loaded into the named graph urn:iso29110:graph:inferred (scripts/load-fuseki.cmd).
  */
 @Service
 public class FusekiService {
