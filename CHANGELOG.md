@@ -27,3 +27,23 @@
   into the named graph `urn:iso29110:graph:inferred`.
 - Check run on 2026-11-04: consistent, 12 rules, 88 inferred types and 989 inferred object
   property values in about 15 s.
+
+### Backend
+- Knowledge search: `QueryTemplates` (T1, T2, T3) follows `08_Revisions/_tools/templates.py`. Values chosen from a
+  drop-down are compared with `=` (exact names from the ontology); keywords stay case-insensitive regular expressions.
+  Each template is wrapped in an outer query that only adds display columns.
+- Scores: `q1`-`q4` `*-v3.rq` are unchanged copies of `08_Revisions/2026-11-03_Round5_SWRL/queries/Q1-Q4_*_v3.rq`.
+- Recommendations: `recommended-tasks.rq`, `recommended-roles.rq`, `recommended-base-practices.rq` read only the named graph
+  of Pellet output. The extra columns (whether a task produces or uses the work product, which recommended tasks a role
+  performs) are for display.
+- Endpoints: see README. Removed: `/api/companies`, `/api/search` (old form), `/api/search/task`, `/api/tasks`.
+
+### Frontend
+- Two modes: knowledge search and assessment results with recommendations. Plain tables, no component library.
+- `src/examples.json`: the 34 competency questions (English text from `07_PastWork/Question_query.xlsx`, sheet "table 2")
+  with the parameters of `08_Revisions/2026-11-04_Round6_QueryTemplates/cq_parameters.json`.
+- `package.json` still lists `@mui/*`, `@emotion/*` and `axios`, which are no longer imported; they can be removed with
+  `npm uninstall @mui/material @mui/icons-material @emotion/react @emotion/styled axios` on a machine with internet access.
+
+### Tests
+- `tests/run_checks.py` + `tests/expected.json` (see README).
