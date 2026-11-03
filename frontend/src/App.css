@@ -49,3 +49,18 @@ details pre { border: 1px solid #cccccc; background: #f7f7f7; padding: 8px; over
   .form .hint, .actions { grid-column: 1; }
   .table-wrap { overflow-x: auto; }
 }
+
+.with-side { display: flex; gap: 20px; align-items: flex-start; padding-top: 12px; }
+.side { width: 220px; flex: none; border: 1px solid #bbbbbb; }
+.side h2 { margin: 0; padding: 6px 8px; font-size: 14px; background: #eeeeee; border-bottom: 1px solid #bbbbbb; }
+.side ul { list-style: none; margin: 0; padding: 0; }
+.side li { border-bottom: 1px solid #dddddd; }
+.side li:last-child { border-bottom: none; }
+.side button { display: block; width: 100%; text-align: left; border: none; background: #ffffff; padding: 6px 8px; cursor: pointer; }
+.side button[aria-current='true'] { background: #e4e4e4; font-weight: bold; }
+.side button .note { font-weight: normal; font-size: 12px; }
+.main { flex: 1; min-width: 0; padding-top: 0; }
+@media (max-width: 720px) {
+  .with-side { flex-direction: column; }
+  .side { width: 100%; }
+}

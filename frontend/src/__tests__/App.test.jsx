@@ -29,7 +29,7 @@ describe('knowledge search', () => {
     expect(within(screen.getByLabelText('Work product (input or output)')).getAllByRole('option')).toHaveLength(1 + 23);
   });
 
-  it('sends T1 parameters and shows the rows and the SPARQL query', async () => {
+  it('sends T1 parameters and shows the rows', async () => {
     render(<App />);
     fireEvent.change(await screen.findByLabelText('Role'), { target: { value: 'Technical leader' } });
     fireEvent.change(screen.getByLabelText('Task contains all of'), { target: { value: 'project plan' } });
@@ -37,7 +37,7 @@ describe('knowledge search', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Search' }));
     await screen.findByText(`${fixtures.searchT1.rows.length} rows.`);
     expect(calls[0]).toEqual(['T1', { role: 'Technical leader', activity: '', workProduct: '', kwAll: ['project plan'], kwAny: ['verify', 'review'] }]);
-    expect(screen.getByText('SPARQL query')).toBeTruthy();
+    expect(screen.queryByText('SPARQL query')).toBeNull();
     expect(screen.getByText(fixtures.searchT1.rows[0].taskID)).toBeTruthy();
   });
 
@@ -50,30 +50,35 @@ describe('knowledge search', () => {
   });
 });
 
+const processScores = () => {
+  const table = screen.getByRole('columnheader', { name: 'Base Practices' }).closest('table');
+  return within(table).getAllByRole('row').slice(1).map((r) => within(r).getAllByRole('cell').map((c) => c.textContent));
+};
+
 describe('assessment results and recommendations', () => {
   const open = async () => {
     render(<App />);
     fireEvent.click(screen.getByRole('tab', { name: 'Assessment results and recommendations' }));
-    return screen.findByLabelText('Enterprise / project');
+    return screen.findByRole('complementary', { name: 'Companies' });
   };
 
-  it('lists the three projects and loads the first one', async () => {
-    const select = await open();
-    expect(within(select).getAllByRole('option')).toHaveLength(3);
+  it('lists the three companies in the side bar and loads the first project', async () => {
+    const side = await open();
+    expect(within(side).getAllByRole('button')).toHaveLength(3);
     await screen.findByText('Recommendations (1 work product)');
     expect(calls).toContainEqual(['assessment', 'PJ.01']);
-    expect(screen.getByText('0.4040')).toBeTruthy();
-    expect(screen.getByText('0.0152')).toBeTruthy();
+    expect(within(screen.getByLabelText('Project')).getAllByRole('option')).toHaveLength(1);
+    expect(processScores()).toEqual([['PM', '27', '0.40'], ['SI', '23', '0.02']]);
   });
 
-  it('marks mock data and shows the excluded work products', async () => {
-    const select = await open();
+  it('marks mock data and shows the work products not delivered', async () => {
+    const side = await open();
     await screen.findByText('Recommendations (1 work product)');
-    fireEvent.change(select, { target: { value: 'PJ.02' } });
+    fireEvent.click(within(side).getByText('Mock Company B (start-up, mock data)'));
     await screen.findByText('Recommendations (12 work products)');
     expect(screen.getByText(/It is not data of a real company/)).toBeTruthy();
     expect(screen.getByText('WP.08 Product Operation Guide; WP.18 Software User Documentation')).toBeTruthy();
-    expect(screen.getByText('0.5596')).toBeTruthy();
+    expect(processScores()).toEqual([['PM', '27', '0.56'], ['SI', '23', '0.52']]);
   });
 
   it('shows for WP.02 of PJ.01 the 7 tasks inferred by the reasoner and the reason', async () => {

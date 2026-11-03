@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { api } from './api';
-import { RATING_ORDER, ratingLabel } from './ratings';
+import { ratingLabel } from './ratings';
 import examples from './examples.json';
 import './App.css';
 
@@ -17,7 +17,7 @@ const EMPTY_FORMS = {
 
 const local = (iri) => (iri ? iri.slice(iri.lastIndexOf('#') + 1) : '');
 const phrases = (text) => text.split(',').map((s) => s.trim()).filter(Boolean);
-const score = (v) => (v === undefined || v === null || v === '' ? '' : Number(v).toFixed(4));
+const score = (v) => (v === undefined || v === null || v === '' ? '' : Number(v).toFixed(2));
 
 /* ------------------------------------------------------------------ knowledge search */
 
@@ -155,8 +155,7 @@ function KnowledgeSearch() {
   return (
     <div className="panel">
       <p className="note">
-        Choose values and phrases; the page builds a SPARQL query from the selected template and runs it on the ontology.
-        The values in each list are read from the ontology.
+        Choose a search type, then select values and enter phrases. The values in each list come from the ISO/IEC 29110 knowledge base.
       </p>
       <div className="tabs" role="tablist" aria-label="Query templates">
         {TEMPLATES.map(([id, label]) => (
@@ -176,12 +175,12 @@ function KnowledgeSearch() {
       )}
 
       <details>
-        <summary>Example questions (the 34 competency questions used to evaluate the ontology)</summary>
-        <p className="note">Selecting a question fills in the template parameters used for it in the evaluation and runs the search.</p>
+        <summary>Example questions</summary>
+        <p className="note">Selecting a question fills in the search fields and runs the search.</p>
         <ul className="examples">
           {examples.map((x) => (
             <li key={x.id}><button type="button" onClick={() => applyExample(x)}>
-              <span className="qid">{x.id}</span>{x.question} <span className="note">({x.template})</span>
+              <span className="qid">{x.id}</span>{x.question}
             </button></li>
           ))}
         </ul>
@@ -194,10 +193,6 @@ function KnowledgeSearch() {
           {result.label && <p>{result.label}</p>}
           <p>{result.rows.length} row{result.rows.length === 1 ? '' : 's'}.</p>
           {result.rows.length > 0 && <div className="table-wrap"><ResultTable template={result.template} rows={result.rows} /></div>}
-          <details>
-            <summary>SPARQL query</summary>
-            <pre>{result.sparql}</pre>
-          </details>
         </div>
       )}
     </div>
@@ -216,7 +211,7 @@ function Profile({ project }) {
     ['Start date', project.hasStartingDate],
     ['End date', project.hasEndingDate],
     ['Reason', project.hasReason],
-    ['Work products not delivered (excludesWorkProduct)',
+    ['Work products not delivered',
       project.excludedWorkProducts.length ? project.excludedWorkProducts.map((w) => `${w.wpID} ${w.wpName}`).join('; ') : 'None'],
   ];
   return (
@@ -226,9 +221,10 @@ function Profile({ project }) {
   );
 }
 
-function ratingSummary(ratings) {
-  return RATING_ORDER.filter((k) => ratings[k]).map((k) => `${ratingLabel(k)} ${ratings[k]}`).join('; ');
-}
+const RATING_COLUMNS = [
+  ['Not_achieved', 'N'], ['Partially_achieved', 'P'], ['Largely_achieved', 'L'], ['Completely_achieved', 'F'],
+  ['Not_applicable', 'N/A'], ['Not_rated', 'No %'],
+];
 
 function Scores({ data }) {
   return (
@@ -240,11 +236,20 @@ function Scores({ data }) {
           <tr key={p.process}><td>{p.process}</td><td className="num">{p.nBP}</td><td className="num">{score(p.score)}</td></tr>))}</tbody>
       </table>
       <h3>Work products</h3>
+      <p className="note">
+        N = Not achieved (0-15%), P = Partially achieved (16-50%), L = Largely achieved (51-90%), F = Completely achieved (91-100%),
+        N/A = Not applicable (work product not delivered in this project), No % = no percentage recorded (counted as 0).
+      </p>
       <div className="table-wrap">
         <table>
-          <thead><tr><th>WP ID</th><th>Work product</th><th>Characteristics by rating</th><th className="num">Score</th></tr></thead>
+          <thead>
+            <tr><th rowSpan={2}>WP ID</th><th rowSpan={2}>Work product</th><th colSpan={RATING_COLUMNS.length}>Number of characteristics by rating</th>
+              <th rowSpan={2} className="num">Score</th></tr>
+            <tr>{RATING_COLUMNS.map(([k, label]) => <th key={k} className="num" title={ratingLabel(k)}>{label}</th>)}</tr>
+          </thead>
           <tbody>{data.workProducts.map((w) => (
-            <tr key={w.wpID}><td className="id">{w.wpID}</td><td>{w.wpName}</td><td>{ratingSummary(w.ratings)}</td>
+            <tr key={w.wpID}><td className="id">{w.wpID}</td><td>{w.wpName}</td>
+              {RATING_COLUMNS.map(([k]) => <td key={k} className="num">{w.ratings[k] || ''}</td>)}
               <td className="num">{score(w.score)}</td></tr>))}</tbody>
         </table>
       </div>
@@ -309,6 +314,7 @@ function Recommendation({ rec }) {
 
 function Assessment() {
   const [projects, setProjects] = useState([]);
+  const [enterprise, setEnterprise] = useState('');
   const [selected, setSelected] = useState('');
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -321,48 +327,73 @@ function Assessment() {
     api.assessment(id).then(setData).catch((e) => setError(e.message)).finally(() => setLoading(false));
   }, []);
 
+  const chooseEnterprise = useCallback((list, ent) => {
+    setEnterprise(ent);
+    const first = list.find((p) => p.enterprise === ent);
+    load(first ? first.id : '');
+  }, [load]);
+
   useEffect(() => {
     api.projects().then((list) => {
       setProjects(list);
-      if (list[0]) load(list[0].id);
+      if (list[0]) chooseEnterprise(list, list[0].enterprise);
     }).catch((e) => setError(e.message));
-  }, [load]);
+  }, [chooseEnterprise]);
+
+  const enterprises = [];
+  for (const p of projects) {
+    if (!enterprises.some((e) => e.id === p.enterprise)) enterprises.push({ id: p.enterprise, name: p.enterpriseName, mock: p.mock });
+  }
+  const own = projects.filter((p) => p.enterprise === enterprise);
 
   return (
-    <div className="panel">
-      <form className="form" onSubmit={(e) => e.preventDefault()}>
-        <label htmlFor="project">Enterprise / project</label>
-        <select id="project" value={selected} onChange={(e) => load(e.target.value)}>
-          {projects.map((p) => (
-            <option key={p.id} value={p.id}>{p.enterprise} {p.enterpriseName} / {p.id} {p.projectName}{p.mock ? ' [MOCK DATA]' : ''}</option>
+    <div className="with-side">
+      <aside className="side" aria-label="Companies">
+        <h2>Companies</h2>
+        <ul>
+          {enterprises.map((e) => (
+            <li key={e.id}>
+              <button type="button" aria-current={e.id === enterprise} onClick={() => chooseEnterprise(projects, e.id)}>
+                {e.name}<br /><span className="note">{e.id}{e.mock ? ' - mock data' : ''}</span>
+              </button>
+            </li>
           ))}
-        </select>
-      </form>
-      {error && <p className="error" role="alert">{error}</p>}
-      {loading && <p>Loading...</p>}
-      {data && !loading && (
-        <>
-          {data.project.mock && <p className="mock">Mock data created to demonstrate the recommender. It is not data of a real company.</p>}
-          <h2>Profile</h2>
-          <Profile project={data.project} />
-          <h2>Scores</h2>
-          <p className="note">
-            Computed with the SPARQL queries Q1-Q3 v3 from the recorded percentages (score of each rating: N 0, P 0.3, L 0.7, F 1;
-            an item without a percentage counts as 0). Work product score = mean of its characteristics; Base Practice score = mean of
-            its work products; process score = mean of its Base Practices.
-          </p>
-          <Scores data={data} />
-          <h2>Characteristics not achieved ({data.gaps.length})</h2>
-          <Gaps gaps={data.gaps} />
-          <h2>Recommendations ({data.recommendations.length} work product{data.recommendations.length === 1 ? '' : 's'})</h2>
-          <p className="note">
-            Tasks, roles and Base Practices below are the facts recommendTask, recommendRole and recommendBasePractice inferred by the
-            Pellet reasoner from the SWRL rules of the ontology. The page only displays them.
-          </p>
-          {data.recommendations.length === 0 && <p>The reasoner inferred no recommendation for this project.</p>}
-          {data.recommendations.map((r) => <Recommendation key={r.wpID} rec={r} />)}
-        </>
-      )}
+        </ul>
+      </aside>
+      <div className="panel main">
+        {own.length > 0 && (
+          <form className="form" onSubmit={(e) => e.preventDefault()}>
+            <label htmlFor="project">Project</label>
+            <select id="project" value={selected} onChange={(e) => load(e.target.value)}>
+              {own.map((p) => <option key={p.id} value={p.id}>{p.id} {p.projectName}</option>)}
+            </select>
+          </form>
+        )}
+        {error && <p className="error" role="alert">{error}</p>}
+        {loading && <p>Loading...</p>}
+        {data && !loading && (
+          <>
+            {data.project.mock && <p className="mock">Mock data created to demonstrate the recommender. It is not data of a real company.</p>}
+            <h2>Profile</h2>
+            <Profile project={data.project} />
+            <h2>Scores</h2>
+            <p className="note">
+              Computed from the recorded percentages (score of each rating: N 0, P 0.3, L 0.7, F 1; an item without a percentage
+              counts as 0). Work product score = mean of its characteristics; Base Practice score = mean of its work products;
+              process score = mean of its Base Practices.
+            </p>
+            <Scores data={data} />
+            <h2>Characteristics not achieved ({data.gaps.length})</h2>
+            <Gaps gaps={data.gaps} />
+            <h2>Recommendations ({data.recommendations.length} work product{data.recommendations.length === 1 ? '' : 's'})</h2>
+            <p className="note">
+              The tasks, roles and Base Practices below are inferred by the reasoner from the rules of the ISO/IEC 29110 knowledge base.
+            </p>
+            {data.recommendations.length === 0 && <p>No recommendation was inferred for this project.</p>}
+            {data.recommendations.map((r) => <Recommendation key={r.wpID} rec={r} />)}
+          </>
+        )}
+      </div>
     </div>
   );
 }
