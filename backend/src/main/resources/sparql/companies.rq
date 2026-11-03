@@ -1,9 +1,0 @@
-# Companies shown in the sidebar = enterprises with a project that has been pre-assessed.
-PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-SELECT DISTINCT ?enterprise ?name ?profile WHERE {
-  ?enterprise a iso:Enterprise ; iso:hasEnterpriseName ?name ; iso:hasProject ?project .
-  ?ae iso:responsibleFor ?project . ?pas iso:hasAssessedEntity ?ae .
-  OPTIONAL { ?enterprise rdfs:comment ?profile }
-}
-ORDER BY ?name

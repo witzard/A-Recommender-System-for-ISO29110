@@ -1,6 +1,6 @@
 .vscode/
 .idea/
 .DS_Store
-Thumbs.dbreasoner/build/
-kb/build/ablation/
-kb/build/report-*.json
+Thumbs.db
+.venv/
+__pycache__/

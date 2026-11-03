@@ -1,6 +1,0 @@
-PREFIX app: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2-app#>
-SELECT ?run ?runAt ?reasoner ?consistent ?swrlInferredCount (GROUP_CONCAT(DISTINCT ?rule; separator="|") AS ?enabledRules) WHERE {
-  GRAPH <urn:iso29110:graph:explanation> {
-    ?run a app:ReasoningRun ; app:runAt ?runAt ; app:reasoner ?reasoner ; app:consistent ?consistent ;
-         app:swrlInferredCount ?swrlInferredCount . OPTIONAL { ?run app:enabledRule ?rule } } }
-GROUP BY ?run ?runAt ?reasoner ?consistent ?swrlInferredCount ORDER BY DESC(?runAt) LIMIT 1
