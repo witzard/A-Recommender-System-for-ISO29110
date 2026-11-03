@@ -1,278 +1,400 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
-import {
-  Accordion, AccordionDetails, AccordionSummary, Alert, Button, CircularProgress,
-  FormControl, InputLabel, List, ListItemButton, ListItemText, MenuItem, Select, TextField, Tooltip, Typography,
-} from '@mui/material';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { api, describeError } from './api';
-import { RATINGS, ratingInfo } from './ratings';
+import { useCallback, useEffect, useState } from 'react';
+import { api } from './api';
+import { RATING_ORDER, ratingLabel } from './ratings';
+import examples from './examples.json';
 import './App.css';
 
-/* ------------------------------------------------------------------ small pieces */
+const TEMPLATES = [
+  ['T1', 'T1 Task finder'],
+  ['T2', 'T2 Work product status'],
+  ['T3', 'T3 Work product criteria'],
+];
+const EMPTY_FORMS = {
+  T1: { role: '', activity: '', workProduct: '', kwAll: '', kwAny: '' },
+  T2: { workProduct: '', state: '', kwProducer: '' },
+  T3: { workProduct: '' },
+};
 
-function RatingChip({ rating }) {
-  const r = ratingInfo(rating);
-  return <span className="rating-chip" style={{ color: r.color, background: r.tint }}>{r.label}</span>;
-}
+const local = (iri) => (iri ? iri.slice(iri.lastIndexOf('#') + 1) : '');
+const phrases = (text) => text.split(',').map((s) => s.trim()).filter(Boolean);
+const score = (v) => (v === undefined || v === null || v === '' ? '' : Number(v).toFixed(4));
 
-/** The 0–100 scale with the four rating bands and the company's score. */
-function ScoreStrip({ percentage, rating }) {
-  const bands = ['Not_achieved', 'Partially_achieved', 'Largely_achieved', 'Completely_achieved'];
-  const value = percentage === undefined || percentage === null ? null : Number(percentage);
-  return (
-    <div className="strip" aria-label={value === null ? 'No percentage recorded' : `${value} percent`}>
-      {bands.map((b) => {
-        const r = RATINGS[b];
-        const width = r.max - r.min + (b === 'Not_achieved' ? 1 : 0);
-        return <span key={b} className={`band ${b === rating ? 'band-on' : ''}`} style={{ flexGrow: width, '--c': r.color, '--t': r.tint }} />;
-      })}
-      {value !== null && <span className="marker" style={{ left: `${value}%`, '--c': ratingInfo(rating).color }} />}
-    </div>
-  );
-}
+/* ------------------------------------------------------------------ knowledge search */
 
-function Section({ id, title, intro, children, aside }) {
-  return (
-    <section className="section" id={id} aria-labelledby={`${id}-title`}>
-      <div className="section-head">
-        <div>
-          <h2 id={`${id}-title`}>{title}</h2>
-          {intro && <p className="intro">{intro}</p>}
-        </div>
-        {aside}
-      </div>
-      {children}
-    </section>
-  );
-}
-
-/* ------------------------------------------------------------------ company assessment */
-
-function CompanyPanel({ data }) {
-  const { company, project, assessment, ratingCounts, results } = data;
+function Select({ id, label, value, values, onChange, anyLabel = 'Any' }) {
   return (
     <>
-      <header className="company-head">
-        <h1>{company.name}</h1>
-        <p className="profile">{company.profile}</p>
-        <dl className="facts">
-          <div><dt>Project</dt><dd>{project.projectName}</dd></div>
-          <div><dt>Period</dt><dd>{project.start} to {project.end}</dd></div>
-          <div><dt>Team size</dt><dd>{project.staff}</dd></div>
-          <div><dt>Assessed on</dt><dd>{assessment.assessmentDate}</dd></div>
-          <div><dt>Assessor</dt><dd>{assessment.consultantName}</dd></div>
-        </dl>
-        {project.projectDescription && <p className="project-desc">{project.projectDescription}</p>}
-      </header>
-
-      <Section id="results" title="Assessment results"
-        intro="Each Base Practice was scored as a percentage. The rating was not entered by hand: the SWRL rating rules assigned it when the reasoner ran."
-        aside={<div className="counts">{Object.entries(ratingCounts).map(([k, n]) => (
-          <span key={k} className="count" style={{ color: ratingInfo(k).color }}><b>{n}</b> {ratingInfo(k).label}</span>))}</div>}>
-        <div className="results" role="table" aria-label="Assessment results">
-          <div className="row row-head" role="row">
-            <span role="columnheader">Base Practice</span><span role="columnheader">Score</span>
-            <span role="columnheader">Rating</span><span role="columnheader">Evidence</span>
-          </div>
-          {results.map((r) => (
-            <div className="row" role="row" key={r.result}>
-              <span role="cell" className="bp"><b>{r.bpID}</b><small>{r.bpDescription}</small></span>
-              <span role="cell" className="score">
-                <span className="pct">{r.percentage ?? '—'}{r.percentage !== undefined && '%'}</span>
-                <ScoreStrip percentage={r.percentage} rating={r.rating} />
-              </span>
-              <span role="cell">
-                <RatingChip rating={r.rating} />
-                <small className="source">
-                  {r.ratingSource === 'inferred' ? `Inferred by ${r.ratingRule}` : r.ratingSource === 'asserted' ? 'Entered as data' : 'No score, so no rule could fire'}
-                </small>
-              </span>
-              <span role="cell" className="evidence">{r.evidence}{r.evidenceWp && <small>About: {r.evidenceWp}</small>}</span>
-            </div>
-          ))}
-        </div>
-      </Section>
+      <label htmlFor={id}>{label}</label>
+      <select id={id} value={value} onChange={(e) => onChange(e.target.value)}>
+        <option value="">{anyLabel}</option>
+        {values.map((v) => <option key={v} value={v}>{v}</option>)}
+      </select>
     </>
   );
 }
 
-function Recommendations({ data, status }) {
-  const recs = data.recommendations;
+function Text({ id, label, value, onChange, hint }) {
   return (
-    <Section id="recommendations" title={`QA practice recommendations (${recs.length})`}
-      intro="A recommendation appears only when the reasoner inferred recommend(assessed entity, practice). Open one to see how it was derived.">
-      {recs.length === 0 && (
-        <Alert severity="success" variant="outlined">
-          The reasoner inferred no recommendation for {data.company.name}: no assessed Base Practice is rated Not achieved or Partially achieved.
-        </Alert>
-      )}
-      {recs.map((r) => (
-        <Accordion key={r.practice} disableGutters elevation={0} className="rec">
-          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-            <span className="rec-sum">
-              <RatingChip rating={r.rating} />
-              <span className="rec-title">{r.practiceName}</span>
-            </span>
-          </AccordionSummary>
-          <AccordionDetails>
-            <ol className="chain">
-              <li><b>Assessment finding.</b> {r.bpID} scored {r.percentage}% for this project.
-                {r.evidence && <> Evidence: “{r.evidence}”</>}</li>
-              <li><b>Rule {r.ratingRule}</b> fired because the score falls in the {ratingInfo(r.rating).label} band
-                ({ratingInfo(r.rating).min}–{ratingInfo(r.rating).max}%). Inferred: <code>{r.bpID} result → {r.rating}</code>.</li>
-              <li><b>Rule {r.recommendationRule}</b> fired because the assessed entity has this result, the result assesses {r.bpID},
-                and this practice addresses {r.bpID}. Inferred: <code>recommend(assessed entity, practice)</code>.</li>
-              <li><b>What to improve.</b> {r.practiceDescription}</li>
-            </ol>
-            <p className="proof">
-              Rules this recommendation depends on (each was switched off in a separate reasoner run and the recommendation disappeared):{' '}
-              {r.necessaryRules.join(', ')}. Reasoner: {r.reasoner}, run {new Date(r.runAt).toLocaleString()}.
-            </p>
-          </AccordionDetails>
-        </Accordion>
-      ))}
-      {status?.runAt && <p className="run-note">Knowledge base reasoned by {status.reasoner}; {status.swrlInferredCount} facts were inferred by SWRL rules.</p>}
-    </Section>
+    <>
+      <label htmlFor={id}>{label}</label>
+      <input id={id} type="text" value={value} maxLength={300} onChange={(e) => onChange(e.target.value)} />
+      {hint && <span className="hint">{hint}</span>}
+    </>
   );
 }
 
-/* ------------------------------------------------------------------ knowledge search */
+function SearchForm({ template, form, options, set }) {
+  if (template === 'T1') {
+    return (
+      <>
+        <Select id="t1-role" label="Role" value={form.role} values={options.role} onChange={(v) => set('role', v)} />
+        <Select id="t1-activity" label="Activity" value={form.activity} values={options.activity} onChange={(v) => set('activity', v)} />
+        <Select id="t1-wp" label="Work product (input or output)" value={form.workProduct} values={options.workProduct} onChange={(v) => set('workProduct', v)} />
+        <Text id="t1-all" label="Task contains all of" value={form.kwAll} onChange={(v) => set('kwAll', v)} hint="Phrases separated by commas, e.g. project plan, verify" />
+        <Text id="t1-any" label="Task contains any of" value={form.kwAny} onChange={(v) => set('kwAny', v)} hint="Phrases separated by commas" />
+      </>
+    );
+  }
+  if (template === 'T2') {
+    return (
+      <>
+        <Select id="t2-wp" label="Work product" value={form.workProduct} values={options.workProduct} onChange={(v) => set('workProduct', v)} anyLabel="Select" />
+        <Select id="t2-state" label="Final state" value={form.state} values={options.state} onChange={(v) => set('state', v)} anyLabel="Select" />
+        <Text id="t2-kw" label="Producer contains" value={form.kwProducer} onChange={(v) => set('kwProducer', v)} hint="Optional phrase in the task or Base Practice description, e.g. verify" />
+      </>
+    );
+  }
+  return <Select id="t3-wp" label="Work product" value={form.workProduct} values={options.workProduct} onChange={(v) => set('workProduct', v)} anyLabel="All work products" />;
+}
 
-const FIELDS = [
-  ['process', 'Process'], ['activity', 'Activity'], ['role', 'Role'], ['workProduct', 'Work product'], ['state', 'Work product ends as'],
-];
+function requestFor(template, form) {
+  if (template === 'T1') return { role: form.role, activity: form.activity, workProduct: form.workProduct, kwAll: phrases(form.kwAll), kwAny: phrases(form.kwAny) };
+  if (template === 'T2') return { workProduct: form.workProduct, state: form.state, kwProducer: form.kwProducer.trim() };
+  return { workProduct: form.workProduct };
+}
 
-function TaskResult({ task }) {
-  const [details, setDetails] = useState(null);
-  const [error, setError] = useState('');
-  const load = (_, expanded) => {
-    if (expanded && !details) api.taskDetails(task.task).then(setDetails).catch((e) => setError(describeError(e)));
-  };
-  const wpList = (items) => [...new Map(items.map((w) => [w.genericWp || w.wpName, w])).values()];
+function canRun(template, form) {
+  if (template === 'T1') return Boolean(form.role || form.activity || form.workProduct || phrases(form.kwAll).length || phrases(form.kwAny).length);
+  if (template === 'T2') return Boolean(form.workProduct && form.state);
+  return true;
+}
+
+function formFromExample(example) {
+  const p = example.params;
+  if (example.template === 'T1') {
+    return { ...EMPTY_FORMS.T1, role: p.role || '', activity: p.activity || '', workProduct: p.workProduct || '',
+      kwAll: (p.kwAll || []).join(', '), kwAny: (p.kwAny || []).join(', ') };
+  }
+  if (example.template === 'T2') return { workProduct: p.workProduct || '', state: p.state || '', kwProducer: p.kwProducer || '' };
+  return { workProduct: p.workProduct || '' };
+}
+
+function ResultTable({ template, rows }) {
+  if (template === 'T1') {
+    return (
+      <table>
+        <thead><tr><th>Task ID</th><th>Task</th><th>Activity</th><th>Roles</th><th>Output work products</th></tr></thead>
+        <tbody>{rows.map((r) => (
+          <tr key={r.task}><td className="id">{r.taskID}</td><td><span className="multiline">{r.taskDesc}</span></td>
+            <td>{r.activityName}</td><td>{r.roles}</td><td>{r.outputs}</td></tr>))}</tbody>
+      </table>
+    );
+  }
+  if (template === 'T2') {
+    return (
+      <table>
+        <thead><tr><th>Task / BP</th><th>Description</th><th>Roles</th><th>Work product</th><th>Final state</th></tr></thead>
+        <tbody>{rows.map((r) => (
+          <tr key={r.producer + r.wpName + r.stateName}><td className="id">{r.producerID}</td><td><span className="multiline">{r.producerDesc}</span></td>
+            <td>{r.roles}</td><td>{r.wpName}</td><td>{r.stateName}</td></tr>))}</tbody>
+      </table>
+    );
+  }
   return (
-    <Accordion disableGutters elevation={0} className="task" onChange={load}>
-      <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-        <span className="task-sum">
-          <b>{task.taskID}</b>
-          <span>{task.taskDescription.split(':')[0]}</span>
-          <small>{task.activityID} {task.activityName}</small>
-          <small>Roles: {task.roles || 'none recorded'}</small>
-        </span>
-      </AccordionSummary>
-      <AccordionDetails>
-        <p className="task-full">{task.taskDescription}</p>
-        {error && <Alert severity="error">{error}</Alert>}
-        {!details && !error && <CircularProgress size={18} />}
-        {details && (
-          <div className="task-grid">
-            <div><h4>Uses</h4><ul>{wpList(details.inputs).map((w) => <li key={w.wpName}>{w.genericWp || w.wpName}</li>)}</ul></div>
-            <div><h4>Produces</h4><ul>{wpList(details.outputs).map((w) => (
-              <li key={w.wpName}>{w.genericWp || w.wpName}{w.stateName && <small> (ends {w.stateName.toLowerCase()})</small>}</li>))}</ul></div>
-            <div><h4>Related Base Practices</h4><ul>{details.relatedBasePractices.map((b) => (
-              <li key={b.bpID}><Tooltip title={b.bpDescription}><span>{b.bpID.trim()}</span></Tooltip></li>))}</ul></div>
-          </div>
-        )}
-      </AccordionDetails>
-    </Accordion>
+    <table>
+      <thead><tr><th>WP ID</th><th>Work product</th><th>Characteristic</th><th>Criterion</th></tr></thead>
+      <tbody>{rows.map((r) => (
+        <tr key={r.wp + r.wpc}><td className="id">{r.wpID}</td><td>{r.wpName}</td><td className="id">{local(r.wpc)}</td>
+          <td><span className="multiline">{r.criterion}</span></td></tr>))}</tbody>
+    </table>
   );
 }
 
 function KnowledgeSearch() {
   const [options, setOptions] = useState(null);
-  const [form, setForm] = useState({ process: '', activity: '', role: '', workProduct: '', state: '', keyword: '' });
+  const [template, setTemplate] = useState('T1');
+  const [forms, setForms] = useState(EMPTY_FORMS);
   const [result, setResult] = useState(null);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
 
-  useEffect(() => { api.searchOptions().then(setOptions).catch((e) => setError(describeError(e))); }, []);
+  useEffect(() => { api.options().then(setOptions).catch((e) => setError(e.message)); }, []);
 
-  const processCode = useMemo(() => options?.process.find((p) => p.value === form.process)?.label.match(/\((\w+)\)$/)?.[1], [options, form.process]);
-  const choices = (name) => (name === 'activity' && processCode ? options.activity.filter((a) => a.process === processCode) : options?.[name] || []);
-  const set = (name, value) => setForm((f) => ({ ...f, [name]: value, ...(name === 'process' ? { activity: '' } : {}) }));
-  const anySet = Object.values(form).some((v) => v.trim());
+  const form = forms[template];
+  const set = (name, value) => setForms((f) => ({ ...f, [template]: { ...f[template], [name]: value } }));
 
-  const run = async () => {
+  const run = async (t, f, label) => {
     setBusy(true); setError('');
-    try { setResult(await api.search(form)); } catch (e) { setError(describeError(e)); setResult(null); } finally { setBusy(false); }
+    try {
+      const response = await api.search(t, requestFor(t, f));
+      setResult({ ...response, label });
+    } catch (e) {
+      setError(e.message); setResult(null);
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  const applyExample = (example) => {
+    const f = formFromExample(example);
+    setTemplate(example.template);
+    setForms((all) => ({ ...all, [example.template]: f }));
+    run(example.template, f, `${example.id}: ${example.question}`);
   };
 
   return (
-    <Section id="search" title="Search ISO/IEC 29110 knowledge"
-      intro="Choose any combination of parameters. Every option comes from the ontology; fields you leave empty are not used.">
-      {!options && !error && <CircularProgress size={22} />}
+    <div className="panel">
+      <p className="note">
+        Choose values and phrases; the page builds a SPARQL query from the selected template and runs it on the ontology.
+        The values in each list are read from the ontology.
+      </p>
+      <div className="tabs" role="tablist" aria-label="Query templates">
+        {TEMPLATES.map(([id, label]) => (
+          <button key={id} type="button" role="tab" aria-selected={template === id}
+            onClick={() => { setTemplate(id); setResult(null); setError(''); }}>{label}</button>
+        ))}
+      </div>
+      {!options && !error && <p>Loading values from the ontology...</p>}
       {options && (
-        <form className="search-form" onSubmit={(e) => { e.preventDefault(); if (anySet) run(); }}>
-          {FIELDS.map(([name, label]) => (
-            <FormControl key={name} size="small">
-              <InputLabel id={`${name}-l`}>{label}</InputLabel>
-              <Select labelId={`${name}-l`} label={label} value={form[name]} onChange={(e) => set(name, e.target.value)}>
-                <MenuItem value=""><em>Any</em></MenuItem>
-                {choices(name).map((o) => <MenuItem key={o.value} value={o.value}>{o.label}</MenuItem>)}
-              </Select>
-            </FormControl>
-          ))}
-          <TextField size="small" label="Word in task description" value={form.keyword} slotProps={{ htmlInput: { maxLength: 60 } }}
-            onChange={(e) => set('keyword', e.target.value)} />
-          <Button type="submit" variant="contained" disableElevation disabled={!anySet || busy}>{busy ? 'Searching…' : 'Search'}</Button>
-          <Button type="button" onClick={() => { setForm({ process: '', activity: '', role: '', workProduct: '', state: '', keyword: '' }); setResult(null); }}>Clear</Button>
+        <form className="form" onSubmit={(e) => { e.preventDefault(); if (canRun(template, form)) run(template, form, ''); }}>
+          <SearchForm template={template} form={form} options={options} set={set} />
+          <div className="actions">
+            <button type="submit" disabled={busy || !canRun(template, form)}>{busy ? 'Searching...' : 'Search'}</button>
+            <button type="button" onClick={() => { setForms((f) => ({ ...f, [template]: EMPTY_FORMS[template] })); setResult(null); }}>Clear</button>
+          </div>
         </form>
       )}
-      {error && <Alert severity="error">{error}</Alert>}
+
+      <details>
+        <summary>Example questions (the 34 competency questions used to evaluate the ontology)</summary>
+        <p className="note">Selecting a question fills in the template parameters used for it in the evaluation and runs the search.</p>
+        <ul className="examples">
+          {examples.map((x) => (
+            <li key={x.id}><button type="button" onClick={() => applyExample(x)}>
+              <span className="qid">{x.id}</span>{x.question} <span className="note">({x.template})</span>
+            </button></li>
+          ))}
+        </ul>
+      </details>
+
+      {error && <p className="error" role="alert">{error}</p>}
       {result && (
-        <div className="search-results" aria-live="polite">
-          <p className="intro">{result.results.length === 0
-            ? 'No task matches all selected parameters. Remove one parameter to widen the search.'
-            : `${result.results.length} task${result.results.length > 1 ? 's' : ''} match all selected parameters.`}</p>
-          {result.results.map((t) => <TaskResult key={t.task} task={t} />)}
+        <div aria-live="polite">
+          <h2>Results</h2>
+          {result.label && <p>{result.label}</p>}
+          <p>{result.rows.length} row{result.rows.length === 1 ? '' : 's'}.</p>
+          {result.rows.length > 0 && <div className="table-wrap"><ResultTable template={result.template} rows={result.rows} /></div>}
+          <details>
+            <summary>SPARQL query</summary>
+            <pre>{result.sparql}</pre>
+          </details>
         </div>
       )}
-    </Section>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ assessment */
+
+function Profile({ project }) {
+  const rows = [
+    ['Enterprise', `${project.enterprise} - ${project.enterpriseName}`],
+    ['Project', `${project.id} - ${project.projectName}`],
+    ['Description', project.hasProjectDescription],
+    ['Number of staff', project.hasNumberofStaff],
+    ['Duration', project.hasTotalDuration],
+    ['Start date', project.hasStartingDate],
+    ['End date', project.hasEndingDate],
+    ['Reason', project.hasReason],
+    ['Work products not delivered (excludesWorkProduct)',
+      project.excludedWorkProducts.length ? project.excludedWorkProducts.map((w) => `${w.wpID} ${w.wpName}`).join('; ') : 'None'],
+  ];
+  return (
+    <table className="profile">
+      <tbody>{rows.map(([k, v]) => <tr key={k}><th>{k}</th><td>{v ?? ''}</td></tr>)}</tbody>
+    </table>
+  );
+}
+
+function ratingSummary(ratings) {
+  return RATING_ORDER.filter((k) => ratings[k]).map((k) => `${ratingLabel(k)} ${ratings[k]}`).join('; ');
+}
+
+function Scores({ data }) {
+  return (
+    <>
+      <h3>Process</h3>
+      <table style={{ width: 'auto', minWidth: 360 }}>
+        <thead><tr><th>Process</th><th className="num">Base Practices</th><th className="num">Score</th></tr></thead>
+        <tbody>{data.processScores.map((p) => (
+          <tr key={p.process}><td>{p.process}</td><td className="num">{p.nBP}</td><td className="num">{score(p.score)}</td></tr>))}</tbody>
+      </table>
+      <h3>Work products</h3>
+      <div className="table-wrap">
+        <table>
+          <thead><tr><th>WP ID</th><th>Work product</th><th>Characteristics by rating</th><th className="num">Score</th></tr></thead>
+          <tbody>{data.workProducts.map((w) => (
+            <tr key={w.wpID}><td className="id">{w.wpID}</td><td>{w.wpName}</td><td>{ratingSummary(w.ratings)}</td>
+              <td className="num">{score(w.score)}</td></tr>))}</tbody>
+        </table>
+      </div>
+      <details>
+        <summary>Base Practices ({data.basePracticeScores.length})</summary>
+        <div className="table-wrap">
+          <table>
+            <thead><tr><th>BP ID</th><th>Base Practice</th><th className="num">Work products</th><th className="num">Score</th></tr></thead>
+            <tbody>{data.basePracticeScores.map((b) => (
+              <tr key={b.bpID}><td className="id">{b.bpID}</td><td><span className="multiline">{b.description}</span></td>
+                <td className="num">{b.nWP}</td><td className="num">{score(b.score)}</td></tr>))}</tbody>
+          </table>
+        </div>
+      </details>
+    </>
+  );
+}
+
+function Gaps({ gaps }) {
+  if (gaps.length === 0) return <p>No characteristic is rated Not achieved or Partially achieved.</p>;
+  return (
+    <div className="table-wrap">
+      <table>
+        <thead><tr><th>WP ID</th><th>Work product</th><th>Characteristic</th><th>Item</th><th className="num">%</th><th>Rating</th></tr></thead>
+        <tbody>{gaps.map((g, i) => (
+          <tr key={`${g.characteristic}-${i}`}><td className="id">{g.wpID}</td><td>{g.wpName}</td><td className="id">{g.characteristic}</td>
+            <td><span className="multiline">{g.item}</span></td><td className="num">{g.percentage}</td><td>{ratingLabel(g.rating)}</td></tr>))}</tbody>
+      </table>
+    </div>
+  );
+}
+
+function Recommendation({ rec }) {
+  const link = (l) => (l === 'produces' ? `Produces ${rec.wpID}` : l === 'uses' ? `Uses ${rec.wpID} as input` : '');
+  return (
+    <div className="rec">
+      <h3>{rec.wpID} {rec.wpName} <span className="note">({rec.ae})</span></h3>
+      <p>Reason: {rec.gaps.length} characteristic{rec.gaps.length === 1 ? ' is' : 's are'} not achieved or partially achieved:</p>
+      <ul>{rec.gaps.map((g, i) => (
+        <li key={`${g.characteristic}-${i}`}>{g.characteristic}: <span className="multiline">{g.item}</span> ({g.percentage}%, {ratingLabel(g.rating)})</li>))}</ul>
+      <table>
+        <thead><tr><th>Recommended task</th><th>Task</th><th>Roles</th><th>Link to the work product</th></tr></thead>
+        <tbody>{rec.tasks.map((t) => (
+          <tr key={t.taskID}><td className="id">{t.taskID}</td><td><span className="multiline">{t.description}</span></td>
+            <td>{t.roles}</td><td>{link(t.link)}</td></tr>))}</tbody>
+      </table>
+      <table>
+        <thead><tr><th>Recommended role</th><th>Recommended tasks performed by the role</th></tr></thead>
+        <tbody>{rec.roles.map((r) => (
+          <tr key={r.roleName}><td>{r.roleName} ({r.abbreviation})</td><td>{r.tasks}</td></tr>))}</tbody>
+      </table>
+      {rec.basePractices.length > 0 ? (
+        <table>
+          <thead><tr><th>Recommended BP</th><th>Base Practice (has {rec.wpID} as output)</th></tr></thead>
+          <tbody>{rec.basePractices.map((b) => (
+            <tr key={b.bpID}><td className="id">{b.bpID}</td><td><span className="multiline">{b.description}</span></td></tr>))}</tbody>
+        </table>
+      ) : <p className="note">No Base Practice has {rec.wpID} as output in the ontology, so no Base Practice is recommended.</p>}
+    </div>
+  );
+}
+
+function Assessment() {
+  const [projects, setProjects] = useState([]);
+  const [selected, setSelected] = useState('');
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+
+  const load = useCallback((id) => {
+    setSelected(id); setData(null); setError('');
+    if (!id) return;
+    setLoading(true);
+    api.assessment(id).then(setData).catch((e) => setError(e.message)).finally(() => setLoading(false));
+  }, []);
+
+  useEffect(() => {
+    api.projects().then((list) => {
+      setProjects(list);
+      if (list[0]) load(list[0].id);
+    }).catch((e) => setError(e.message));
+  }, [load]);
+
+  return (
+    <div className="panel">
+      <form className="form" onSubmit={(e) => e.preventDefault()}>
+        <label htmlFor="project">Enterprise / project</label>
+        <select id="project" value={selected} onChange={(e) => load(e.target.value)}>
+          {projects.map((p) => (
+            <option key={p.id} value={p.id}>{p.enterprise} {p.enterpriseName} / {p.id} {p.projectName}{p.mock ? ' [MOCK DATA]' : ''}</option>
+          ))}
+        </select>
+      </form>
+      {error && <p className="error" role="alert">{error}</p>}
+      {loading && <p>Loading...</p>}
+      {data && !loading && (
+        <>
+          {data.project.mock && <p className="mock">Mock data created to demonstrate the recommender. It is not data of a real company.</p>}
+          <h2>Profile</h2>
+          <Profile project={data.project} />
+          <h2>Scores</h2>
+          <p className="note">
+            Computed with the SPARQL queries Q1-Q3 v3 from the recorded percentages (score of each rating: N 0, P 0.3, L 0.7, F 1;
+            an item without a percentage counts as 0). Work product score = mean of its characteristics; Base Practice score = mean of
+            its work products; process score = mean of its Base Practices.
+          </p>
+          <Scores data={data} />
+          <h2>Characteristics not achieved ({data.gaps.length})</h2>
+          <Gaps gaps={data.gaps} />
+          <h2>Recommendations ({data.recommendations.length} work product{data.recommendations.length === 1 ? '' : 's'})</h2>
+          <p className="note">
+            Tasks, roles and Base Practices below are the facts recommendTask, recommendRole and recommendBasePractice inferred by the
+            Pellet reasoner from the SWRL rules of the ontology. The page only displays them.
+          </p>
+          {data.recommendations.length === 0 && <p>The reasoner inferred no recommendation for this project.</p>}
+          {data.recommendations.map((r) => <Recommendation key={r.wpID} rec={r} />)}
+        </>
+      )}
+    </div>
   );
 }
 
 /* ------------------------------------------------------------------ page */
 
 export default function App() {
-  const [companies, setCompanies] = useState([]);
-  const [selected, setSelected] = useState('');
-  const [data, setData] = useState(null);
-  const [status, setStatus] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [mode, setMode] = useState('search');
+  const [report, setReport] = useState(null);
 
-  const select = useCallback((id) => {
-    setSelected(id); setLoading(true); setError('');
-    api.assessment(id).then(setData).catch((e) => { setError(describeError(e)); setData(null); }).finally(() => setLoading(false));
-  }, []);
-
-  useEffect(() => {
-    api.companies().then((list) => { setCompanies(list); if (list[0]) select(list[0].id); }).catch((e) => setError(describeError(e)));
-    api.reasoningStatus().then(setStatus).catch(() => {});
-  }, [select]);
+  useEffect(() => { api.reasoningReport().then(setReport).catch(() => setReport(null)); }, []);
 
   return (
-    <div className="shell">
-      <aside className="sidebar" aria-label="Companies">
-        <p className="brand">ISO/IEC 29110<br /><span>QA recommendation</span></p>
-        <Typography component="h2" className="side-title">Assessed companies</Typography>
-        <List dense disablePadding>
-          {companies.map((c) => (
-            <ListItemButton key={c.id} selected={c.id === selected} onClick={() => select(c.id)} className="company-btn">
-              <ListItemText primary={c.name} secondary={c.id} />
-            </ListItemButton>
-          ))}
-        </List>
-        <nav className="jump" aria-label="On this page">
-          <a href="#results">Results</a><a href="#recommendations">Recommendations</a><a href="#search">Knowledge search</a>
-        </nav>
-        <p className="side-note">Company data is maintained in Protégé and loaded into the knowledge base. It cannot be edited here.</p>
-      </aside>
-      <main className="main">
-        {error && <Alert severity="error" className="top-error">{error}</Alert>}
-        {loading && <div className="loading"><CircularProgress size={24} /> Loading assessment…</div>}
-        {data && !loading && <><CompanyPanel data={data} /><Recommendations data={data} status={status} /></>}
-        <KnowledgeSearch />
+    <div className="page">
+      <header className="top">
+        <h1>Recommender Framework for ISO/IEC 29110 QA Compliance</h1>
+        <span className="sub">Research prototype</span>
+      </header>
+      <nav className="modes" role="tablist" aria-label="Mode">
+        <button type="button" role="tab" aria-selected={mode === 'search'} onClick={() => setMode('search')}>ISO/IEC 29110 knowledge search</button>
+        <button type="button" role="tab" aria-selected={mode === 'assessment'} onClick={() => setMode('assessment')}>Assessment results and recommendations</button>
+      </nav>
+      <main>
+        {mode === 'search' ? <KnowledgeSearch /> : <Assessment />}
       </main>
+      <footer className="footer">
+        {report ? (
+          <>Reasoning: {report.reasoner}; run {report.runAt}; {report.consistent ? 'consistent' : 'INCONSISTENT'};{' '}
+            {report.rules.filter((r) => r.enabled).length} SWRL rules; inferred {report.inferred.types} class assertions and{' '}
+            {report.inferred.objectPropertyValues} object property values.</>
+        ) : 'Reasoning report not available.'}
+      </footer>
     </div>
   );
 }

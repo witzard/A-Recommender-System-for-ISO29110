@@ -1,0 +1,4441 @@
+{
+ "_note": "API responses produced by running the backend services (AssessmentService, KnowledgeSearchService) and the SPARQL files on ontology/ISO29110V2_rev06b.ttl + kb/inferred.nt (2026-11-04).",
+ "options": {
+  "role": [
+   "Analyst",
+   "Customer",
+   "Designer",
+   "Programmer",
+   "Project manager",
+   "Technical leader",
+   "Work team"
+  ],
+  "activity": [
+   "Project planning",
+   "Project plan execution",
+   "Project assessment and control",
+   "Project closure",
+   "Software implementation initiation",
+   "Software requirements analysis",
+   "Software architectural and detailed design",
+   "Software construction",
+   "Software integration and tests",
+   "Software product assembly"
+  ],
+  "workProduct": [
+   "Acceptance Record",
+   "Agreement",
+   "Change Request",
+   "Correction Register",
+   "Implementation Environment",
+   "Maintenance Documentation",
+   "Meeting Record",
+   "Product Operation Guide",
+   "Progress Status Record",
+   "Project Plan",
+   "Project Repository",
+   "Project Repository Backup",
+   "Requirement Specification",
+   "Software",
+   "Software Components",
+   "Software Design",
+   "Software Product",
+   "Software User Documentation",
+   "Test Cases and Test Procedures",
+   "Test Report",
+   "Traceability Record",
+   "Validation Record",
+   "Verification Record"
+  ],
+  "state": [
+   "Accepted",
+   "Approved",
+   "Baselined",
+   "Cancelled",
+   "Completed",
+   "Corrected",
+   "Deleted",
+   "Delivered",
+   "Established",
+   "Evaluated",
+   "Implemented",
+   "Initiated",
+   "Postponed/Deferred",
+   "Preliminary",
+   "Published",
+   "Recovered",
+   "Rejected",
+   "Reviewed",
+   "Signed",
+   "Tested",
+   "Unit Tested",
+   "Updated",
+   "Validated",
+   "Verified"
+  ]
+ },
+ "projects": [
+  {
+   "id": "PJ.01",
+   "projectName": "PJ.A",
+   "enterprise": "ENT.01",
+   "enterpriseName": "Enterprise_Name_01",
+   "mock": false
+  },
+  {
+   "id": "PJ.02",
+   "projectName": "PJ.B",
+   "enterprise": "ENT.02",
+   "enterpriseName": "Mock Company B (start-up, mock data)",
+   "mock": true
+  },
+  {
+   "id": "PJ.03",
+   "projectName": "PJ.C",
+   "enterprise": "ENT.03",
+   "enterpriseName": "Mock Company C (established VSE, mock data)",
+   "mock": true
+  }
+ ],
+ "assessments": {
+  "PJ.01": {
+   "project": {
+    "id": "PJ.01",
+    "projectName": "PJ.A",
+    "enterprise": "ENT.01",
+    "enterpriseName": "Enterprise_Name_01",
+    "mock": false,
+    "hasEndingDate": "2026-12-12",
+    "hasNumberofStaff": "0",
+    "hasProjectDescription": "Project_Description_01",
+    "hasProjectName": "PJ.A",
+    "hasReason": "Reason_01",
+    "hasStartingDate": "2026-12-12",
+    "hasTotalDuration": "0",
+    "excludedWorkProducts": []
+   },
+   "processScores": [
+    {
+     "nBP": "27",
+     "process": "PM",
+     "score": "0.4040123456790123456790123452"
+    },
+    {
+     "nBP": "23",
+     "process": "SI",
+     "score": "0.01521739130434782608695652174"
+    }
+   ],
+   "basePracticeScores": [
+    {
+     "bpID": "PM.BP1",
+     "description": "Review the agreement",
+     "nWP": "2",
+     "score": "0.63"
+    },
+    {
+     "bpID": "PM.BP2",
+     "description": "Define with the Customer the Delivery Instructions of each one of the\nDeliverables specified in the agreement",
+     "nWP": "3",
+     "score": "0.2333333333333333333333333333"
+    },
+    {
+     "bpID": "PM.BP3",
+     "description": "Identify the specific Tasks to be performed in order to produce the\nDeliverables and their Software Components identified in the Statement of\nWork. Include Tasks in the SI process along with verification, validation, and\nreviews with Customer and Work Team Tasks to ensure the quality of work\nproducts. Identify the Tasks to perform the Delivery Instructions. Document\nthe Tasks.",
+     "nWP": "2",
+     "score": "0.63"
+    },
+    {
+     "bpID": "PM.BP4",
+     "description": "Establish the Estimated Duration to perform each task.",
+     "nWP": "2",
+     "score": "0.63"
+    },
+    {
+     "bpID": "PM.BP5",
+     "description": "Identify and document the Resources: human, material, equipment,\nand tools, standards, including the required training of the Work Team to\nperform the project. Include in the schedule the dates when Resources and\ntraining will be needed.",
+     "nWP": "2",
+     "score": "0.63"
+    },
+    {
+     "bpID": "PM.BP6",
+     "description": "Establish the Composition of Work Team assigning roles and\nresponsibilities according to the Resources.",
+     "nWP": "2",
+     "score": "0.63"
+    },
+    {
+     "bpID": "PM.BP7",
+     "description": "Assign estimated start and completion dates to each one of the Tasks\nin order to create the Schedule of the Project Tasks taking into account the\nassigned Resources, sequence and dependency of the Tasks.",
+     "nWP": "2",
+     "score": "0.63"
+    },
+    {
+     "bpID": "PM.BP8",
+     "description": "Calculate and document the project Estimated Effort and Cost.",
+     "nWP": "2",
+     "score": "0.63"
+    },
+    {
+     "bpID": "PM.BP9",
+     "description": "Identify and document the risks which may affect the project.",
+     "nWP": "3",
+     "score": "0.2333333333333333333333333333"
+    },
+    {
+     "bpID": "PM.BP10",
+     "description": "Document the Version Control Strategy in the Project Plan.",
+     "nWP": "2",
+     "score": "0.35"
+    },
+    {
+     "bpID": "PM.BP11",
+     "description": "Generate the Project Plan integrating the elements previously\nidentified and documented.",
+     "nWP": "1",
+     "score": "0.7"
+    },
+    {
+     "bpID": "PM.BP12",
+     "description": "Include Product Description, Scope, Objectives, and Deliverables in\nthe Project Plan.",
+     "nWP": "1",
+     "score": "0.7"
+    },
+    {
+     "bpID": "PM.BP13",
+     "description": "Verify and obtain approval of the Project Plan. Verify that all Project\nPlan elements are viable and consistent. The results found are documented in a\nVerification Results and corrections are made until the document is approved\nby PM.",
+     "nWP": "1",
+     "score": "0.7"
+    },
+    {
+     "bpID": "PM.BP14",
+     "description": "Review and accept the Project Plan. Customer reviews and accepts\nthe Project Plan, making sure that the Project Plan elements match with the\nStatement of Work.",
+     "nWP": "3",
+     "score": "0.2333333333333333333333333333"
+    },
+    {
+     "bpID": "PM.BP15",
+     "description": "Establish the Project Repository using the Version Control Strategy.",
+     "nWP": "2",
+     "score": "0.35"
+    },
+    {
+     "bpID": "PM.BP16",
+     "description": "Monitor the Project Plan execution and record actual data in Progress\nStatus Record.",
+     "nWP": "2",
+     "score": "0.35"
+    },
+    {
+     "bpID": "PM.BP17",
+     "description": "Analyse and evaluate the Change Request for cost, schedule and\ntechnical impact. The Change Request can be initiated externally by the\nCustomer or internally by the Work Team. Update the Project Plan, if the\naccepted change does not affect agreements with Customer. Change Request,\nwhich affects those agreements, needs to be negotiated by both parties (see\nPM.2.4)",
+     "nWP": "2",
+     "score": "0.35"
+    },
+    {
+     "bpID": "PM.BP18",
+     "description": "Conduct revision meetings with the Work Team, identify problems,\nreview risk status, record agreements, and track them to closure.",
+     "nWP": "3",
+     "score": "0.2333333333333333333333333333"
+    },
+    {
+     "bpID": "PM.BP19",
+     "description": "Conduct revision meetings with the Customer, record agreements\nand track them to closure. Change Request initiated by Customer or initiated\nby Work Team, which affects the Customer, needs to be negotiated to reach\nacceptance of both parties. If necessary, update the Project Plan according to\nnew agreement with Customer.",
+     "nWP": "4",
+     "score": "0.175"
+    },
+    {
+     "bpID": "PM.BP20",
+     "description": "Perform backup according to the Version Control Strategy.",
+     "nWP": "3",
+     "score": "0.2333333333333333333333333333"
+    },
+    {
+     "bpID": "PM.BP21",
+     "description": "Perform Project Repository recovery using the Project Repository Backup, if necessary.",
+     "nWP": "3",
+     "score": "0.2333333333333333333333333333"
+    },
+    {
+     "bpID": "PM.BP22",
+     "description": "Evaluate project progress with respect to the Project Plan,\ncomparing:\n— actual Tasks against planned Tasks;\n— actual results against established project Objectives;\n— actual resource allocation against planned Resources;\n— actual cost against budget estimates;\n— actual time against planned schedule;\n— actual risk against previously identified.",
+     "nWP": "3",
+     "score": "0.2333333333333333333333333333"
+    },
+    {
+     "bpID": "PM.BP23",
+     "description": "Establish actions to correct deviations or problems and identified\nrisks concerning the accomplishment of the plan, as needed, document them in\nCorrection Register and track them to closure.",
+     "nWP": "2",
+     "score": "0.35"
+    },
+    {
+     "bpID": "PM.BP24",
+     "description": "Identify changes to requirements and/or Project Plan to address\nmajor deviations, potential risks or problems concerning the accomplishment\nof the plan, document them in Change Request and track them to closure.",
+     "nWP": "3",
+     "score": "0.2333333333333333333333333333"
+    },
+    {
+     "bpID": "PM.BP25",
+     "description": "Formalize the completion of the project according to the Delivery\nInstructions established in the Project Plan, providing acceptance support and\ngetting the Acceptance Record signed.",
+     "nWP": "3",
+     "score": "0.2333333333333333333333333333"
+    },
+    {
+     "bpID": "PM.BP26",
+     "description": "Update Project Repository.",
+     "nWP": "5",
+     "score": "0.14"
+    },
+    {
+     "bpID": "PM.BP27",
+     "description": "Perform delivery according to Delivery Instructions.",
+     "nWP": "3",
+     "score": "0.2333333333333333333333333333"
+    },
+    {
+     "bpID": "SI.BP1",
+     "description": "Document or update the Requirements Specification. Identify and\nconsult information sources (Customer, users, previous systems, documents,\netc.) in order to get new requirements. Analyse the identified requirements to\ndeterminate the Scope and feasibility.\nGenerate or update the Requirements Specification",
+     "nWP": "4",
+     "score": "0.175"
+    },
+    {
+     "bpID": "SI.BP2",
+     "description": "Verify and obtain approval of the Requirements Specification.Verify the\ncorrectness and testability of the Requirements Specification and its\nconsistency with the Product Description. Additionally, review that\nrequirements are complete, unambiguous, and not contradictory. The results\nfound are documented in a Verification Results and corrections are made until\nthe document is approved by AN. If significant changes were needed, initiate a\nChange Request.",
+     "nWP": "4",
+     "score": "0.175"
+    },
+    {
+     "bpID": "SI.BP3",
+     "description": "Validate and obtain approval of the Requirements Specification .\nValidate that Requirements Specification satisfies needs and agreed upon\nexpectations, including the user interface usability. The results found are\ndocumented in a Validation Results and corrections are made until the\ndocument is approved by the CUS.",
+     "nWP": "2",
+     "score": "0"
+    },
+    {
+     "bpID": "SI.BP4",
+     "description": "Incorporate the requirements specification to the software\nconfiguration in the baseline",
+     "nWP": "2",
+     "score": "0"
+    },
+    {
+     "bpID": "SI.BP5",
+     "description": "Document or update the Software Design. Analyse the Requirements\nSpecification to generate the architectural design, its arrangement in\nsubsystems and Software Components defining the internal and external\ninterfaces. Describe in detail, the appearance and the behaviour of the\ninterface, based on the Requirements Specification in a way that Resources for\nits implementation can be foreseen. Provide the detail of Software Components\nand their interfaces to allow the construction in an evident way. Generate or\nupdate the Traceability Record.",
+     "nWP": "7",
+     "score": "0"
+    },
+    {
+     "bpID": "SI.BP6",
+     "description": "Verify and obtain approval of the Software Design. Verify correctness of\nSoftware Design documentation, its feasibility and consistency with their\nRequirement Specification. Verify that the Traceability Record contains the\nadequate relationships between requirements and the Software Design\nelements. The results found are documented in a Verification Results and\ncorrections are made until the document is approved by DES. If significant\nchanges were needed, initiate a Change Request.",
+     "nWP": "4",
+     "score": "0"
+    },
+    {
+     "bpID": "SI.BP7",
+     "description": "Establish or update Test Cases and Test Procedures for integration\ntesting based on Requirements Specification and Software Design. Customer\nprovides testing data, if needed.",
+     "nWP": "6",
+     "score": "0"
+    },
+    {
+     "bpID": "SI.BP8",
+     "description": "Verify and obtain approval of the Test Cases and Test Procedures. Verify\nconsistency among Requirements Specification, Software Design and Test\nCases and Test Procedures. The results found are documented in a Verification\nResults and corrections are made until the document is approved.",
+     "nWP": "6",
+     "score": "0"
+    },
+    {
+     "bpID": "SI.BP9",
+     "description": "Update the Traceability Record incorporating the Test Cases and Test\nProcedures.",
+     "nWP": "8",
+     "score": "0"
+    },
+    {
+     "bpID": "SI.BP10",
+     "description": "Incorporate the Software Design, and Traceability Record to the\nSoftware Configuration as part of the baseline. Incorporate the Test Cases, and\nTest Procedures to the Project Repository.",
+     "nWP": "6",
+     "score": "0"
+    },
+    {
+     "bpID": "SI.BP11",
+     "description": "Construct or update Software Components based on the detailed part\nof the Software Design.",
+     "nWP": "3",
+     "score": "0"
+    },
+    {
+     "bpID": "SI.BP12",
+     "description": "Design or update unit test cases and apply them to verify that the\nSoftware Components implements the detailed part of the Software Design.",
+     "nWP": "3",
+     "score": "0"
+    },
+    {
+     "bpID": "SI.BP13",
+     "description": "Correct the defects found until successful unit test (reaching exit\ncriteria) is achieved.",
+     "nWP": "1",
+     "score": "0"
+    },
+    {
+     "bpID": "SI.BP14",
+     "description": "Update the Traceability Record incorporating Software Components\nconstructed or modified.",
+     "nWP": "6",
+     "score": "0"
+    },
+    {
+     "bpID": "SI.BP15",
+     "description": "Incorporate Software Components and Traceability Record to the\nSoftware Configuration as part of the baseline.",
+     "nWP": "6",
+     "score": "0"
+    },
+    {
+     "bpID": "SI.BP16",
+     "description": "Integrates the Software using Software Components and updates Test \nCases and Test Procedures for integration testing, as needed.",
+     "nWP": "8",
+     "score": "0"
+    },
+    {
+     "bpID": "SI.BP17",
+     "description": "Perform Software tests using Test Cases and Test Procedures for\nintegration and document results in Test Report.",
+     "nWP": "6",
+     "score": "0"
+    },
+    {
+     "bpID": "SI.BP18",
+     "description": "Correct the defects found and perform regression test until exit\ncriteria is achieved.",
+     "nWP": "4",
+     "score": "0"
+    },
+    {
+     "bpID": "SI.BP19",
+     "description": "Updates the Traceability Record, if appropriate.",
+     "nWP": "6",
+     "score": "0"
+    },
+    {
+     "bpID": "SI.BP20",
+     "description": "Incorporate the Test Cases and Test Procedures, Software, Traceability\nRecord, Test Report to the Software Configuration as part of the baseline.",
+     "nWP": "9",
+     "score": "0"
+    },
+    {
+     "bpID": "SI.BP21",
+     "description": "Document the Maintenance Documentation or update the current one.",
+     "nWP": "9",
+     "score": "0"
+    },
+    {
+     "bpID": "SI.BP22",
+     "description": "Verify and obtain approval of the Maintenance Documentation. Verify\nconsistency of Maintenance Documentation with Software Configuration. The\nresults found are documented in a Verification Results and corrections are\nmade until the document is approved.",
+     "nWP": "9",
+     "score": "0"
+    },
+    {
+     "bpID": "SI.BP23",
+     "description": "Incorporate the Maintenance Documentation as baseline for the\nSoftware Configuration.",
+     "nWP": "9",
+     "score": "0"
+    }
+   ],
+   "workProducts": [
+    {
+     "ae": "AE.PJ01.WP01",
+     "wpID": "WP.01",
+     "wpName": "Acceptance Record",
+     "score": "0",
+     "ratings": {
+      "Not_rated": "6"
+     }
+    },
+    {
+     "ae": "AE.PJ01.WP02",
+     "wpID": "WP.02",
+     "wpName": "Agreement",
+     "score": "0.56",
+     "ratings": {
+      "Largely_achieved": "4",
+      "Not_achieved": "1"
+     }
+    },
+    {
+     "ae": "AE.PJ01.WP03",
+     "wpID": "WP.03",
+     "wpName": "Change Request",
+     "score": "0",
+     "ratings": {
+      "Not_rated": "8"
+     }
+    },
+    {
+     "ae": "AE.PJ01.WP04",
+     "wpID": "WP.04",
+     "wpName": "Correction Register",
+     "score": "0",
+     "ratings": {
+      "Not_rated": "8"
+     }
+    },
+    {
+     "ae": "AE.PJ01.WP05",
+     "wpID": "WP.05",
+     "wpName": "Implementation Environment",
+     "score": "0",
+     "ratings": {
+      "Not_rated": "1"
+     }
+    },
+    {
+     "ae": "AE.PJ01.WP06",
+     "wpID": "WP.06",
+     "wpName": "Maintenance Documentation",
+     "score": "0",
+     "ratings": {
+      "Not_rated": "2"
+     }
+    },
+    {
+     "ae": "AE.PJ01.WP07",
+     "wpID": "WP.07",
+     "wpName": "Meeting Record",
+     "score": "0",
+     "ratings": {
+      "Not_rated": "10"
+     }
+    },
+    {
+     "ae": "AE.PJ01.WP08",
+     "wpID": "WP.08",
+     "wpName": "Product Operation Guide",
+     "score": "0",
+     "ratings": {
+      "Not_rated": "10"
+     }
+    },
+    {
+     "ae": "AE.PJ01.WP09",
+     "wpID": "WP.09",
+     "wpName": "Progress Status Record",
+     "score": "0",
+     "ratings": {
+      "Not_rated": "8"
+     }
+    },
+    {
+     "ae": "AE.PJ01.WP10",
+     "wpID": "WP.10",
+     "wpName": "Project Plan",
+     "score": "0.7",
+     "ratings": {
+      "Largely_achieved": "14"
+     }
+    },
+    {
+     "ae": "AE.PJ01.WP11",
+     "wpID": "WP.11",
+     "wpName": "Project Repository",
+     "score": "0",
+     "ratings": {
+      "Not_rated": "11"
+     }
+    },
+    {
+     "ae": "AE.PJ01.WP12",
+     "wpID": "WP.12",
+     "wpName": "Project Repository Backup",
+     "score": "0",
+     "ratings": {
+      "Not_rated": "1"
+     }
+    },
+    {
+     "ae": "AE.PJ01.WP13",
+     "wpID": "WP.13",
+     "wpName": "Requirement Specification",
+     "score": "0",
+     "ratings": {
+      "Not_rated": "12"
+     }
+    },
+    {
+     "ae": "AE.PJ01.WP14",
+     "wpID": "WP.14",
+     "wpName": "Software",
+     "score": "0",
+     "ratings": {
+      "Not_rated": "1"
+     }
+    },
+    {
+     "ae": "AE.PJ01.WP15",
+     "wpID": "WP.15",
+     "wpName": "Software Components",
+     "score": "0",
+     "ratings": {
+      "Not_rated": "1"
+     }
+    },
+    {
+     "ae": "AE.PJ01.WP16",
+     "wpID": "WP.16",
+     "wpName": "Software Design",
+     "score": "0",
+     "ratings": {
+      "Not_rated": "13"
+     }
+    },
+    {
+     "ae": "AE.PJ01.WP17",
+     "wpID": "WP.17",
+     "wpName": "Software Product",
+     "score": "0",
+     "ratings": {
+      "Not_rated": "10"
+     }
+    },
+    {
+     "ae": "AE.PJ01.WP18",
+     "wpID": "WP.18",
+     "wpName": "Software User Documentation",
+     "score": "0",
+     "ratings": {
+      "Not_rated": "10"
+     }
+    },
+    {
+     "ae": "AE.PJ01.WP19",
+     "wpID": "WP.19",
+     "wpName": "Test Cases and Test Procedures",
+     "score": "0",
+     "ratings": {
+      "Not_rated": "15"
+     }
+    },
+    {
+     "ae": "AE.PJ01.WP20",
+     "wpID": "WP.20",
+     "wpName": "Test Report",
+     "score": "0",
+     "ratings": {
+      "Not_rated": "8"
+     }
+    },
+    {
+     "ae": "AE.PJ01.WP21",
+     "wpID": "WP.21",
+     "wpName": "Traceability Record",
+     "score": "0",
+     "ratings": {
+      "Not_rated": "2"
+     }
+    },
+    {
+     "ae": "AE.PJ01.WP22",
+     "wpID": "WP.22",
+     "wpName": "Validation Record",
+     "score": "0",
+     "ratings": {
+      "Not_rated": "11"
+     }
+    },
+    {
+     "ae": "AE.PJ01.WP23",
+     "wpID": "WP.23",
+     "wpName": "Verification Record",
+     "score": "0",
+     "ratings": {
+      "Not_rated": "11"
+     }
+    }
+   ],
+   "gaps": [
+    {
+     "wpID": "WP.02",
+     "wpName": "Agreement",
+     "characteristic": "WPC.02.05",
+     "item": "Signed by customer and project manager",
+     "rating": "Not_achieved",
+     "percentage": "0"
+    }
+   ],
+   "recommendations": [
+    {
+     "ae": "AE.PJ01.WP02",
+     "wpID": "WP.02",
+     "wpName": "Agreement",
+     "gaps": [
+      {
+       "wpID": "WP.02",
+       "wpName": "Agreement",
+       "characteristic": "WPC.02.05",
+       "item": "Signed by customer and project manager",
+       "rating": "Not_achieved",
+       "percentage": "0"
+      }
+     ],
+     "tasks": [
+      {
+       "taskID": "PM.1.1",
+       "description": "Review the agreement to select the development cycle of the project (e.g./ waterfall/ iterative/ incremental/ evolutionary/ agile).",
+       "roles": "PJM, TL",
+       "link": "uses"
+      },
+      {
+       "taskID": "PM.1.2",
+       "description": "Define with the customer the delivery\ninstructions.",
+       "roles": "CUS, PJM",
+       "link": "uses"
+      },
+      {
+       "taskID": "PM.1.3",
+       "description": "Identify the tasks to produce the work\nproducts to be delivered to the customer.",
+       "roles": "PJM, TL",
+       "link": "uses"
+      },
+      {
+       "taskID": "PM.1.5",
+       "description": "Identify and document the resources to\nperform the project in the project plan.",
+       "roles": "PJM, TL",
+       "link": "uses"
+      },
+      {
+       "taskID": "PM.1.12",
+       "description": "Add product description/ scope/\nobjectives and deliverables listed in the\nagreement to the project plan.",
+       "roles": "PJM, TL",
+       "link": "uses"
+      },
+      {
+       "taskID": "PM.1.16",
+       "description": "Add the agreement and the project\nplan to the project repository.",
+       "roles": "PJM",
+       "link": "uses"
+      },
+      {
+       "taskID": "SI.2.2",
+       "description": "Document the software Requirement specification:\n- Analyse the requirements defined in the agreement to determinate the scope and feasibility.\n- Identify and consult information sources (e.g./ customer/ users/ previous software products/ documents) to get new or missing requirements.",
+       "roles": "CUS, AN",
+       "link": "uses"
+      }
+     ],
+     "roles": [
+      {
+       "roleName": "Analyst",
+       "abbreviation": "AN",
+       "tasks": "SI.2.2"
+      },
+      {
+       "roleName": "Customer",
+       "abbreviation": "CUS",
+       "tasks": "PM.1.2, SI.2.2"
+      },
+      {
+       "roleName": "Project manager",
+       "abbreviation": "PJM",
+       "tasks": "PM.1.1, PM.1.2, PM.1.3, PM.1.5, PM.1.12, PM.1.16"
+      },
+      {
+       "roleName": "Technical leader",
+       "abbreviation": "TL",
+       "tasks": "PM.1.1, PM.1.3, PM.1.5, PM.1.12"
+      }
+     ],
+     "basePractices": []
+    }
+   ]
+  },
+  "PJ.02": {
+   "project": {
+    "id": "PJ.02",
+    "projectName": "PJ.B",
+    "enterprise": "ENT.02",
+    "enterpriseName": "Mock Company B (start-up, mock data)",
+    "mock": true,
+    "hasEndingDate": "2026-09-30",
+    "hasNumberofStaff": "4",
+    "hasProjectDescription": "Mock: small web application for a local retailer; first project using ISO/IEC 29110",
+    "hasProjectName": "PJ.B",
+    "hasReason": "Mock: customer requires evidence of a defined process",
+    "hasStartingDate": "2026-06-01",
+    "hasTotalDuration": "4 months",
+    "excludedWorkProducts": [
+     {
+      "wpName": "Product Operation Guide",
+      "wpID": "WP.08"
+     },
+     {
+      "wpName": "Software User Documentation",
+      "wpID": "WP.18"
+     }
+    ]
+   },
+   "processScores": [
+    {
+     "score": "0.5596219135802469135802469130",
+     "process": "PM",
+     "nBP": "27"
+    },
+    {
+     "score": "0.5188297964113181504485852322",
+     "process": "SI",
+     "nBP": "23"
+    }
+   ],
+   "basePracticeScores": [
+    {
+     "bpID": "PM.BP1",
+     "description": "Review the agreement",
+     "nWP": "2",
+     "score": "0.7"
+    },
+    {
+     "bpID": "PM.BP2",
+     "description": "Define with the Customer the Delivery Instructions of each one of the\nDeliverables specified in the agreement",
+     "nWP": "3",
+     "score": "0.5533333333333333333333333333"
+    },
+    {
+     "bpID": "PM.BP3",
+     "description": "Identify the specific Tasks to be performed in order to produce the\nDeliverables and their Software Components identified in the Statement of\nWork. Include Tasks in the SI process along with verification, validation, and\nreviews with Customer and Work Team Tasks to ensure the quality of work\nproducts. Identify the Tasks to perform the Delivery Instructions. Document\nthe Tasks.",
+     "nWP": "2",
+     "score": "0.7"
+    },
+    {
+     "bpID": "PM.BP4",
+     "description": "Establish the Estimated Duration to perform each task.",
+     "nWP": "2",
+     "score": "0.7"
+    },
+    {
+     "bpID": "PM.BP5",
+     "description": "Identify and document the Resources: human, material, equipment,\nand tools, standards, including the required training of the Work Team to\nperform the project. Include in the schedule the dates when Resources and\ntraining will be needed.",
+     "nWP": "2",
+     "score": "0.7"
+    },
+    {
+     "bpID": "PM.BP6",
+     "description": "Establish the Composition of Work Team assigning roles and\nresponsibilities according to the Resources.",
+     "nWP": "2",
+     "score": "0.7"
+    },
+    {
+     "bpID": "PM.BP7",
+     "description": "Assign estimated start and completion dates to each one of the Tasks\nin order to create the Schedule of the Project Tasks taking into account the\nassigned Resources, sequence and dependency of the Tasks.",
+     "nWP": "2",
+     "score": "0.7"
+    },
+    {
+     "bpID": "PM.BP8",
+     "description": "Calculate and document the project Estimated Effort and Cost.",
+     "nWP": "2",
+     "score": "0.7"
+    },
+    {
+     "bpID": "PM.BP9",
+     "description": "Identify and document the risks which may affect the project.",
+     "nWP": "3",
+     "score": "0.4791666666666666666666666667"
+    },
+    {
+     "bpID": "PM.BP10",
+     "description": "Document the Version Control Strategy in the Project Plan.",
+     "nWP": "2",
+     "score": "0.7"
+    },
+    {
+     "bpID": "PM.BP11",
+     "description": "Generate the Project Plan integrating the elements previously\nidentified and documented.",
+     "nWP": "1",
+     "score": "0.7"
+    },
+    {
+     "bpID": "PM.BP12",
+     "description": "Include Product Description, Scope, Objectives, and Deliverables in\nthe Project Plan.",
+     "nWP": "1",
+     "score": "0.7"
+    },
+    {
+     "bpID": "PM.BP13",
+     "description": "Verify and obtain approval of the Project Plan. Verify that all Project\nPlan elements are viable and consistent. The results found are documented in a\nVerification Results and corrections are made until the document is approved\nby PM.",
+     "nWP": "1",
+     "score": "0.7"
+    },
+    {
+     "bpID": "PM.BP14",
+     "description": "Review and accept the Project Plan. Customer reviews and accepts\nthe Project Plan, making sure that the Project Plan elements match with the\nStatement of Work.",
+     "nWP": "3",
+     "score": "0.5533333333333333333333333333"
+    },
+    {
+     "bpID": "PM.BP15",
+     "description": "Establish the Project Repository using the Version Control Strategy.",
+     "nWP": "2",
+     "score": "0.7"
+    },
+    {
+     "bpID": "PM.BP16",
+     "description": "Monitor the Project Plan execution and record actual data in Progress\nStatus Record.",
+     "nWP": "2",
+     "score": "0.5"
+    },
+    {
+     "bpID": "PM.BP17",
+     "description": "Analyse and evaluate the Change Request for cost, schedule and\ntechnical impact. The Change Request can be initiated externally by the\nCustomer or internally by the Work Team. Update the Project Plan, if the\naccepted change does not affect agreements with Customer. Change Request,\nwhich affects those agreements, needs to be negotiated by both parties (see\nPM.2.4)",
+     "nWP": "2",
+     "score": "0.36875"
+    },
+    {
+     "bpID": "PM.BP18",
+     "description": "Conduct revision meetings with the Work Team, identify problems,\nreview risk status, record agreements, and track them to closure.",
+     "nWP": "3",
+     "score": "0.3458333333333333333333333333"
+    },
+    {
+     "bpID": "PM.BP19",
+     "description": "Conduct revision meetings with the Customer, record agreements\nand track them to closure. Change Request initiated by Customer or initiated\nby Work Team, which affects the Customer, needs to be negotiated to reach\nacceptance of both parties. If necessary, update the Project Plan according to\nnew agreement with Customer.",
+     "nWP": "4",
+     "score": "0.424375"
+    },
+    {
+     "bpID": "PM.BP20",
+     "description": "Perform backup according to the Version Control Strategy.",
+     "nWP": "3",
+     "score": "0.2458333333333333333333333333"
+    },
+    {
+     "bpID": "PM.BP21",
+     "description": "Perform Project Repository recovery using the Project Repository Backup, if necessary.",
+     "nWP": "3",
+     "score": "0.2458333333333333333333333333"
+    },
+    {
+     "bpID": "PM.BP22",
+     "description": "Evaluate project progress with respect to the Project Plan,\ncomparing:\n— actual Tasks against planned Tasks;\n— actual results against established project Objectives;\n— actual resource allocation against planned Resources;\n— actual cost against budget estimates;\n— actual time against planned schedule;\n— actual risk against previously identified.",
+     "nWP": "3",
+     "score": "0.5533333333333333333333333333"
+    },
+    {
+     "bpID": "PM.BP23",
+     "description": "Establish actions to correct deviations or problems and identified\nrisks concerning the accomplishment of the plan, as needed, document them in\nCorrection Register and track them to closure.",
+     "nWP": "2",
+     "score": "0.5"
+    },
+    {
+     "bpID": "PM.BP24",
+     "description": "Identify changes to requirements and/or Project Plan to address\nmajor deviations, potential risks or problems concerning the accomplishment\nof the plan, document them in Change Request and track them to closure.",
+     "nWP": "3",
+     "score": "0.2458333333333333333333333333"
+    },
+    {
+     "bpID": "PM.BP25",
+     "description": "Formalize the completion of the project according to the Delivery\nInstructions established in the Project Plan, providing acceptance support and\ngetting the Acceptance Record signed.",
+     "nWP": "3",
+     "score": "0.5666666666666666666666666667"
+    },
+    {
+     "bpID": "PM.BP26",
+     "description": "Update Project Repository.",
+     "nWP": "5",
+     "score": "0.4275"
+    },
+    {
+     "bpID": "PM.BP27",
+     "description": "Perform delivery according to Delivery Instructions.",
+     "nWP": "3",
+     "score": "0.7"
+    },
+    {
+     "bpID": "SI.BP1",
+     "description": "Document or update the Requirements Specification. Identify and\nconsult information sources (Customer, users, previous systems, documents,\netc.) in order to get new requirements. Analyse the identified requirements to\ndeterminate the Scope and feasibility.\nGenerate or update the Requirements Specification",
+     "nWP": "4",
+     "score": "0.434375"
+    },
+    {
+     "bpID": "SI.BP2",
+     "description": "Verify and obtain approval of the Requirements Specification.Verify the\ncorrectness and testability of the Requirements Specification and its\nconsistency with the Product Description. Additionally, review that\nrequirements are complete, unambiguous, and not contradictory. The results\nfound are documented in a Verification Results and corrections are made until\nthe document is approved by AN. If significant changes were needed, initiate a\nChange Request.",
+     "nWP": "4",
+     "score": "0.434375"
+    },
+    {
+     "bpID": "SI.BP3",
+     "description": "Validate and obtain approval of the Requirements Specification .\nValidate that Requirements Specification satisfies needs and agreed upon\nexpectations, including the user interface usability. The results found are\ndocumented in a Validation Results and corrections are made until the\ndocument is approved by the CUS.",
+     "nWP": "2",
+     "score": "0.5"
+    },
+    {
+     "bpID": "SI.BP4",
+     "description": "Incorporate the requirements specification to the software\nconfiguration in the baseline",
+     "nWP": "2",
+     "score": "0.7"
+    },
+    {
+     "bpID": "SI.BP5",
+     "description": "Document or update the Software Design. Analyse the Requirements\nSpecification to generate the architectural design, its arrangement in\nsubsystems and Software Components defining the internal and external\ninterfaces. Describe in detail, the appearance and the behaviour of the\ninterface, based on the Requirements Specification in a way that Resources for\nits implementation can be foreseen. Provide the detail of Software Components\nand their interfaces to allow the construction in an evident way. Generate or\nupdate the Traceability Record.",
+     "nWP": "7",
+     "score": "0.4910714285714285714285714286"
+    },
+    {
+     "bpID": "SI.BP6",
+     "description": "Verify and obtain approval of the Software Design. Verify correctness of\nSoftware Design documentation, its feasibility and consistency with their\nRequirement Specification. Verify that the Traceability Record contains the\nadequate relationships between requirements and the Software Design\nelements. The results found are documented in a Verification Results and\ncorrections are made until the document is approved by DES. If significant\nchanges were needed, initiate a Change Request.",
+     "nWP": "4",
+     "score": "0.434375"
+    },
+    {
+     "bpID": "SI.BP7",
+     "description": "Establish or update Test Cases and Test Procedures for integration\ntesting based on Requirements Specification and Software Design. Customer\nprovides testing data, if needed.",
+     "nWP": "6",
+     "score": "0.4666666666666666666666666667"
+    },
+    {
+     "bpID": "SI.BP8",
+     "description": "Verify and obtain approval of the Test Cases and Test Procedures. Verify\nconsistency among Requirements Specification, Software Design and Test\nCases and Test Procedures. The results found are documented in a Verification\nResults and corrections are made until the document is approved.",
+     "nWP": "6",
+     "score": "0.4666666666666666666666666667"
+    },
+    {
+     "bpID": "SI.BP9",
+     "description": "Update the Traceability Record incorporating the Test Cases and Test\nProcedures.",
+     "nWP": "8",
+     "score": "0.525"
+    },
+    {
+     "bpID": "SI.BP10",
+     "description": "Incorporate the Software Design, and Traceability Record to the\nSoftware Configuration as part of the baseline. Incorporate the Test Cases, and\nTest Procedures to the Project Repository.",
+     "nWP": "6",
+     "score": "0.6333333333333333333333333333"
+    },
+    {
+     "bpID": "SI.BP11",
+     "description": "Construct or update Software Components based on the detailed part\nof the Software Design.",
+     "nWP": "3",
+     "score": "0.5666666666666666666666666667"
+    },
+    {
+     "bpID": "SI.BP12",
+     "description": "Design or update unit test cases and apply them to verify that the\nSoftware Components implements the detailed part of the Software Design.",
+     "nWP": "3",
+     "score": "0.5666666666666666666666666667"
+    },
+    {
+     "bpID": "SI.BP13",
+     "description": "Correct the defects found until successful unit test (reaching exit\ncriteria) is achieved.",
+     "nWP": "1",
+     "score": "0.7"
+    },
+    {
+     "bpID": "SI.BP14",
+     "description": "Update the Traceability Record incorporating Software Components\nconstructed or modified.",
+     "nWP": "6",
+     "score": "0.6333333333333333333333333333"
+    },
+    {
+     "bpID": "SI.BP15",
+     "description": "Incorporate Software Components and Traceability Record to the\nSoftware Configuration as part of the baseline.",
+     "nWP": "6",
+     "score": "0.6333333333333333333333333333"
+    },
+    {
+     "bpID": "SI.BP16",
+     "description": "Integrates the Software using Software Components and updates Test \nCases and Test Procedures for integration testing, as needed.",
+     "nWP": "8",
+     "score": "0.475"
+    },
+    {
+     "bpID": "SI.BP17",
+     "description": "Perform Software tests using Test Cases and Test Procedures for\nintegration and document results in Test Report.",
+     "nWP": "6",
+     "score": "0.4666666666666666666666666667"
+    },
+    {
+     "bpID": "SI.BP18",
+     "description": "Correct the defects found and perform regression test until exit\ncriteria is achieved.",
+     "nWP": "4",
+     "score": "0.35"
+    },
+    {
+     "bpID": "SI.BP19",
+     "description": "Updates the Traceability Record, if appropriate.",
+     "nWP": "6",
+     "score": "0.6333333333333333333333333333"
+    },
+    {
+     "bpID": "SI.BP20",
+     "description": "Incorporate the Test Cases and Test Procedures, Software, Traceability\nRecord, Test Report to the Software Configuration as part of the baseline.",
+     "nWP": "9",
+     "score": "0.4555555555555555555555555556"
+    },
+    {
+     "bpID": "SI.BP21",
+     "description": "Document the Maintenance Documentation or update the current one.",
+     "nWP": "9",
+     "score": "0.4555555555555555555555555556"
+    },
+    {
+     "bpID": "SI.BP22",
+     "description": "Verify and obtain approval of the Maintenance Documentation. Verify\nconsistency of Maintenance Documentation with Software Configuration. The\nresults found are documented in a Verification Results and corrections are\nmade until the document is approved.",
+     "nWP": "9",
+     "score": "0.4555555555555555555555555556"
+    },
+    {
+     "bpID": "SI.BP23",
+     "description": "Incorporate the Maintenance Documentation as baseline for the\nSoftware Configuration.",
+     "nWP": "9",
+     "score": "0.4555555555555555555555555556"
+    }
+   ],
+   "workProducts": [
+    {
+     "ae": "AE.PJ02.WP01",
+     "wpID": "WP.01",
+     "wpName": "Acceptance Record",
+     "score": "0.3",
+     "ratings": {
+      "Partially_achieved": "6"
+     }
+    },
+    {
+     "ae": "AE.PJ02.WP02",
+     "wpID": "WP.02",
+     "wpName": "Agreement",
+     "score": "0.7",
+     "ratings": {
+      "Largely_achieved": "5"
+     }
+    },
+    {
+     "ae": "AE.PJ02.WP03",
+     "wpID": "WP.03",
+     "wpName": "Change Request",
+     "score": "0.0375",
+     "ratings": {
+      "Not_achieved": "7",
+      "Partially_achieved": "1"
+     }
+    },
+    {
+     "ae": "AE.PJ02.WP04",
+     "wpID": "WP.04",
+     "wpName": "Correction Register",
+     "score": "0.3",
+     "ratings": {
+      "Partially_achieved": "8"
+     }
+    },
+    {
+     "ae": "AE.PJ02.WP05",
+     "wpID": "WP.05",
+     "wpName": "Implementation Environment",
+     "score": "0.7",
+     "ratings": {
+      "Largely_achieved": "1"
+     }
+    },
+    {
+     "ae": "AE.PJ02.WP06",
+     "wpID": "WP.06",
+     "wpName": "Maintenance Documentation",
+     "score": "0.3",
+     "ratings": {
+      "Partially_achieved": "2"
+     }
+    },
+    {
+     "ae": "AE.PJ02.WP07",
+     "wpID": "WP.07",
+     "wpName": "Meeting Record",
+     "score": "0.66",
+     "ratings": {
+      "Largely_achieved": "9",
+      "Partially_achieved": "1"
+     }
+    },
+    {
+     "ae": "AE.PJ02.WP08",
+     "wpID": "WP.08",
+     "wpName": "Product Operation Guide",
+     "score": "0",
+     "ratings": {
+      "Not_applicable": "10"
+     }
+    },
+    {
+     "ae": "AE.PJ02.WP09",
+     "wpID": "WP.09",
+     "wpName": "Progress Status Record",
+     "score": "0.3",
+     "ratings": {
+      "Partially_achieved": "8"
+     }
+    },
+    {
+     "ae": "AE.PJ02.WP10",
+     "wpID": "WP.10",
+     "wpName": "Project Plan",
+     "score": "0.7",
+     "ratings": {
+      "Largely_achieved": "14"
+     }
+    },
+    {
+     "ae": "AE.PJ02.WP11",
+     "wpID": "WP.11",
+     "wpName": "Project Repository",
+     "score": "0.7",
+     "ratings": {
+      "Largely_achieved": "11"
+     }
+    },
+    {
+     "ae": "AE.PJ02.WP12",
+     "wpID": "WP.12",
+     "wpName": "Project Repository Backup",
+     "score": "0",
+     "ratings": {
+      "Not_achieved": "1"
+     }
+    },
+    {
+     "ae": "AE.PJ02.WP13",
+     "wpID": "WP.13",
+     "wpName": "Requirement Specification",
+     "score": "0.7",
+     "ratings": {
+      "Largely_achieved": "12"
+     }
+    },
+    {
+     "ae": "AE.PJ02.WP14",
+     "wpID": "WP.14",
+     "wpName": "Software",
+     "score": "0.7",
+     "ratings": {
+      "Largely_achieved": "1"
+     }
+    },
+    {
+     "ae": "AE.PJ02.WP15",
+     "wpID": "WP.15",
+     "wpName": "Software Components",
+     "score": "0.7",
+     "ratings": {
+      "Largely_achieved": "1"
+     }
+    },
+    {
+     "ae": "AE.PJ02.WP16",
+     "wpID": "WP.16",
+     "wpName": "Software Design",
+     "score": "0.7",
+     "ratings": {
+      "Largely_achieved": "13"
+     }
+    },
+    {
+     "ae": "AE.PJ02.WP17",
+     "wpID": "WP.17",
+     "wpName": "Software Product",
+     "score": "0.7",
+     "ratings": {
+      "Largely_achieved": "10"
+     }
+    },
+    {
+     "ae": "AE.PJ02.WP18",
+     "wpID": "WP.18",
+     "wpName": "Software User Documentation",
+     "score": "0",
+     "ratings": {
+      "Not_applicable": "10"
+     }
+    },
+    {
+     "ae": "AE.PJ02.WP19",
+     "wpID": "WP.19",
+     "wpName": "Test Cases and Test Procedures",
+     "score": "0.1",
+     "ratings": {
+      "Not_achieved": "10",
+      "Partially_achieved": "5"
+     }
+    },
+    {
+     "ae": "AE.PJ02.WP20",
+     "wpID": "WP.20",
+     "wpName": "Test Report",
+     "score": "0.3",
+     "ratings": {
+      "Partially_achieved": "8"
+     }
+    },
+    {
+     "ae": "AE.PJ02.WP21",
+     "wpID": "WP.21",
+     "wpName": "Traceability Record",
+     "score": "0.3",
+     "ratings": {
+      "Partially_achieved": "2"
+     }
+    },
+    {
+     "ae": "AE.PJ02.WP22",
+     "wpID": "WP.22",
+     "wpName": "Validation Record",
+     "score": "0.3",
+     "ratings": {
+      "Partially_achieved": "11"
+     }
+    },
+    {
+     "ae": "AE.PJ02.WP23",
+     "wpID": "WP.23",
+     "wpName": "Verification Record",
+     "score": "0.3",
+     "ratings": {
+      "Partially_achieved": "11"
+     }
+    }
+   ],
+   "gaps": [
+    {
+     "wpID": "WP.01",
+     "wpName": "Acceptance Record",
+     "characteristic": "WPC.01.01",
+     "item": "Record of the receipt of the delivery",
+     "rating": "Partially_achieved",
+     "percentage": "44"
+    },
+    {
+     "wpID": "WP.01",
+     "wpName": "Acceptance Record",
+     "characteristic": "WPC.01.02",
+     "item": "Identifies the date received",
+     "rating": "Partially_achieved",
+     "percentage": "40"
+    },
+    {
+     "wpID": "WP.01",
+     "wpName": "Acceptance Record",
+     "characteristic": "WPC.01.03",
+     "item": "Identifies the delivered elements",
+     "rating": "Partially_achieved",
+     "percentage": "36"
+    },
+    {
+     "wpID": "WP.01",
+     "wpName": "Acceptance Record",
+     "characteristic": "WPC.01.04",
+     "item": "Records the verification of any customer acceptance criteria defined",
+     "rating": "Partially_achieved",
+     "percentage": "43"
+    },
+    {
+     "wpID": "WP.01",
+     "wpName": "Acceptance Record",
+     "characteristic": "WPC.01.05",
+     "item": "Identifies any open issues (if applicable)",
+     "rating": "Partially_achieved",
+     "percentage": "39"
+    },
+    {
+     "wpID": "WP.01",
+     "wpName": "Acceptance Record",
+     "characteristic": "WPC.01.06",
+     "item": "Signed by customer and project manager",
+     "rating": "Partially_achieved",
+     "percentage": "35"
+    },
+    {
+     "wpID": "WP.03",
+     "wpName": "Change Request",
+     "characteristic": "WPC.03.01",
+     "item": "Identifies purpose of change",
+     "rating": "Not_achieved",
+     "percentage": "9"
+    },
+    {
+     "wpID": "WP.03",
+     "wpName": "Change Request",
+     "characteristic": "WPC.03.02",
+     "item": "Identifies request states",
+     "rating": "Partially_achieved",
+     "percentage": "16"
+    },
+    {
+     "wpID": "WP.03",
+     "wpName": "Change Request",
+     "characteristic": "WPC.03.03",
+     "item": "Identifies requester contact information",
+     "rating": "Not_achieved",
+     "percentage": "12"
+    },
+    {
+     "wpID": "WP.03",
+     "wpName": "Change Request",
+     "characteristic": "WPC.03.04",
+     "item": "Impacted software product, component",
+     "rating": "Not_achieved",
+     "percentage": "8"
+    },
+    {
+     "wpID": "WP.03",
+     "wpName": "Change Request",
+     "characteristic": "WPC.03.05",
+     "item": "Impact to operations of existing software defined",
+     "rating": "Not_achieved",
+     "percentage": "15"
+    },
+    {
+     "wpID": "WP.03",
+     "wpName": "Change Request",
+     "characteristic": "WPC.03.06",
+     "item": "Impact to associated documentation defined",
+     "rating": "Not_achieved",
+     "percentage": "11"
+    },
+    {
+     "wpID": "WP.03",
+     "wpName": "Change Request",
+     "characteristic": "WPC.03.07",
+     "item": "Criticality of the request, date needed",
+     "rating": "Not_achieved",
+     "percentage": "7"
+    },
+    {
+     "wpID": "WP.03",
+     "wpName": "Change Request",
+     "characteristic": "WPC.03.07",
+     "item": "Criticality of the request, date needed",
+     "rating": "Not_achieved",
+     "percentage": "14"
+    },
+    {
+     "wpID": "WP.04",
+     "wpName": "Correction Register",
+     "characteristic": "WPC.04.01",
+     "item": "Identifies the initial problem",
+     "rating": "Partially_achieved",
+     "percentage": "29"
+    },
+    {
+     "wpID": "WP.04",
+     "wpName": "Correction Register",
+     "characteristic": "WPC.04.02",
+     "item": "Defines a solution",
+     "rating": "Partially_achieved",
+     "percentage": "25"
+    },
+    {
+     "wpID": "WP.04",
+     "wpName": "Correction Register",
+     "characteristic": "WPC.04.03",
+     "item": "Identifies corrective actions taken",
+     "rating": "Partially_achieved",
+     "percentage": "32"
+    },
+    {
+     "wpID": "WP.04",
+     "wpName": "Correction Register",
+     "characteristic": "WPC.04.04",
+     "item": "Identifies the person responsible for completion of defined actions",
+     "rating": "Partially_achieved",
+     "percentage": "28"
+    },
+    {
+     "wpID": "WP.04",
+     "wpName": "Correction Register",
+     "characteristic": "WPC.04.05",
+     "item": "Identifies the open date and target closure date",
+     "rating": "Partially_achieved",
+     "percentage": "35"
+    },
+    {
+     "wpID": "WP.04",
+     "wpName": "Correction Register",
+     "characteristic": "WPC.04.05",
+     "item": "Identifies the open date and target closure date",
+     "rating": "Partially_achieved",
+     "percentage": "31"
+    },
+    {
+     "wpID": "WP.04",
+     "wpName": "Correction Register",
+     "characteristic": "WPC.04.06",
+     "item": "Contains a state indicator",
+     "rating": "Partially_achieved",
+     "percentage": "27"
+    },
+    {
+     "wpID": "WP.04",
+     "wpName": "Correction Register",
+     "characteristic": "WPC.04.07",
+     "item": "Indicates follow up actions",
+     "rating": "Partially_achieved",
+     "percentage": "34"
+    },
+    {
+     "wpID": "WP.06",
+     "wpName": "Maintenance Documentation",
+     "characteristic": "WPC.05.01",
+     "item": "Includes or refers to all software product elements developed during implementation",
+     "rating": "Partially_achieved",
+     "percentage": "23"
+    },
+    {
+     "wpID": "WP.06",
+     "wpName": "Maintenance Documentation",
+     "characteristic": "WPC.05.02",
+     "item": "Identifies environment used for development and testing (e.g., compilers, design tools, construction and tests tools)",
+     "rating": "Partially_achieved",
+     "percentage": "19"
+    },
+    {
+     "wpID": "WP.07",
+     "wpName": "Meeting Record",
+     "characteristic": "WPC.06.09",
+     "item": "Next meeting, if any.",
+     "rating": "Partially_achieved",
+     "percentage": "50"
+    },
+    {
+     "wpID": "WP.09",
+     "wpName": "Progress Status Record",
+     "characteristic": "WPC.08.01",
+     "item": "Status of actual tasks against planned tasks",
+     "rating": "Partially_achieved",
+     "percentage": "33"
+    },
+    {
+     "wpID": "WP.09",
+     "wpName": "Progress Status Record",
+     "characteristic": "WPC.08.02",
+     "item": "Status of actual results against established objectives/goals",
+     "rating": "Partially_achieved",
+     "percentage": "40"
+    },
+    {
+     "wpID": "WP.09",
+     "wpName": "Progress Status Record",
+     "characteristic": "WPC.08.03",
+     "item": "Status of actual resource allocation against planned resources",
+     "rating": "Partially_achieved",
+     "percentage": "36"
+    },
+    {
+     "wpID": "WP.09",
+     "wpName": "Progress Status Record",
+     "characteristic": "WPC.08.04",
+     "item": "Status of actual cost against budget estimates",
+     "rating": "Partially_achieved",
+     "percentage": "32"
+    },
+    {
+     "wpID": "WP.09",
+     "wpName": "Progress Status Record",
+     "characteristic": "WPC.08.05",
+     "item": "Status of actual time against planned schedule",
+     "rating": "Partially_achieved",
+     "percentage": "39"
+    },
+    {
+     "wpID": "WP.09",
+     "wpName": "Progress Status Record",
+     "characteristic": "WPC.08.06",
+     "item": "Status of actual risk and mitigation against previously identified",
+     "rating": "Partially_achieved",
+     "percentage": "35"
+    },
+    {
+     "wpID": "WP.09",
+     "wpName": "Progress Status Record",
+     "characteristic": "WPC.08.07",
+     "item": "Record of any deviations from planned tasks and reason why.",
+     "rating": "Partially_achieved",
+     "percentage": "31"
+    },
+    {
+     "wpID": "WP.09",
+     "wpName": "Progress Status Record",
+     "characteristic": "WPC.08.08",
+     "item": "Signature of the project manager",
+     "rating": "Partially_achieved",
+     "percentage": "38"
+    },
+    {
+     "wpID": "WP.12",
+     "wpName": "Project Repository Backup",
+     "characteristic": "WPC.11.01",
+     "item": "A copy of project repository",
+     "rating": "Not_achieved",
+     "percentage": "14"
+    },
+    {
+     "wpID": "WP.19",
+     "wpName": "Test Cases and Test Procedures",
+     "characteristic": "WPC.18.01",
+     "item": "Test cases may include:\n- Identifies the test case\n- Test items (unit test cases, integration tests)\n- Input specifications\n- Output specifications\n- Environmental needs\n- Special procedural requirements\n- Interface dependencies",
+     "rating": "Not_achieved",
+     "percentage": "10"
+    },
+    {
+     "wpID": "WP.19",
+     "wpName": "Test Cases and Test Procedures",
+     "characteristic": "WPC.18.01",
+     "item": "Test cases may include:\n- Identifies the test case\n- Test items (unit test cases, integration tests)\n- Input specifications\n- Output specifications\n- Environmental needs\n- Special procedural requirements\n- Interface dependencies",
+     "rating": "Not_achieved",
+     "percentage": "13"
+    },
+    {
+     "wpID": "WP.19",
+     "wpName": "Test Cases and Test Procedures",
+     "characteristic": "WPC.18.01",
+     "item": "Test cases may include:\n- Identifies the test case\n- Test items (unit test cases, integration tests)\n- Input specifications\n- Output specifications\n- Environmental needs\n- Special procedural requirements\n- Interface dependencies",
+     "rating": "Not_achieved",
+     "percentage": "9"
+    },
+    {
+     "wpID": "WP.19",
+     "wpName": "Test Cases and Test Procedures",
+     "characteristic": "WPC.18.01",
+     "item": "Test cases may include:\n- Identifies the test case\n- Test items (unit test cases, integration tests)\n- Input specifications\n- Output specifications\n- Environmental needs\n- Special procedural requirements\n- Interface dependencies",
+     "rating": "Not_achieved",
+     "percentage": "12"
+    },
+    {
+     "wpID": "WP.19",
+     "wpName": "Test Cases and Test Procedures",
+     "characteristic": "WPC.18.01",
+     "item": "Test cases may include:\n- Identifies the test case\n- Test items (unit test cases, integration tests)\n- Input specifications\n- Output specifications\n- Environmental needs\n- Special procedural requirements\n- Interface dependencies",
+     "rating": "Partially_achieved",
+     "percentage": "17"
+    },
+    {
+     "wpID": "WP.19",
+     "wpName": "Test Cases and Test Procedures",
+     "characteristic": "WPC.18.01",
+     "item": "Test cases may include:\n- Identifies the test case\n- Test items (unit test cases, integration tests)\n- Input specifications\n- Output specifications\n- Environmental needs\n- Special procedural requirements\n- Interface dependencies",
+     "rating": "Partially_achieved",
+     "percentage": "16"
+    },
+    {
+     "wpID": "WP.19",
+     "wpName": "Test Cases and Test Procedures",
+     "characteristic": "WPC.18.01",
+     "item": "Test cases may include:\n- Identifies the test case\n- Test items (unit test cases, integration tests)\n- Input specifications\n- Output specifications\n- Environmental needs\n- Special procedural requirements\n- Interface dependencies",
+     "rating": "Partially_achieved",
+     "percentage": "19"
+    },
+    {
+     "wpID": "WP.19",
+     "wpName": "Test Cases and Test Procedures",
+     "characteristic": "WPC.18.02",
+     "item": "Test procedures may include:\n- Identifies: test name, test description and test completion date\n- Identifies potential implementation issues\n- Identifies the person who completed the test procedure\n- Identifies prerequisites\n- Identifies procedure steps including the step number, the required action by the tester and the expected results",
+     "rating": "Not_achieved",
+     "percentage": "15"
+    },
+    {
+     "wpID": "WP.19",
+     "wpName": "Test Cases and Test Procedures",
+     "characteristic": "WPC.18.02",
+     "item": "Test procedures may include:\n- Identifies: test name, test description and test completion date\n- Identifies potential implementation issues\n- Identifies the person who completed the test procedure\n- Identifies prerequisites\n- Identifies procedure steps including the step number, the required action by the tester and the expected results",
+     "rating": "Not_achieved",
+     "percentage": "11"
+    },
+    {
+     "wpID": "WP.19",
+     "wpName": "Test Cases and Test Procedures",
+     "characteristic": "WPC.18.02",
+     "item": "Test procedures may include:\n- Identifies: test name, test description and test completion date\n- Identifies potential implementation issues\n- Identifies the person who completed the test procedure\n- Identifies prerequisites\n- Identifies procedure steps including the step number, the required action by the tester and the expected results",
+     "rating": "Not_achieved",
+     "percentage": "14"
+    },
+    {
+     "wpID": "WP.19",
+     "wpName": "Test Cases and Test Procedures",
+     "characteristic": "WPC.18.02",
+     "item": "Test procedures may include:\n- Identifies: test name, test description and test completion date\n- Identifies potential implementation issues\n- Identifies the person who completed the test procedure\n- Identifies prerequisites\n- Identifies procedure steps including the step number, the required action by the tester and the expected results",
+     "rating": "Not_achieved",
+     "percentage": "10"
+    },
+    {
+     "wpID": "WP.19",
+     "wpName": "Test Cases and Test Procedures",
+     "characteristic": "WPC.18.02",
+     "item": "Test procedures may include:\n- Identifies: test name, test description and test completion date\n- Identifies potential implementation issues\n- Identifies the person who completed the test procedure\n- Identifies prerequisites\n- Identifies procedure steps including the step number, the required action by the tester and the expected results",
+     "rating": "Not_achieved",
+     "percentage": "13"
+    },
+    {
+     "wpID": "WP.19",
+     "wpName": "Test Cases and Test Procedures",
+     "characteristic": "WPC.18.02",
+     "item": "Test procedures may include:\n- Identifies: test name, test description and test completion date\n- Identifies potential implementation issues\n- Identifies the person who completed the test procedure\n- Identifies prerequisites\n- Identifies procedure steps including the step number, the required action by the tester and the expected results",
+     "rating": "Not_achieved",
+     "percentage": "9"
+    },
+    {
+     "wpID": "WP.19",
+     "wpName": "Test Cases and Test Procedures",
+     "characteristic": "WPC.18.02",
+     "item": "Test procedures may include:\n- Identifies: test name, test description and test completion date\n- Identifies potential implementation issues\n- Identifies the person who completed the test procedure\n- Identifies prerequisites\n- Identifies procedure steps including the step number, the required action by the tester and the expected results",
+     "rating": "Partially_achieved",
+     "percentage": "18"
+    },
+    {
+     "wpID": "WP.19",
+     "wpName": "Test Cases and Test Procedures",
+     "characteristic": "WPC.18.02",
+     "item": "Test procedures may include:\n- Identifies: test name, test description and test completion date\n- Identifies potential implementation issues\n- Identifies the person who completed the test procedure\n- Identifies prerequisites\n- Identifies procedure steps including the step number, the required action by the tester and the expected results",
+     "rating": "Partially_achieved",
+     "percentage": "17"
+    },
+    {
+     "wpID": "WP.20",
+     "wpName": "Test Report",
+     "characteristic": "WPC.19.01",
+     "item": "A summary of each defect",
+     "rating": "Partially_achieved",
+     "percentage": "28"
+    },
+    {
+     "wpID": "WP.20",
+     "wpName": "Test Report",
+     "characteristic": "WPC.19.02",
+     "item": "Identifies the related test case",
+     "rating": "Partially_achieved",
+     "percentage": "35"
+    },
+    {
+     "wpID": "WP.20",
+     "wpName": "Test Report",
+     "characteristic": "WPC.19.03",
+     "item": "Identifies the tester who found each defect",
+     "rating": "Partially_achieved",
+     "percentage": "31"
+    },
+    {
+     "wpID": "WP.20",
+     "wpName": "Test Report",
+     "characteristic": "WPC.19.04",
+     "item": "Identifies the severity for each defect",
+     "rating": "Partially_achieved",
+     "percentage": "27"
+    },
+    {
+     "wpID": "WP.20",
+     "wpName": "Test Report",
+     "characteristic": "WPC.19.05",
+     "item": "Identifies the affected function(s) for each defect",
+     "rating": "Partially_achieved",
+     "percentage": "34"
+    },
+    {
+     "wpID": "WP.20",
+     "wpName": "Test Report",
+     "characteristic": "WPC.19.06",
+     "item": "Identifies the date when each defect originated",
+     "rating": "Partially_achieved",
+     "percentage": "30"
+    },
+    {
+     "wpID": "WP.20",
+     "wpName": "Test Report",
+     "characteristic": "WPC.19.07",
+     "item": "Identifies the date when each defect was resolved",
+     "rating": "Partially_achieved",
+     "percentage": "26"
+    },
+    {
+     "wpID": "WP.20",
+     "wpName": "Test Report",
+     "characteristic": "WPC.19.08",
+     "item": "Identifies the person who resolved each defect",
+     "rating": "Partially_achieved",
+     "percentage": "33"
+    },
+    {
+     "wpID": "WP.21",
+     "wpName": "Traceability Record",
+     "characteristic": "WPC.20.01",
+     "item": "Identification of the individual requirements of the Requirement specification to be traced.",
+     "rating": "Partially_achieved",
+     "percentage": "25"
+    },
+    {
+     "wpID": "WP.21",
+     "wpName": "Traceability Record",
+     "characteristic": "WPC.20.02",
+     "item": "Provides forward and backward mapping of requirements to software design elements, software components, test cases, test procedures and test results.",
+     "rating": "Partially_achieved",
+     "percentage": "21"
+    },
+    {
+     "wpID": "WP.22",
+     "wpName": "Validation Record",
+     "characteristic": "WPC.21.01",
+     "item": "Participants",
+     "rating": "Partially_achieved",
+     "percentage": "42"
+    },
+    {
+     "wpID": "WP.22",
+     "wpName": "Validation Record",
+     "characteristic": "WPC.21.02",
+     "item": "Date",
+     "rating": "Partially_achieved",
+     "percentage": "38"
+    },
+    {
+     "wpID": "WP.22",
+     "wpName": "Validation Record",
+     "characteristic": "WPC.21.03",
+     "item": "Place",
+     "rating": "Partially_achieved",
+     "percentage": "45"
+    },
+    {
+     "wpID": "WP.22",
+     "wpName": "Validation Record",
+     "characteristic": "WPC.21.04",
+     "item": "Duration",
+     "rating": "Partially_achieved",
+     "percentage": "41"
+    },
+    {
+     "wpID": "WP.22",
+     "wpName": "Validation Record",
+     "characteristic": "WPC.21.05",
+     "item": "Validation checklist",
+     "rating": "Partially_achieved",
+     "percentage": "37"
+    },
+    {
+     "wpID": "WP.22",
+     "wpName": "Validation Record",
+     "characteristic": "WPC.21.06",
+     "item": "Passed items of validation",
+     "rating": "Partially_achieved",
+     "percentage": "44"
+    },
+    {
+     "wpID": "WP.22",
+     "wpName": "Validation Record",
+     "characteristic": "WPC.21.07",
+     "item": "Failed items of validation",
+     "rating": "Partially_achieved",
+     "percentage": "40"
+    },
+    {
+     "wpID": "WP.22",
+     "wpName": "Validation Record",
+     "characteristic": "WPC.21.08",
+     "item": "Pending items of validation",
+     "rating": "Partially_achieved",
+     "percentage": "36"
+    },
+    {
+     "wpID": "WP.22",
+     "wpName": "Validation Record",
+     "characteristic": "WPC.21.09",
+     "item": "Defects identified during validation",
+     "rating": "Partially_achieved",
+     "percentage": "43"
+    },
+    {
+     "wpID": "WP.22",
+     "wpName": "Validation Record",
+     "characteristic": "WPC.21.10",
+     "item": "Signature of project manager",
+     "rating": "Partially_achieved",
+     "percentage": "39"
+    },
+    {
+     "wpID": "WP.22",
+     "wpName": "Validation Record",
+     "characteristic": "WPC.21.11",
+     "item": "Signature of customer",
+     "rating": "Partially_achieved",
+     "percentage": "35"
+    },
+    {
+     "wpID": "WP.23",
+     "wpName": "Verification Record",
+     "characteristic": "",
+     "item": "",
+     "rating": "Partially_achieved",
+     "percentage": "46"
+    },
+    {
+     "wpID": "WP.23",
+     "wpName": "Verification Record",
+     "characteristic": "",
+     "item": "",
+     "rating": "Partially_achieved",
+     "percentage": "42"
+    },
+    {
+     "wpID": "WP.23",
+     "wpName": "Verification Record",
+     "characteristic": "WPC.22.01",
+     "item": "Participants",
+     "rating": "Partially_achieved",
+     "percentage": "49"
+    },
+    {
+     "wpID": "WP.23",
+     "wpName": "Verification Record",
+     "characteristic": "WPC.22.02",
+     "item": "Date",
+     "rating": "Partially_achieved",
+     "percentage": "45"
+    },
+    {
+     "wpID": "WP.23",
+     "wpName": "Verification Record",
+     "characteristic": "WPC.22.03",
+     "item": "Place",
+     "rating": "Partially_achieved",
+     "percentage": "41"
+    },
+    {
+     "wpID": "WP.23",
+     "wpName": "Verification Record",
+     "characteristic": "WPC.22.04",
+     "item": "Duration",
+     "rating": "Partially_achieved",
+     "percentage": "48"
+    },
+    {
+     "wpID": "WP.23",
+     "wpName": "Verification Record",
+     "characteristic": "WPC.22.05",
+     "item": "Verification checklist",
+     "rating": "Partially_achieved",
+     "percentage": "44"
+    },
+    {
+     "wpID": "WP.23",
+     "wpName": "Verification Record",
+     "characteristic": "WPC.22.06",
+     "item": "Passed items of verification",
+     "rating": "Partially_achieved",
+     "percentage": "40"
+    },
+    {
+     "wpID": "WP.23",
+     "wpName": "Verification Record",
+     "characteristic": "WPC.22.07",
+     "item": "Failed items of verification",
+     "rating": "Partially_achieved",
+     "percentage": "47"
+    },
+    {
+     "wpID": "WP.23",
+     "wpName": "Verification Record",
+     "characteristic": "WPC.22.08",
+     "item": "Pending items of verification",
+     "rating": "Partially_achieved",
+     "percentage": "43"
+    },
+    {
+     "wpID": "WP.23",
+     "wpName": "Verification Record",
+     "characteristic": "WPC.22.09",
+     "item": "Defects identified during verification",
+     "rating": "Partially_achieved",
+     "percentage": "50"
+    }
+   ],
+   "recommendations": [
+    {
+     "ae": "AE.PJ02.WP01",
+     "wpID": "WP.01",
+     "wpName": "Acceptance Record",
+     "gaps": [
+      {
+       "wpID": "WP.01",
+       "wpName": "Acceptance Record",
+       "characteristic": "WPC.01.01",
+       "item": "Record of the receipt of the delivery",
+       "rating": "Partially_achieved",
+       "percentage": "44"
+      },
+      {
+       "wpID": "WP.01",
+       "wpName": "Acceptance Record",
+       "characteristic": "WPC.01.02",
+       "item": "Identifies the date received",
+       "rating": "Partially_achieved",
+       "percentage": "40"
+      },
+      {
+       "wpID": "WP.01",
+       "wpName": "Acceptance Record",
+       "characteristic": "WPC.01.03",
+       "item": "Identifies the delivered elements",
+       "rating": "Partially_achieved",
+       "percentage": "36"
+      },
+      {
+       "wpID": "WP.01",
+       "wpName": "Acceptance Record",
+       "characteristic": "WPC.01.04",
+       "item": "Records the verification of any customer acceptance criteria defined",
+       "rating": "Partially_achieved",
+       "percentage": "43"
+      },
+      {
+       "wpID": "WP.01",
+       "wpName": "Acceptance Record",
+       "characteristic": "WPC.01.05",
+       "item": "Identifies any open issues (if applicable)",
+       "rating": "Partially_achieved",
+       "percentage": "39"
+      },
+      {
+       "wpID": "WP.01",
+       "wpName": "Acceptance Record",
+       "characteristic": "WPC.01.06",
+       "item": "Signed by customer and project manager",
+       "rating": "Partially_achieved",
+       "percentage": "35"
+      }
+     ],
+     "tasks": [
+      {
+       "taskID": "PM.4.1",
+       "description": "Obtain signature of customer of the acceptance record.",
+       "roles": "CUS, PJM",
+       "link": "produces"
+      }
+     ],
+     "roles": [
+      {
+       "roleName": "Customer",
+       "abbreviation": "CUS",
+       "tasks": "PM.4.1"
+      },
+      {
+       "roleName": "Project manager",
+       "abbreviation": "PJM",
+       "tasks": "PM.4.1"
+      }
+     ],
+     "basePractices": [
+      {
+       "bpID": "PM.BP25",
+       "description": "Formalize the completion of the project according to the Delivery\nInstructions established in the Project Plan, providing acceptance support and\ngetting the Acceptance Record signed."
+      }
+     ]
+    },
+    {
+     "ae": "AE.PJ02.WP03",
+     "wpID": "WP.03",
+     "wpName": "Change Request",
+     "gaps": [
+      {
+       "wpID": "WP.03",
+       "wpName": "Change Request",
+       "characteristic": "WPC.03.01",
+       "item": "Identifies purpose of change",
+       "rating": "Not_achieved",
+       "percentage": "9"
+      },
+      {
+       "wpID": "WP.03",
+       "wpName": "Change Request",
+       "characteristic": "WPC.03.02",
+       "item": "Identifies request states",
+       "rating": "Partially_achieved",
+       "percentage": "16"
+      },
+      {
+       "wpID": "WP.03",
+       "wpName": "Change Request",
+       "characteristic": "WPC.03.03",
+       "item": "Identifies requester contact information",
+       "rating": "Not_achieved",
+       "percentage": "12"
+      },
+      {
+       "wpID": "WP.03",
+       "wpName": "Change Request",
+       "characteristic": "WPC.03.04",
+       "item": "Impacted software product, component",
+       "rating": "Not_achieved",
+       "percentage": "8"
+      },
+      {
+       "wpID": "WP.03",
+       "wpName": "Change Request",
+       "characteristic": "WPC.03.05",
+       "item": "Impact to operations of existing software defined",
+       "rating": "Not_achieved",
+       "percentage": "15"
+      },
+      {
+       "wpID": "WP.03",
+       "wpName": "Change Request",
+       "characteristic": "WPC.03.06",
+       "item": "Impact to associated documentation defined",
+       "rating": "Not_achieved",
+       "percentage": "11"
+      },
+      {
+       "wpID": "WP.03",
+       "wpName": "Change Request",
+       "characteristic": "WPC.03.07",
+       "item": "Criticality of the request, date needed",
+       "rating": "Not_achieved",
+       "percentage": "7"
+      },
+      {
+       "wpID": "WP.03",
+       "wpName": "Change Request",
+       "characteristic": "WPC.03.07",
+       "item": "Criticality of the request, date needed",
+       "rating": "Not_achieved",
+       "percentage": "14"
+      }
+     ],
+     "tasks": [
+      {
+       "taskID": "PM.2.2",
+       "description": "Analyse and evaluate change request\nfor cost/ schedule and technical impact.",
+       "roles": "PJM, TL",
+       "link": "produces"
+      },
+      {
+       "taskID": "PM.2.3",
+       "description": "Obtain approval of change request.",
+       "roles": "CUS, PJM",
+       "link": "produces"
+      },
+      {
+       "taskID": "PM.2.5",
+       "description": "Conduct review meetings with the Customer:\n- Initiate a change request if needed.\n- Record agreements between customer and PJM and tracked them to closure.",
+       "roles": "CUS, PJM, TL, WT",
+       "link": "produces"
+      },
+      {
+       "taskID": "PM.3.3",
+       "description": "Identify changes to requirements or project plan:\n- Document actions in change request\n- Track actions to closure.",
+       "roles": "PJM, TL, WT",
+       "link": "produces"
+      },
+      {
+       "taskID": "SI.2.3",
+       "description": "Verify and obtain approval of the software Requirement specification from the AN:\n- Make corrections until the document is approved by AN.\n- Verify the correctness and testability of the software Requirement specification and its consistency with the product description.\n- Review to check that requirements are complete/ unambiguous and not contradictory. \n- Conditional task: Initiate a change request if significant changes (those affecting project delivery schedule/ project costs/ etc.) were needed.",
+       "roles": "AN, TL",
+       "link": "produces"
+      },
+      {
+       "taskID": "SI.2.4",
+       "description": "Validate and obtain approval from the customer of the software Requirement specification:\n- Make corrections until the document is approved by the customer.",
+       "roles": "CUS, AN",
+       "link": "produces"
+      },
+      {
+       "taskID": "SI.2.6",
+       "description": "Verify and obtain approval of the *software user documentation from AN:\n- Verify consistency of the *software user documentation with the Requirement specification.\n- Make corrections until the document is approved by AN.\n- Generate the traceability record.",
+       "roles": "AN, TL",
+       "link": "produces"
+      },
+      {
+       "taskID": "SI.3.4",
+       "description": "Verify and obtain approval of the software design from DES:\n- Verify correctness of software design documentation/ its feasibility and consistency with their requirement specification.\n- Verify that the traceability record contains the adequate relationships between requirements and the software design elements.\n- Make corrections are until the document is approved by DES.",
+       "roles": "AN, DES",
+       "link": "produces"
+      }
+     ],
+     "roles": [
+      {
+       "roleName": "Analyst",
+       "abbreviation": "AN",
+       "tasks": "SI.2.3, SI.2.4, SI.2.6, SI.3.4"
+      },
+      {
+       "roleName": "Customer",
+       "abbreviation": "CUS",
+       "tasks": "PM.2.3, PM.2.5, SI.2.4"
+      },
+      {
+       "roleName": "Designer",
+       "abbreviation": "DES",
+       "tasks": "SI.3.4"
+      },
+      {
+       "roleName": "Project manager",
+       "abbreviation": "PJM",
+       "tasks": "PM.2.2, PM.2.3, PM.2.5, PM.3.3"
+      },
+      {
+       "roleName": "Technical leader",
+       "abbreviation": "TL",
+       "tasks": "PM.2.2, PM.2.5, PM.3.3, SI.2.3, SI.2.6"
+      },
+      {
+       "roleName": "Work team",
+       "abbreviation": "WT",
+       "tasks": "PM.2.5, PM.3.3"
+      }
+     ],
+     "basePractices": [
+      {
+       "bpID": "PM.BP17",
+       "description": "Analyse and evaluate the Change Request for cost, schedule and\ntechnical impact. The Change Request can be initiated externally by the\nCustomer or internally by the Work Team. Update the Project Plan, if the\naccepted change does not affect agreements with Customer. Change Request,\nwhich affects those agreements, needs to be negotiated by both parties (see\nPM.2.4)"
+      },
+      {
+       "bpID": "PM.BP18",
+       "description": "Conduct revision meetings with the Work Team, identify problems,\nreview risk status, record agreements, and track them to closure."
+      },
+      {
+       "bpID": "PM.BP19",
+       "description": "Conduct revision meetings with the Customer, record agreements\nand track them to closure. Change Request initiated by Customer or initiated\nby Work Team, which affects the Customer, needs to be negotiated to reach\nacceptance of both parties. If necessary, update the Project Plan according to\nnew agreement with Customer."
+      },
+      {
+       "bpID": "PM.BP20",
+       "description": "Perform backup according to the Version Control Strategy."
+      },
+      {
+       "bpID": "PM.BP21",
+       "description": "Perform Project Repository recovery using the Project Repository Backup, if necessary."
+      },
+      {
+       "bpID": "PM.BP24",
+       "description": "Identify changes to requirements and/or Project Plan to address\nmajor deviations, potential risks or problems concerning the accomplishment\nof the plan, document them in Change Request and track them to closure."
+      },
+      {
+       "bpID": "PM.BP26",
+       "description": "Update Project Repository."
+      },
+      {
+       "bpID": "SI.BP1",
+       "description": "Document or update the Requirements Specification. Identify and\nconsult information sources (Customer, users, previous systems, documents,\netc.) in order to get new requirements. Analyse the identified requirements to\ndeterminate the Scope and feasibility.\nGenerate or update the Requirements Specification"
+      },
+      {
+       "bpID": "SI.BP2",
+       "description": "Verify and obtain approval of the Requirements Specification.Verify the\ncorrectness and testability of the Requirements Specification and its\nconsistency with the Product Description. Additionally, review that\nrequirements are complete, unambiguous, and not contradictory. The results\nfound are documented in a Verification Results and corrections are made until\nthe document is approved by AN. If significant changes were needed, initiate a\nChange Request."
+      }
+     ]
+    },
+    {
+     "ae": "AE.PJ02.WP04",
+     "wpID": "WP.04",
+     "wpName": "Correction Register",
+     "gaps": [
+      {
+       "wpID": "WP.04",
+       "wpName": "Correction Register",
+       "characteristic": "WPC.04.01",
+       "item": "Identifies the initial problem",
+       "rating": "Partially_achieved",
+       "percentage": "29"
+      },
+      {
+       "wpID": "WP.04",
+       "wpName": "Correction Register",
+       "characteristic": "WPC.04.02",
+       "item": "Defines a solution",
+       "rating": "Partially_achieved",
+       "percentage": "25"
+      },
+      {
+       "wpID": "WP.04",
+       "wpName": "Correction Register",
+       "characteristic": "WPC.04.03",
+       "item": "Identifies corrective actions taken",
+       "rating": "Partially_achieved",
+       "percentage": "32"
+      },
+      {
+       "wpID": "WP.04",
+       "wpName": "Correction Register",
+       "characteristic": "WPC.04.04",
+       "item": "Identifies the person responsible for completion of defined actions",
+       "rating": "Partially_achieved",
+       "percentage": "28"
+      },
+      {
+       "wpID": "WP.04",
+       "wpName": "Correction Register",
+       "characteristic": "WPC.04.05",
+       "item": "Identifies the open date and target closure date",
+       "rating": "Partially_achieved",
+       "percentage": "35"
+      },
+      {
+       "wpID": "WP.04",
+       "wpName": "Correction Register",
+       "characteristic": "WPC.04.05",
+       "item": "Identifies the open date and target closure date",
+       "rating": "Partially_achieved",
+       "percentage": "31"
+      },
+      {
+       "wpID": "WP.04",
+       "wpName": "Correction Register",
+       "characteristic": "WPC.04.06",
+       "item": "Contains a state indicator",
+       "rating": "Partially_achieved",
+       "percentage": "27"
+      },
+      {
+       "wpID": "WP.04",
+       "wpName": "Correction Register",
+       "characteristic": "WPC.04.07",
+       "item": "Indicates follow up actions",
+       "rating": "Partially_achieved",
+       "percentage": "34"
+      }
+     ],
+     "tasks": [
+      {
+       "taskID": "PM.2.4",
+       "description": "Conduct review meetings with the work team:\n- Track problems to closure.",
+       "roles": "PJM, TL, WT",
+       "link": "produces"
+      },
+      {
+       "taskID": "PM.3.2",
+       "description": "Establish actions to correct deviations or problems and identified risks concerning\nthe accomplishment of the project plan/ as needed:\n- Document actions in the correction register.\n- Track actions to closure.",
+       "roles": "PJM, TL, WT",
+       "link": "produces"
+      }
+     ],
+     "roles": [
+      {
+       "roleName": "Project manager",
+       "abbreviation": "PJM",
+       "tasks": "PM.2.4, PM.3.2"
+      },
+      {
+       "roleName": "Technical leader",
+       "abbreviation": "TL",
+       "tasks": "PM.2.4, PM.3.2"
+      },
+      {
+       "roleName": "Work team",
+       "abbreviation": "WT",
+       "tasks": "PM.2.4, PM.3.2"
+      }
+     ],
+     "basePractices": [
+      {
+       "bpID": "PM.BP18",
+       "description": "Conduct revision meetings with the Work Team, identify problems,\nreview risk status, record agreements, and track them to closure."
+      },
+      {
+       "bpID": "PM.BP19",
+       "description": "Conduct revision meetings with the Customer, record agreements\nand track them to closure. Change Request initiated by Customer or initiated\nby Work Team, which affects the Customer, needs to be negotiated to reach\nacceptance of both parties. If necessary, update the Project Plan according to\nnew agreement with Customer."
+      },
+      {
+       "bpID": "PM.BP23",
+       "description": "Establish actions to correct deviations or problems and identified\nrisks concerning the accomplishment of the plan, as needed, document them in\nCorrection Register and track them to closure."
+      }
+     ]
+    },
+    {
+     "ae": "AE.PJ02.WP06",
+     "wpID": "WP.06",
+     "wpName": "Maintenance Documentation",
+     "gaps": [
+      {
+       "wpID": "WP.06",
+       "wpName": "Maintenance Documentation",
+       "characteristic": "WPC.05.01",
+       "item": "Includes or refers to all software product elements developed during implementation",
+       "rating": "Partially_achieved",
+       "percentage": "23"
+      },
+      {
+       "wpID": "WP.06",
+       "wpName": "Maintenance Documentation",
+       "characteristic": "WPC.05.02",
+       "item": "Identifies environment used for development and testing (e.g., compilers, design tools, construction and tests tools)",
+       "rating": "Partially_achieved",
+       "percentage": "19"
+      }
+     ],
+     "tasks": [
+      {
+       "taskID": "SI.6.2",
+       "description": "Document the maintenance documentation.",
+       "roles": "DES",
+       "link": "produces"
+      },
+      {
+       "taskID": "SI.6.3",
+       "description": "Verify and obtain approval of the maintenance documentation by the TL:\n- Verify consistency of maintenance documentation with software product.\n- Make corrections until the document is approved by TL.",
+       "roles": "DES, TL",
+       "link": "produces"
+      }
+     ],
+     "roles": [
+      {
+       "roleName": "Designer",
+       "abbreviation": "DES",
+       "tasks": "SI.6.2, SI.6.3"
+      },
+      {
+       "roleName": "Technical leader",
+       "abbreviation": "TL",
+       "tasks": "SI.6.3"
+      }
+     ],
+     "basePractices": [
+      {
+       "bpID": "SI.BP10",
+       "description": "Incorporate the Software Design, and Traceability Record to the\nSoftware Configuration as part of the baseline. Incorporate the Test Cases, and\nTest Procedures to the Project Repository."
+      },
+      {
+       "bpID": "SI.BP15",
+       "description": "Incorporate Software Components and Traceability Record to the\nSoftware Configuration as part of the baseline."
+      },
+      {
+       "bpID": "SI.BP20",
+       "description": "Incorporate the Test Cases and Test Procedures, Software, Traceability\nRecord, Test Report to the Software Configuration as part of the baseline."
+      },
+      {
+       "bpID": "SI.BP21",
+       "description": "Document the Maintenance Documentation or update the current one."
+      },
+      {
+       "bpID": "SI.BP22",
+       "description": "Verify and obtain approval of the Maintenance Documentation. Verify\nconsistency of Maintenance Documentation with Software Configuration. The\nresults found are documented in a Verification Results and corrections are\nmade until the document is approved."
+      },
+      {
+       "bpID": "SI.BP23",
+       "description": "Incorporate the Maintenance Documentation as baseline for the\nSoftware Configuration."
+      }
+     ]
+    },
+    {
+     "ae": "AE.PJ02.WP07",
+     "wpID": "WP.07",
+     "wpName": "Meeting Record",
+     "gaps": [
+      {
+       "wpID": "WP.07",
+       "wpName": "Meeting Record",
+       "characteristic": "WPC.06.09",
+       "item": "Next meeting, if any.",
+       "rating": "Partially_achieved",
+       "percentage": "50"
+      }
+     ],
+     "tasks": [
+      {
+       "taskID": "PM.1.14",
+       "description": "Obtain approval of the customer of the project plan.",
+       "roles": "CUS, PJM",
+       "link": "produces"
+      },
+      {
+       "taskID": "PM.2.4",
+       "description": "Conduct review meetings with the work team:\n- Track problems to closure.",
+       "roles": "PJM, TL, WT",
+       "link": "produces"
+      },
+      {
+       "taskID": "PM.2.5",
+       "description": "Conduct review meetings with the Customer:\n- Initiate a change request if needed.\n- Record agreements between customer and PJM and tracked them to closure.",
+       "roles": "CUS, PJM, TL, WT",
+       "link": "produces"
+      }
+     ],
+     "roles": [
+      {
+       "roleName": "Customer",
+       "abbreviation": "CUS",
+       "tasks": "PM.1.14, PM.2.5"
+      },
+      {
+       "roleName": "Project manager",
+       "abbreviation": "PJM",
+       "tasks": "PM.1.14, PM.2.4, PM.2.5"
+      },
+      {
+       "roleName": "Technical leader",
+       "abbreviation": "TL",
+       "tasks": "PM.2.4, PM.2.5"
+      },
+      {
+       "roleName": "Work team",
+       "abbreviation": "WT",
+       "tasks": "PM.2.4, PM.2.5"
+      }
+     ],
+     "basePractices": [
+      {
+       "bpID": "PM.BP2",
+       "description": "Define with the Customer the Delivery Instructions of each one of the\nDeliverables specified in the agreement"
+      },
+      {
+       "bpID": "PM.BP14",
+       "description": "Review and accept the Project Plan. Customer reviews and accepts\nthe Project Plan, making sure that the Project Plan elements match with the\nStatement of Work."
+      },
+      {
+       "bpID": "PM.BP18",
+       "description": "Conduct revision meetings with the Work Team, identify problems,\nreview risk status, record agreements, and track them to closure."
+      },
+      {
+       "bpID": "PM.BP19",
+       "description": "Conduct revision meetings with the Customer, record agreements\nand track them to closure. Change Request initiated by Customer or initiated\nby Work Team, which affects the Customer, needs to be negotiated to reach\nacceptance of both parties. If necessary, update the Project Plan according to\nnew agreement with Customer."
+      },
+      {
+       "bpID": "PM.BP22",
+       "description": "Evaluate project progress with respect to the Project Plan,\ncomparing:\n— actual Tasks against planned Tasks;\n— actual results against established project Objectives;\n— actual resource allocation against planned Resources;\n— actual cost against budget estimates;\n— actual time against planned schedule;\n— actual risk against previously identified."
+      }
+     ]
+    },
+    {
+     "ae": "AE.PJ02.WP09",
+     "wpID": "WP.09",
+     "wpName": "Progress Status Record",
+     "gaps": [
+      {
+       "wpID": "WP.09",
+       "wpName": "Progress Status Record",
+       "characteristic": "WPC.08.01",
+       "item": "Status of actual tasks against planned tasks",
+       "rating": "Partially_achieved",
+       "percentage": "33"
+      },
+      {
+       "wpID": "WP.09",
+       "wpName": "Progress Status Record",
+       "characteristic": "WPC.08.02",
+       "item": "Status of actual results against established objectives/goals",
+       "rating": "Partially_achieved",
+       "percentage": "40"
+      },
+      {
+       "wpID": "WP.09",
+       "wpName": "Progress Status Record",
+       "characteristic": "WPC.08.03",
+       "item": "Status of actual resource allocation against planned resources",
+       "rating": "Partially_achieved",
+       "percentage": "36"
+      },
+      {
+       "wpID": "WP.09",
+       "wpName": "Progress Status Record",
+       "characteristic": "WPC.08.04",
+       "item": "Status of actual cost against budget estimates",
+       "rating": "Partially_achieved",
+       "percentage": "32"
+      },
+      {
+       "wpID": "WP.09",
+       "wpName": "Progress Status Record",
+       "characteristic": "WPC.08.05",
+       "item": "Status of actual time against planned schedule",
+       "rating": "Partially_achieved",
+       "percentage": "39"
+      },
+      {
+       "wpID": "WP.09",
+       "wpName": "Progress Status Record",
+       "characteristic": "WPC.08.06",
+       "item": "Status of actual risk and mitigation against previously identified",
+       "rating": "Partially_achieved",
+       "percentage": "35"
+      },
+      {
+       "wpID": "WP.09",
+       "wpName": "Progress Status Record",
+       "characteristic": "WPC.08.07",
+       "item": "Record of any deviations from planned tasks and reason why.",
+       "rating": "Partially_achieved",
+       "percentage": "31"
+      },
+      {
+       "wpID": "WP.09",
+       "wpName": "Progress Status Record",
+       "characteristic": "WPC.08.08",
+       "item": "Signature of the project manager",
+       "rating": "Partially_achieved",
+       "percentage": "38"
+      }
+     ],
+     "tasks": [
+      {
+       "taskID": "PM.2.1",
+       "description": "Monitor the project plan execution.",
+       "roles": "PJM, TL, WT",
+       "link": "produces"
+      },
+      {
+       "taskID": "PM.3.1",
+       "description": "Evaluate project progress with respect to the project plan/ comparing:\n- Actual tasks against planned tasks\n- Actual results against established project objectives\n- Actual resource allocation against planned resources\n- Actual cost against budget estimates\n- Actual time against planned schedule\n- Actual risk against previously identified",
+       "roles": "PJM, TL, WT",
+       "link": "produces"
+      }
+     ],
+     "roles": [
+      {
+       "roleName": "Project manager",
+       "abbreviation": "PJM",
+       "tasks": "PM.2.1, PM.3.1"
+      },
+      {
+       "roleName": "Technical leader",
+       "abbreviation": "TL",
+       "tasks": "PM.2.1, PM.3.1"
+      },
+      {
+       "roleName": "Work team",
+       "abbreviation": "WT",
+       "tasks": "PM.2.1, PM.3.1"
+      }
+     ],
+     "basePractices": [
+      {
+       "bpID": "PM.BP2",
+       "description": "Define with the Customer the Delivery Instructions of each one of the\nDeliverables specified in the agreement"
+      },
+      {
+       "bpID": "PM.BP14",
+       "description": "Review and accept the Project Plan. Customer reviews and accepts\nthe Project Plan, making sure that the Project Plan elements match with the\nStatement of Work."
+      },
+      {
+       "bpID": "PM.BP16",
+       "description": "Monitor the Project Plan execution and record actual data in Progress\nStatus Record."
+      },
+      {
+       "bpID": "PM.BP22",
+       "description": "Evaluate project progress with respect to the Project Plan,\ncomparing:\n— actual Tasks against planned Tasks;\n— actual results against established project Objectives;\n— actual resource allocation against planned Resources;\n— actual cost against budget estimates;\n— actual time against planned schedule;\n— actual risk against previously identified."
+      }
+     ]
+    },
+    {
+     "ae": "AE.PJ02.WP12",
+     "wpID": "WP.12",
+     "wpName": "Project Repository Backup",
+     "gaps": [
+      {
+       "wpID": "WP.12",
+       "wpName": "Project Repository Backup",
+       "characteristic": "WPC.11.01",
+       "item": "A copy of project repository",
+       "rating": "Not_achieved",
+       "percentage": "14"
+      }
+     ],
+     "tasks": [
+      {
+       "taskID": "PM.2.6",
+       "description": "Perform a backup according to the\nversion control strategy.",
+       "roles": "TL",
+       "link": "produces"
+      }
+     ],
+     "roles": [
+      {
+       "roleName": "Technical leader",
+       "abbreviation": "TL",
+       "tasks": "PM.2.6"
+      }
+     ],
+     "basePractices": [
+      {
+       "bpID": "PM.BP20",
+       "description": "Perform backup according to the Version Control Strategy."
+      },
+      {
+       "bpID": "PM.BP21",
+       "description": "Perform Project Repository recovery using the Project Repository Backup, if necessary."
+      },
+      {
+       "bpID": "PM.BP24",
+       "description": "Identify changes to requirements and/or Project Plan to address\nmajor deviations, potential risks or problems concerning the accomplishment\nof the plan, document them in Change Request and track them to closure."
+      },
+      {
+       "bpID": "PM.BP26",
+       "description": "Update Project Repository."
+      }
+     ]
+    },
+    {
+     "ae": "AE.PJ02.WP19",
+     "wpID": "WP.19",
+     "wpName": "Test Cases and Test Procedures",
+     "gaps": [
+      {
+       "wpID": "WP.19",
+       "wpName": "Test Cases and Test Procedures",
+       "characteristic": "WPC.18.01",
+       "item": "Test cases may include:\n- Identifies the test case\n- Test items (unit test cases, integration tests)\n- Input specifications\n- Output specifications\n- Environmental needs\n- Special procedural requirements\n- Interface dependencies",
+       "rating": "Not_achieved",
+       "percentage": "10"
+      },
+      {
+       "wpID": "WP.19",
+       "wpName": "Test Cases and Test Procedures",
+       "characteristic": "WPC.18.01",
+       "item": "Test cases may include:\n- Identifies the test case\n- Test items (unit test cases, integration tests)\n- Input specifications\n- Output specifications\n- Environmental needs\n- Special procedural requirements\n- Interface dependencies",
+       "rating": "Not_achieved",
+       "percentage": "13"
+      },
+      {
+       "wpID": "WP.19",
+       "wpName": "Test Cases and Test Procedures",
+       "characteristic": "WPC.18.01",
+       "item": "Test cases may include:\n- Identifies the test case\n- Test items (unit test cases, integration tests)\n- Input specifications\n- Output specifications\n- Environmental needs\n- Special procedural requirements\n- Interface dependencies",
+       "rating": "Not_achieved",
+       "percentage": "9"
+      },
+      {
+       "wpID": "WP.19",
+       "wpName": "Test Cases and Test Procedures",
+       "characteristic": "WPC.18.01",
+       "item": "Test cases may include:\n- Identifies the test case\n- Test items (unit test cases, integration tests)\n- Input specifications\n- Output specifications\n- Environmental needs\n- Special procedural requirements\n- Interface dependencies",
+       "rating": "Not_achieved",
+       "percentage": "12"
+      },
+      {
+       "wpID": "WP.19",
+       "wpName": "Test Cases and Test Procedures",
+       "characteristic": "WPC.18.01",
+       "item": "Test cases may include:\n- Identifies the test case\n- Test items (unit test cases, integration tests)\n- Input specifications\n- Output specifications\n- Environmental needs\n- Special procedural requirements\n- Interface dependencies",
+       "rating": "Partially_achieved",
+       "percentage": "17"
+      },
+      {
+       "wpID": "WP.19",
+       "wpName": "Test Cases and Test Procedures",
+       "characteristic": "WPC.18.01",
+       "item": "Test cases may include:\n- Identifies the test case\n- Test items (unit test cases, integration tests)\n- Input specifications\n- Output specifications\n- Environmental needs\n- Special procedural requirements\n- Interface dependencies",
+       "rating": "Partially_achieved",
+       "percentage": "16"
+      },
+      {
+       "wpID": "WP.19",
+       "wpName": "Test Cases and Test Procedures",
+       "characteristic": "WPC.18.01",
+       "item": "Test cases may include:\n- Identifies the test case\n- Test items (unit test cases, integration tests)\n- Input specifications\n- Output specifications\n- Environmental needs\n- Special procedural requirements\n- Interface dependencies",
+       "rating": "Partially_achieved",
+       "percentage": "19"
+      },
+      {
+       "wpID": "WP.19",
+       "wpName": "Test Cases and Test Procedures",
+       "characteristic": "WPC.18.02",
+       "item": "Test procedures may include:\n- Identifies: test name, test description and test completion date\n- Identifies potential implementation issues\n- Identifies the person who completed the test procedure\n- Identifies prerequisites\n- Identifies procedure steps including the step number, the required action by the tester and the expected results",
+       "rating": "Not_achieved",
+       "percentage": "15"
+      },
+      {
+       "wpID": "WP.19",
+       "wpName": "Test Cases and Test Procedures",
+       "characteristic": "WPC.18.02",
+       "item": "Test procedures may include:\n- Identifies: test name, test description and test completion date\n- Identifies potential implementation issues\n- Identifies the person who completed the test procedure\n- Identifies prerequisites\n- Identifies procedure steps including the step number, the required action by the tester and the expected results",
+       "rating": "Not_achieved",
+       "percentage": "11"
+      },
+      {
+       "wpID": "WP.19",
+       "wpName": "Test Cases and Test Procedures",
+       "characteristic": "WPC.18.02",
+       "item": "Test procedures may include:\n- Identifies: test name, test description and test completion date\n- Identifies potential implementation issues\n- Identifies the person who completed the test procedure\n- Identifies prerequisites\n- Identifies procedure steps including the step number, the required action by the tester and the expected results",
+       "rating": "Not_achieved",
+       "percentage": "14"
+      },
+      {
+       "wpID": "WP.19",
+       "wpName": "Test Cases and Test Procedures",
+       "characteristic": "WPC.18.02",
+       "item": "Test procedures may include:\n- Identifies: test name, test description and test completion date\n- Identifies potential implementation issues\n- Identifies the person who completed the test procedure\n- Identifies prerequisites\n- Identifies procedure steps including the step number, the required action by the tester and the expected results",
+       "rating": "Not_achieved",
+       "percentage": "10"
+      },
+      {
+       "wpID": "WP.19",
+       "wpName": "Test Cases and Test Procedures",
+       "characteristic": "WPC.18.02",
+       "item": "Test procedures may include:\n- Identifies: test name, test description and test completion date\n- Identifies potential implementation issues\n- Identifies the person who completed the test procedure\n- Identifies prerequisites\n- Identifies procedure steps including the step number, the required action by the tester and the expected results",
+       "rating": "Not_achieved",
+       "percentage": "13"
+      },
+      {
+       "wpID": "WP.19",
+       "wpName": "Test Cases and Test Procedures",
+       "characteristic": "WPC.18.02",
+       "item": "Test procedures may include:\n- Identifies: test name, test description and test completion date\n- Identifies potential implementation issues\n- Identifies the person who completed the test procedure\n- Identifies prerequisites\n- Identifies procedure steps including the step number, the required action by the tester and the expected results",
+       "rating": "Not_achieved",
+       "percentage": "9"
+      },
+      {
+       "wpID": "WP.19",
+       "wpName": "Test Cases and Test Procedures",
+       "characteristic": "WPC.18.02",
+       "item": "Test procedures may include:\n- Identifies: test name, test description and test completion date\n- Identifies potential implementation issues\n- Identifies the person who completed the test procedure\n- Identifies prerequisites\n- Identifies procedure steps including the step number, the required action by the tester and the expected results",
+       "rating": "Partially_achieved",
+       "percentage": "18"
+      },
+      {
+       "wpID": "WP.19",
+       "wpName": "Test Cases and Test Procedures",
+       "characteristic": "WPC.18.02",
+       "item": "Test procedures may include:\n- Identifies: test name, test description and test completion date\n- Identifies potential implementation issues\n- Identifies the person who completed the test procedure\n- Identifies prerequisites\n- Identifies procedure steps including the step number, the required action by the tester and the expected results",
+       "rating": "Partially_achieved",
+       "percentage": "17"
+      }
+     ],
+     "tasks": [
+      {
+       "taskID": "SI.3.5",
+       "description": "Develop the test cases and test procedures for integration testing.",
+       "roles": "DES",
+       "link": "produces"
+      },
+      {
+       "taskID": "SI.3.7",
+       "description": "Verify and obtain approval of the test cases and test procedures by AN:\n- Verify consistency among Requirement specification/ software design and test cases and test procedures.\n- Make corrections until the document is approved by AN.",
+       "roles": "AN, DES",
+       "link": "produces"
+      },
+      {
+       "taskID": "SI.4.4",
+       "description": "Develop the unit test cases.",
+       "roles": "PR",
+       "link": "produces"
+      },
+      {
+       "taskID": "SI.5.2",
+       "description": "Review the test cases and test procedures:\n- Set or update the testing environment.\n- Update the integration tests of the test cases and test procedures if needed.",
+       "roles": "PR",
+       "link": "produces"
+      },
+      {
+       "taskID": "SI.5.11",
+       "description": "Incorporate the software work products to the baseline.",
+       "roles": "TL",
+       "link": "produces"
+      }
+     ],
+     "roles": [
+      {
+       "roleName": "Analyst",
+       "abbreviation": "AN",
+       "tasks": "SI.3.7"
+      },
+      {
+       "roleName": "Designer",
+       "abbreviation": "DES",
+       "tasks": "SI.3.5, SI.3.7"
+      },
+      {
+       "roleName": "Programmer",
+       "abbreviation": "PR",
+       "tasks": "SI.4.4, SI.5.2"
+      },
+      {
+       "roleName": "Technical leader",
+       "abbreviation": "TL",
+       "tasks": "SI.5.11"
+      }
+     ],
+     "basePractices": [
+      {
+       "bpID": "SI.BP5",
+       "description": "Document or update the Software Design. Analyse the Requirements\nSpecification to generate the architectural design, its arrangement in\nsubsystems and Software Components defining the internal and external\ninterfaces. Describe in detail, the appearance and the behaviour of the\ninterface, based on the Requirements Specification in a way that Resources for\nits implementation can be foreseen. Provide the detail of Software Components\nand their interfaces to allow the construction in an evident way. Generate or\nupdate the Traceability Record."
+      },
+      {
+       "bpID": "SI.BP6",
+       "description": "Verify and obtain approval of the Software Design. Verify correctness of\nSoftware Design documentation, its feasibility and consistency with their\nRequirement Specification. Verify that the Traceability Record contains the\nadequate relationships between requirements and the Software Design\nelements. The results found are documented in a Verification Results and\ncorrections are made until the document is approved by DES. If significant\nchanges were needed, initiate a Change Request."
+      },
+      {
+       "bpID": "SI.BP7",
+       "description": "Establish or update Test Cases and Test Procedures for integration\ntesting based on Requirements Specification and Software Design. Customer\nprovides testing data, if needed."
+      },
+      {
+       "bpID": "SI.BP8",
+       "description": "Verify and obtain approval of the Test Cases and Test Procedures. Verify\nconsistency among Requirements Specification, Software Design and Test\nCases and Test Procedures. The results found are documented in a Verification\nResults and corrections are made until the document is approved."
+      },
+      {
+       "bpID": "SI.BP9",
+       "description": "Update the Traceability Record incorporating the Test Cases and Test\nProcedures."
+      },
+      {
+       "bpID": "SI.BP10",
+       "description": "Incorporate the Software Design, and Traceability Record to the\nSoftware Configuration as part of the baseline. Incorporate the Test Cases, and\nTest Procedures to the Project Repository."
+      },
+      {
+       "bpID": "SI.BP12",
+       "description": "Design or update unit test cases and apply them to verify that the\nSoftware Components implements the detailed part of the Software Design."
+      },
+      {
+       "bpID": "SI.BP13",
+       "description": "Correct the defects found until successful unit test (reaching exit\ncriteria) is achieved."
+      },
+      {
+       "bpID": "SI.BP14",
+       "description": "Update the Traceability Record incorporating Software Components\nconstructed or modified."
+      },
+      {
+       "bpID": "SI.BP15",
+       "description": "Incorporate Software Components and Traceability Record to the\nSoftware Configuration as part of the baseline."
+      },
+      {
+       "bpID": "SI.BP16",
+       "description": "Integrates the Software using Software Components and updates Test \nCases and Test Procedures for integration testing, as needed."
+      },
+      {
+       "bpID": "SI.BP17",
+       "description": "Perform Software tests using Test Cases and Test Procedures for\nintegration and document results in Test Report."
+      },
+      {
+       "bpID": "SI.BP19",
+       "description": "Updates the Traceability Record, if appropriate."
+      },
+      {
+       "bpID": "SI.BP20",
+       "description": "Incorporate the Test Cases and Test Procedures, Software, Traceability\nRecord, Test Report to the Software Configuration as part of the baseline."
+      },
+      {
+       "bpID": "SI.BP21",
+       "description": "Document the Maintenance Documentation or update the current one."
+      },
+      {
+       "bpID": "SI.BP22",
+       "description": "Verify and obtain approval of the Maintenance Documentation. Verify\nconsistency of Maintenance Documentation with Software Configuration. The\nresults found are documented in a Verification Results and corrections are\nmade until the document is approved."
+      },
+      {
+       "bpID": "SI.BP23",
+       "description": "Incorporate the Maintenance Documentation as baseline for the\nSoftware Configuration."
+      }
+     ]
+    },
+    {
+     "ae": "AE.PJ02.WP20",
+     "wpID": "WP.20",
+     "wpName": "Test Report",
+     "gaps": [
+      {
+       "wpID": "WP.20",
+       "wpName": "Test Report",
+       "characteristic": "WPC.19.01",
+       "item": "A summary of each defect",
+       "rating": "Partially_achieved",
+       "percentage": "28"
+      },
+      {
+       "wpID": "WP.20",
+       "wpName": "Test Report",
+       "characteristic": "WPC.19.02",
+       "item": "Identifies the related test case",
+       "rating": "Partially_achieved",
+       "percentage": "35"
+      },
+      {
+       "wpID": "WP.20",
+       "wpName": "Test Report",
+       "characteristic": "WPC.19.03",
+       "item": "Identifies the tester who found each defect",
+       "rating": "Partially_achieved",
+       "percentage": "31"
+      },
+      {
+       "wpID": "WP.20",
+       "wpName": "Test Report",
+       "characteristic": "WPC.19.04",
+       "item": "Identifies the severity for each defect",
+       "rating": "Partially_achieved",
+       "percentage": "27"
+      },
+      {
+       "wpID": "WP.20",
+       "wpName": "Test Report",
+       "characteristic": "WPC.19.05",
+       "item": "Identifies the affected function(s) for each defect",
+       "rating": "Partially_achieved",
+       "percentage": "34"
+      },
+      {
+       "wpID": "WP.20",
+       "wpName": "Test Report",
+       "characteristic": "WPC.19.06",
+       "item": "Identifies the date when each defect originated",
+       "rating": "Partially_achieved",
+       "percentage": "30"
+      },
+      {
+       "wpID": "WP.20",
+       "wpName": "Test Report",
+       "characteristic": "WPC.19.07",
+       "item": "Identifies the date when each defect was resolved",
+       "rating": "Partially_achieved",
+       "percentage": "26"
+      },
+      {
+       "wpID": "WP.20",
+       "wpName": "Test Report",
+       "characteristic": "WPC.19.08",
+       "item": "Identifies the person who resolved each defect",
+       "rating": "Partially_achieved",
+       "percentage": "33"
+      }
+     ],
+     "tasks": [
+      {
+       "taskID": "SI.5.4",
+       "description": "Perform software integration\ntests.",
+       "roles": "CUS, PR",
+       "link": "produces"
+      },
+      {
+       "taskID": "SI.5.5",
+       "description": "Correct the defects detected.\n– Perform tests until defects are corrected.",
+       "roles": "PR",
+       "link": "produces"
+      },
+      {
+       "taskID": "SI.5.11",
+       "description": "Incorporate the software work products to the baseline.",
+       "roles": "TL",
+       "link": "produces"
+      }
+     ],
+     "roles": [
+      {
+       "roleName": "Customer",
+       "abbreviation": "CUS",
+       "tasks": "SI.5.4"
+      },
+      {
+       "roleName": "Programmer",
+       "abbreviation": "PR",
+       "tasks": "SI.5.4, SI.5.5"
+      },
+      {
+       "roleName": "Technical leader",
+       "abbreviation": "TL",
+       "tasks": "SI.5.11"
+      }
+     ],
+     "basePractices": [
+      {
+       "bpID": "SI.BP7",
+       "description": "Establish or update Test Cases and Test Procedures for integration\ntesting based on Requirements Specification and Software Design. Customer\nprovides testing data, if needed."
+      },
+      {
+       "bpID": "SI.BP8",
+       "description": "Verify and obtain approval of the Test Cases and Test Procedures. Verify\nconsistency among Requirements Specification, Software Design and Test\nCases and Test Procedures. The results found are documented in a Verification\nResults and corrections are made until the document is approved."
+      },
+      {
+       "bpID": "SI.BP9",
+       "description": "Update the Traceability Record incorporating the Test Cases and Test\nProcedures."
+      },
+      {
+       "bpID": "SI.BP10",
+       "description": "Incorporate the Software Design, and Traceability Record to the\nSoftware Configuration as part of the baseline. Incorporate the Test Cases, and\nTest Procedures to the Project Repository."
+      },
+      {
+       "bpID": "SI.BP15",
+       "description": "Incorporate Software Components and Traceability Record to the\nSoftware Configuration as part of the baseline."
+      },
+      {
+       "bpID": "SI.BP16",
+       "description": "Integrates the Software using Software Components and updates Test \nCases and Test Procedures for integration testing, as needed."
+      },
+      {
+       "bpID": "SI.BP17",
+       "description": "Perform Software tests using Test Cases and Test Procedures for\nintegration and document results in Test Report."
+      },
+      {
+       "bpID": "SI.BP18",
+       "description": "Correct the defects found and perform regression test until exit\ncriteria is achieved."
+      },
+      {
+       "bpID": "SI.BP20",
+       "description": "Incorporate the Test Cases and Test Procedures, Software, Traceability\nRecord, Test Report to the Software Configuration as part of the baseline."
+      },
+      {
+       "bpID": "SI.BP21",
+       "description": "Document the Maintenance Documentation or update the current one."
+      },
+      {
+       "bpID": "SI.BP22",
+       "description": "Verify and obtain approval of the Maintenance Documentation. Verify\nconsistency of Maintenance Documentation with Software Configuration. The\nresults found are documented in a Verification Results and corrections are\nmade until the document is approved."
+      },
+      {
+       "bpID": "SI.BP23",
+       "description": "Incorporate the Maintenance Documentation as baseline for the\nSoftware Configuration."
+      }
+     ]
+    },
+    {
+     "ae": "AE.PJ02.WP21",
+     "wpID": "WP.21",
+     "wpName": "Traceability Record",
+     "gaps": [
+      {
+       "wpID": "WP.21",
+       "wpName": "Traceability Record",
+       "characteristic": "WPC.20.01",
+       "item": "Identification of the individual requirements of the Requirement specification to be traced.",
+       "rating": "Partially_achieved",
+       "percentage": "25"
+      },
+      {
+       "wpID": "WP.21",
+       "wpName": "Traceability Record",
+       "characteristic": "WPC.20.02",
+       "item": "Provides forward and backward mapping of requirements to software design elements, software components, test cases, test procedures and test results.",
+       "rating": "Partially_achieved",
+       "percentage": "21"
+      }
+     ],
+     "tasks": [
+      {
+       "taskID": "SI.2.6",
+       "description": "Verify and obtain approval of the *software user documentation from AN:\n- Verify consistency of the *software user documentation with the Requirement specification.\n- Make corrections until the document is approved by AN.\n- Generate the traceability record.",
+       "roles": "AN, TL",
+       "link": "produces"
+      },
+      {
+       "taskID": "SI.3.2",
+       "description": "Review the software Requirement specification.",
+       "roles": "AN, DES",
+       "link": "produces"
+      },
+      {
+       "taskID": "SI.3.3",
+       "description": "Document the software design:\n- Analyse the Requirement specification to generate the architectural design/ to define the software components/ the internal and external interfaces.\n- Describe in detail/ the appearance and the behaviour of the interface/ based on the Requirement specification/ in a way that resources for its implementation can be planned.\n- Provide the detail of software components and their interfaces to allow their construction.\n- Update the traceability record to include the software design.",
+       "roles": "AN, DES",
+       "link": "produces"
+      },
+      {
+       "taskID": "SI.3.4",
+       "description": "Verify and obtain approval of the software design from DES:\n- Verify correctness of software design documentation/ its feasibility and consistency with their requirement specification.\n- Verify that the traceability record contains the adequate relationships between requirements and the software design elements.\n- Make corrections are until the document is approved by DES.",
+       "roles": "AN, DES",
+       "link": "produces"
+      },
+      {
+       "taskID": "SI.3.6",
+       "description": "Update the traceability record:\n- Add the test cases and test procedures\nto the traceability record.",
+       "roles": "DES",
+       "link": "produces"
+      },
+      {
+       "taskID": "SI.3.7",
+       "description": "Verify and obtain approval of the test cases and test procedures by AN:\n- Verify consistency among Requirement specification/ software design and test cases and test procedures.\n- Make corrections until the document is approved by AN.",
+       "roles": "AN, DES",
+       "link": "produces"
+      },
+      {
+       "taskID": "SI.4.6",
+       "description": "Update the traceability record:\n- Add the software components to the traceability record.\n- add the tests cases to the traceability record.\n- Add the results of the test cases to the traceability record.",
+       "roles": "PR",
+       "link": "produces"
+      },
+      {
+       "taskID": "SI.5.6",
+       "description": "Update the traceability record.",
+       "roles": "PR",
+       "link": "produces"
+      },
+      {
+       "taskID": "SI.5.11",
+       "description": "Incorporate the software work products to the baseline.",
+       "roles": "TL",
+       "link": "produces"
+      }
+     ],
+     "roles": [
+      {
+       "roleName": "Analyst",
+       "abbreviation": "AN",
+       "tasks": "SI.2.6, SI.3.2, SI.3.3, SI.3.4, SI.3.7"
+      },
+      {
+       "roleName": "Designer",
+       "abbreviation": "DES",
+       "tasks": "SI.3.2, SI.3.3, SI.3.4, SI.3.6, SI.3.7"
+      },
+      {
+       "roleName": "Programmer",
+       "abbreviation": "PR",
+       "tasks": "SI.4.6, SI.5.6"
+      },
+      {
+       "roleName": "Technical leader",
+       "abbreviation": "TL",
+       "tasks": "SI.2.6, SI.5.11"
+      }
+     ],
+     "basePractices": [
+      {
+       "bpID": "SI.BP5",
+       "description": "Document or update the Software Design. Analyse the Requirements\nSpecification to generate the architectural design, its arrangement in\nsubsystems and Software Components defining the internal and external\ninterfaces. Describe in detail, the appearance and the behaviour of the\ninterface, based on the Requirements Specification in a way that Resources for\nits implementation can be foreseen. Provide the detail of Software Components\nand their interfaces to allow the construction in an evident way. Generate or\nupdate the Traceability Record."
+      },
+      {
+       "bpID": "SI.BP6",
+       "description": "Verify and obtain approval of the Software Design. Verify correctness of\nSoftware Design documentation, its feasibility and consistency with their\nRequirement Specification. Verify that the Traceability Record contains the\nadequate relationships between requirements and the Software Design\nelements. The results found are documented in a Verification Results and\ncorrections are made until the document is approved by DES. If significant\nchanges were needed, initiate a Change Request."
+      },
+      {
+       "bpID": "SI.BP7",
+       "description": "Establish or update Test Cases and Test Procedures for integration\ntesting based on Requirements Specification and Software Design. Customer\nprovides testing data, if needed."
+      },
+      {
+       "bpID": "SI.BP8",
+       "description": "Verify and obtain approval of the Test Cases and Test Procedures. Verify\nconsistency among Requirements Specification, Software Design and Test\nCases and Test Procedures. The results found are documented in a Verification\nResults and corrections are made until the document is approved."
+      },
+      {
+       "bpID": "SI.BP9",
+       "description": "Update the Traceability Record incorporating the Test Cases and Test\nProcedures."
+      },
+      {
+       "bpID": "SI.BP10",
+       "description": "Incorporate the Software Design, and Traceability Record to the\nSoftware Configuration as part of the baseline. Incorporate the Test Cases, and\nTest Procedures to the Project Repository."
+      },
+      {
+       "bpID": "SI.BP14",
+       "description": "Update the Traceability Record incorporating Software Components\nconstructed or modified."
+      },
+      {
+       "bpID": "SI.BP15",
+       "description": "Incorporate Software Components and Traceability Record to the\nSoftware Configuration as part of the baseline."
+      },
+      {
+       "bpID": "SI.BP16",
+       "description": "Integrates the Software using Software Components and updates Test \nCases and Test Procedures for integration testing, as needed."
+      },
+      {
+       "bpID": "SI.BP17",
+       "description": "Perform Software tests using Test Cases and Test Procedures for\nintegration and document results in Test Report."
+      },
+      {
+       "bpID": "SI.BP19",
+       "description": "Updates the Traceability Record, if appropriate."
+      },
+      {
+       "bpID": "SI.BP20",
+       "description": "Incorporate the Test Cases and Test Procedures, Software, Traceability\nRecord, Test Report to the Software Configuration as part of the baseline."
+      },
+      {
+       "bpID": "SI.BP21",
+       "description": "Document the Maintenance Documentation or update the current one."
+      },
+      {
+       "bpID": "SI.BP22",
+       "description": "Verify and obtain approval of the Maintenance Documentation. Verify\nconsistency of Maintenance Documentation with Software Configuration. The\nresults found are documented in a Verification Results and corrections are\nmade until the document is approved."
+      },
+      {
+       "bpID": "SI.BP23",
+       "description": "Incorporate the Maintenance Documentation as baseline for the\nSoftware Configuration."
+      }
+     ]
+    },
+    {
+     "ae": "AE.PJ02.WP22",
+     "wpID": "WP.22",
+     "wpName": "Validation Record",
+     "gaps": [
+      {
+       "wpID": "WP.22",
+       "wpName": "Validation Record",
+       "characteristic": "WPC.21.01",
+       "item": "Participants",
+       "rating": "Partially_achieved",
+       "percentage": "42"
+      },
+      {
+       "wpID": "WP.22",
+       "wpName": "Validation Record",
+       "characteristic": "WPC.21.02",
+       "item": "Date",
+       "rating": "Partially_achieved",
+       "percentage": "38"
+      },
+      {
+       "wpID": "WP.22",
+       "wpName": "Validation Record",
+       "characteristic": "WPC.21.03",
+       "item": "Place",
+       "rating": "Partially_achieved",
+       "percentage": "45"
+      },
+      {
+       "wpID": "WP.22",
+       "wpName": "Validation Record",
+       "characteristic": "WPC.21.04",
+       "item": "Duration",
+       "rating": "Partially_achieved",
+       "percentage": "41"
+      },
+      {
+       "wpID": "WP.22",
+       "wpName": "Validation Record",
+       "characteristic": "WPC.21.05",
+       "item": "Validation checklist",
+       "rating": "Partially_achieved",
+       "percentage": "37"
+      },
+      {
+       "wpID": "WP.22",
+       "wpName": "Validation Record",
+       "characteristic": "WPC.21.06",
+       "item": "Passed items of validation",
+       "rating": "Partially_achieved",
+       "percentage": "44"
+      },
+      {
+       "wpID": "WP.22",
+       "wpName": "Validation Record",
+       "characteristic": "WPC.21.07",
+       "item": "Failed items of validation",
+       "rating": "Partially_achieved",
+       "percentage": "40"
+      },
+      {
+       "wpID": "WP.22",
+       "wpName": "Validation Record",
+       "characteristic": "WPC.21.08",
+       "item": "Pending items of validation",
+       "rating": "Partially_achieved",
+       "percentage": "36"
+      },
+      {
+       "wpID": "WP.22",
+       "wpName": "Validation Record",
+       "characteristic": "WPC.21.09",
+       "item": "Defects identified during validation",
+       "rating": "Partially_achieved",
+       "percentage": "43"
+      },
+      {
+       "wpID": "WP.22",
+       "wpName": "Validation Record",
+       "characteristic": "WPC.21.10",
+       "item": "Signature of project manager",
+       "rating": "Partially_achieved",
+       "percentage": "39"
+      },
+      {
+       "wpID": "WP.22",
+       "wpName": "Validation Record",
+       "characteristic": "WPC.21.11",
+       "item": "Signature of customer",
+       "rating": "Partially_achieved",
+       "percentage": "35"
+      }
+     ],
+     "tasks": [
+      {
+       "taskID": "SI.2.4",
+       "description": "Validate and obtain approval from the customer of the software Requirement specification:\n- Make corrections until the document is approved by the customer.",
+       "roles": "CUS, AN",
+       "link": "produces"
+      }
+     ],
+     "roles": [
+      {
+       "roleName": "Analyst",
+       "abbreviation": "AN",
+       "tasks": "SI.2.4"
+      },
+      {
+       "roleName": "Customer",
+       "abbreviation": "CUS",
+       "tasks": "SI.2.4"
+      }
+     ],
+     "basePractices": [
+      {
+       "bpID": "SI.BP1",
+       "description": "Document or update the Requirements Specification. Identify and\nconsult information sources (Customer, users, previous systems, documents,\netc.) in order to get new requirements. Analyse the identified requirements to\ndeterminate the Scope and feasibility.\nGenerate or update the Requirements Specification"
+      },
+      {
+       "bpID": "SI.BP2",
+       "description": "Verify and obtain approval of the Requirements Specification.Verify the\ncorrectness and testability of the Requirements Specification and its\nconsistency with the Product Description. Additionally, review that\nrequirements are complete, unambiguous, and not contradictory. The results\nfound are documented in a Verification Results and corrections are made until\nthe document is approved by AN. If significant changes were needed, initiate a\nChange Request."
+      }
+     ]
+    },
+    {
+     "ae": "AE.PJ02.WP23",
+     "wpID": "WP.23",
+     "wpName": "Verification Record",
+     "gaps": [
+      {
+       "wpID": "WP.23",
+       "wpName": "Verification Record",
+       "characteristic": "",
+       "item": "",
+       "rating": "Partially_achieved",
+       "percentage": "46"
+      },
+      {
+       "wpID": "WP.23",
+       "wpName": "Verification Record",
+       "characteristic": "",
+       "item": "",
+       "rating": "Partially_achieved",
+       "percentage": "42"
+      },
+      {
+       "wpID": "WP.23",
+       "wpName": "Verification Record",
+       "characteristic": "WPC.22.01",
+       "item": "Participants",
+       "rating": "Partially_achieved",
+       "percentage": "49"
+      },
+      {
+       "wpID": "WP.23",
+       "wpName": "Verification Record",
+       "characteristic": "WPC.22.02",
+       "item": "Date",
+       "rating": "Partially_achieved",
+       "percentage": "45"
+      },
+      {
+       "wpID": "WP.23",
+       "wpName": "Verification Record",
+       "characteristic": "WPC.22.03",
+       "item": "Place",
+       "rating": "Partially_achieved",
+       "percentage": "41"
+      },
+      {
+       "wpID": "WP.23",
+       "wpName": "Verification Record",
+       "characteristic": "WPC.22.04",
+       "item": "Duration",
+       "rating": "Partially_achieved",
+       "percentage": "48"
+      },
+      {
+       "wpID": "WP.23",
+       "wpName": "Verification Record",
+       "characteristic": "WPC.22.05",
+       "item": "Verification checklist",
+       "rating": "Partially_achieved",
+       "percentage": "44"
+      },
+      {
+       "wpID": "WP.23",
+       "wpName": "Verification Record",
+       "characteristic": "WPC.22.06",
+       "item": "Passed items of verification",
+       "rating": "Partially_achieved",
+       "percentage": "40"
+      },
+      {
+       "wpID": "WP.23",
+       "wpName": "Verification Record",
+       "characteristic": "WPC.22.07",
+       "item": "Failed items of verification",
+       "rating": "Partially_achieved",
+       "percentage": "47"
+      },
+      {
+       "wpID": "WP.23",
+       "wpName": "Verification Record",
+       "characteristic": "WPC.22.08",
+       "item": "Pending items of verification",
+       "rating": "Partially_achieved",
+       "percentage": "43"
+      },
+      {
+       "wpID": "WP.23",
+       "wpName": "Verification Record",
+       "characteristic": "WPC.22.09",
+       "item": "Defects identified during verification",
+       "rating": "Partially_achieved",
+       "percentage": "50"
+      }
+     ],
+     "tasks": [
+      {
+       "taskID": "PM.1.13",
+       "description": "Verify the project plan:\n- Make corrections until the document is\napproved by PJM.",
+       "roles": "PJM, TL",
+       "link": "produces"
+      },
+      {
+       "taskID": "SI.2.3",
+       "description": "Verify and obtain approval of the software Requirement specification from the AN:\n- Make corrections until the document is approved by AN.\n- Verify the correctness and testability of the software Requirement specification and its consistency with the product description.\n- Review to check that requirements are complete/ unambiguous and not contradictory. \n- Conditional task: Initiate a change request if significant changes (those affecting project delivery schedule/ project costs/ etc.) were needed.",
+       "roles": "AN, TL",
+       "link": "produces"
+      },
+      {
+       "taskID": "SI.2.6",
+       "description": "Verify and obtain approval of the *software user documentation from AN:\n- Verify consistency of the *software user documentation with the Requirement specification.\n- Make corrections until the document is approved by AN.\n- Generate the traceability record.",
+       "roles": "AN, TL",
+       "link": "produces"
+      },
+      {
+       "taskID": "SI.3.4",
+       "description": "Verify and obtain approval of the software design from DES:\n- Verify correctness of software design documentation/ its feasibility and consistency with their requirement specification.\n- Verify that the traceability record contains the adequate relationships between requirements and the software design elements.\n- Make corrections are until the document is approved by DES.",
+       "roles": "AN, DES",
+       "link": "produces"
+      },
+      {
+       "taskID": "SI.3.7",
+       "description": "Verify and obtain approval of the test cases and test procedures by AN:\n- Verify consistency among Requirement specification/ software design and test cases and test procedures.\n- Make corrections until the document is approved by AN.",
+       "roles": "AN, DES",
+       "link": "produces"
+      },
+      {
+       "taskID": "SI.5.8",
+       "description": "Verify and obtain approval of the product operation guide:\n- Verify consistency of the product operation guide with the software.\n- Make corrections until the document is approved by DES.",
+       "roles": "DES, PR",
+       "link": "produces"
+      },
+      {
+       "taskID": "SI.5.10",
+       "description": "Verify and obtain approval of the software user documentation:\n- Verify consistency of the software user documentation with the software.\n- Make corrections are made until the document is approved by CUS.",
+       "roles": "CUS, AN",
+       "link": "produces"
+      },
+      {
+       "taskID": "SI.6.3",
+       "description": "Verify and obtain approval of the maintenance documentation by the TL:\n- Verify consistency of maintenance documentation with software product.\n- Make corrections until the document is approved by TL.",
+       "roles": "DES, TL",
+       "link": "produces"
+      }
+     ],
+     "roles": [
+      {
+       "roleName": "Analyst",
+       "abbreviation": "AN",
+       "tasks": "SI.2.3, SI.2.6, SI.3.4, SI.3.7, SI.5.10"
+      },
+      {
+       "roleName": "Customer",
+       "abbreviation": "CUS",
+       "tasks": "SI.5.10"
+      },
+      {
+       "roleName": "Designer",
+       "abbreviation": "DES",
+       "tasks": "SI.3.4, SI.3.7, SI.5.8, SI.6.3"
+      },
+      {
+       "roleName": "Programmer",
+       "abbreviation": "PR",
+       "tasks": "SI.5.8"
+      },
+      {
+       "roleName": "Project manager",
+       "abbreviation": "PJM",
+       "tasks": "PM.1.13"
+      },
+      {
+       "roleName": "Technical leader",
+       "abbreviation": "TL",
+       "tasks": "PM.1.13, SI.2.3, SI.2.6, SI.6.3"
+      }
+     ],
+     "basePractices": [
+      {
+       "bpID": "PM.BP11",
+       "description": "Generate the Project Plan integrating the elements previously\nidentified and documented."
+      },
+      {
+       "bpID": "PM.BP12",
+       "description": "Include Product Description, Scope, Objectives, and Deliverables in\nthe Project Plan."
+      },
+      {
+       "bpID": "PM.BP13",
+       "description": "Verify and obtain approval of the Project Plan. Verify that all Project\nPlan elements are viable and consistent. The results found are documented in a\nVerification Results and corrections are made until the document is approved\nby PM."
+      },
+      {
+       "bpID": "SI.BP5",
+       "description": "Document or update the Software Design. Analyse the Requirements\nSpecification to generate the architectural design, its arrangement in\nsubsystems and Software Components defining the internal and external\ninterfaces. Describe in detail, the appearance and the behaviour of the\ninterface, based on the Requirements Specification in a way that Resources for\nits implementation can be foreseen. Provide the detail of Software Components\nand their interfaces to allow the construction in an evident way. Generate or\nupdate the Traceability Record."
+      },
+      {
+       "bpID": "SI.BP7",
+       "description": "Establish or update Test Cases and Test Procedures for integration\ntesting based on Requirements Specification and Software Design. Customer\nprovides testing data, if needed."
+      },
+      {
+       "bpID": "SI.BP8",
+       "description": "Verify and obtain approval of the Test Cases and Test Procedures. Verify\nconsistency among Requirements Specification, Software Design and Test\nCases and Test Procedures. The results found are documented in a Verification\nResults and corrections are made until the document is approved."
+      },
+      {
+       "bpID": "SI.BP9",
+       "description": "Update the Traceability Record incorporating the Test Cases and Test\nProcedures."
+      },
+      {
+       "bpID": "SI.BP10",
+       "description": "Incorporate the Software Design, and Traceability Record to the\nSoftware Configuration as part of the baseline. Incorporate the Test Cases, and\nTest Procedures to the Project Repository."
+      },
+      {
+       "bpID": "SI.BP14",
+       "description": "Update the Traceability Record incorporating Software Components\nconstructed or modified."
+      },
+      {
+       "bpID": "SI.BP15",
+       "description": "Incorporate Software Components and Traceability Record to the\nSoftware Configuration as part of the baseline."
+      },
+      {
+       "bpID": "SI.BP16",
+       "description": "Integrates the Software using Software Components and updates Test \nCases and Test Procedures for integration testing, as needed."
+      },
+      {
+       "bpID": "SI.BP17",
+       "description": "Perform Software tests using Test Cases and Test Procedures for\nintegration and document results in Test Report."
+      },
+      {
+       "bpID": "SI.BP19",
+       "description": "Updates the Traceability Record, if appropriate."
+      },
+      {
+       "bpID": "SI.BP20",
+       "description": "Incorporate the Test Cases and Test Procedures, Software, Traceability\nRecord, Test Report to the Software Configuration as part of the baseline."
+      },
+      {
+       "bpID": "SI.BP21",
+       "description": "Document the Maintenance Documentation or update the current one."
+      },
+      {
+       "bpID": "SI.BP22",
+       "description": "Verify and obtain approval of the Maintenance Documentation. Verify\nconsistency of Maintenance Documentation with Software Configuration. The\nresults found are documented in a Verification Results and corrections are\nmade until the document is approved."
+      },
+      {
+       "bpID": "SI.BP23",
+       "description": "Incorporate the Maintenance Documentation as baseline for the\nSoftware Configuration."
+      }
+     ]
+    }
+   ]
+  },
+  "PJ.03": {
+   "project": {
+    "id": "PJ.03",
+    "projectName": "PJ.C",
+    "enterprise": "ENT.03",
+    "enterpriseName": "Mock Company C (established VSE, mock data)",
+    "mock": true,
+    "hasEndingDate": "2026-08-28",
+    "hasNumberofStaff": "9",
+    "hasProjectDescription": "Mock: maintenance release of an in-house ERP module",
+    "hasProjectName": "PJ.C",
+    "hasReason": "Mock: preparing for ISO/IEC 29110 Basic Profile certification",
+    "hasStartingDate": "2026-01-05",
+    "hasTotalDuration": "8 months",
+    "excludedWorkProducts": []
+   },
+   "processScores": [
+    {
+     "score": "0.9608524130190796857463524126",
+     "process": "PM",
+     "nBP": "27"
+    },
+    {
+     "score": "0.8807395925330707939403591591",
+     "process": "SI",
+     "nBP": "23"
+    }
+   ],
+   "basePracticeScores": [
+    {
+     "bpID": "PM.BP1",
+     "description": "Review the agreement",
+     "nWP": "2",
+     "score": "1"
+    },
+    {
+     "bpID": "PM.BP2",
+     "description": "Define with the Customer the Delivery Instructions of each one of the\nDeliverables specified in the agreement",
+     "nWP": "3",
+     "score": "0.9627272727272727272727272727"
+    },
+    {
+     "bpID": "PM.BP3",
+     "description": "Identify the specific Tasks to be performed in order to produce the\nDeliverables and their Software Components identified in the Statement of\nWork. Include Tasks in the SI process along with verification, validation, and\nreviews with Customer and Work Team Tasks to ensure the quality of work\nproducts. Identify the Tasks to perform the Delivery Instructions. Document\nthe Tasks.",
+     "nWP": "2",
+     "score": "1"
+    },
+    {
+     "bpID": "PM.BP4",
+     "description": "Establish the Estimated Duration to perform each task.",
+     "nWP": "2",
+     "score": "1"
+    },
+    {
+     "bpID": "PM.BP5",
+     "description": "Identify and document the Resources: human, material, equipment,\nand tools, standards, including the required training of the Work Team to\nperform the project. Include in the schedule the dates when Resources and\ntraining will be needed.",
+     "nWP": "2",
+     "score": "1"
+    },
+    {
+     "bpID": "PM.BP6",
+     "description": "Establish the Composition of Work Team assigning roles and\nresponsibilities according to the Resources.",
+     "nWP": "2",
+     "score": "1"
+    },
+    {
+     "bpID": "PM.BP7",
+     "description": "Assign estimated start and completion dates to each one of the Tasks\nin order to create the Schedule of the Project Tasks taking into account the\nassigned Resources, sequence and dependency of the Tasks.",
+     "nWP": "2",
+     "score": "1"
+    },
+    {
+     "bpID": "PM.BP8",
+     "description": "Calculate and document the project Estimated Effort and Cost.",
+     "nWP": "2",
+     "score": "1"
+    },
+    {
+     "bpID": "PM.BP9",
+     "description": "Identify and document the risks which may affect the project.",
+     "nWP": "3",
+     "score": "0.89"
+    },
+    {
+     "bpID": "PM.BP10",
+     "description": "Document the Version Control Strategy in the Project Plan.",
+     "nWP": "2",
+     "score": "1"
+    },
+    {
+     "bpID": "PM.BP11",
+     "description": "Generate the Project Plan integrating the elements previously\nidentified and documented.",
+     "nWP": "1",
+     "score": "1"
+    },
+    {
+     "bpID": "PM.BP12",
+     "description": "Include Product Description, Scope, Objectives, and Deliverables in\nthe Project Plan.",
+     "nWP": "1",
+     "score": "1"
+    },
+    {
+     "bpID": "PM.BP13",
+     "description": "Verify and obtain approval of the Project Plan. Verify that all Project\nPlan elements are viable and consistent. The results found are documented in a\nVerification Results and corrections are made until the document is approved\nby PM.",
+     "nWP": "1",
+     "score": "1"
+    },
+    {
+     "bpID": "PM.BP14",
+     "description": "Review and accept the Project Plan. Customer reviews and accepts\nthe Project Plan, making sure that the Project Plan elements match with the\nStatement of Work.",
+     "nWP": "3",
+     "score": "0.9627272727272727272727272727"
+    },
+    {
+     "bpID": "PM.BP15",
+     "description": "Establish the Project Repository using the Version Control Strategy.",
+     "nWP": "2",
+     "score": "1"
+    },
+    {
+     "bpID": "PM.BP16",
+     "description": "Monitor the Project Plan execution and record actual data in Progress\nStatus Record.",
+     "nWP": "2",
+     "score": "0.98125"
+    },
+    {
+     "bpID": "PM.BP17",
+     "description": "Analyse and evaluate the Change Request for cost, schedule and\ntechnical impact. The Change Request can be initiated externally by the\nCustomer or internally by the Work Team. Update the Project Plan, if the\naccepted change does not affect agreements with Customer. Change Request,\nwhich affects those agreements, needs to be negotiated by both parties (see\nPM.2.4)",
+     "nWP": "2",
+     "score": "0.85"
+    },
+    {
+     "bpID": "PM.BP18",
+     "description": "Conduct revision meetings with the Work Team, identify problems,\nreview risk status, record agreements, and track them to closure.",
+     "nWP": "3",
+     "score": "0.875"
+    },
+    {
+     "bpID": "PM.BP19",
+     "description": "Conduct revision meetings with the Customer, record agreements\nand track them to closure. Change Request initiated by Customer or initiated\nby Work Team, which affects the Customer, needs to be negotiated to reach\nacceptance of both parties. If necessary, update the Project Plan according to\nnew agreement with Customer.",
+     "nWP": "4",
+     "score": "0.89875"
+    },
+    {
+     "bpID": "PM.BP20",
+     "description": "Perform backup according to the Version Control Strategy.",
+     "nWP": "3",
+     "score": "0.9"
+    },
+    {
+     "bpID": "PM.BP21",
+     "description": "Perform Project Repository recovery using the Project Repository Backup, if necessary.",
+     "nWP": "3",
+     "score": "0.9"
+    },
+    {
+     "bpID": "PM.BP22",
+     "description": "Evaluate project progress with respect to the Project Plan,\ncomparing:\n— actual Tasks against planned Tasks;\n— actual results against established project Objectives;\n— actual resource allocation against planned Resources;\n— actual cost against budget estimates;\n— actual time against planned schedule;\n— actual risk against previously identified.",
+     "nWP": "3",
+     "score": "0.9627272727272727272727272727"
+    },
+    {
+     "bpID": "PM.BP23",
+     "description": "Establish actions to correct deviations or problems and identified\nrisks concerning the accomplishment of the plan, as needed, document them in\nCorrection Register and track them to closure.",
+     "nWP": "2",
+     "score": "0.9625"
+    },
+    {
+     "bpID": "PM.BP24",
+     "description": "Identify changes to requirements and/or Project Plan to address\nmajor deviations, potential risks or problems concerning the accomplishment\nof the plan, document them in Change Request and track them to closure.",
+     "nWP": "3",
+     "score": "0.9"
+    },
+    {
+     "bpID": "PM.BP25",
+     "description": "Formalize the completion of the project according to the Delivery\nInstructions established in the Project Plan, providing acceptance support and\ngetting the Acceptance Record signed.",
+     "nWP": "3",
+     "score": "0.9733333333333333333333333333"
+    },
+    {
+     "bpID": "PM.BP26",
+     "description": "Update Project Repository.",
+     "nWP": "5",
+     "score": "0.934"
+    },
+    {
+     "bpID": "PM.BP27",
+     "description": "Perform delivery according to Delivery Instructions.",
+     "nWP": "3",
+     "score": "0.99"
+    },
+    {
+     "bpID": "SI.BP1",
+     "description": "Document or update the Requirements Specification. Identify and\nconsult information sources (Customer, users, previous systems, documents,\netc.) in order to get new requirements. Analyse the identified requirements to\ndeterminate the Scope and feasibility.\nGenerate or update the Requirements Specification",
+     "nWP": "4",
+     "score": "0.925"
+    },
+    {
+     "bpID": "SI.BP2",
+     "description": "Verify and obtain approval of the Requirements Specification.Verify the\ncorrectness and testability of the Requirements Specification and its\nconsistency with the Product Description. Additionally, review that\nrequirements are complete, unambiguous, and not contradictory. The results\nfound are documented in a Verification Results and corrections are made until\nthe document is approved by AN. If significant changes were needed, initiate a\nChange Request.",
+     "nWP": "4",
+     "score": "0.925"
+    },
+    {
+     "bpID": "SI.BP3",
+     "description": "Validate and obtain approval of the Requirements Specification .\nValidate that Requirements Specification satisfies needs and agreed upon\nexpectations, including the user interface usability. The results found are\ndocumented in a Validation Results and corrections are made until the\ndocument is approved by the CUS.",
+     "nWP": "2",
+     "score": "0.959090909090909090909090909"
+    },
+    {
+     "bpID": "SI.BP4",
+     "description": "Incorporate the requirements specification to the software\nconfiguration in the baseline",
+     "nWP": "2",
+     "score": "0.985"
+    },
+    {
+     "bpID": "SI.BP5",
+     "description": "Document or update the Software Design. Analyse the Requirements\nSpecification to generate the architectural design, its arrangement in\nsubsystems and Software Components defining the internal and external\ninterfaces. Describe in detail, the appearance and the behaviour of the\ninterface, based on the Requirements Specification in a way that Resources for\nits implementation can be foreseen. Provide the detail of Software Components\nand their interfaces to allow the construction in an evident way. Generate or\nupdate the Traceability Record.",
+     "nWP": "7",
+     "score": "0.8462637362637362637362637363"
+    },
+    {
+     "bpID": "SI.BP6",
+     "description": "Verify and obtain approval of the Software Design. Verify correctness of\nSoftware Design documentation, its feasibility and consistency with their\nRequirement Specification. Verify that the Traceability Record contains the\nadequate relationships between requirements and the Software Design\nelements. The results found are documented in a Verification Results and\ncorrections are made until the document is approved by DES. If significant\nchanges were needed, initiate a Change Request.",
+     "nWP": "4",
+     "score": "0.9134615384615384615384615385"
+    },
+    {
+     "bpID": "SI.BP7",
+     "description": "Establish or update Test Cases and Test Procedures for integration\ntesting based on Requirements Specification and Software Design. Customer\nprovides testing data, if needed.",
+     "nWP": "6",
+     "score": "0.852724358974358974358974359"
+    },
+    {
+     "bpID": "SI.BP8",
+     "description": "Verify and obtain approval of the Test Cases and Test Procedures. Verify\nconsistency among Requirements Specification, Software Design and Test\nCases and Test Procedures. The results found are documented in a Verification\nResults and corrections are made until the document is approved.",
+     "nWP": "6",
+     "score": "0.852724358974358974358974359"
+    },
+    {
+     "bpID": "SI.BP9",
+     "description": "Update the Traceability Record incorporating the Test Cases and Test\nProcedures.",
+     "nWP": "8",
+     "score": "0.8857932692307692307692307692"
+    },
+    {
+     "bpID": "SI.BP10",
+     "description": "Incorporate the Software Design, and Traceability Record to the\nSoftware Configuration as part of the baseline. Incorporate the Test Cases, and\nTest Procedures to the Project Repository.",
+     "nWP": "6",
+     "score": "0.8706410256410256410256410257"
+    },
+    {
+     "bpID": "SI.BP11",
+     "description": "Construct or update Software Components based on the detailed part\nof the Software Design.",
+     "nWP": "3",
+     "score": "0.7512820512820512820512820513"
+    },
+    {
+     "bpID": "SI.BP12",
+     "description": "Design or update unit test cases and apply them to verify that the\nSoftware Components implements the detailed part of the Software Design.",
+     "nWP": "3",
+     "score": "0.7512820512820512820512820513"
+    },
+    {
+     "bpID": "SI.BP13",
+     "description": "Correct the defects found until successful unit test (reaching exit\ncriteria) is achieved.",
+     "nWP": "1",
+     "score": "1"
+    },
+    {
+     "bpID": "SI.BP14",
+     "description": "Update the Traceability Record incorporating Software Components\nconstructed or modified.",
+     "nWP": "6",
+     "score": "0.8706410256410256410256410257"
+    },
+    {
+     "bpID": "SI.BP15",
+     "description": "Incorporate Software Components and Traceability Record to the\nSoftware Configuration as part of the baseline.",
+     "nWP": "6",
+     "score": "0.8706410256410256410256410257"
+    },
+    {
+     "bpID": "SI.BP16",
+     "description": "Integrates the Software using Software Components and updates Test \nCases and Test Procedures for integration testing, as needed.",
+     "nWP": "8",
+     "score": "0.8895432692307692307692307692"
+    },
+    {
+     "bpID": "SI.BP17",
+     "description": "Perform Software tests using Test Cases and Test Procedures for\nintegration and document results in Test Report.",
+     "nWP": "6",
+     "score": "0.852724358974358974358974359"
+    },
+    {
+     "bpID": "SI.BP18",
+     "description": "Correct the defects found and perform regression test until exit\ncriteria is achieved.",
+     "nWP": "4",
+     "score": "0.790625"
+    },
+    {
+     "bpID": "SI.BP19",
+     "description": "Updates the Traceability Record, if appropriate.",
+     "nWP": "6",
+     "score": "0.8706410256410256410256410257"
+    },
+    {
+     "bpID": "SI.BP20",
+     "description": "Incorporate the Test Cases and Test Procedures, Software, Traceability\nRecord, Test Report to the Software Configuration as part of the baseline.",
+     "nWP": "9",
+     "score": "0.898482905982905982905982906"
+    },
+    {
+     "bpID": "SI.BP21",
+     "description": "Document the Maintenance Documentation or update the current one.",
+     "nWP": "9",
+     "score": "0.898482905982905982905982906"
+    },
+    {
+     "bpID": "SI.BP22",
+     "description": "Verify and obtain approval of the Maintenance Documentation. Verify\nconsistency of Maintenance Documentation with Software Configuration. The\nresults found are documented in a Verification Results and corrections are\nmade until the document is approved.",
+     "nWP": "9",
+     "score": "0.898482905982905982905982906"
+    },
+    {
+     "bpID": "SI.BP23",
+     "description": "Incorporate the Maintenance Documentation as baseline for the\nSoftware Configuration.",
+     "nWP": "9",
+     "score": "0.898482905982905982905982906"
+    }
+   ],
+   "workProducts": [
+    {
+     "ae": "AE.PJ03.WP01",
+     "wpID": "WP.01",
+     "wpName": "Acceptance Record",
+     "score": "0.95",
+     "ratings": {
+      "Completely_achieved": "5",
+      "Largely_achieved": "1"
+     }
+    },
+    {
+     "ae": "AE.PJ03.WP02",
+     "wpID": "WP.02",
+     "wpName": "Agreement",
+     "score": "1",
+     "ratings": {
+      "Completely_achieved": "5"
+     }
+    },
+    {
+     "ae": "AE.PJ03.WP03",
+     "wpID": "WP.03",
+     "wpName": "Change Request",
+     "score": "0.7",
+     "ratings": {
+      "Largely_achieved": "8"
+     }
+    },
+    {
+     "ae": "AE.PJ03.WP04",
+     "wpID": "WP.04",
+     "wpName": "Correction Register",
+     "score": "0.925",
+     "ratings": {
+      "Completely_achieved": "6",
+      "Largely_achieved": "2"
+     }
+    },
+    {
+     "ae": "AE.PJ03.WP05",
+     "wpID": "WP.05",
+     "wpName": "Implementation Environment",
+     "score": "1",
+     "ratings": {
+      "Completely_achieved": "1"
+     }
+    },
+    {
+     "ae": "AE.PJ03.WP06",
+     "wpID": "WP.06",
+     "wpName": "Maintenance Documentation",
+     "score": "1",
+     "ratings": {
+      "Completely_achieved": "2"
+     }
+    },
+    {
+     "ae": "AE.PJ03.WP07",
+     "wpID": "WP.07",
+     "wpName": "Meeting Record",
+     "score": "0.97",
+     "ratings": {
+      "Completely_achieved": "9",
+      "Largely_achieved": "1"
+     }
+    },
+    {
+     "ae": "AE.PJ03.WP08",
+     "wpID": "WP.08",
+     "wpName": "Product Operation Guide",
+     "score": "0.97",
+     "ratings": {
+      "Completely_achieved": "9",
+      "Largely_achieved": "1"
+     }
+    },
+    {
+     "ae": "AE.PJ03.WP09",
+     "wpID": "WP.09",
+     "wpName": "Progress Status Record",
+     "score": "0.9625",
+     "ratings": {
+      "Completely_achieved": "7",
+      "Largely_achieved": "1"
+     }
+    },
+    {
+     "ae": "AE.PJ03.WP10",
+     "wpID": "WP.10",
+     "wpName": "Project Plan",
+     "score": "1",
+     "ratings": {
+      "Completely_achieved": "14"
+     }
+    },
+    {
+     "ae": "AE.PJ03.WP11",
+     "wpID": "WP.11",
+     "wpName": "Project Repository",
+     "score": "1",
+     "ratings": {
+      "Completely_achieved": "11"
+     }
+    },
+    {
+     "ae": "AE.PJ03.WP12",
+     "wpID": "WP.12",
+     "wpName": "Project Repository Backup",
+     "score": "1",
+     "ratings": {
+      "Completely_achieved": "1"
+     }
+    },
+    {
+     "ae": "AE.PJ03.WP13",
+     "wpID": "WP.13",
+     "wpName": "Requirement Specification",
+     "score": "1",
+     "ratings": {
+      "Completely_achieved": "12"
+     }
+    },
+    {
+     "ae": "AE.PJ03.WP14",
+     "wpID": "WP.14",
+     "wpName": "Software",
+     "score": "1",
+     "ratings": {
+      "Completely_achieved": "1"
+     }
+    },
+    {
+     "ae": "AE.PJ03.WP15",
+     "wpID": "WP.15",
+     "wpName": "Software Components",
+     "score": "1",
+     "ratings": {
+      "Completely_achieved": "1"
+     }
+    },
+    {
+     "ae": "AE.PJ03.WP16",
+     "wpID": "WP.16",
+     "wpName": "Software Design",
+     "score": "0.9538461538461538461538461538",
+     "ratings": {
+      "Completely_achieved": "11",
+      "Largely_achieved": "2"
+     }
+    },
+    {
+     "ae": "AE.PJ03.WP17",
+     "wpID": "WP.17",
+     "wpName": "Software Product",
+     "score": "0.97",
+     "ratings": {
+      "Completely_achieved": "9",
+      "Largely_achieved": "1"
+     }
+    },
+    {
+     "ae": "AE.PJ03.WP18",
+     "wpID": "WP.18",
+     "wpName": "Software User Documentation",
+     "score": "0.91",
+     "ratings": {
+      "Completely_achieved": "7",
+      "Largely_achieved": "3"
+     }
+    },
+    {
+     "ae": "AE.PJ03.WP19",
+     "wpID": "WP.19",
+     "wpName": "Test Cases and Test Procedures",
+     "score": "0.9",
+     "ratings": {
+      "Completely_achieved": "10",
+      "Largely_achieved": "5"
+     }
+    },
+    {
+     "ae": "AE.PJ03.WP20",
+     "wpID": "WP.20",
+     "wpName": "Test Report",
+     "score": "0.9625",
+     "ratings": {
+      "Completely_achieved": "7",
+      "Largely_achieved": "1"
+     }
+    },
+    {
+     "ae": "AE.PJ03.WP21",
+     "wpID": "WP.21",
+     "wpName": "Traceability Record",
+     "score": "0.3",
+     "ratings": {
+      "Partially_achieved": "2"
+     }
+    },
+    {
+     "ae": "AE.PJ03.WP22",
+     "wpID": "WP.22",
+     "wpName": "Validation Record",
+     "score": "0.9181818181818181818181818182",
+     "ratings": {
+      "Completely_achieved": "8",
+      "Largely_achieved": "3"
+     }
+    },
+    {
+     "ae": "AE.PJ03.WP23",
+     "wpID": "WP.23",
+     "wpName": "Verification Record",
+     "score": "1",
+     "ratings": {
+      "Completely_achieved": "11"
+     }
+    }
+   ],
+   "gaps": [
+    {
+     "wpID": "WP.21",
+     "wpName": "Traceability Record",
+     "characteristic": "WPC.20.01",
+     "item": "Identification of the individual requirements of the Requirement specification to be traced.",
+     "rating": "Partially_achieved",
+     "percentage": "45"
+    },
+    {
+     "wpID": "WP.21",
+     "wpName": "Traceability Record",
+     "characteristic": "WPC.20.02",
+     "item": "Provides forward and backward mapping of requirements to software design elements, software components, test cases, test procedures and test results.",
+     "rating": "Partially_achieved",
+     "percentage": "41"
+    }
+   ],
+   "recommendations": [
+    {
+     "ae": "AE.PJ03.WP21",
+     "wpID": "WP.21",
+     "wpName": "Traceability Record",
+     "gaps": [
+      {
+       "wpID": "WP.21",
+       "wpName": "Traceability Record",
+       "characteristic": "WPC.20.01",
+       "item": "Identification of the individual requirements of the Requirement specification to be traced.",
+       "rating": "Partially_achieved",
+       "percentage": "45"
+      },
+      {
+       "wpID": "WP.21",
+       "wpName": "Traceability Record",
+       "characteristic": "WPC.20.02",
+       "item": "Provides forward and backward mapping of requirements to software design elements, software components, test cases, test procedures and test results.",
+       "rating": "Partially_achieved",
+       "percentage": "41"
+      }
+     ],
+     "tasks": [
+      {
+       "taskID": "SI.2.6",
+       "description": "Verify and obtain approval of the *software user documentation from AN:\n- Verify consistency of the *software user documentation with the Requirement specification.\n- Make corrections until the document is approved by AN.\n- Generate the traceability record.",
+       "roles": "AN, TL",
+       "link": "produces"
+      },
+      {
+       "taskID": "SI.3.2",
+       "description": "Review the software Requirement specification.",
+       "roles": "AN, DES",
+       "link": "produces"
+      },
+      {
+       "taskID": "SI.3.3",
+       "description": "Document the software design:\n- Analyse the Requirement specification to generate the architectural design/ to define the software components/ the internal and external interfaces.\n- Describe in detail/ the appearance and the behaviour of the interface/ based on the Requirement specification/ in a way that resources for its implementation can be planned.\n- Provide the detail of software components and their interfaces to allow their construction.\n- Update the traceability record to include the software design.",
+       "roles": "AN, DES",
+       "link": "produces"
+      },
+      {
+       "taskID": "SI.3.4",
+       "description": "Verify and obtain approval of the software design from DES:\n- Verify correctness of software design documentation/ its feasibility and consistency with their requirement specification.\n- Verify that the traceability record contains the adequate relationships between requirements and the software design elements.\n- Make corrections are until the document is approved by DES.",
+       "roles": "AN, DES",
+       "link": "produces"
+      },
+      {
+       "taskID": "SI.3.6",
+       "description": "Update the traceability record:\n- Add the test cases and test procedures\nto the traceability record.",
+       "roles": "DES",
+       "link": "produces"
+      },
+      {
+       "taskID": "SI.3.7",
+       "description": "Verify and obtain approval of the test cases and test procedures by AN:\n- Verify consistency among Requirement specification/ software design and test cases and test procedures.\n- Make corrections until the document is approved by AN.",
+       "roles": "AN, DES",
+       "link": "produces"
+      },
+      {
+       "taskID": "SI.4.6",
+       "description": "Update the traceability record:\n- Add the software components to the traceability record.\n- add the tests cases to the traceability record.\n- Add the results of the test cases to the traceability record.",
+       "roles": "PR",
+       "link": "produces"
+      },
+      {
+       "taskID": "SI.5.6",
+       "description": "Update the traceability record.",
+       "roles": "PR",
+       "link": "produces"
+      },
+      {
+       "taskID": "SI.5.11",
+       "description": "Incorporate the software work products to the baseline.",
+       "roles": "TL",
+       "link": "produces"
+      }
+     ],
+     "roles": [
+      {
+       "roleName": "Analyst",
+       "abbreviation": "AN",
+       "tasks": "SI.2.6, SI.3.2, SI.3.3, SI.3.4, SI.3.7"
+      },
+      {
+       "roleName": "Designer",
+       "abbreviation": "DES",
+       "tasks": "SI.3.2, SI.3.3, SI.3.4, SI.3.6, SI.3.7"
+      },
+      {
+       "roleName": "Programmer",
+       "abbreviation": "PR",
+       "tasks": "SI.4.6, SI.5.6"
+      },
+      {
+       "roleName": "Technical leader",
+       "abbreviation": "TL",
+       "tasks": "SI.2.6, SI.5.11"
+      }
+     ],
+     "basePractices": [
+      {
+       "description": "Document or update the Software Design. Analyse the Requirements\nSpecification to generate the architectural design, its arrangement in\nsubsystems and Software Components defining the internal and external\ninterfaces. Describe in detail, the appearance and the behaviour of the\ninterface, based on the Requirements Specification in a way that Resources for\nits implementation can be foreseen. Provide the detail of Software Components\nand their interfaces to allow the construction in an evident way. Generate or\nupdate the Traceability Record.",
+       "bpID": "SI.BP5"
+      },
+      {
+       "description": "Verify and obtain approval of the Software Design. Verify correctness of\nSoftware Design documentation, its feasibility and consistency with their\nRequirement Specification. Verify that the Traceability Record contains the\nadequate relationships between requirements and the Software Design\nelements. The results found are documented in a Verification Results and\ncorrections are made until the document is approved by DES. If significant\nchanges were needed, initiate a Change Request.",
+       "bpID": "SI.BP6"
+      },
+      {
+       "description": "Establish or update Test Cases and Test Procedures for integration\ntesting based on Requirements Specification and Software Design. Customer\nprovides testing data, if needed.",
+       "bpID": "SI.BP7"
+      },
+      {
+       "description": "Verify and obtain approval of the Test Cases and Test Procedures. Verify\nconsistency among Requirements Specification, Software Design and Test\nCases and Test Procedures. The results found are documented in a Verification\nResults and corrections are made until the document is approved.",
+       "bpID": "SI.BP8"
+      },
+      {
+       "description": "Update the Traceability Record incorporating the Test Cases and Test\nProcedures.",
+       "bpID": "SI.BP9"
+      },
+      {
+       "description": "Incorporate the Software Design, and Traceability Record to the\nSoftware Configuration as part of the baseline. Incorporate the Test Cases, and\nTest Procedures to the Project Repository.",
+       "bpID": "SI.BP10"
+      },
+      {
+       "description": "Update the Traceability Record incorporating Software Components\nconstructed or modified.",
+       "bpID": "SI.BP14"
+      },
+      {
+       "description": "Incorporate Software Components and Traceability Record to the\nSoftware Configuration as part of the baseline.",
+       "bpID": "SI.BP15"
+      },
+      {
+       "description": "Integrates the Software using Software Components and updates Test \nCases and Test Procedures for integration testing, as needed.",
+       "bpID": "SI.BP16"
+      },
+      {
+       "description": "Perform Software tests using Test Cases and Test Procedures for\nintegration and document results in Test Report.",
+       "bpID": "SI.BP17"
+      },
+      {
+       "description": "Updates the Traceability Record, if appropriate.",
+       "bpID": "SI.BP19"
+      },
+      {
+       "description": "Incorporate the Test Cases and Test Procedures, Software, Traceability\nRecord, Test Report to the Software Configuration as part of the baseline.",
+       "bpID": "SI.BP20"
+      },
+      {
+       "description": "Document the Maintenance Documentation or update the current one.",
+       "bpID": "SI.BP21"
+      },
+      {
+       "description": "Verify and obtain approval of the Maintenance Documentation. Verify\nconsistency of Maintenance Documentation with Software Configuration. The\nresults found are documented in a Verification Results and corrections are\nmade until the document is approved.",
+       "bpID": "SI.BP22"
+      },
+      {
+       "description": "Incorporate the Maintenance Documentation as baseline for the\nSoftware Configuration.",
+       "bpID": "SI.BP23"
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "searchT1": {
+  "template": "T1",
+  "sparql": "PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>\nSELECT ?task ?taskID ?taskDesc ?activityName\n       (GROUP_CONCAT(DISTINCT ?roleAbbr; separator=\", \") AS ?roles)\n       (GROUP_CONCAT(DISTINCT ?outName; separator=\"; \") AS ?outputs)\nWHERE {\n  { SELECT DISTINCT ?task ?taskDesc WHERE {\n      ?task a iso:Task ; iso:hasTaskDescription ?taskDesc .\n      ?task iso:hasRole ?role . ?role iso:hasRoleName ?roleName . FILTER(str(?roleName) = \"Technical leader\")\n      FILTER(REGEX(str(?taskDesc), \"project\\\\s+plan\", \"i\"))\n      FILTER(REGEX(str(?taskDesc), \"verify\", \"i\") || REGEX(str(?taskDesc), \"review\", \"i\"))\n  } }\n  OPTIONAL { ?task iso:hasTaskID ?taskID . }\n  OPTIONAL { ?task iso:isTaskOf ?a . ?a iso:hasActivityName ?activityName . }\n  OPTIONAL { ?task iso:hasRole ?r . ?r iso:hasRoleAbbreviation ?roleAbbr . }\n  OPTIONAL { ?task iso:hasOutputWorkProduct ?o . ?o iso:representsWorkProduct ?ow . ?ow iso:hasWorkProductName ?outName . }\n}\nGROUP BY ?task ?taskID ?taskDesc ?activityName\nORDER BY ?taskID\n",
+  "rows": [
+   {
+    "task": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#PM.PT.01.13",
+    "taskID": "PM.1.13",
+    "taskDesc": "Verify the project plan:\n- Make corrections until the document is\napproved by PJM.",
+    "activityName": "Project planning",
+    "roles": "PJM, TL",
+    "outputs": "Project Plan; Verification Record"
+   },
+   {
+    "task": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#SI.PT.01.01",
+    "taskID": "SI.1.1",
+    "taskDesc": "Review the current project plan with the work team.",
+    "activityName": "Software implementation initiation",
+    "roles": "PJM, TL, WT",
+    "outputs": "Project Plan"
+   }
+  ]
+ },
+ "reasoningReport": {
+  "reasoner": "Pellet 2.3.1 via OWL API 3.4.3",
+  "runAt": "2026-11-03T18:16:49.877206Z",
+  "consistent": true,
+  "noRules": false,
+  "excludedRules": [],
+  "elapsedMs": 16645,
+  "inferred": {
+   "types": 88,
+   "objectPropertyValues": 989,
+   "dataPropertyValues": 0
+  },
+  "inputs": {
+   "ontology/ISO29110V2_rev06b.ttl": "0f281b67570102c78ce7817576808396a35c10748230c27273c70053e971072f"
+  },
+  "rules": [
+   {
+    "label": "BasePracticeOutputWPRule",
+    "enabled": true,
+    "bodyAtoms": 4,
+    "headAtoms": 1
+   },
+   {
+    "label": "ExcludedConditionalWorkProductRule",
+    "enabled": true,
+    "bodyAtoms": 12,
+    "headAtoms": 1
+   },
+   {
+    "label": "GapNotAchievedRule",
+    "enabled": true,
+    "bodyAtoms": 1,
+    "headAtoms": 1
+   },
+   {
+    "label": "GapPartiallyAchievedRule",
+    "enabled": true,
+    "bodyAtoms": 1,
+    "headAtoms": 1
+   },
+   {
+    "label": "RatingCompletelyAchievedRule",
+    "enabled": true,
+    "bodyAtoms": 3,
+    "headAtoms": 1
+   },
+   {
+    "label": "RatingLargelyAchievedRule",
+    "enabled": true,
+    "bodyAtoms": 4,
+    "headAtoms": 1
+   },
+   {
+    "label": "RatingNotAchievedRule",
+    "enabled": true,
+    "bodyAtoms": 3,
+    "headAtoms": 1
+   },
+   {
+    "label": "RatingPartiallyAchievedRule",
+    "enabled": true,
+    "bodyAtoms": 4,
+    "headAtoms": 1
+   },
+   {
+    "label": "RecommendBasePracticeRule",
+    "enabled": true,
+    "bodyAtoms": 6,
+    "headAtoms": 1
+   },
+   {
+    "label": "RecommendRoleRule",
+    "enabled": true,
+    "bodyAtoms": 2,
+    "headAtoms": 1
+   },
+   {
+    "label": "RecommendTaskForExternalInputRule",
+    "enabled": true,
+    "bodyAtoms": 8,
+    "headAtoms": 1
+   },
+   {
+    "label": "RecommendTaskRule",
+    "enabled": true,
+    "bodyAtoms": 6,
+    "headAtoms": 1
+   }
+  ]
+ }
+}

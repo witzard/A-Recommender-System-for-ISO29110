@@ -1,9 +1,0 @@
-# Items rated Not_applicable by the reasoner (context rule for excluded conditional work products), one project (?pPj).
-PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>
-SELECT ?ae ?wpID ?wpName (COUNT(DISTINCT ?ar) AS ?nItems) WHERE {
-  ?ae iso:responsibleFor ?pPj ; iso:hasEntity ?wp ; iso:hasAssessmentResult ?ar .
-  ?wp iso:hasWorkProductID ?wpID ; iso:hasWorkProductName ?wpName .
-  GRAPH <urn:iso29110:graph:inferred> { ?ar iso:hasDegreeAchievement iso:Not_applicable }
-}
-GROUP BY ?ae ?wpID ?wpName
-ORDER BY ?wpID

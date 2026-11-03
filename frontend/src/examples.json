@@ -1,0 +1,373 @@
+[
+ {
+  "id": "Q1",
+  "question": "What criteria are used to select risk topics for project risk analysis?",
+  "template": "T1",
+  "params": {
+   "kwAll": [
+    "risk",
+    "identify"
+   ]
+  }
+ },
+ {
+  "id": "Q2",
+  "question": "As a PM, how does the team know project details, specifically deliverables?",
+  "template": "T1",
+  "params": {
+   "kwAll": [
+    "project plan"
+   ],
+   "kwAny": [
+    "work team",
+    "deliverables"
+   ]
+  }
+ },
+ {
+  "id": "Q3",
+  "question": "As a PM, what is the process for customer acceptance and project closure?",
+  "template": "T1",
+  "params": {
+   "kwAny": [
+    "acceptance record",
+    "according to delivery instructions"
+   ]
+  }
+ },
+ {
+  "id": "Q4",
+  "question": "As an SA, how is the project plan reviewed with the PM?",
+  "template": "T1",
+  "params": {
+   "role": "Technical leader",
+   "kwAll": [
+    "project plan"
+   ],
+   "kwAny": [
+    "verify",
+    "review"
+   ]
+  }
+ },
+ {
+  "id": "Q5",
+  "question": "As an SA, how is it ensured that the team understands the development environment setup?",
+  "template": "T1",
+  "params": {
+   "kwAll": [
+    "environment"
+   ]
+  }
+ },
+ {
+  "id": "Q6",
+  "question": "As an SA, what is the process for updating the SRS document?",
+  "template": "T1",
+  "params": {
+   "kwAny": [
+    "change request",
+    "changes to requirements"
+   ]
+  }
+ },
+ {
+  "id": "Q7",
+  "question": "How is it ensured that the Requirement Spec matches customer needs and is accepted?",
+  "template": "T2",
+  "params": {
+   "workProduct": "Requirement Specification",
+   "state": "Approved",
+   "kwProducer": "validate"
+  }
+ },
+ {
+  "id": "Q8",
+  "question": "As an SA, how is the baselined version prepared for the design phase?",
+  "template": "T1",
+  "params": {
+   "kwAny": [
+    "specification baseline",
+    "review the software requirement specification"
+   ]
+  }
+ },
+ {
+  "id": "Q9",
+  "question": "As an SA, how is it ensured that the team understands the system design as planned?",
+  "template": "T1",
+  "params": {
+   "kwAll": [
+    "review the software design"
+   ]
+  }
+ },
+ {
+  "id": "Q10",
+  "question": "How does Testing ensure the test plan matches the Req Spec / SW Design?",
+  "template": "T2",
+  "params": {
+   "workProduct": "Test Cases and Test Procedures",
+   "state": "Approved",
+   "kwProducer": "verify"
+  }
+ },
+ {
+  "id": "Q11",
+  "question": "As an SA, how is the Traceability Record updated if requirements change?",
+  "template": "T1",
+  "params": {
+   "kwAny": [
+    "update the traceability record",
+    "generate the traceability record",
+    "traceability record contains"
+   ]
+  }
+ },
+ {
+  "id": "Q12",
+  "question": "How does Dev know which system functions to design and develop?",
+  "template": "T1",
+  "params": {
+   "role": "Programmer",
+   "kwAll": [
+    "review",
+    "software design"
+   ]
+  }
+ },
+ {
+  "id": "Q13",
+  "question": "How do SA or Dev know the system design fully covers the requirements?",
+  "template": "T1",
+  "params": {
+   "kwAny": [
+    "requirements and the software design",
+    "software components to the traceability"
+   ]
+  }
+ },
+ {
+  "id": "Q14",
+  "question": "As a Programmer, how does the team know what is being developed and when it is finished?",
+  "template": "T1",
+  "params": {
+   "activity": "Software construction",
+   "kwAll": [
+    "assign tasks"
+   ]
+  }
+ },
+ {
+  "id": "Q15",
+  "question": "As a developer, how is it known that the program is fully tested and displays correctly?",
+  "template": "T1",
+  "params": {
+   "role": "Programmer",
+   "kwAny": [
+    "unit test cases",
+    "software integration tests"
+   ]
+  }
+ },
+ {
+  "id": "Q16",
+  "question": "How is one informed of their duty to perform system testing?",
+  "template": "T1",
+  "params": {
+   "activity": "Software integration and tests",
+   "kwAll": [
+    "assign tasks"
+   ]
+  }
+ },
+ {
+  "id": "Q17",
+  "question": "How is it known that the program functions correctly?",
+  "template": "T1",
+  "params": {
+   "role": "Programmer",
+   "kwAll": [
+    "execute the unit test"
+   ]
+  }
+ },
+ {
+  "id": "Q18",
+  "question": "As a Programmer, how are bugs identified and what is the fix process?",
+  "template": "T1",
+  "params": {
+   "role": "Programmer",
+   "kwAll": [
+    "correct the defects"
+   ]
+  }
+ },
+ {
+  "id": "Q19",
+  "question": "How is it known if delivery is on schedule according to the plan?",
+  "template": "T1",
+  "params": {
+   "kwAny": [
+    "progress with respect to the project plan",
+    "monitor the project plan"
+   ]
+  }
+ },
+ {
+  "id": "Q20",
+  "question": "As a Tester, how is the system testing methodology understood?",
+  "template": "T1",
+  "params": {
+   "kwAll": [
+    "review the test cases"
+   ]
+  }
+ },
+ {
+  "id": "Q21",
+  "question": "How is the system tested against requirements and how is accuracy verified?",
+  "template": "T1",
+  "params": {
+   "kwAny": [
+    "perform software integration tests",
+    "consistency among requirement"
+   ]
+  }
+ },
+ {
+  "id": "Q22",
+  "question": "How is the Test Report prepared according to requirements?",
+  "template": "T1",
+  "params": {
+   "kwAll": [
+    "perform software integration tests"
+   ]
+  }
+ },
+ {
+  "id": "Q23",
+  "question": "How is it known that a software version has had its bugs fixed?",
+  "template": "T1",
+  "params": {
+   "kwAny": [
+    "until defects are corrected",
+    "software work products to the baseline"
+   ]
+  }
+ },
+ {
+  "id": "Q24",
+  "question": "As a Tester, how is the consistency between Test Case, Software Design, and User Req known?",
+  "template": "T1",
+  "params": {
+   "kwAll": [
+    "consistency among",
+    "test cases",
+    "design"
+   ]
+  }
+ },
+ {
+  "id": "Q25",
+  "question": "Who is responsible for developing the Product Operation Doc, and what is the approach taken to develop it?",
+  "template": "T1",
+  "params": {
+   "kwAll": [
+    "document the product operation guide"
+   ]
+  }
+ },
+ {
+  "id": "Q26",
+  "question": "How is it verified that the Product Operation Doc is the post-test version?",
+  "template": "T1",
+  "params": {
+   "kwAll": [
+    "product operation guide",
+    "verify"
+   ]
+  }
+ },
+ {
+  "id": "Q27",
+  "question": "Who develops the Software User Doc and what is the approach?",
+  "template": "T1",
+  "params": {
+   "kwAll": [
+    "develop the software user documentation"
+   ]
+  }
+ },
+ {
+  "id": "Q28",
+  "question": "How does the team know the Software User Document is ready for use?",
+  "template": "T1",
+  "params": {
+   "kwAll": [
+    "software user documentation",
+    "approved by CUS"
+   ]
+  }
+ },
+ {
+  "id": "Q29",
+  "question": "How does the team know what must be delivered to the customer?",
+  "template": "T1",
+  "params": {
+   "kwAny": [
+    "delivery instructions",
+    "deliverables"
+   ]
+  }
+ },
+ {
+  "id": "Q30",
+  "question": "How does the team communicate that work is ready for delivery?",
+  "template": "T1",
+  "params": {
+   "kwAll": [
+    "prepare the delivery"
+   ]
+  }
+ },
+ {
+  "id": "Q31",
+  "question": "Where are project docs/software stored and how is maintenance handled?",
+  "template": "T1",
+  "params": {
+   "kwAny": [
+    "establish the project repository",
+    "add the maintenance documentation"
+   ]
+  }
+ },
+ {
+  "id": "Q32",
+  "question": "What is the Maintenance Documentation process and where is the latest version?",
+  "template": "T1",
+  "params": {
+   "kwAll": [
+    "maintenance documentation"
+   ]
+  }
+ },
+ {
+  "id": "Q33",
+  "question": "What are the methods and criteria for evaluating each Work Product?",
+  "template": "T3",
+  "params": {}
+ },
+ {
+  "id": "Q34",
+  "question": "How does the team know where the baseline is stored and how is its use controlled?",
+  "template": "T1",
+  "params": {
+   "kwAny": [
+    "version control strategy",
+    "backup",
+    "repository recovery"
+   ]
+  }
+ }
+]

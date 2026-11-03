@@ -1,63 +1,14 @@
-:root {
-  --text: #667085;
-  --text-h: #101828;
-  --bg: #f4f7fb;
-  --surface: #ffffff;
-  --surface-muted: #f8fafc;
-  --border: #e4e7ec;
-  --code-bg: #f2f4f7;
-  --accent: #2563eb;
-  --accent-bg: rgba(37, 99, 235, 0.08);
-  --accent-border: rgba(37, 99, 235, 0.35);
-  --shadow:
-    rgba(16, 24, 40, 0.055) 0 8px 24px,
-    rgba(16, 24, 40, 0.035) 0 2px 6px;
-
-  --sans: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  --mono: ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', monospace;
-
-  font: 16px/145% var(--sans);
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-html {
-  background: var(--bg);
-}
-
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: #ffffff; }
 body {
-  margin: 0;
-  min-width: 320px;
-  min-height: 100vh;
-  background:
-    radial-gradient(circle at 12% 0%, rgba(37, 99, 235, 0.06), transparent 28rem),
-    var(--bg);
+  font: 14px/1.45 Arial, Helvetica, sans-serif;
+  color: #222222;
 }
-
-button,
-input,
-select {
-  font: inherit;
-}
-
-#root {
-  min-height: 100svh;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  color: var(--text-h);
-}
+h1, h2, h3 { font-weight: bold; color: #111111; }
+h1 { font-size: 18px; margin: 0; }
+h2 { font-size: 16px; margin: 24px 0 8px; padding-bottom: 4px; border-bottom: 1px solid #cccccc; }
+h3 { font-size: 14px; margin: 16px 0 6px; }
+p { margin: 6px 0; }
+a { color: #1f3f6b; }
+button, select, input { font: inherit; color: inherit; }
+pre { font: 12px/1.4 Consolas, 'Courier New', monospace; }
