@@ -1,5 +1,5 @@
 // UI tests: the real App component with the API answered from fixtures.json (responses of the backend services
-// computed on ontology/ISO29110V2_rev08.ttl and kb/inferred.nt; see fixtures._note).
+// computed on ontology/ISO29110V2_rev09.ttl and kb/inferred.nt; see fixtures._note).
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { cleanup, fireEvent, render, screen, within } from '@testing-library/react';
 import fixtures from './fixtures.json';
@@ -53,7 +53,7 @@ describe('knowledge search by parameters', () => {
       workProduct: 'Project Plan', state: '', kwAll: ['verify'], kwAny: [] }]);
     expect(screen.getByRole('heading', { name: 'G1 Tasks (5 rows)' })).toBeTruthy();
     expect(screen.getByRole('heading', { name: 'G2 Tasks and Base Practices that output the work product (3 rows)' })).toBeTruthy();
-    const g3 = screen.getByRole('heading', { name: 'G3 Base Practices, process outcomes and output work products (1 row)' }).parentElement;
+    const g3 = screen.getByRole('heading', { name: 'G3 Base Practices, process outcomes and work products (advisor table) (1 row)' }).parentElement;
     expect(within(g3).getByText('PM.BP13')).toBeTruthy();
     expect(within(g3).getByText('PM c)')).toBeTruthy();
     expect(screen.queryByText('SPARQL query')).toBeNull();

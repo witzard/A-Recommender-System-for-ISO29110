@@ -4890,7 +4890,7 @@ ISO29110V2:PM.IWP.01.13.WP10.2 rdf:type owl:NamedIndividual ,
         ISO29110V2:InputWorkProduct ,
         ISO29110V2:WorkProduct ;
     ISO29110V2:hasCurrentState ISO29110V2:WPS.12 ;
-    ISO29110V2:hasFinalState ISO29110V2:WPS.23 ;
+    ISO29110V2:hasFinalState ISO29110V2:WPS.22 ;
     ISO29110V2:hasProcessOutcome ISO29110V2:PM.PO.03 ;
     ISO29110V2:isInputWorkProductOf ISO29110V2:PM.PT.01.13 ;
     ISO29110V2:representsWorkProduct ISO29110V2:WP.10 ;
@@ -4901,7 +4901,7 @@ ISO29110V2:PM.IWP.01.13.WP10.2 rdf:type owl:NamedIndividual ,
 ISO29110V2:PM.IWP.01.14.WP10 rdf:type owl:NamedIndividual ,
         ISO29110V2:InputWorkProduct ,
         ISO29110V2:WorkProduct ;
-    ISO29110V2:hasCurrentState ISO29110V2:WPS.23 ;
+    ISO29110V2:hasCurrentState ISO29110V2:WPS.22 ;
     ISO29110V2:hasFinalState ISO29110V2:WPS.02 ;
     ISO29110V2:hasProcessOutcome ISO29110V2:PM.PO.05 ;
     ISO29110V2:isInputWorkProductOf ISO29110V2:PM.PT.01.14 ;
@@ -5363,7 +5363,7 @@ ISO29110V2:PM.OWP.01.13.WP10 rdf:type owl:NamedIndividual ,
         ISO29110V2:OutputWorkProduct ,
         ISO29110V2:WorkProduct ;
     ISO29110V2:hasCurrentState ISO29110V2:WPS.12 ;
-    ISO29110V2:hasFinalState ISO29110V2:WPS.23 ;
+    ISO29110V2:hasFinalState ISO29110V2:WPS.22 ;
     ISO29110V2:hasProcessOutcome ISO29110V2:PM.PO.03 ;
     ISO29110V2:isOutputWorkProductOf ISO29110V2:PM.BP.11 ,
         ISO29110V2:PM.BP.12 ,
@@ -5407,7 +5407,7 @@ ISO29110V2:PM.OWP.01.14.WP07 rdf:type owl:NamedIndividual ,
 ISO29110V2:PM.OWP.01.14.WP10 rdf:type owl:NamedIndividual ,
         ISO29110V2:OutputWorkProduct ,
         ISO29110V2:WorkProduct ;
-    ISO29110V2:hasCurrentState ISO29110V2:WPS.23 ;
+    ISO29110V2:hasCurrentState ISO29110V2:WPS.22 ;
     ISO29110V2:hasFinalState ISO29110V2:WPS.02 ;
     ISO29110V2:hasProcessOutcome ISO29110V2:PM.PO.05 ;
     ISO29110V2:isOutputWorkProductOf ISO29110V2:PM.BP.02 ,
@@ -7252,7 +7252,7 @@ ISO29110V2:SI.IWP.02.07.WP13 rdf:type owl:NamedIndividual ,
 ISO29110V2:SI.IWP.02.07.WP18 rdf:type owl:NamedIndividual ,
         ISO29110V2:InputWorkProduct ,
         ISO29110V2:WorkProduct ;
-    ISO29110V2:hasCurrentState ISO29110V2:WPS.23 ;
+    ISO29110V2:hasCurrentState ISO29110V2:WPS.22 ;
     ISO29110V2:hasFinalState ISO29110V2:WPS.03 ;
     ISO29110V2:isInputWorkProductOf ISO29110V2:SI.PT.02.07 ;
     ISO29110V2:representsWorkProduct ISO29110V2:WP.18 ;
@@ -7380,8 +7380,8 @@ ISO29110V2:SI.IWP.03.05.WP13 rdf:type owl:NamedIndividual ,
 ISO29110V2:SI.IWP.03.05.WP16 rdf:type owl:NamedIndividual ,
         ISO29110V2:InputWorkProduct ,
         ISO29110V2:WorkProduct ;
-    ISO29110V2:hasCurrentState ISO29110V2:WPS.23 ;
-    ISO29110V2:hasFinalState ISO29110V2:WPS.23 ;
+    ISO29110V2:hasCurrentState ISO29110V2:WPS.22 ;
+    ISO29110V2:hasFinalState ISO29110V2:WPS.22 ;
     ISO29110V2:hasProcessOutcome ISO29110V2:SI.PO.21 ;
     ISO29110V2:isInputWorkProductOf ISO29110V2:SI.PT.03.05 ;
     ISO29110V2:representsWorkProduct ISO29110V2:WP.16 ;
@@ -7392,8 +7392,8 @@ ISO29110V2:SI.IWP.03.05.WP16 rdf:type owl:NamedIndividual ,
 ISO29110V2:SI.IWP.03.05.WP21 rdf:type owl:NamedIndividual ,
         ISO29110V2:InputWorkProduct ,
         ISO29110V2:WorkProduct ;
-    ISO29110V2:hasCurrentState ISO29110V2:WPS.23 ;
-    ISO29110V2:hasFinalState ISO29110V2:WPS.23 ;
+    ISO29110V2:hasCurrentState ISO29110V2:WPS.22 ;
+    ISO29110V2:hasFinalState ISO29110V2:WPS.22 ;
     ISO29110V2:hasProcessOutcome ISO29110V2:SI.PO.21 ;
     ISO29110V2:isInputWorkProductOf ISO29110V2:SI.PT.03.05 ;
     ISO29110V2:representsWorkProduct ISO29110V2:WP.21 ;
@@ -7416,7 +7416,7 @@ ISO29110V2:SI.IWP.03.06.WP19 rdf:type owl:NamedIndividual ,
 ISO29110V2:SI.IWP.03.06.WP21 rdf:type owl:NamedIndividual ,
         ISO29110V2:InputWorkProduct ,
         ISO29110V2:WorkProduct ;
-    ISO29110V2:hasCurrentState ISO29110V2:WPS.23 ;
+    ISO29110V2:hasCurrentState ISO29110V2:WPS.22 ;
     ISO29110V2:hasFinalState ISO29110V2:WPS.21 ;
     ISO29110V2:hasProcessOutcome ISO29110V2:SI.PO.25 ;
     ISO29110V2:isInputWorkProductOf ISO29110V2:SI.PT.03.06 ;
@@ -7441,8 +7441,8 @@ ISO29110V2:SI.IWP.03.07.WP13.1 rdf:type owl:NamedIndividual ,
 ISO29110V2:SI.IWP.03.07.WP13.2 rdf:type owl:NamedIndividual ,
         ISO29110V2:InputWorkProduct ,
         ISO29110V2:WorkProduct ;
-    ISO29110V2:hasCurrentState ISO29110V2:WPS.22 ;
-    ISO29110V2:hasFinalState ISO29110V2:WPS.22 ;
+    ISO29110V2:hasCurrentState ISO29110V2:WPS.23 ;
+    ISO29110V2:hasFinalState ISO29110V2:WPS.23 ;
     ISO29110V2:hasProcessOutcome ISO29110V2:SI.PO.25 ,
         ISO29110V2:SI.PO.26 ;
     ISO29110V2:isInputWorkProductOf ISO29110V2:SI.PT.03.07 ;
@@ -7467,8 +7467,8 @@ ISO29110V2:SI.IWP.03.07.WP16.1 rdf:type owl:NamedIndividual ,
 ISO29110V2:SI.IWP.03.07.WP16.2 rdf:type owl:NamedIndividual ,
         ISO29110V2:InputWorkProduct ,
         ISO29110V2:WorkProduct ;
-    ISO29110V2:hasCurrentState ISO29110V2:WPS.23 ;
-    ISO29110V2:hasFinalState ISO29110V2:WPS.23 ;
+    ISO29110V2:hasCurrentState ISO29110V2:WPS.22 ;
+    ISO29110V2:hasFinalState ISO29110V2:WPS.22 ;
     ISO29110V2:hasProcessOutcome ISO29110V2:SI.PO.25 ,
         ISO29110V2:SI.PO.26 ;
     ISO29110V2:isInputWorkProductOf ISO29110V2:SI.PT.03.07 ;
@@ -7564,8 +7564,8 @@ ISO29110V2:SI.IWP.04.02.WP16 rdf:type owl:NamedIndividual ,
 ISO29110V2:SI.IWP.04.02.WP21 rdf:type owl:NamedIndividual ,
         ISO29110V2:InputWorkProduct ,
         ISO29110V2:WorkProduct ;
-    ISO29110V2:hasCurrentState ISO29110V2:WPS.23 ;
-    ISO29110V2:hasFinalState ISO29110V2:WPS.23 ;
+    ISO29110V2:hasCurrentState ISO29110V2:WPS.22 ;
+    ISO29110V2:hasFinalState ISO29110V2:WPS.22 ;
     ISO29110V2:isInputWorkProductOf ISO29110V2:SI.PT.04.02 ;
     ISO29110V2:representsWorkProduct ISO29110V2:WP.21 ;
     ISO29110V2:hasInputWorkProductName "Traceability record" .
@@ -7599,8 +7599,8 @@ ISO29110V2:SI.IWP.04.04.WP16 rdf:type owl:NamedIndividual ,
 ISO29110V2:SI.IWP.04.04.WP21 rdf:type owl:NamedIndividual ,
         ISO29110V2:InputWorkProduct ,
         ISO29110V2:WorkProduct ;
-    ISO29110V2:hasCurrentState ISO29110V2:WPS.23 ;
-    ISO29110V2:hasFinalState ISO29110V2:WPS.23 ;
+    ISO29110V2:hasCurrentState ISO29110V2:WPS.22 ;
+    ISO29110V2:hasFinalState ISO29110V2:WPS.22 ;
     ISO29110V2:hasProcessOutcome ISO29110V2:SI.PO.23 ;
     ISO29110V2:isInputWorkProductOf ISO29110V2:SI.PT.04.04 ;
     ISO29110V2:representsWorkProduct ISO29110V2:WP.21 ;
@@ -7647,8 +7647,8 @@ ISO29110V2:SI.IWP.04.05.WP21 rdf:type owl:NamedIndividual ,
 ISO29110V2:SI.IWP.04.06.WP15 rdf:type owl:NamedIndividual ,
         ISO29110V2:InputWorkProduct ,
         ISO29110V2:WorkProduct ;
-    ISO29110V2:hasCurrentState ISO29110V2:WPS.23 ;
-    ISO29110V2:hasFinalState ISO29110V2:WPS.23 ;
+    ISO29110V2:hasCurrentState ISO29110V2:WPS.22 ;
+    ISO29110V2:hasFinalState ISO29110V2:WPS.22 ;
     ISO29110V2:hasProcessOutcome ISO29110V2:SI.PO.26 ;
     ISO29110V2:isInputWorkProductOf ISO29110V2:SI.PT.04.06 ;
     ISO29110V2:representsWorkProduct ISO29110V2:WP.15 ;
@@ -7671,7 +7671,7 @@ ISO29110V2:SI.IWP.04.06.WP21 rdf:type owl:NamedIndividual ,
 ISO29110V2:SI.IWP.04.07.WP15 rdf:type owl:NamedIndividual ,
         ISO29110V2:InputWorkProduct ,
         ISO29110V2:WorkProduct ;
-    ISO29110V2:hasCurrentState ISO29110V2:WPS.23 ;
+    ISO29110V2:hasCurrentState ISO29110V2:WPS.22 ;
     ISO29110V2:hasFinalState ISO29110V2:WPS.03 ;
     ISO29110V2:hasProcessOutcome ISO29110V2:SI.PO.26 ,
         ISO29110V2:SI.PO.28 ;
@@ -7741,8 +7741,8 @@ ISO29110V2:SI.IWP.05.02.WP21 rdf:type owl:NamedIndividual ,
 ISO29110V2:SI.IWP.05.03.WP15 rdf:type owl:NamedIndividual ,
         ISO29110V2:InputWorkProduct ,
         ISO29110V2:WorkProduct ;
-    ISO29110V2:hasCurrentState ISO29110V2:WPS.23 ;
-    ISO29110V2:hasFinalState ISO29110V2:WPS.23 ;
+    ISO29110V2:hasCurrentState ISO29110V2:WPS.22 ;
+    ISO29110V2:hasFinalState ISO29110V2:WPS.22 ;
     ISO29110V2:hasProcessOutcome ISO29110V2:SI.PO.24 ,
         ISO29110V2:SI.PO.25 ;
     ISO29110V2:isInputWorkProductOf ISO29110V2:SI.PT.05.03 ;
@@ -7754,8 +7754,8 @@ ISO29110V2:SI.IWP.05.03.WP15 rdf:type owl:NamedIndividual ,
 ISO29110V2:SI.IWP.05.03.WP19 rdf:type owl:NamedIndividual ,
         ISO29110V2:InputWorkProduct ,
         ISO29110V2:WorkProduct ;
-    ISO29110V2:hasCurrentState ISO29110V2:WPS.23 ;
-    ISO29110V2:hasFinalState ISO29110V2:WPS.23 ;
+    ISO29110V2:hasCurrentState ISO29110V2:WPS.22 ;
+    ISO29110V2:hasFinalState ISO29110V2:WPS.22 ;
     ISO29110V2:hasProcessOutcome ISO29110V2:SI.PO.24 ,
         ISO29110V2:SI.PO.25 ;
     ISO29110V2:isInputWorkProductOf ISO29110V2:SI.PT.05.03 ;
@@ -7792,8 +7792,8 @@ ISO29110V2:SI.IWP.05.04.WP14 rdf:type owl:NamedIndividual ,
 ISO29110V2:SI.IWP.05.04.WP19 rdf:type owl:NamedIndividual ,
         ISO29110V2:InputWorkProduct ,
         ISO29110V2:WorkProduct ;
-    ISO29110V2:hasCurrentState ISO29110V2:WPS.23 ;
-    ISO29110V2:hasFinalState ISO29110V2:WPS.23 ;
+    ISO29110V2:hasCurrentState ISO29110V2:WPS.22 ;
+    ISO29110V2:hasFinalState ISO29110V2:WPS.22 ;
     ISO29110V2:hasProcessOutcome ISO29110V2:SI.PO.25 ;
     ISO29110V2:isInputWorkProductOf ISO29110V2:SI.PT.05.04 ;
     ISO29110V2:representsWorkProduct ISO29110V2:WP.19 ;
@@ -7804,7 +7804,7 @@ ISO29110V2:SI.IWP.05.04.WP19 rdf:type owl:NamedIndividual ,
 ISO29110V2:SI.IWP.05.05.WP14 rdf:type owl:NamedIndividual ,
         ISO29110V2:InputWorkProduct ,
         ISO29110V2:WorkProduct ;
-    ISO29110V2:hasCurrentState ISO29110V2:WPS.23 ;
+    ISO29110V2:hasCurrentState ISO29110V2:WPS.22 ;
     ISO29110V2:hasFinalState ISO29110V2:WPS.06 ;
     ISO29110V2:hasProcessOutcome ISO29110V2:SI.PO.27 ;
     ISO29110V2:isInputWorkProductOf ISO29110V2:SI.PT.05.05 ;
@@ -7816,8 +7816,8 @@ ISO29110V2:SI.IWP.05.05.WP14 rdf:type owl:NamedIndividual ,
 ISO29110V2:SI.IWP.05.05.WP19 rdf:type owl:NamedIndividual ,
         ISO29110V2:InputWorkProduct ,
         ISO29110V2:WorkProduct ;
-    ISO29110V2:hasCurrentState ISO29110V2:WPS.23 ;
-    ISO29110V2:hasFinalState ISO29110V2:WPS.23 ;
+    ISO29110V2:hasCurrentState ISO29110V2:WPS.22 ;
+    ISO29110V2:hasFinalState ISO29110V2:WPS.22 ;
     ISO29110V2:hasProcessOutcome ISO29110V2:SI.PO.27 ;
     ISO29110V2:isInputWorkProductOf ISO29110V2:SI.PT.05.05 ;
     ISO29110V2:representsWorkProduct ISO29110V2:WP.19 ;
@@ -7852,8 +7852,8 @@ ISO29110V2:SI.IWP.05.05.WP21 rdf:type owl:NamedIndividual ,
 ISO29110V2:SI.IWP.05.06.WP14 rdf:type owl:NamedIndividual ,
         ISO29110V2:InputWorkProduct ,
         ISO29110V2:WorkProduct ;
-    ISO29110V2:hasCurrentState ISO29110V2:WPS.23 ;
-    ISO29110V2:hasFinalState ISO29110V2:WPS.23 ;
+    ISO29110V2:hasCurrentState ISO29110V2:WPS.22 ;
+    ISO29110V2:hasFinalState ISO29110V2:WPS.22 ;
     ISO29110V2:hasProcessOutcome ISO29110V2:SI.PO.26 ;
     ISO29110V2:isInputWorkProductOf ISO29110V2:SI.PT.05.06 ;
     ISO29110V2:representsWorkProduct ISO29110V2:WP.14 ;
@@ -7876,8 +7876,8 @@ ISO29110V2:SI.IWP.05.06.WP21 rdf:type owl:NamedIndividual ,
 ISO29110V2:SI.IWP.05.07.WP14 rdf:type owl:NamedIndividual ,
         ISO29110V2:InputWorkProduct ,
         ISO29110V2:WorkProduct ;
-    ISO29110V2:hasCurrentState ISO29110V2:WPS.23 ;
-    ISO29110V2:hasFinalState ISO29110V2:WPS.23 ;
+    ISO29110V2:hasCurrentState ISO29110V2:WPS.22 ;
+    ISO29110V2:hasFinalState ISO29110V2:WPS.22 ;
     ISO29110V2:isInputWorkProductOf ISO29110V2:SI.PT.05.07 ;
     ISO29110V2:representsWorkProduct ISO29110V2:WP.14 ;
     ISO29110V2:hasInputWorkProductName "Software" .
@@ -7898,8 +7898,8 @@ ISO29110V2:SI.IWP.05.08.WP08 rdf:type owl:NamedIndividual ,
 ISO29110V2:SI.IWP.05.08.WP14 rdf:type owl:NamedIndividual ,
         ISO29110V2:InputWorkProduct ,
         ISO29110V2:WorkProduct ;
-    ISO29110V2:hasCurrentState ISO29110V2:WPS.23 ;
-    ISO29110V2:hasFinalState ISO29110V2:WPS.23 ;
+    ISO29110V2:hasCurrentState ISO29110V2:WPS.22 ;
+    ISO29110V2:hasFinalState ISO29110V2:WPS.22 ;
     ISO29110V2:isInputWorkProductOf ISO29110V2:SI.PT.05.08 ;
     ISO29110V2:representsWorkProduct ISO29110V2:WP.14 ;
     ISO29110V2:hasInputWorkProductName "Software" .
@@ -7909,8 +7909,8 @@ ISO29110V2:SI.IWP.05.08.WP14 rdf:type owl:NamedIndividual ,
 ISO29110V2:SI.IWP.05.09.WP14 rdf:type owl:NamedIndividual ,
         ISO29110V2:InputWorkProduct ,
         ISO29110V2:WorkProduct ;
-    ISO29110V2:hasCurrentState ISO29110V2:WPS.23 ;
-    ISO29110V2:hasFinalState ISO29110V2:WPS.23 ;
+    ISO29110V2:hasCurrentState ISO29110V2:WPS.22 ;
+    ISO29110V2:hasFinalState ISO29110V2:WPS.22 ;
     ISO29110V2:isInputWorkProductOf ISO29110V2:SI.PT.05.09 ;
     ISO29110V2:representsWorkProduct ISO29110V2:WP.14 ;
     ISO29110V2:hasInputWorkProductName "Software" .
@@ -7931,8 +7931,8 @@ ISO29110V2:SI.IWP.05.09.WP18 rdf:type owl:NamedIndividual ,
 ISO29110V2:SI.IWP.05.10.WP14 rdf:type owl:NamedIndividual ,
         ISO29110V2:InputWorkProduct ,
         ISO29110V2:WorkProduct ;
-    ISO29110V2:hasCurrentState ISO29110V2:WPS.23 ;
-    ISO29110V2:hasFinalState ISO29110V2:WPS.23 ;
+    ISO29110V2:hasCurrentState ISO29110V2:WPS.22 ;
+    ISO29110V2:hasFinalState ISO29110V2:WPS.22 ;
     ISO29110V2:isInputWorkProductOf ISO29110V2:SI.PT.05.10 ;
     ISO29110V2:representsWorkProduct ISO29110V2:WP.14 ;
     ISO29110V2:hasInputWorkProductName "Software" .
@@ -7953,7 +7953,7 @@ ISO29110V2:SI.IWP.05.10.WP18 rdf:type owl:NamedIndividual ,
 ISO29110V2:SI.IWP.05.11.WP08 rdf:type owl:NamedIndividual ,
         ISO29110V2:InputWorkProduct ,
         ISO29110V2:WorkProduct ;
-    ISO29110V2:hasCurrentState ISO29110V2:WPS.23 ;
+    ISO29110V2:hasCurrentState ISO29110V2:WPS.22 ;
     ISO29110V2:hasFinalState ISO29110V2:WPS.03 ;
     ISO29110V2:hasProcessOutcome ISO29110V2:SI.PO.28 ;
     ISO29110V2:isInputWorkProductOf ISO29110V2:SI.PT.05.11 ;
@@ -7965,7 +7965,7 @@ ISO29110V2:SI.IWP.05.11.WP08 rdf:type owl:NamedIndividual ,
 ISO29110V2:SI.IWP.05.11.WP14 rdf:type owl:NamedIndividual ,
         ISO29110V2:InputWorkProduct ,
         ISO29110V2:WorkProduct ;
-    ISO29110V2:hasCurrentState ISO29110V2:WPS.23 ;
+    ISO29110V2:hasCurrentState ISO29110V2:WPS.22 ;
     ISO29110V2:hasFinalState ISO29110V2:WPS.03 ;
     ISO29110V2:hasProcessOutcome ISO29110V2:SI.PO.28 ;
     ISO29110V2:isInputWorkProductOf ISO29110V2:SI.PT.05.11 ;
@@ -7977,7 +7977,7 @@ ISO29110V2:SI.IWP.05.11.WP14 rdf:type owl:NamedIndividual ,
 ISO29110V2:SI.IWP.05.11.WP18 rdf:type owl:NamedIndividual ,
         ISO29110V2:InputWorkProduct ,
         ISO29110V2:WorkProduct ;
-    ISO29110V2:hasCurrentState ISO29110V2:WPS.23 ;
+    ISO29110V2:hasCurrentState ISO29110V2:WPS.22 ;
     ISO29110V2:hasFinalState ISO29110V2:WPS.03 ;
     ISO29110V2:hasProcessOutcome ISO29110V2:SI.PO.28 ;
     ISO29110V2:isInputWorkProductOf ISO29110V2:SI.PT.05.11 ;
@@ -7989,7 +7989,7 @@ ISO29110V2:SI.IWP.05.11.WP18 rdf:type owl:NamedIndividual ,
 ISO29110V2:SI.IWP.05.11.WP19 rdf:type owl:NamedIndividual ,
         ISO29110V2:InputWorkProduct ,
         ISO29110V2:WorkProduct ;
-    ISO29110V2:hasCurrentState ISO29110V2:WPS.23 ;
+    ISO29110V2:hasCurrentState ISO29110V2:WPS.22 ;
     ISO29110V2:hasFinalState ISO29110V2:WPS.03 ;
     ISO29110V2:hasProcessOutcome ISO29110V2:SI.PO.28 ;
     ISO29110V2:isInputWorkProductOf ISO29110V2:SI.PT.05.11 ;
@@ -8072,7 +8072,7 @@ ISO29110V2:SI.IWP.06.03.WP17 rdf:type owl:NamedIndividual ,
 ISO29110V2:SI.IWP.06.04.WP06 rdf:type owl:NamedIndividual ,
         ISO29110V2:InputWorkProduct ,
         ISO29110V2:WorkProduct ;
-    ISO29110V2:hasCurrentState ISO29110V2:WPS.23 ;
+    ISO29110V2:hasCurrentState ISO29110V2:WPS.22 ;
     ISO29110V2:hasFinalState ISO29110V2:WPS.03 ;
     ISO29110V2:hasProcessOutcome ISO29110V2:SI.PO.28 ;
     ISO29110V2:isInputWorkProductOf ISO29110V2:SI.PT.06.04 ;
@@ -8249,7 +8249,7 @@ ISO29110V2:SI.OWP.02.04.WP13.2 rdf:type owl:NamedIndividual ,
         ISO29110V2:OutputWorkProduct ,
         ISO29110V2:WorkProduct ;
     ISO29110V2:hasCurrentState ISO29110V2:WPS.02 ;
-    ISO29110V2:hasFinalState ISO29110V2:WPS.22 ;
+    ISO29110V2:hasFinalState ISO29110V2:WPS.23 ;
     ISO29110V2:hasProcessOutcome ISO29110V2:SI.PO.17 ;
     ISO29110V2:isOutputWorkProductOf ISO29110V2:SI.BP.01 ,
         ISO29110V2:SI.BP.02 ,
@@ -8301,7 +8301,7 @@ ISO29110V2:SI.OWP.02.06.WP18 rdf:type owl:NamedIndividual ,
         ISO29110V2:OutputWorkProduct ,
         ISO29110V2:WorkProduct ;
     ISO29110V2:hasCurrentState ISO29110V2:WPS.12 ;
-    ISO29110V2:hasFinalState ISO29110V2:WPS.23 ;
+    ISO29110V2:hasFinalState ISO29110V2:WPS.22 ;
     ISO29110V2:isOutputWorkProductOf ISO29110V2:SI.PT.02.06 ;
     ISO29110V2:representsWorkProduct ISO29110V2:WP.18 ;
     ISO29110V2:hasOutputWorkProductName "*Software user documentation" .
@@ -8366,7 +8366,7 @@ ISO29110V2:SI.OWP.02.07.WP17.3 rdf:type owl:NamedIndividual ,
 ISO29110V2:SI.OWP.02.07.WP17.4 rdf:type owl:NamedIndividual ,
         ISO29110V2:OutputWorkProduct ,
         ISO29110V2:WorkProduct ;
-    ISO29110V2:hasCurrentState ISO29110V2:WPS.23 ;
+    ISO29110V2:hasCurrentState ISO29110V2:WPS.22 ;
     ISO29110V2:hasFinalState ISO29110V2:WPS.14 ;
     ISO29110V2:isOutputWorkProductOf ISO29110V2:SI.PT.02.07 ;
     ISO29110V2:representsWorkProduct ISO29110V2:WP.17 ;
@@ -8377,8 +8377,8 @@ ISO29110V2:SI.OWP.02.07.WP17.4 rdf:type owl:NamedIndividual ,
 ISO29110V2:SI.OWP.02.07.WP17.5 rdf:type owl:NamedIndividual ,
         ISO29110V2:OutputWorkProduct ,
         ISO29110V2:WorkProduct ;
-    ISO29110V2:hasCurrentState ISO29110V2:WPS.23 ;
-    ISO29110V2:hasFinalState ISO29110V2:WPS.23 ;
+    ISO29110V2:hasCurrentState ISO29110V2:WPS.22 ;
+    ISO29110V2:hasFinalState ISO29110V2:WPS.22 ;
     ISO29110V2:isOutputWorkProductOf ISO29110V2:SI.PT.02.07 ;
     ISO29110V2:representsWorkProduct ISO29110V2:WP.17 ;
     ISO29110V2:hasOutputWorkProductName "Software product (*Software user documentation)" .
@@ -8486,7 +8486,7 @@ ISO29110V2:SI.OWP.03.04.WP21 rdf:type owl:NamedIndividual ,
         ISO29110V2:OutputWorkProduct ,
         ISO29110V2:WorkProduct ;
     ISO29110V2:hasCurrentState ISO29110V2:WPS.21 ;
-    ISO29110V2:hasFinalState ISO29110V2:WPS.23 ;
+    ISO29110V2:hasFinalState ISO29110V2:WPS.22 ;
     ISO29110V2:isOutputWorkProductOf ISO29110V2:SI.PT.03.04 ;
     ISO29110V2:representsWorkProduct ISO29110V2:WP.21 ;
     ISO29110V2:hasOutputWorkProductName "Traceability record" .
@@ -8521,7 +8521,7 @@ ISO29110V2:SI.OWP.03.05.WP19 rdf:type owl:NamedIndividual ,
 ISO29110V2:SI.OWP.03.06.WP21 rdf:type owl:NamedIndividual ,
         ISO29110V2:OutputWorkProduct ,
         ISO29110V2:WorkProduct ;
-    ISO29110V2:hasCurrentState ISO29110V2:WPS.23 ;
+    ISO29110V2:hasCurrentState ISO29110V2:WPS.22 ;
     ISO29110V2:hasFinalState ISO29110V2:WPS.21 ;
     ISO29110V2:hasProcessOutcome ISO29110V2:SI.PO.25 ;
     ISO29110V2:isOutputWorkProductOf ISO29110V2:SI.BP.07 ,
@@ -8625,7 +8625,7 @@ ISO29110V2:SI.OWP.03.08.WP11.2 rdf:type owl:NamedIndividual ,
         ISO29110V2:OutputWorkProduct ,
         ISO29110V2:WorkProduct ;
     ISO29110V2:hasCurrentState ISO29110V2:WPS.02 ;
-    ISO29110V2:hasFinalState ISO29110V2:WPS.23 ;
+    ISO29110V2:hasFinalState ISO29110V2:WPS.22 ;
     ISO29110V2:hasProcessOutcome ISO29110V2:SI.PO.25 ;
     ISO29110V2:isOutputWorkProductOf ISO29110V2:SI.BP.07 ,
         ISO29110V2:SI.BP.08 ,
@@ -8708,7 +8708,7 @@ ISO29110V2:SI.OWP.04.05.WP15 rdf:type owl:NamedIndividual ,
         ISO29110V2:OutputWorkProduct ,
         ISO29110V2:WorkProduct ;
     ISO29110V2:hasCurrentState ISO29110V2:WPS.12 ;
-    ISO29110V2:hasFinalState ISO29110V2:WPS.23 ;
+    ISO29110V2:hasFinalState ISO29110V2:WPS.22 ;
     ISO29110V2:hasProcessOutcome ISO29110V2:SI.PO.23 ;
     ISO29110V2:isOutputWorkProductOf ISO29110V2:SI.BP.12 ,
         ISO29110V2:SI.BP.13 ,
@@ -8785,7 +8785,7 @@ ISO29110V2:SI.OWP.04.07.WP17.1 rdf:type owl:NamedIndividual ,
 ISO29110V2:SI.OWP.04.07.WP17.2 rdf:type owl:NamedIndividual ,
         ISO29110V2:OutputWorkProduct ,
         ISO29110V2:WorkProduct ;
-    ISO29110V2:hasCurrentState ISO29110V2:WPS.23 ;
+    ISO29110V2:hasCurrentState ISO29110V2:WPS.22 ;
     ISO29110V2:hasFinalState ISO29110V2:WPS.03 ;
     ISO29110V2:hasProcessOutcome ISO29110V2:SI.PO.26 ,
         ISO29110V2:SI.PO.28 ;
@@ -8820,7 +8820,7 @@ ISO29110V2:SI.OWP.05.02.WP19 rdf:type owl:NamedIndividual ,
         ISO29110V2:OutputWorkProduct ,
         ISO29110V2:WorkProduct ;
     ISO29110V2:hasCurrentState ISO29110V2:WPS.02 ;
-    ISO29110V2:hasFinalState ISO29110V2:WPS.23 ;
+    ISO29110V2:hasFinalState ISO29110V2:WPS.22 ;
     ISO29110V2:isOutputWorkProductOf ISO29110V2:SI.PT.05.02 ;
     ISO29110V2:representsWorkProduct ISO29110V2:WP.19 ;
     ISO29110V2:hasOutputWorkProductName "Test cases and test procedures (Integration tests)" .
@@ -8849,7 +8849,7 @@ ISO29110V2:SI.OWP.05.04.WP14 rdf:type owl:NamedIndividual ,
         ISO29110V2:OutputWorkProduct ,
         ISO29110V2:WorkProduct ;
     ISO29110V2:hasCurrentState ISO29110V2:WPS.11 ;
-    ISO29110V2:hasFinalState ISO29110V2:WPS.23 ;
+    ISO29110V2:hasFinalState ISO29110V2:WPS.22 ;
     ISO29110V2:hasProcessOutcome ISO29110V2:SI.PO.25 ;
     ISO29110V2:isOutputWorkProductOf ISO29110V2:SI.BP.07 ,
         ISO29110V2:SI.BP.08 ,
@@ -8882,8 +8882,8 @@ ISO29110V2:SI.OWP.05.04.WP20 rdf:type owl:NamedIndividual ,
 ISO29110V2:SI.OWP.05.05.WP14 rdf:type owl:NamedIndividual ,
         ISO29110V2:OutputWorkProduct ,
         ISO29110V2:WorkProduct ;
-    ISO29110V2:hasCurrentState ISO29110V2:WPS.23 ;
-    ISO29110V2:hasFinalState ISO29110V2:WPS.23 ;
+    ISO29110V2:hasCurrentState ISO29110V2:WPS.22 ;
+    ISO29110V2:hasFinalState ISO29110V2:WPS.22 ;
     ISO29110V2:hasProcessOutcome ISO29110V2:SI.PO.27 ;
     ISO29110V2:isOutputWorkProductOf ISO29110V2:SI.BP.18 ,
         ISO29110V2:SI.PT.05.05 ;
@@ -8938,7 +8938,7 @@ ISO29110V2:SI.OWP.05.08.WP08 rdf:type owl:NamedIndividual ,
         ISO29110V2:OutputWorkProduct ,
         ISO29110V2:WorkProduct ;
     ISO29110V2:hasCurrentState ISO29110V2:WPS.12 ;
-    ISO29110V2:hasFinalState ISO29110V2:WPS.23 ;
+    ISO29110V2:hasFinalState ISO29110V2:WPS.22 ;
     ISO29110V2:isOutputWorkProductOf ISO29110V2:SI.PT.05.08 ;
     ISO29110V2:representsWorkProduct ISO29110V2:WP.08 ;
     ISO29110V2:hasOutputWorkProductName "Product operation guide" .
@@ -8971,7 +8971,7 @@ ISO29110V2:SI.OWP.05.10.WP18 rdf:type owl:NamedIndividual ,
         ISO29110V2:OutputWorkProduct ,
         ISO29110V2:WorkProduct ;
     ISO29110V2:hasCurrentState ISO29110V2:WPS.12 ;
-    ISO29110V2:hasFinalState ISO29110V2:WPS.23 ;
+    ISO29110V2:hasFinalState ISO29110V2:WPS.22 ;
     ISO29110V2:isOutputWorkProductOf ISO29110V2:SI.PT.05.10 ;
     ISO29110V2:representsWorkProduct ISO29110V2:WP.18 ;
     ISO29110V2:hasOutputWorkProductName "Software user documentation" .
@@ -8992,8 +8992,8 @@ ISO29110V2:SI.OWP.05.10.WP23 rdf:type owl:NamedIndividual ,
 ISO29110V2:SI.OWP.05.11.WP08 rdf:type owl:NamedIndividual ,
         ISO29110V2:OutputWorkProduct ,
         ISO29110V2:WorkProduct ;
-    ISO29110V2:hasCurrentState ISO29110V2:WPS.23 ;
-    ISO29110V2:hasFinalState ISO29110V2:WPS.23 ;
+    ISO29110V2:hasCurrentState ISO29110V2:WPS.22 ;
+    ISO29110V2:hasFinalState ISO29110V2:WPS.22 ;
     ISO29110V2:hasProcessOutcome ISO29110V2:SI.PO.28 ;
     ISO29110V2:isOutputWorkProductOf ISO29110V2:SI.BP.10 ,
         ISO29110V2:SI.BP.15 ,
@@ -9028,8 +9028,8 @@ ISO29110V2:SI.OWP.05.11.WP11 rdf:type owl:NamedIndividual ,
 ISO29110V2:SI.OWP.05.11.WP14 rdf:type owl:NamedIndividual ,
         ISO29110V2:OutputWorkProduct ,
         ISO29110V2:WorkProduct ;
-    ISO29110V2:hasCurrentState ISO29110V2:WPS.23 ;
-    ISO29110V2:hasFinalState ISO29110V2:WPS.23 ;
+    ISO29110V2:hasCurrentState ISO29110V2:WPS.22 ;
+    ISO29110V2:hasFinalState ISO29110V2:WPS.22 ;
     ISO29110V2:hasProcessOutcome ISO29110V2:SI.PO.28 ;
     ISO29110V2:isOutputWorkProductOf ISO29110V2:SI.BP.10 ,
         ISO29110V2:SI.BP.15 ,
@@ -9046,8 +9046,8 @@ ISO29110V2:SI.OWP.05.11.WP14 rdf:type owl:NamedIndividual ,
 ISO29110V2:SI.OWP.05.11.WP18 rdf:type owl:NamedIndividual ,
         ISO29110V2:OutputWorkProduct ,
         ISO29110V2:WorkProduct ;
-    ISO29110V2:hasCurrentState ISO29110V2:WPS.23 ;
-    ISO29110V2:hasFinalState ISO29110V2:WPS.23 ;
+    ISO29110V2:hasCurrentState ISO29110V2:WPS.22 ;
+    ISO29110V2:hasFinalState ISO29110V2:WPS.22 ;
     ISO29110V2:hasProcessOutcome ISO29110V2:SI.PO.28 ;
     ISO29110V2:isOutputWorkProductOf ISO29110V2:SI.BP.10 ,
         ISO29110V2:SI.BP.15 ,
@@ -9064,8 +9064,8 @@ ISO29110V2:SI.OWP.05.11.WP18 rdf:type owl:NamedIndividual ,
 ISO29110V2:SI.OWP.05.11.WP19 rdf:type owl:NamedIndividual ,
         ISO29110V2:OutputWorkProduct ,
         ISO29110V2:WorkProduct ;
-    ISO29110V2:hasCurrentState ISO29110V2:WPS.23 ;
-    ISO29110V2:hasFinalState ISO29110V2:WPS.23 ;
+    ISO29110V2:hasCurrentState ISO29110V2:WPS.22 ;
+    ISO29110V2:hasFinalState ISO29110V2:WPS.22 ;
     ISO29110V2:hasProcessOutcome ISO29110V2:SI.PO.28 ;
     ISO29110V2:isOutputWorkProductOf ISO29110V2:SI.BP.10 ,
         ISO29110V2:SI.BP.15 ,
@@ -9148,7 +9148,7 @@ ISO29110V2:SI.OWP.06.03.WP06 rdf:type owl:NamedIndividual ,
         ISO29110V2:OutputWorkProduct ,
         ISO29110V2:WorkProduct ;
     ISO29110V2:hasCurrentState ISO29110V2:WPS.12 ;
-    ISO29110V2:hasFinalState ISO29110V2:WPS.23 ;
+    ISO29110V2:hasFinalState ISO29110V2:WPS.22 ;
     ISO29110V2:hasProcessOutcome ISO29110V2:SI.PO.28 ;
     ISO29110V2:isOutputWorkProductOf ISO29110V2:SI.BP.10 ,
         ISO29110V2:SI.BP.15 ,
@@ -9183,8 +9183,8 @@ ISO29110V2:SI.OWP.06.03.WP23 rdf:type owl:NamedIndividual ,
 ISO29110V2:SI.OWP.06.04.WP17 rdf:type owl:NamedIndividual ,
         ISO29110V2:OutputWorkProduct ,
         ISO29110V2:WorkProduct ;
-    ISO29110V2:hasCurrentState ISO29110V2:WPS.23 ;
-    ISO29110V2:hasFinalState ISO29110V2:WPS.23 ;
+    ISO29110V2:hasCurrentState ISO29110V2:WPS.22 ;
+    ISO29110V2:hasFinalState ISO29110V2:WPS.22 ;
     ISO29110V2:hasProcessOutcome ISO29110V2:SI.PO.28 ;
     ISO29110V2:isOutputWorkProductOf ISO29110V2:SI.BP.10 ,
         ISO29110V2:SI.BP.15 ,
@@ -9828,7 +9828,7 @@ ISO29110V2:SI.PT.04.07 rdf:type owl:NamedIndividual ,
     ISO29110V2:hasOutputWorkProduct ISO29110V2:SI.OWP.04.07.WP11 ,
         ISO29110V2:SI.OWP.04.07.WP17.1 ,
         ISO29110V2:SI.OWP.04.07.WP17.2 ;
-    ISO29110V2:hasRole ISO29110V2:SI.ROLE.08 ;
+    ISO29110V2:hasRole ISO29110V2:SI.ROLE.10 ;
     ISO29110V2:isTaskOf ISO29110V2:SI.ACT.04 ;
     ISO29110V2:hasTaskDescription "Add the software components and traceability record to the software product as part of the baseline." ;
     ISO29110V2:hasTaskID "SI.4.7" ;
@@ -10156,7 +10156,6 @@ ISO29110V2:SI.ROLE.08 rdf:type owl:NamedIndividual ,
         ISO29110V2:SI.PT.04.04 ,
         ISO29110V2:SI.PT.04.05 ,
         ISO29110V2:SI.PT.04.06 ,
-        ISO29110V2:SI.PT.04.07 ,
         ISO29110V2:SI.PT.05.01 ,
         ISO29110V2:SI.PT.05.02 ,
         ISO29110V2:SI.PT.05.03 ,
@@ -10186,7 +10185,8 @@ ISO29110V2:SI.ROLE.09 rdf:type owl:NamedIndividual ,
 ###  http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#SI.ROLE.10
 ISO29110V2:SI.ROLE.10 rdf:type owl:NamedIndividual ,
         ISO29110V2:Role ;
-    ISO29110V2:isRoleOf ISO29110V2:SI.PT.01.01 ,
+    ISO29110V2:isRoleOf ISO29110V2:SI.PT.04.07 ,
+        ISO29110V2:SI.PT.01.01 ,
         ISO29110V2:SI.PT.01.02 ,
         ISO29110V2:SI.PT.02.01 ,
         ISO29110V2:SI.PT.02.03 ,
@@ -12609,98 +12609,98 @@ ISO29110V2:WPS.21 rdf:type owl:NamedIndividual ,
 
 ###  http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#WPS.22
 ISO29110V2:WPS.22 rdf:type owl:NamedIndividual ,
-                           ISO29110V2:WorkProductState ;
-                  ISO29110V2:isApplicableStateOf ISO29110V2:WP.06 ,
-                                                 ISO29110V2:WP.08 ,
-                                                 ISO29110V2:WP.10 ,
-                                                 ISO29110V2:WP.13 ,
-                                                 ISO29110V2:WP.16 ,
-                                                 ISO29110V2:WP.18 ,
-                                                 ISO29110V2:WP.19 ,
-                                                 ISO29110V2:WP.21 ;
-                  ISO29110V2:isCurrentStateOf ISO29110V2:SI.IWP.03.07.WP13.2 ;
-                  ISO29110V2:isFinalStateOf ISO29110V2:SI.IWP.03.07.WP13.2 ,
-                                            ISO29110V2:SI.OWP.02.04.WP13.2 ;
-                  ISO29110V2:hasWorkProductStateDescription "A work product was evaluated (e.g., via test, review) to confirm, through the provision of objective evidence, that it fulfills its specified applicable requirements." ;
-                  ISO29110V2:hasWorkProductStateName "Verified" .
+        ISO29110V2:WorkProductState ;
+    ISO29110V2:isApplicableStateOf ISO29110V2:WP.06 ,
+        ISO29110V2:WP.08 ,
+        ISO29110V2:WP.10 ,
+        ISO29110V2:WP.13 ,
+        ISO29110V2:WP.16 ,
+        ISO29110V2:WP.18 ,
+        ISO29110V2:WP.19 ,
+        ISO29110V2:WP.21 ;
+    ISO29110V2:hasWorkProductStateDescription "A work product was evaluated (e.g., via test, review) to confirm, through the provision of objective evidence, that it fulfills its specified applicable requirements." ;
+    ISO29110V2:hasWorkProductStateName "Verified" ;
+    ISO29110V2:isCurrentStateOf ISO29110V2:PM.IWP.01.14.WP10 ,
+        ISO29110V2:PM.OWP.01.14.WP10 ,
+        ISO29110V2:SI.IWP.02.07.WP18 ,
+        ISO29110V2:SI.IWP.03.05.WP16 ,
+        ISO29110V2:SI.IWP.03.05.WP21 ,
+        ISO29110V2:SI.IWP.03.06.WP21 ,
+        ISO29110V2:SI.IWP.03.07.WP16.2 ,
+        ISO29110V2:SI.IWP.04.02.WP21 ,
+        ISO29110V2:SI.IWP.04.04.WP21 ,
+        ISO29110V2:SI.IWP.04.06.WP15 ,
+        ISO29110V2:SI.IWP.04.07.WP15 ,
+        ISO29110V2:SI.IWP.05.03.WP15 ,
+        ISO29110V2:SI.IWP.05.03.WP19 ,
+        ISO29110V2:SI.IWP.05.04.WP19 ,
+        ISO29110V2:SI.IWP.05.05.WP14 ,
+        ISO29110V2:SI.IWP.05.05.WP19 ,
+        ISO29110V2:SI.IWP.05.06.WP14 ,
+        ISO29110V2:SI.IWP.05.07.WP14 ,
+        ISO29110V2:SI.IWP.05.08.WP14 ,
+        ISO29110V2:SI.IWP.05.09.WP14 ,
+        ISO29110V2:SI.IWP.05.10.WP14 ,
+        ISO29110V2:SI.IWP.05.11.WP08 ,
+        ISO29110V2:SI.IWP.05.11.WP14 ,
+        ISO29110V2:SI.IWP.05.11.WP18 ,
+        ISO29110V2:SI.IWP.05.11.WP19 ,
+        ISO29110V2:SI.IWP.06.04.WP06 ,
+        ISO29110V2:SI.OWP.02.07.WP17.4 ,
+        ISO29110V2:SI.OWP.02.07.WP17.5 ,
+        ISO29110V2:SI.OWP.03.06.WP21 ,
+        ISO29110V2:SI.OWP.04.07.WP17.2 ,
+        ISO29110V2:SI.OWP.05.05.WP14 ,
+        ISO29110V2:SI.OWP.05.11.WP08 ,
+        ISO29110V2:SI.OWP.05.11.WP14 ,
+        ISO29110V2:SI.OWP.05.11.WP18 ,
+        ISO29110V2:SI.OWP.05.11.WP19 ,
+        ISO29110V2:SI.OWP.06.04.WP17 ;
+    ISO29110V2:isFinalStateOf ISO29110V2:PM.IWP.01.13.WP10.2 ,
+        ISO29110V2:PM.OWP.01.13.WP10 ,
+        ISO29110V2:SI.IWP.03.05.WP16 ,
+        ISO29110V2:SI.IWP.03.05.WP21 ,
+        ISO29110V2:SI.IWP.03.07.WP16.2 ,
+        ISO29110V2:SI.IWP.04.02.WP21 ,
+        ISO29110V2:SI.IWP.04.04.WP21 ,
+        ISO29110V2:SI.IWP.04.06.WP15 ,
+        ISO29110V2:SI.IWP.05.03.WP15 ,
+        ISO29110V2:SI.IWP.05.03.WP19 ,
+        ISO29110V2:SI.IWP.05.04.WP19 ,
+        ISO29110V2:SI.IWP.05.05.WP19 ,
+        ISO29110V2:SI.IWP.05.06.WP14 ,
+        ISO29110V2:SI.IWP.05.07.WP14 ,
+        ISO29110V2:SI.IWP.05.08.WP14 ,
+        ISO29110V2:SI.IWP.05.09.WP14 ,
+        ISO29110V2:SI.IWP.05.10.WP14 ,
+        ISO29110V2:SI.OWP.02.06.WP18 ,
+        ISO29110V2:SI.OWP.02.07.WP17.5 ,
+        ISO29110V2:SI.OWP.03.04.WP21 ,
+        ISO29110V2:SI.OWP.03.08.WP11.2 ,
+        ISO29110V2:SI.OWP.04.05.WP15 ,
+        ISO29110V2:SI.OWP.05.02.WP19 ,
+        ISO29110V2:SI.OWP.05.04.WP14 ,
+        ISO29110V2:SI.OWP.05.05.WP14 ,
+        ISO29110V2:SI.OWP.05.08.WP08 ,
+        ISO29110V2:SI.OWP.05.10.WP18 ,
+        ISO29110V2:SI.OWP.05.11.WP08 ,
+        ISO29110V2:SI.OWP.05.11.WP14 ,
+        ISO29110V2:SI.OWP.05.11.WP18 ,
+        ISO29110V2:SI.OWP.05.11.WP19 ,
+        ISO29110V2:SI.OWP.06.03.WP06 ,
+        ISO29110V2:SI.OWP.06.04.WP17 .
 
 
 ###  http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#WPS.23
 ISO29110V2:WPS.23 rdf:type owl:NamedIndividual ,
-                           ISO29110V2:WorkProductState ;
-                  ISO29110V2:isApplicableStateOf ISO29110V2:WP.13 ;
-                  ISO29110V2:isCurrentStateOf ISO29110V2:PM.IWP.01.14.WP10 ,
-                                              ISO29110V2:PM.OWP.01.14.WP10 ,
-                                              ISO29110V2:SI.IWP.02.07.WP18 ,
-                                              ISO29110V2:SI.IWP.03.05.WP16 ,
-                                              ISO29110V2:SI.IWP.03.05.WP21 ,
-                                              ISO29110V2:SI.IWP.03.06.WP21 ,
-                                              ISO29110V2:SI.IWP.03.07.WP16.2 ,
-                                              ISO29110V2:SI.IWP.04.02.WP21 ,
-                                              ISO29110V2:SI.IWP.04.04.WP21 ,
-                                              ISO29110V2:SI.IWP.04.06.WP15 ,
-                                              ISO29110V2:SI.IWP.04.07.WP15 ,
-                                              ISO29110V2:SI.IWP.05.03.WP15 ,
-                                              ISO29110V2:SI.IWP.05.03.WP19 ,
-                                              ISO29110V2:SI.IWP.05.04.WP19 ,
-                                              ISO29110V2:SI.IWP.05.05.WP14 ,
-                                              ISO29110V2:SI.IWP.05.05.WP19 ,
-                                              ISO29110V2:SI.IWP.05.06.WP14 ,
-                                              ISO29110V2:SI.IWP.05.07.WP14 ,
-                                              ISO29110V2:SI.IWP.05.08.WP14 ,
-                                              ISO29110V2:SI.IWP.05.09.WP14 ,
-                                              ISO29110V2:SI.IWP.05.10.WP14 ,
-                                              ISO29110V2:SI.IWP.05.11.WP08 ,
-                                              ISO29110V2:SI.IWP.05.11.WP14 ,
-                                              ISO29110V2:SI.IWP.05.11.WP18 ,
-                                              ISO29110V2:SI.IWP.05.11.WP19 ,
-                                              ISO29110V2:SI.IWP.06.04.WP06 ,
-                                              ISO29110V2:SI.OWP.02.07.WP17.4 ,
-                                              ISO29110V2:SI.OWP.02.07.WP17.5 ,
-                                              ISO29110V2:SI.OWP.03.06.WP21 ,
-                                              ISO29110V2:SI.OWP.04.07.WP17.2 ,
-                                              ISO29110V2:SI.OWP.05.05.WP14 ,
-                                              ISO29110V2:SI.OWP.05.11.WP08 ,
-                                              ISO29110V2:SI.OWP.05.11.WP14 ,
-                                              ISO29110V2:SI.OWP.05.11.WP18 ,
-                                              ISO29110V2:SI.OWP.05.11.WP19 ,
-                                              ISO29110V2:SI.OWP.06.04.WP17 ;
-                  ISO29110V2:isFinalStateOf ISO29110V2:PM.IWP.01.13.WP10.2 ,
-                                            ISO29110V2:PM.OWP.01.13.WP10 ,
-                                            ISO29110V2:SI.IWP.02.04.WP13 ,
-                                            ISO29110V2:SI.IWP.03.05.WP16 ,
-                                            ISO29110V2:SI.IWP.03.05.WP21 ,
-                                            ISO29110V2:SI.IWP.03.07.WP16.2 ,
-                                            ISO29110V2:SI.IWP.04.02.WP21 ,
-                                            ISO29110V2:SI.IWP.04.04.WP21 ,
-                                            ISO29110V2:SI.IWP.04.06.WP15 ,
-                                            ISO29110V2:SI.IWP.05.03.WP15 ,
-                                            ISO29110V2:SI.IWP.05.03.WP19 ,
-                                            ISO29110V2:SI.IWP.05.04.WP19 ,
-                                            ISO29110V2:SI.IWP.05.05.WP19 ,
-                                            ISO29110V2:SI.IWP.05.06.WP14 ,
-                                            ISO29110V2:SI.IWP.05.07.WP14 ,
-                                            ISO29110V2:SI.IWP.05.08.WP14 ,
-                                            ISO29110V2:SI.IWP.05.09.WP14 ,
-                                            ISO29110V2:SI.IWP.05.10.WP14 ,
-                                            ISO29110V2:SI.OWP.02.06.WP18 ,
-                                            ISO29110V2:SI.OWP.02.07.WP17.5 ,
-                                            ISO29110V2:SI.OWP.03.04.WP21 ,
-                                            ISO29110V2:SI.OWP.03.08.WP11.2 ,
-                                            ISO29110V2:SI.OWP.04.05.WP15 ,
-                                            ISO29110V2:SI.OWP.05.02.WP19 ,
-                                            ISO29110V2:SI.OWP.05.04.WP14 ,
-                                            ISO29110V2:SI.OWP.05.05.WP14 ,
-                                            ISO29110V2:SI.OWP.05.08.WP08 ,
-                                            ISO29110V2:SI.OWP.05.10.WP18 ,
-                                            ISO29110V2:SI.OWP.05.11.WP08 ,
-                                            ISO29110V2:SI.OWP.05.11.WP14 ,
-                                            ISO29110V2:SI.OWP.05.11.WP18 ,
-                                            ISO29110V2:SI.OWP.05.11.WP19 ,
-                                            ISO29110V2:SI.OWP.06.03.WP06 ,
-                                            ISO29110V2:SI.OWP.06.04.WP17 ;
-                  ISO29110V2:hasWorkProductStateDescription "A work product was evaluated to confirm, through the provision of objective evidence, that fulfils its requirements for its intended use and was approved by authorized stakeholder(s)." ;
-                  ISO29110V2:hasWorkProductStateName "Validated" .
+        ISO29110V2:WorkProductState ;
+    ISO29110V2:isCurrentStateOf ISO29110V2:SI.IWP.03.07.WP13.2 ;
+    ISO29110V2:isFinalStateOf ISO29110V2:SI.IWP.03.07.WP13.2 ,
+        ISO29110V2:SI.OWP.02.04.WP13.2 ,
+        ISO29110V2:SI.IWP.02.04.WP13 ;
+    ISO29110V2:isApplicableStateOf ISO29110V2:WP.13 ;
+    ISO29110V2:hasWorkProductStateDescription "A work product was evaluated to confirm, through the provision of objective evidence, that fulfils its requirements for its intended use and was approved by authorized stakeholder(s)." ;
+    ISO29110V2:hasWorkProductStateName "Validated" .
 
 
 ###  http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#WPS.24
@@ -12852,7 +12852,7 @@ ISO29110V2:recommendOutcome rdf:type owl:ObjectProperty ;
 
 ISO29110V2:recommendBasePractice rdf:type owl:ObjectProperty ;
     rdfs:domain ISO29110V2:AssessedEntity ; rdfs:range ISO29110V2:BasePractice ;
-    rdfs:comment "Inferred by RecommendBasePracticeRule: base practice whose output is the work product with a gap." .
+    rdfs:comment "Inferred by RecommendBasePracticeRule (rev09): base practice whose pre-assessment (advisor BP-WP table) uses the work product with a gap." .
 
 ISO29110V2:excludesWorkProduct rdf:type owl:ObjectProperty ;
     rdfs:domain ISO29110V2:Project ; rdfs:range ISO29110V2:WorkProduct ;
@@ -17015,6 +17015,36 @@ ISO29110V2:AR.PJ03.WP16.11 ISO29110V2:hasAssessedCharacteristic ISO29110V2:WPC.1
 ISO29110V2:AR.PJ03.WP16.12 ISO29110V2:hasAssessedCharacteristic ISO29110V2:WPC.15.02 .
 ISO29110V2:AR.PJ03.WP16.13 ISO29110V2:hasAssessedCharacteristic ISO29110V2:WPC.15.02 .
 
+#  rev09: WP.23 characteristics from the advisor checklist (not in PDTR 29110-5-1-2 Table 45; researcher approved 2026-11-09)
+
+###  http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#WPC.22.11
+ISO29110V2:WPC.22.11 rdf:type owl:NamedIndividual ,
+        ISO29110V2:WorkProductCharacteristic ;
+    ISO29110V2:isCharacteristicsOf ISO29110V2:WP.23 ;
+    ISO29110V2:hasWorkProductCharacteristicDetail "Documents the verification execution." ;
+    ISO29110V2:hasWorkProductCharacteristicID "WPC.22" ;
+    ISO29110V2:hasWorkProductCharacteristicList "Signature of project manager" ;
+    ISO29110V2:hasWorkProductCharacteristicName "Verification Record" ;
+    ISO29110V2:hasWorkProductCharacteristicNote "Source: advisor checklist (ISO29110_Instance_Extract_V2.0, Asssessed_Entitiy) - not listed in PDTR 29110-5-1-2:2020 Table 45" .
+ISO29110V2:WP.23 ISO29110V2:hasCharacteristics ISO29110V2:WPC.22.11 .
+ISO29110V2:AR.PJ01.WP23.10 ISO29110V2:hasAssessedCharacteristic ISO29110V2:WPC.22.11 .
+ISO29110V2:AR.PJ02.WP23.10 ISO29110V2:hasAssessedCharacteristic ISO29110V2:WPC.22.11 .
+ISO29110V2:AR.PJ03.WP23.10 ISO29110V2:hasAssessedCharacteristic ISO29110V2:WPC.22.11 .
+
+###  http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#WPC.22.12
+ISO29110V2:WPC.22.12 rdf:type owl:NamedIndividual ,
+        ISO29110V2:WorkProductCharacteristic ;
+    ISO29110V2:isCharacteristicsOf ISO29110V2:WP.23 ;
+    ISO29110V2:hasWorkProductCharacteristicDetail "Documents the verification execution." ;
+    ISO29110V2:hasWorkProductCharacteristicID "WPC.22" ;
+    ISO29110V2:hasWorkProductCharacteristicList "Signature of customer" ;
+    ISO29110V2:hasWorkProductCharacteristicName "Verification Record" ;
+    ISO29110V2:hasWorkProductCharacteristicNote "Source: advisor checklist (ISO29110_Instance_Extract_V2.0, Asssessed_Entitiy) - not listed in PDTR 29110-5-1-2:2020 Table 45" .
+ISO29110V2:WP.23 ISO29110V2:hasCharacteristics ISO29110V2:WPC.22.12 .
+ISO29110V2:AR.PJ01.WP23.11 ISO29110V2:hasAssessedCharacteristic ISO29110V2:WPC.22.12 .
+ISO29110V2:AR.PJ02.WP23.11 ISO29110V2:hasAssessedCharacteristic ISO29110V2:WPC.22.12 .
+ISO29110V2:AR.PJ03.WP23.11 ISO29110V2:hasAssessedCharacteristic ISO29110V2:WPC.22.12 .
+
 #################################################################
 #    Rules (rev06: rewritten; removed ImprovementRecommendationRule, ApprovedRequirementSpecRule, ApprovedTestCaseRule)
 #################################################################
@@ -17184,16 +17214,14 @@ ISO29110V2:AR.PJ03.WP16.13 ISO29110V2:hasAssessedCharacteristic ISO29110V2:WPC.1
  ] .
 
 [ ns2:isRuleEnabled "true"^^xsd:boolean ;
-   rdfs:comment "Gap on a work product -> recommend the base practices whose output is that work product" ;
+   rdfs:comment "Gap on a work product -> recommend the base practices whose pre-assessment uses that work product (advisor BP-WP table; rev09)" ;
    rdfs:label "RecommendBasePracticeRule" ;
    rdf:type ns1:Imp ;
    ns1:body [ rdf:type ns1:AtomList ; rdf:first [ rdf:type ns1:ClassAtom ; ns1:classPredicate ISO29110V2:GapResult ; ns1:argument1 :ar ] ;
       rdf:rest [ rdf:type ns1:AtomList ; rdf:first [ rdf:type ns1:IndividualPropertyAtom ; ns1:propertyPredicate ISO29110V2:isAssessmentResultOf ; ns1:argument1 :ar ; ns1:argument2 :ae ] ;
-      rdf:rest [ rdf:type ns1:AtomList ; rdf:first [ rdf:type ns1:IndividualPropertyAtom ; ns1:propertyPredicate ISO29110V2:hasEntity ; ns1:argument1 :ae ; ns1:argument2 :wp ] ;
-      rdf:rest [ rdf:type ns1:AtomList ; rdf:first [ rdf:type ns1:IndividualPropertyAtom ; ns1:propertyPredicate ISO29110V2:representsWorkProduct ; ns1:argument1 :owp ; ns1:argument2 :wp ] ;
-      rdf:rest [ rdf:type ns1:AtomList ; rdf:first [ rdf:type ns1:IndividualPropertyAtom ; ns1:propertyPredicate ISO29110V2:isOutputWorkProductOf ; ns1:argument1 :owp ; ns1:argument2 :bp ] ;
-      rdf:rest [ rdf:type ns1:AtomList ; rdf:first [ rdf:type ns1:ClassAtom ; ns1:classPredicate ISO29110V2:BasePractice ; ns1:argument1 :bp ] ;
-      rdf:rest rdf:nil ] ] ] ] ] ] ;
+      rdf:rest [ rdf:type ns1:AtomList ; rdf:first [ rdf:type ns1:IndividualPropertyAtom ; ns1:propertyPredicate ISO29110V2:isAssessedEntityOf ; ns1:argument1 :ae ; ns1:argument2 :pas ] ;
+      rdf:rest [ rdf:type ns1:AtomList ; rdf:first [ rdf:type ns1:IndividualPropertyAtom ; ns1:propertyPredicate ISO29110V2:hasBasePractice ; ns1:argument1 :pas ; ns1:argument2 :bp ] ;
+      rdf:rest rdf:nil ] ] ] ] ;
    ns1:head [ rdf:type ns1:AtomList ; rdf:first [ rdf:type ns1:IndividualPropertyAtom ; ns1:propertyPredicate ISO29110V2:recommendBasePractice ; ns1:argument1 :ae ; ns1:argument2 :bp ] ;
       rdf:rest rdf:nil ]
  ] .

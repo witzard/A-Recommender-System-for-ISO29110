@@ -2,9 +2,9 @@
 
   1. Reasoning   - R1-R11 counted with SPARQL on the Fuseki dataset (named graph of Pellet output).
   2. Scores      - process scores of PJ.01-PJ.03 from GET /api/projects/{id}/assessment.
-  3. Recommend.  - tasks, Base Practices and process outcomes (rev08) of every assessed entity with a gap.
+  3. Recommend.  - tasks, Base Practices and process outcomes (rev09: BPs from the advisor BP-WP table) of every assessed entity with a gap.
   4. CQs         - the 34 competency questions sent as parameters to POST /api/search (tests/cq_parameters.json);
-                   the task / BP IDs of the answering query must equal eval_templates.tsv of Round 6 (Q33: 135 pairs, rev08).
+                   the task / BP IDs of the answering query must equal eval_templates.tsv of Round 6 (Q33: 137 pairs, rev09).
 
 Needs Python 3.8+ only (standard library). Start Fuseki (data loaded) and the backend first:
   python tests/run_checks.py [--fuseki http://localhost:3030/ISO29110_RecommenderSystems/query] [--api http://localhost:8080/api]

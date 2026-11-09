@@ -1,5 +1,23 @@
 # Changelog
 
+## 2026-11-09 - ontology rev09 (advisor BP-WP table)
+
+### Ontology
+- `ontology/ISO29110V2_rev09.ttl` = `08_Revisions/2026-11-09_Round9_AdvisorTable/ISO29110V2_rev09.ttl`
+  (SHA-256 `149e49703391bc0d92c2f105d03d97c588b41ece222a48b291b2eb3f49536a92`): RecommendBasePracticeRule uses the
+  pre-assessment (advisor BP-WP table), SI.4.7 role TL, Verified/Validated state references corrected (72), WPC.22.11-12.
+  `kb/` regenerated with `scripts/reason.sh` (consistent; inferred facts differ from rev08 only in recommendBasePractice
+  110 -> 103). rev08 copy removed (still in `08_Revisions/2026-11-08_Round8_Outcome/`).
+
+### Knowledge search
+- G3 (`QueryTemplates.basePracticeOutcome`): the work-product filter and column use the work products of the Base
+  Practice's pre-assessment instead of the asserted BP hasOutputWorkProduct; column/title "work products (advisor table)".
+
+### Tests
+- `tests/expected.json`: recommended Base Practices of every assessed entity (independent Python computation = Pellet,
+  14/14), R6 PJ.02 BPs 36 -> 35, R8 PJ.03 BPs 15 -> 17, Q33 135 -> 137 WP-WPC pairs.
+- Not run yet: Maven build, Spring Boot, run_checks.py, npm test (Windows).
+
 ## 2026-11-08 - ontology rev08, outcomes, parameter search (not committed)
 
 ### Ontology

@@ -54,7 +54,7 @@ public class KnowledgeSearchService {
                     Set.of("workProduct", "state", "topic"), Set.of("workProduct")),
             new QueryDef("workProductCriteria", "G2", "Assessment criteria of the work product",
                     Set.of("workProduct"), Set.of("workProduct")),
-            new QueryDef("basePracticeOutcome", "G3", "Base Practices, process outcomes and output work products",
+            new QueryDef("basePracticeOutcome", "G3", "Base Practices, process outcomes and work products (advisor table)",
                     Set.of("process", "basePractice", "outcome", "workProduct", "topic"), Set.of()));
 
     private final FusekiService fuseki;

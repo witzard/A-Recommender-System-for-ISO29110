@@ -89,7 +89,9 @@ public final class QueryTemplates {
     }
 
     /**
-     * G3: Base Practices with their process outcomes and the work products they output (asserted hasOutputWorkProduct).
+     * G3: Base Practices with their process outcomes and the work products of the advisor's BP-WP table (rev09: the work
+     * products assessed in the pre-assessment of the Base Practice, the same set as RecommendBasePracticeRule uses; the
+     * asserted BP hasOutputWorkProduct links over-link and are no longer used here).
      * process / basePractice / outcome are local names already checked against the ontology values; keywords are
      * matched in the Base Practice or the outcome description.
      */
@@ -109,7 +111,7 @@ public final class QueryTemplates {
             w.add("FILTER(?po = <" + ISO + outcome + ">)");
         }
         if (present(workProduct)) {
-            w.add("?bp iso:hasOutputWorkProduct ?fo . ?fo iso:representsWorkProduct ?fw . ?fw iso:hasWorkProductName ?fwName . "
+            w.add("?fpas a iso:PreAssessment ; iso:hasBasePractice ?bp ; iso:hasAssessedEntity ?fae . ?fae iso:hasEntity ?fw . ?fw iso:hasWorkProductName ?fwName . "
                     + "FILTER(str(?fwName) = " + lit(workProduct) + ")");
         }
         String f = keywordFilters("?text", kwAll, kwAny);
@@ -126,7 +128,7 @@ public final class QueryTemplates {
                 + "  OPTIONAL { ?bp iso:hasBasePracticeID ?bpID . }\n"
                 + "  OPTIONAL { ?po iso:hasProcessOutcomeID ?poID . }\n"
                 + "  OPTIONAL { ?proc a iso:Process ; iso:hasBasePractice ?bp . BIND(STRAFTER(str(?proc), \"#\") AS ?process) }\n"
-                + "  OPTIONAL { ?bp iso:hasOutputWorkProduct ?o . ?o iso:representsWorkProduct ?ow . ?ow iso:hasWorkProductName ?outName . }\n"
+                + "  OPTIONAL { ?pas a iso:PreAssessment ; iso:hasBasePractice ?bp ; iso:hasAssessedEntity ?ae . ?ae iso:hasEntity ?ow . ?ow iso:hasWorkProductName ?outName . }\n"
                 + "}\n"
                 + "GROUP BY ?bp ?bpID ?bpDesc ?po ?process ?poID ?poDesc\n"
                 + "ORDER BY ?bp ?po\n";

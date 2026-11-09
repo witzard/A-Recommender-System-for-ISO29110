@@ -78,7 +78,7 @@ function ResultTable({ query, rows }) {
   if (query === 'basePracticeOutcome') {
     return (
       <table>
-        <thead><tr><th>BP ID</th><th>Base Practice</th><th>Process outcome</th><th>Outcome</th><th>Output work products</th></tr></thead>
+        <thead><tr><th>BP ID</th><th>Base Practice</th><th>Process outcome</th><th>Outcome</th><th>Work products (advisor table)</th></tr></thead>
         <tbody>{rows.map((r) => (
           <tr key={r.bp + r.po}><td className="id">{r.bpID}</td><td><span className="multiline">{r.bpDesc}</span></td>
             <td className="id">{r.process} {r.poID})</td><td>{r.poDesc}</td><td>{r.outputs}</td></tr>))}</tbody>

@@ -1,5 +1,5 @@
 {
- "_note": "API responses produced by running the backend services (AssessmentService, KnowledgeSearchService) and the SPARQL files on ontology/ISO29110V2_rev08.ttl + kb/inferred.nt (2026-11-04). 2026-11-08 (rev08): recommendations[].roles removed and recommendations[].outcomes added by computing them in Python from ontology/ISO29110V2_rev08.ttl + kb/inferred.nt (same fields as AssessmentService); reasoningReport = kb/reasoning-report.json of rev08. options and search (request role=Technical leader, workProduct=Project Plan, kwAll=[verify]) regenerated 2026-11-08 from the backend query code (compiled) run with rdflib on rev08 + kb/inferred.nt.",
+ "_note": "API responses produced by running the backend services (AssessmentService, KnowledgeSearchService) and the SPARQL files on ontology/ISO29110V2_rev08.ttl + kb/inferred.nt (2026-11-04). 2026-11-08 (rev08): recommendations[].roles removed and recommendations[].outcomes added by computing them in Python from ontology/ISO29110V2_rev08.ttl + kb/inferred.nt (same fields as AssessmentService); reasoningReport = kb/reasoning-report.json of rev08. options and search (request role=Technical leader, workProduct=Project Plan, kwAll=[verify]) regenerated 2026-11-08 from the backend query code (compiled) run with rdflib on rev08 + kb/inferred.nt. 2026-11-09 (rev09): only the G3 title changed; row values are still the rev08 output (mock data for the page tests).",
  "options": {
   "role": [
    {
@@ -5231,7 +5231,7 @@
    {
     "query": "basePracticeOutcome",
     "group": "G3",
-    "title": "Base Practices, process outcomes and output work products",
+    "title": "Base Practices, process outcomes and work products (advisor table)",
     "parameters": [
      "workProduct",
      "topic"
