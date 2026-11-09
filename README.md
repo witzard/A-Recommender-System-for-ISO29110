@@ -55,7 +55,7 @@ python tests\run_checks.py
 
 91 checks: R1-R11 (reasoning; R11 = no recommendRole), process scores of the three projects, tasks / process outcomes /
 Base Practices of the 14 assessed entities with recommendations, and the 34 competency questions sent as parameters
-(the query of the answering group must return the same task / Base Practice IDs as Round 6; Q33 = 135 pairs).
+(the query of the answering group must return the same task / Base Practice IDs as Round 6; Q33 = 137 pairs, rev09).
 
 Frontend: `cd frontend` then `npm test` (Vitest; the API is answered from `src/__tests__/fixtures.json`).
 
