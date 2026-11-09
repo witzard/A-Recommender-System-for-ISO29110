@@ -1,0 +1,11 @@
+# Process outcomes linked to the assessed entities of one project (?pPj) that have a gap: recommendOutcome is inferred by
+# Pellet (RecommendOutcomeRule, rev08). ?bps lists the Base Practices whose pre-assessment uses the work product and that
+# have the outcome (the same BP -> outcome -> work product view as the advisor's Pre-Assessment sheet; for display).
+PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>
+SELECT ?ae ?po ?poID ?description (GROUP_CONCAT(DISTINCT ?bpID; separator=", ") AS ?bps) WHERE {
+  ?ae iso:responsibleFor ?pPj .
+  GRAPH <urn:iso29110:graph:inferred> { ?ae iso:recommendOutcome ?po }
+  ?po iso:hasProcessOutcomeID ?poID ; iso:hasProcessOutcomeDescription ?description .
+  OPTIONAL { ?pas iso:hasAssessedEntity ?ae ; iso:hasBasePractice ?bp . ?bp iso:hasProcessOutcome ?po ; iso:hasBasePracticeID ?bpID . }
+}
+GROUP BY ?ae ?po ?poID ?description

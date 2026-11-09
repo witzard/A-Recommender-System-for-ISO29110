@@ -1,10 +1,15 @@
-# Values of the knowledge-search drop-downs, read from the ontology.
+# Values of the knowledge-search parameters, read from the ontology. ?value is what the page sends back; ?label is shown.
 PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>
-SELECT DISTINCT ?kind ?value ?sortKey WHERE {
-  { ?x iso:hasRoleName ?v . BIND("role" AS ?kind) BIND(STR(?v) AS ?sortKey) }
-  UNION { ?x iso:hasActivityName ?v ; iso:hasActivityID ?id . BIND("activity" AS ?kind) BIND(STR(?id) AS ?sortKey) }
-  UNION { ?x iso:hasWorkProductName ?v ; iso:hasWorkProductID ?id . BIND("workProduct" AS ?kind) BIND(STR(?id) AS ?sortKey) }
-  UNION { ?x iso:hasWorkProductStateName ?v . BIND("state" AS ?kind) BIND(STR(?v) AS ?sortKey) }
-  BIND(STR(?v) AS ?value)
+SELECT DISTINCT ?kind ?value ?label ?sortKey WHERE {
+  { ?x iso:hasRoleName ?v . BIND("role" AS ?kind) BIND(STR(?v) AS ?value) BIND(STR(?v) AS ?sortKey) }
+  UNION { ?x iso:hasActivityName ?v ; iso:hasActivityID ?id . BIND("activity" AS ?kind) BIND(STR(?v) AS ?value) BIND(STR(?id) AS ?sortKey) }
+  UNION { ?x iso:hasWorkProductName ?v ; iso:hasWorkProductID ?id . BIND("workProduct" AS ?kind) BIND(STR(?v) AS ?value) BIND(STR(?id) AS ?sortKey) }
+  UNION { ?x iso:hasWorkProductStateName ?v . BIND("state" AS ?kind) BIND(STR(?v) AS ?value) BIND(STR(?v) AS ?sortKey) }
+  UNION { ?x a iso:Process ; iso:hasProcessName ?n . BIND("process" AS ?kind) BIND(STRAFTER(STR(?x), "#") AS ?value)
+          BIND(CONCAT(?value, " ", STR(?n)) AS ?label) BIND(?value AS ?sortKey) }
+  UNION { ?x a iso:BasePractice ; iso:hasBasePracticeID ?id ; iso:hasBasePracticeDescription ?d . BIND("basePractice" AS ?kind)
+          BIND(STRAFTER(STR(?x), "#") AS ?value) BIND(CONCAT(STR(?id), " ", REPLACE(REPLACE(STR(?d), "\\s+", " "), "\\.( .*)?$", "")) AS ?label) BIND(?value AS ?sortKey) }
+  UNION { ?x a iso:ProcessOutcome ; iso:hasProcessOutcomeID ?id ; iso:hasProcessOutcomeDescription ?d . BIND("outcome" AS ?kind)
+          BIND(STRAFTER(STR(?x), "#") AS ?value) BIND(CONCAT(STRBEFORE(?value, "."), " ", STR(?id), ") ", STR(?d)) AS ?label) BIND(?value AS ?sortKey) }
 }
 ORDER BY ?kind ?sortKey

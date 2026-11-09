@@ -13,8 +13,9 @@ import java.util.TreeMap;
 /**
  * Assessment results and recommendations of one project.
  * Scores come from the SPARQL queries Q1-Q3 v3 (computed from the percentages), characteristics that are not
- * achieved from Q4 v3, and ratings and recommendations from the facts inferred by Pellet (SWRL rules in the
- * ontology). This class only groups and formats rows; it contains no recommendation logic.
+ * achieved from Q4 v3, and ratings, recommended tasks / Base Practices and linked process outcomes from the facts
+ * inferred by Pellet (SWRL rules in the ontology). Roles are not recommended (rev08): the roles of each recommended task
+ * are read from Task hasRole. This class only groups and formats rows; it contains no recommendation logic.
  */
 @Service
 public class AssessmentService {
@@ -147,37 +148,25 @@ public class AssessmentService {
             t.put("link", "true".equals(r.get("producesWP")) ? "produces" : "true".equals(r.get("usesWP")) ? "uses" : "");
             list(recFor(recs, r.get("ae"), wpOfAe, byWp, gaps), "tasks").add(t);
         }
-        // The PM and SI processes each define their own role individuals; roles with the same name are shown once.
-        for (Map<String, String> r : select("recommended-roles.rq", bind)) {
-            List<Map<String, String>> roles = list(recFor(recs, r.get("ae"), wpOfAe, byWp, gaps), "roles");
-            Map<String, String> same = null;
-            for (Map<String, String> x : roles) {
-                if (x.get("roleName").equals(r.get("roleName"))) {
-                    same = x;
-                }
-            }
-            String tasks = r.getOrDefault("tasks", "");
-            if (same == null) {
-                Map<String, String> role = new LinkedHashMap<>();
-                role.put("roleName", r.get("roleName"));
-                role.put("abbreviation", r.get("abbr"));
-                role.put("tasks", tasks);
-                roles.add(role);
-            } else if (!tasks.isEmpty()) {
-                java.util.TreeSet<String> all = new java.util.TreeSet<>(java.util.Arrays.asList(same.get("tasks").split(",\\s*")));
-                all.addAll(java.util.Arrays.asList(tasks.split(",\\s*")));
-                all.remove("");
-                same.put("tasks", String.join(", ", all));
-            }
-        }
         for (Map<String, String> r : select("recommended-base-practices.rq", bind)) {
             list(recFor(recs, r.get("ae"), wpOfAe, byWp, gaps), "basePractices")
                     .add(Map.of("bpID", r.get("bpID"), "description", r.get("description")));
         }
+        // (e) process outcomes linked to the work product with a gap (recommendOutcome, rev08)
+        for (Map<String, String> r : select("recommended-outcomes.rq", bind)) {
+            String po = local(r.get("po"));
+            Map<String, String> o = new LinkedHashMap<>();
+            o.put("outcome", po);
+            o.put("process", po.contains(".") ? po.substring(0, po.indexOf('.')) : "");
+            o.put("outcomeID", r.get("poID"));
+            o.put("description", r.get("description"));
+            o.put("basePractices", r.getOrDefault("bps", ""));
+            list(recFor(recs, r.get("ae"), wpOfAe, byWp, gaps), "outcomes").add(o);
+        }
         for (Map<String, Object> rec : recs.values()) {
             sortBy(list(rec, "tasks"), "taskID");
-            sortBy(list(rec, "roles"), "roleName");
             sortBy(list(rec, "basePractices"), "bpID");
+            sortBy(list(rec, "outcomes"), "outcome");
         }
 
         Map<String, Object> out = new LinkedHashMap<>();
@@ -219,8 +208,8 @@ public class AssessmentService {
             }
             m.put("gaps", own);
             m.put("tasks", new ArrayList<Map<String, String>>());
-            m.put("roles", new ArrayList<Map<String, String>>());
             m.put("basePractices", new ArrayList<Map<String, String>>());
+            m.put("outcomes", new ArrayList<Map<String, String>>());
             return m;
         });
     }

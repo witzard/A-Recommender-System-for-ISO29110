@@ -1,77 +1,595 @@
 {
- "_note": "API responses produced by running the backend services (AssessmentService, KnowledgeSearchService) and the SPARQL files on ontology/ISO29110V2_rev06b.ttl + kb/inferred.nt (2026-11-04).",
+ "_note": "API responses produced by running the backend services (AssessmentService, KnowledgeSearchService) and the SPARQL files on ontology/ISO29110V2_rev08.ttl + kb/inferred.nt (2026-11-04). 2026-11-08 (rev08): recommendations[].roles removed and recommendations[].outcomes added by computing them in Python from ontology/ISO29110V2_rev08.ttl + kb/inferred.nt (same fields as AssessmentService); reasoningReport = kb/reasoning-report.json of rev08. options and search (request role=Technical leader, workProduct=Project Plan, kwAll=[verify]) regenerated 2026-11-08 from the backend query code (compiled) run with rdflib on rev08 + kb/inferred.nt.",
  "options": {
   "role": [
-   "Analyst",
-   "Customer",
-   "Designer",
-   "Programmer",
-   "Project manager",
-   "Technical leader",
-   "Work team"
+   {
+    "value": "Analyst",
+    "label": "Analyst"
+   },
+   {
+    "value": "Customer",
+    "label": "Customer"
+   },
+   {
+    "value": "Designer",
+    "label": "Designer"
+   },
+   {
+    "value": "Programmer",
+    "label": "Programmer"
+   },
+   {
+    "value": "Project manager",
+    "label": "Project manager"
+   },
+   {
+    "value": "Technical leader",
+    "label": "Technical leader"
+   },
+   {
+    "value": "Work team",
+    "label": "Work team"
+   }
   ],
   "activity": [
-   "Project planning",
-   "Project plan execution",
-   "Project assessment and control",
-   "Project closure",
-   "Software implementation initiation",
-   "Software requirements analysis",
-   "Software architectural and detailed design",
-   "Software construction",
-   "Software integration and tests",
-   "Software product assembly"
+   {
+    "value": "Project planning",
+    "label": "Project planning"
+   },
+   {
+    "value": "Project plan execution",
+    "label": "Project plan execution"
+   },
+   {
+    "value": "Project assessment and control",
+    "label": "Project assessment and control"
+   },
+   {
+    "value": "Project closure",
+    "label": "Project closure"
+   },
+   {
+    "value": "Software implementation initiation",
+    "label": "Software implementation initiation"
+   },
+   {
+    "value": "Software requirements analysis",
+    "label": "Software requirements analysis"
+   },
+   {
+    "value": "Software architectural and detailed design",
+    "label": "Software architectural and detailed design"
+   },
+   {
+    "value": "Software construction",
+    "label": "Software construction"
+   },
+   {
+    "value": "Software integration and tests",
+    "label": "Software integration and tests"
+   },
+   {
+    "value": "Software product assembly",
+    "label": "Software product assembly"
+   }
+  ],
+  "process": [
+   {
+    "value": "PM",
+    "label": "PM Project Management"
+   },
+   {
+    "value": "SI",
+    "label": "SI Software Implementation"
+   }
+  ],
+  "basePractice": [
+   {
+    "value": "PM.BP.01",
+    "label": "PM.BP1 Review the agreement"
+   },
+   {
+    "value": "PM.BP.02",
+    "label": "PM.BP2 Define with the Customer the Delivery Instructions of each one of the Deliverables specified in the agreement"
+   },
+   {
+    "value": "PM.BP.03",
+    "label": "PM.BP3 Identify the specific Tasks to be performed in order to produce the Deliverables and their Software Components identified in the Statement of Work"
+   },
+   {
+    "value": "PM.BP.04",
+    "label": "PM.BP4 Establish the Estimated Duration to perform each task"
+   },
+   {
+    "value": "PM.BP.05",
+    "label": "PM.BP5 Identify and document the Resources: human, material, equipment, and tools, standards, including the required training of the Work Team to perform the project"
+   },
+   {
+    "value": "PM.BP.06",
+    "label": "PM.BP6 Establish the Composition of Work Team assigning roles and responsibilities according to the Resources"
+   },
+   {
+    "value": "PM.BP.07",
+    "label": "PM.BP7 Assign estimated start and completion dates to each one of the Tasks in order to create the Schedule of the Project Tasks taking into account the assigned Resources, sequence and dependency of the Tasks"
+   },
+   {
+    "value": "PM.BP.08",
+    "label": "PM.BP8 Calculate and document the project Estimated Effort and Cost"
+   },
+   {
+    "value": "PM.BP.09",
+    "label": "PM.BP9 Identify and document the risks which may affect the project"
+   },
+   {
+    "value": "PM.BP.10",
+    "label": "PM.BP10 Document the Version Control Strategy in the Project Plan"
+   },
+   {
+    "value": "PM.BP.11",
+    "label": "PM.BP11 Generate the Project Plan integrating the elements previously identified and documented"
+   },
+   {
+    "value": "PM.BP.12",
+    "label": "PM.BP12 Include Product Description, Scope, Objectives, and Deliverables in the Project Plan"
+   },
+   {
+    "value": "PM.BP.13",
+    "label": "PM.BP13 Verify and obtain approval of the Project Plan"
+   },
+   {
+    "value": "PM.BP.14",
+    "label": "PM.BP14 Review and accept the Project Plan"
+   },
+   {
+    "value": "PM.BP.15",
+    "label": "PM.BP15 Establish the Project Repository using the Version Control Strategy"
+   },
+   {
+    "value": "PM.BP.16",
+    "label": "PM.BP16 Monitor the Project Plan execution and record actual data in Progress Status Record"
+   },
+   {
+    "value": "PM.BP.17",
+    "label": "PM.BP17 Analyse and evaluate the Change Request for cost, schedule and technical impact"
+   },
+   {
+    "value": "PM.BP.18",
+    "label": "PM.BP18 Conduct revision meetings with the Work Team, identify problems, review risk status, record agreements, and track them to closure"
+   },
+   {
+    "value": "PM.BP.19",
+    "label": "PM.BP19 Conduct revision meetings with the Customer, record agreements and track them to closure"
+   },
+   {
+    "value": "PM.BP.20",
+    "label": "PM.BP20 Perform backup according to the Version Control Strategy"
+   },
+   {
+    "value": "PM.BP.21",
+    "label": "PM.BP21 Perform Project Repository recovery using the Project Repository Backup, if necessary"
+   },
+   {
+    "value": "PM.BP.22",
+    "label": "PM.BP22 Evaluate project progress with respect to the Project Plan, comparing: — actual Tasks against planned Tasks; — actual results against established project Objectives; — actual resource allocation against planned Resources; — actual cost against budget estimates; — actual time against planned schedule; — actual risk against previously identified"
+   },
+   {
+    "value": "PM.BP.23",
+    "label": "PM.BP23 Establish actions to correct deviations or problems and identified risks concerning the accomplishment of the plan, as needed, document them in Correction Register and track them to closure"
+   },
+   {
+    "value": "PM.BP.24",
+    "label": "PM.BP24 Identify changes to requirements and/or Project Plan to address major deviations, potential risks or problems concerning the accomplishment of the plan, document them in Change Request and track them to closure"
+   },
+   {
+    "value": "PM.BP.25",
+    "label": "PM.BP25 Formalize the completion of the project according to the Delivery Instructions established in the Project Plan, providing acceptance support and getting the Acceptance Record signed"
+   },
+   {
+    "value": "PM.BP.26",
+    "label": "PM.BP26 Update Project Repository"
+   },
+   {
+    "value": "PM.BP.27",
+    "label": "PM.BP27 Perform delivery according to Delivery Instructions"
+   },
+   {
+    "value": "SI.BP.01",
+    "label": "SI.BP1 Document or update the Requirements Specification"
+   },
+   {
+    "value": "SI.BP.02",
+    "label": "SI.BP2 Verify and obtain approval of the Requirements Specification.Verify the correctness and testability of the Requirements Specification and its consistency with the Product Description"
+   },
+   {
+    "value": "SI.BP.03",
+    "label": "SI.BP3 Validate and obtain approval of the Requirements Specification "
+   },
+   {
+    "value": "SI.BP.04",
+    "label": "SI.BP4 Incorporate the requirements specification to the software configuration in the baseline"
+   },
+   {
+    "value": "SI.BP.05",
+    "label": "SI.BP5 Document or update the Software Design"
+   },
+   {
+    "value": "SI.BP.06",
+    "label": "SI.BP6 Verify and obtain approval of the Software Design"
+   },
+   {
+    "value": "SI.BP.07",
+    "label": "SI.BP7 Establish or update Test Cases and Test Procedures for integration testing based on Requirements Specification and Software Design"
+   },
+   {
+    "value": "SI.BP.08",
+    "label": "SI.BP8 Verify and obtain approval of the Test Cases and Test Procedures"
+   },
+   {
+    "value": "SI.BP.09",
+    "label": "SI.BP9 Update the Traceability Record incorporating the Test Cases and Test Procedures"
+   },
+   {
+    "value": "SI.BP.10",
+    "label": "SI.BP10 Incorporate the Software Design, and Traceability Record to the Software Configuration as part of the baseline"
+   },
+   {
+    "value": "SI.BP.11",
+    "label": "SI.BP11 Construct or update Software Components based on the detailed part of the Software Design"
+   },
+   {
+    "value": "SI.BP.12",
+    "label": "SI.BP12 Design or update unit test cases and apply them to verify that the Software Components implements the detailed part of the Software Design"
+   },
+   {
+    "value": "SI.BP.13",
+    "label": "SI.BP13 Correct the defects found until successful unit test (reaching exit criteria) is achieved"
+   },
+   {
+    "value": "SI.BP.14",
+    "label": "SI.BP14 Update the Traceability Record incorporating Software Components constructed or modified"
+   },
+   {
+    "value": "SI.BP.15",
+    "label": "SI.BP15 Incorporate Software Components and Traceability Record to the Software Configuration as part of the baseline"
+   },
+   {
+    "value": "SI.BP.16",
+    "label": "SI.BP16 Integrates the Software using Software Components and updates Test Cases and Test Procedures for integration testing, as needed"
+   },
+   {
+    "value": "SI.BP.17",
+    "label": "SI.BP17 Perform Software tests using Test Cases and Test Procedures for integration and document results in Test Report"
+   },
+   {
+    "value": "SI.BP.18",
+    "label": "SI.BP18 Correct the defects found and perform regression test until exit criteria is achieved"
+   },
+   {
+    "value": "SI.BP.19",
+    "label": "SI.BP19 Updates the Traceability Record, if appropriate"
+   },
+   {
+    "value": "SI.BP.20",
+    "label": "SI.BP20 Incorporate the Test Cases and Test Procedures, Software, Traceability Record, Test Report to the Software Configuration as part of the baseline"
+   },
+   {
+    "value": "SI.BP.21",
+    "label": "SI.BP21 Document the Maintenance Documentation or update the current one"
+   },
+   {
+    "value": "SI.BP.22",
+    "label": "SI.BP22 Verify and obtain approval of the Maintenance Documentation"
+   },
+   {
+    "value": "SI.BP.23",
+    "label": "SI.BP23 Incorporate the Maintenance Documentation as baseline for the Software Configuration"
+   }
+  ],
+  "outcome": [
+   {
+    "value": "PM.PO.01",
+    "label": "PM a) the scope of the work for the project shall be defined;"
+   },
+   {
+    "value": "PM.PO.02",
+    "label": "PM b) the tasks and resources necessary to complete the work shall be estimated (schedule, effort, cost, duration);"
+   },
+   {
+    "value": "PM.PO.03",
+    "label": "PM c) planning for the execution of the project shall be developed according to the scope and the tasks defined;"
+   },
+   {
+    "value": "PM.PO.04",
+    "label": "PM d) a software version control strategy shall be developed;"
+   },
+   {
+    "value": "PM.PO.05",
+    "label": "PM e) planning shall be reviewed and agreed by the customer;"
+   },
+   {
+    "value": "PM.PO.06",
+    "label": "PM f) progress of the project against the planning shall be monitored and reported;"
+   },
+   {
+    "value": "PM.PO.07",
+    "label": "PM g) risks shall be identified and monitored during the conduct of the project;"
+   },
+   {
+    "value": "PM.PO.08",
+    "label": "PM h) changes shall be addressed, analysed and evaluated for cost, schedule and technical impact;"
+   },
+   {
+    "value": "PM.PO.09",
+    "label": "PM i) relevant items of software configuration shall be identified and controlled including their storage, baseline, handling, and modifications;"
+   },
+   {
+    "value": "PM.PO.10",
+    "label": "PM j) releases of items shall be controlled and made available to relevant stakeholders;"
+   },
+   {
+    "value": "PM.PO.11",
+    "label": "PM k) product shall be completed and delivered to the customer as planning;"
+   },
+   {
+    "value": "PM.PO.12",
+    "label": "PM l) meetings with the work team and the customer shall be held to guarantee that work done complies with the project requirements and planning ;"
+   },
+   {
+    "value": "PM.PO.13",
+    "label": "PM m) agreements resulting from meetings shall be registered and tracked;"
+   },
+   {
+    "value": "PM.PO.14",
+    "label": "PM n) actions to correct planning problems and unachieved targets (schedule, effort, cost, duration) shall be taken;"
+   },
+   {
+    "value": "PM.PO.15",
+    "label": "PM o) project closure shall be performed to get the customer acceptance;"
+   },
+   {
+    "value": "SI.PO.16",
+    "label": "SI a) software requirements shall be defined;"
+   },
+   {
+    "value": "SI.PO.17",
+    "label": "SI b) software requirements shall be analysed for correctness and testability;"
+   },
+   {
+    "value": "SI.PO.18",
+    "label": "SI c) software requirements shall be agreed by the customer;"
+   },
+   {
+    "value": "SI.PO.19",
+    "label": "SI d) software requirements shall be baselined and communicated to work team and customer;"
+   },
+   {
+    "value": "SI.PO.20",
+    "label": "SI e) software architectural and detailed design shall be developed and baselined;"
+   },
+   {
+    "value": "SI.PO.21",
+    "label": "SI f) software architectural and detailed design shall describe the software components and their internal and external interfaces;"
+   },
+   {
+    "value": "SI.PO.22",
+    "label": "SI g) software components defined by the detailed design shall be produced;"
+   },
+   {
+    "value": "SI.PO.23",
+    "label": "SI h) unit test shall be performed to verify the consistency with requirements and the detailed design;"
+   },
+   {
+    "value": "SI.PO.24",
+    "label": "SI i) software shall be produced by integrating software components;"
+   },
+   {
+    "value": "SI.PO.25",
+    "label": "SI j) software shall be tested and verified, the results shall be recorded;"
+   },
+   {
+    "value": "SI.PO.26",
+    "label": "SI k) consistency and traceability between software requirements, software architectural, software detailed design and software components shall be established;"
+   },
+   {
+    "value": "SI.PO.27",
+    "label": "SI l) defects identified in reviews, traceability analysis, tests and verifications shall be corrected;"
+   },
+   {
+    "value": "SI.PO.28",
+    "label": "SI m) software configuration shall be integrated, baselined and stored in the project repository;"
+   }
   ],
   "workProduct": [
-   "Acceptance Record",
-   "Agreement",
-   "Change Request",
-   "Correction Register",
-   "Implementation Environment",
-   "Maintenance Documentation",
-   "Meeting Record",
-   "Product Operation Guide",
-   "Progress Status Record",
-   "Project Plan",
-   "Project Repository",
-   "Project Repository Backup",
-   "Requirement Specification",
-   "Software",
-   "Software Components",
-   "Software Design",
-   "Software Product",
-   "Software User Documentation",
-   "Test Cases and Test Procedures",
-   "Test Report",
-   "Traceability Record",
-   "Validation Record",
-   "Verification Record"
+   {
+    "value": "Acceptance Record",
+    "label": "Acceptance Record"
+   },
+   {
+    "value": "Agreement",
+    "label": "Agreement"
+   },
+   {
+    "value": "Change Request",
+    "label": "Change Request"
+   },
+   {
+    "value": "Correction Register",
+    "label": "Correction Register"
+   },
+   {
+    "value": "Implementation Environment",
+    "label": "Implementation Environment"
+   },
+   {
+    "value": "Maintenance Documentation",
+    "label": "Maintenance Documentation"
+   },
+   {
+    "value": "Meeting Record",
+    "label": "Meeting Record"
+   },
+   {
+    "value": "Product Operation Guide",
+    "label": "Product Operation Guide"
+   },
+   {
+    "value": "Progress Status Record",
+    "label": "Progress Status Record"
+   },
+   {
+    "value": "Project Plan",
+    "label": "Project Plan"
+   },
+   {
+    "value": "Project Repository",
+    "label": "Project Repository"
+   },
+   {
+    "value": "Project Repository Backup",
+    "label": "Project Repository Backup"
+   },
+   {
+    "value": "Requirement Specification",
+    "label": "Requirement Specification"
+   },
+   {
+    "value": "Software",
+    "label": "Software"
+   },
+   {
+    "value": "Software Components",
+    "label": "Software Components"
+   },
+   {
+    "value": "Software Design",
+    "label": "Software Design"
+   },
+   {
+    "value": "Software Product",
+    "label": "Software Product"
+   },
+   {
+    "value": "Software User Documentation",
+    "label": "Software User Documentation"
+   },
+   {
+    "value": "Test Cases and Test Procedures",
+    "label": "Test Cases and Test Procedures"
+   },
+   {
+    "value": "Test Report",
+    "label": "Test Report"
+   },
+   {
+    "value": "Traceability Record",
+    "label": "Traceability Record"
+   },
+   {
+    "value": "Validation Record",
+    "label": "Validation Record"
+   },
+   {
+    "value": "Verification Record",
+    "label": "Verification Record"
+   }
   ],
   "state": [
-   "Accepted",
-   "Approved",
-   "Baselined",
-   "Cancelled",
-   "Completed",
-   "Corrected",
-   "Deleted",
-   "Delivered",
-   "Established",
-   "Evaluated",
-   "Implemented",
-   "Initiated",
-   "Postponed/Deferred",
-   "Preliminary",
-   "Published",
-   "Recovered",
-   "Rejected",
-   "Reviewed",
-   "Signed",
-   "Tested",
-   "Unit Tested",
-   "Updated",
-   "Validated",
-   "Verified"
+   {
+    "value": "Accepted",
+    "label": "Accepted"
+   },
+   {
+    "value": "Approved",
+    "label": "Approved"
+   },
+   {
+    "value": "Baselined",
+    "label": "Baselined"
+   },
+   {
+    "value": "Cancelled",
+    "label": "Cancelled"
+   },
+   {
+    "value": "Completed",
+    "label": "Completed"
+   },
+   {
+    "value": "Corrected",
+    "label": "Corrected"
+   },
+   {
+    "value": "Deleted",
+    "label": "Deleted"
+   },
+   {
+    "value": "Delivered",
+    "label": "Delivered"
+   },
+   {
+    "value": "Established",
+    "label": "Established"
+   },
+   {
+    "value": "Evaluated",
+    "label": "Evaluated"
+   },
+   {
+    "value": "Implemented",
+    "label": "Implemented"
+   },
+   {
+    "value": "Initiated",
+    "label": "Initiated"
+   },
+   {
+    "value": "Postponed/Deferred",
+    "label": "Postponed/Deferred"
+   },
+   {
+    "value": "Preliminary",
+    "label": "Preliminary"
+   },
+   {
+    "value": "Published",
+    "label": "Published"
+   },
+   {
+    "value": "Recovered",
+    "label": "Recovered"
+   },
+   {
+    "value": "Rejected",
+    "label": "Rejected"
+   },
+   {
+    "value": "Reviewed",
+    "label": "Reviewed"
+   },
+   {
+    "value": "Signed",
+    "label": "Signed"
+   },
+   {
+    "value": "Tested",
+    "label": "Tested"
+   },
+   {
+    "value": "Unit Tested",
+    "label": "Unit Tested"
+   },
+   {
+    "value": "Updated",
+    "label": "Updated"
+   },
+   {
+    "value": "Validated",
+    "label": "Validated"
+   },
+   {
+    "value": "Verified",
+    "label": "Verified"
+   }
   ]
  },
  "projects": [
@@ -707,29 +1225,23 @@
        "link": "uses"
       }
      ],
-     "roles": [
+     "basePractices": [],
+     "outcomes": [
       {
-       "roleName": "Analyst",
-       "abbreviation": "AN",
-       "tasks": "SI.2.2"
+       "outcome": "PM.PO.01",
+       "process": "PM",
+       "outcomeID": "a",
+       "description": "the scope of the work for the project shall be defined;",
+       "basePractices": "PM.BP1"
       },
       {
-       "roleName": "Customer",
-       "abbreviation": "CUS",
-       "tasks": "PM.1.2, SI.2.2"
-      },
-      {
-       "roleName": "Project manager",
-       "abbreviation": "PJM",
-       "tasks": "PM.1.1, PM.1.2, PM.1.3, PM.1.5, PM.1.12, PM.1.16"
-      },
-      {
-       "roleName": "Technical leader",
-       "abbreviation": "TL",
-       "tasks": "PM.1.1, PM.1.3, PM.1.5, PM.1.12"
+       "outcome": "PM.PO.02",
+       "process": "PM",
+       "outcomeID": "b",
+       "description": "the tasks and resources necessary to complete the work shall be estimated (schedule, effort, cost, duration);",
+       "basePractices": "PM.BP3, PM.BP4, PM.BP5, PM.BP6, PM.BP7, PM.BP8"
       }
-     ],
-     "basePractices": []
+     ]
     }
    ]
   },
@@ -1997,22 +2509,19 @@
        "link": "produces"
       }
      ],
-     "roles": [
-      {
-       "roleName": "Customer",
-       "abbreviation": "CUS",
-       "tasks": "PM.4.1"
-      },
-      {
-       "roleName": "Project manager",
-       "abbreviation": "PJM",
-       "tasks": "PM.4.1"
-      }
-     ],
      "basePractices": [
       {
        "bpID": "PM.BP25",
        "description": "Formalize the completion of the project according to the Delivery\nInstructions established in the Project Plan, providing acceptance support and\ngetting the Acceptance Record signed."
+      }
+     ],
+     "outcomes": [
+      {
+       "outcome": "PM.PO.15",
+       "process": "PM",
+       "outcomeID": "o",
+       "description": "project closure shall be performed to get the customer acceptance;",
+       "basePractices": "PM.BP25"
       }
      ]
     },
@@ -2136,38 +2645,6 @@
        "link": "produces"
       }
      ],
-     "roles": [
-      {
-       "roleName": "Analyst",
-       "abbreviation": "AN",
-       "tasks": "SI.2.3, SI.2.4, SI.2.6, SI.3.4"
-      },
-      {
-       "roleName": "Customer",
-       "abbreviation": "CUS",
-       "tasks": "PM.2.3, PM.2.5, SI.2.4"
-      },
-      {
-       "roleName": "Designer",
-       "abbreviation": "DES",
-       "tasks": "SI.3.4"
-      },
-      {
-       "roleName": "Project manager",
-       "abbreviation": "PJM",
-       "tasks": "PM.2.2, PM.2.3, PM.2.5, PM.3.3"
-      },
-      {
-       "roleName": "Technical leader",
-       "abbreviation": "TL",
-       "tasks": "PM.2.2, PM.2.5, PM.3.3, SI.2.3, SI.2.6"
-      },
-      {
-       "roleName": "Work team",
-       "abbreviation": "WT",
-       "tasks": "PM.2.5, PM.3.3"
-      }
-     ],
      "basePractices": [
       {
        "bpID": "PM.BP17",
@@ -2204,6 +2681,85 @@
       {
        "bpID": "SI.BP2",
        "description": "Verify and obtain approval of the Requirements Specification.Verify the\ncorrectness and testability of the Requirements Specification and its\nconsistency with the Product Description. Additionally, review that\nrequirements are complete, unambiguous, and not contradictory. The results\nfound are documented in a Verification Results and corrections are made until\nthe document is approved by AN. If significant changes were needed, initiate a\nChange Request."
+      }
+     ],
+     "outcomes": [
+      {
+       "outcome": "PM.PO.07",
+       "process": "PM",
+       "outcomeID": "g",
+       "description": "risks shall be identified and monitored during the conduct of the project;",
+       "basePractices": "PM.BP9"
+      },
+      {
+       "outcome": "PM.PO.08",
+       "process": "PM",
+       "outcomeID": "h",
+       "description": "changes shall be addressed, analysed and evaluated for cost, schedule and technical impact;",
+       "basePractices": "PM.BP17, PM.BP24"
+      },
+      {
+       "outcome": "PM.PO.09",
+       "process": "PM",
+       "outcomeID": "i",
+       "description": "relevant items of software configuration shall be identified and controlled including their storage, baseline, handling, and modifications;",
+       "basePractices": "PM.BP20, PM.BP21, PM.BP24, PM.BP26"
+      },
+      {
+       "outcome": "PM.PO.10",
+       "process": "PM",
+       "outcomeID": "j",
+       "description": "releases of items shall be controlled and made available to relevant stakeholders;",
+       "basePractices": "PM.BP26"
+      },
+      {
+       "outcome": "PM.PO.12",
+       "process": "PM",
+       "outcomeID": "l",
+       "description": "meetings with the work team and the customer shall be held to guarantee that work done complies with the project requirements and planning ;",
+       "basePractices": "PM.BP18, PM.BP19"
+      },
+      {
+       "outcome": "PM.PO.13",
+       "process": "PM",
+       "outcomeID": "m",
+       "description": "agreements resulting from meetings shall be registered and tracked;",
+       "basePractices": "PM.BP18, PM.BP19"
+      },
+      {
+       "outcome": "SI.PO.16",
+       "process": "SI",
+       "outcomeID": "a",
+       "description": "software requirements shall be defined;",
+       "basePractices": "SI.BP1"
+      },
+      {
+       "outcome": "SI.PO.17",
+       "process": "SI",
+       "outcomeID": "b",
+       "description": "software requirements shall be analysed for correctness and testability;",
+       "basePractices": "SI.BP1, SI.BP2"
+      },
+      {
+       "outcome": "SI.PO.20",
+       "process": "SI",
+       "outcomeID": "e",
+       "description": "software architectural and detailed design shall be developed and baselined;",
+       "basePractices": "SI.BP5"
+      },
+      {
+       "outcome": "SI.PO.21",
+       "process": "SI",
+       "outcomeID": "f",
+       "description": "software architectural and detailed design shall describe the software components and their internal and external interfaces;",
+       "basePractices": "SI.BP5, SI.BP6"
+      },
+      {
+       "outcome": "SI.PO.26",
+       "process": "SI",
+       "outcomeID": "k",
+       "description": "consistency and traceability between software requirements, software architectural, software detailed design and software components shall be established;",
+       "basePractices": "SI.BP5"
       }
      ]
     },
@@ -2291,23 +2847,6 @@
        "link": "produces"
       }
      ],
-     "roles": [
-      {
-       "roleName": "Project manager",
-       "abbreviation": "PJM",
-       "tasks": "PM.2.4, PM.3.2"
-      },
-      {
-       "roleName": "Technical leader",
-       "abbreviation": "TL",
-       "tasks": "PM.2.4, PM.3.2"
-      },
-      {
-       "roleName": "Work team",
-       "abbreviation": "WT",
-       "tasks": "PM.2.4, PM.3.2"
-      }
-     ],
      "basePractices": [
       {
        "bpID": "PM.BP18",
@@ -2320,6 +2859,29 @@
       {
        "bpID": "PM.BP23",
        "description": "Establish actions to correct deviations or problems and identified\nrisks concerning the accomplishment of the plan, as needed, document them in\nCorrection Register and track them to closure."
+      }
+     ],
+     "outcomes": [
+      {
+       "outcome": "PM.PO.12",
+       "process": "PM",
+       "outcomeID": "l",
+       "description": "meetings with the work team and the customer shall be held to guarantee that work done complies with the project requirements and planning ;",
+       "basePractices": "PM.BP18, PM.BP19"
+      },
+      {
+       "outcome": "PM.PO.13",
+       "process": "PM",
+       "outcomeID": "m",
+       "description": "agreements resulting from meetings shall be registered and tracked;",
+       "basePractices": "PM.BP18, PM.BP19"
+      },
+      {
+       "outcome": "PM.PO.14",
+       "process": "PM",
+       "outcomeID": "n",
+       "description": "actions to correct planning problems and unachieved targets (schedule, effort, cost, duration) shall be taken;",
+       "basePractices": "PM.BP23"
       }
      ]
     },
@@ -2359,18 +2921,6 @@
        "link": "produces"
       }
      ],
-     "roles": [
-      {
-       "roleName": "Designer",
-       "abbreviation": "DES",
-       "tasks": "SI.6.2, SI.6.3"
-      },
-      {
-       "roleName": "Technical leader",
-       "abbreviation": "TL",
-       "tasks": "SI.6.3"
-      }
-     ],
      "basePractices": [
       {
        "bpID": "SI.BP10",
@@ -2395,6 +2945,15 @@
       {
        "bpID": "SI.BP23",
        "description": "Incorporate the Maintenance Documentation as baseline for the\nSoftware Configuration."
+      }
+     ],
+     "outcomes": [
+      {
+       "outcome": "SI.PO.28",
+       "process": "SI",
+       "outcomeID": "m",
+       "description": "software configuration shall be integrated, baselined and stored in the project repository;",
+       "basePractices": "SI.BP20, SI.BP21, SI.BP22, SI.BP23"
       }
      ]
     },
@@ -2432,28 +2991,6 @@
        "link": "produces"
       }
      ],
-     "roles": [
-      {
-       "roleName": "Customer",
-       "abbreviation": "CUS",
-       "tasks": "PM.1.14, PM.2.5"
-      },
-      {
-       "roleName": "Project manager",
-       "abbreviation": "PJM",
-       "tasks": "PM.1.14, PM.2.4, PM.2.5"
-      },
-      {
-       "roleName": "Technical leader",
-       "abbreviation": "TL",
-       "tasks": "PM.2.4, PM.2.5"
-      },
-      {
-       "roleName": "Work team",
-       "abbreviation": "WT",
-       "tasks": "PM.2.4, PM.2.5"
-      }
-     ],
      "basePractices": [
       {
        "bpID": "PM.BP2",
@@ -2474,6 +3011,29 @@
       {
        "bpID": "PM.BP22",
        "description": "Evaluate project progress with respect to the Project Plan,\ncomparing:\n— actual Tasks against planned Tasks;\n— actual results against established project Objectives;\n— actual resource allocation against planned Resources;\n— actual cost against budget estimates;\n— actual time against planned schedule;\n— actual risk against previously identified."
+      }
+     ],
+     "outcomes": [
+      {
+       "outcome": "PM.PO.05",
+       "process": "PM",
+       "outcomeID": "e",
+       "description": "planning shall be reviewed and agreed by the customer;",
+       "basePractices": "PM.BP2, PM.BP14, PM.BP22"
+      },
+      {
+       "outcome": "PM.PO.12",
+       "process": "PM",
+       "outcomeID": "l",
+       "description": "meetings with the work team and the customer shall be held to guarantee that work done complies with the project requirements and planning ;",
+       "basePractices": "PM.BP19"
+      },
+      {
+       "outcome": "PM.PO.13",
+       "process": "PM",
+       "outcomeID": "m",
+       "description": "agreements resulting from meetings shall be registered and tracked;",
+       "basePractices": "PM.BP19"
       }
      ]
     },
@@ -2561,23 +3121,6 @@
        "link": "produces"
       }
      ],
-     "roles": [
-      {
-       "roleName": "Project manager",
-       "abbreviation": "PJM",
-       "tasks": "PM.2.1, PM.3.1"
-      },
-      {
-       "roleName": "Technical leader",
-       "abbreviation": "TL",
-       "tasks": "PM.2.1, PM.3.1"
-      },
-      {
-       "roleName": "Work team",
-       "abbreviation": "WT",
-       "tasks": "PM.2.1, PM.3.1"
-      }
-     ],
      "basePractices": [
       {
        "bpID": "PM.BP2",
@@ -2594,6 +3137,15 @@
       {
        "bpID": "PM.BP22",
        "description": "Evaluate project progress with respect to the Project Plan,\ncomparing:\n— actual Tasks against planned Tasks;\n— actual results against established project Objectives;\n— actual resource allocation against planned Resources;\n— actual cost against budget estimates;\n— actual time against planned schedule;\n— actual risk against previously identified."
+      }
+     ],
+     "outcomes": [
+      {
+       "outcome": "PM.PO.06",
+       "process": "PM",
+       "outcomeID": "f",
+       "description": "progress of the project against the planning shall be monitored and reported;",
+       "basePractices": "PM.BP16"
       }
      ]
     },
@@ -2619,13 +3171,6 @@
        "link": "produces"
       }
      ],
-     "roles": [
-      {
-       "roleName": "Technical leader",
-       "abbreviation": "TL",
-       "tasks": "PM.2.6"
-      }
-     ],
      "basePractices": [
       {
        "bpID": "PM.BP20",
@@ -2642,6 +3187,29 @@
       {
        "bpID": "PM.BP26",
        "description": "Update Project Repository."
+      }
+     ],
+     "outcomes": [
+      {
+       "outcome": "PM.PO.08",
+       "process": "PM",
+       "outcomeID": "h",
+       "description": "changes shall be addressed, analysed and evaluated for cost, schedule and technical impact;",
+       "basePractices": "PM.BP24"
+      },
+      {
+       "outcome": "PM.PO.09",
+       "process": "PM",
+       "outcomeID": "i",
+       "description": "relevant items of software configuration shall be identified and controlled including their storage, baseline, handling, and modifications;",
+       "basePractices": "PM.BP20, PM.BP21, PM.BP24, PM.BP26"
+      },
+      {
+       "outcome": "PM.PO.10",
+       "process": "PM",
+       "outcomeID": "j",
+       "description": "releases of items shall be controlled and made available to relevant stakeholders;",
+       "basePractices": "PM.BP26"
       }
      ]
     },
@@ -2803,28 +3371,6 @@
        "link": "produces"
       }
      ],
-     "roles": [
-      {
-       "roleName": "Analyst",
-       "abbreviation": "AN",
-       "tasks": "SI.3.7"
-      },
-      {
-       "roleName": "Designer",
-       "abbreviation": "DES",
-       "tasks": "SI.3.5, SI.3.7"
-      },
-      {
-       "roleName": "Programmer",
-       "abbreviation": "PR",
-       "tasks": "SI.4.4, SI.5.2"
-      },
-      {
-       "roleName": "Technical leader",
-       "abbreviation": "TL",
-       "tasks": "SI.5.11"
-      }
-     ],
      "basePractices": [
       {
        "bpID": "SI.BP5",
@@ -2893,6 +3439,43 @@
       {
        "bpID": "SI.BP23",
        "description": "Incorporate the Maintenance Documentation as baseline for the\nSoftware Configuration."
+      }
+     ],
+     "outcomes": [
+      {
+       "outcome": "SI.PO.24",
+       "process": "SI",
+       "outcomeID": "i",
+       "description": "software shall be produced by integrating software components;",
+       "basePractices": "SI.BP16"
+      },
+      {
+       "outcome": "SI.PO.25",
+       "process": "SI",
+       "outcomeID": "j",
+       "description": "software shall be tested and verified, the results shall be recorded;",
+       "basePractices": "SI.BP7, SI.BP8, SI.BP9, SI.BP16, SI.BP17"
+      },
+      {
+       "outcome": "SI.PO.26",
+       "process": "SI",
+       "outcomeID": "k",
+       "description": "consistency and traceability between software requirements, software architectural, software detailed design and software components shall be established;",
+       "basePractices": "SI.BP9"
+      },
+      {
+       "outcome": "SI.PO.27",
+       "process": "SI",
+       "outcomeID": "l",
+       "description": "defects identified in reviews, traceability analysis, tests and verifications shall be corrected;",
+       "basePractices": "SI.BP18"
+      },
+      {
+       "outcome": "SI.PO.28",
+       "process": "SI",
+       "outcomeID": "m",
+       "description": "software configuration shall be integrated, baselined and stored in the project repository;",
+       "basePractices": "SI.BP20, SI.BP21, SI.BP22, SI.BP23"
       }
      ]
     },
@@ -2986,23 +3569,6 @@
        "link": "produces"
       }
      ],
-     "roles": [
-      {
-       "roleName": "Customer",
-       "abbreviation": "CUS",
-       "tasks": "SI.5.4"
-      },
-      {
-       "roleName": "Programmer",
-       "abbreviation": "PR",
-       "tasks": "SI.5.4, SI.5.5"
-      },
-      {
-       "roleName": "Technical leader",
-       "abbreviation": "TL",
-       "tasks": "SI.5.11"
-      }
-     ],
      "basePractices": [
       {
        "bpID": "SI.BP7",
@@ -3051,6 +3617,43 @@
       {
        "bpID": "SI.BP23",
        "description": "Incorporate the Maintenance Documentation as baseline for the\nSoftware Configuration."
+      }
+     ],
+     "outcomes": [
+      {
+       "outcome": "SI.PO.24",
+       "process": "SI",
+       "outcomeID": "i",
+       "description": "software shall be produced by integrating software components;",
+       "basePractices": "SI.BP16"
+      },
+      {
+       "outcome": "SI.PO.25",
+       "process": "SI",
+       "outcomeID": "j",
+       "description": "software shall be tested and verified, the results shall be recorded;",
+       "basePractices": "SI.BP7, SI.BP8, SI.BP9, SI.BP16, SI.BP17"
+      },
+      {
+       "outcome": "SI.PO.26",
+       "process": "SI",
+       "outcomeID": "k",
+       "description": "consistency and traceability between software requirements, software architectural, software detailed design and software components shall be established;",
+       "basePractices": "SI.BP9"
+      },
+      {
+       "outcome": "SI.PO.27",
+       "process": "SI",
+       "outcomeID": "l",
+       "description": "defects identified in reviews, traceability analysis, tests and verifications shall be corrected;",
+       "basePractices": "SI.BP18"
+      },
+      {
+       "outcome": "SI.PO.28",
+       "process": "SI",
+       "outcomeID": "m",
+       "description": "software configuration shall be integrated, baselined and stored in the project repository;",
+       "basePractices": "SI.BP20, SI.BP21, SI.BP22, SI.BP23"
       }
      ]
     },
@@ -3132,28 +3735,6 @@
        "link": "produces"
       }
      ],
-     "roles": [
-      {
-       "roleName": "Analyst",
-       "abbreviation": "AN",
-       "tasks": "SI.2.6, SI.3.2, SI.3.3, SI.3.4, SI.3.7"
-      },
-      {
-       "roleName": "Designer",
-       "abbreviation": "DES",
-       "tasks": "SI.3.2, SI.3.3, SI.3.4, SI.3.6, SI.3.7"
-      },
-      {
-       "roleName": "Programmer",
-       "abbreviation": "PR",
-       "tasks": "SI.4.6, SI.5.6"
-      },
-      {
-       "roleName": "Technical leader",
-       "abbreviation": "TL",
-       "tasks": "SI.2.6, SI.5.11"
-      }
-     ],
      "basePractices": [
       {
        "bpID": "SI.BP5",
@@ -3214,6 +3795,71 @@
       {
        "bpID": "SI.BP23",
        "description": "Incorporate the Maintenance Documentation as baseline for the\nSoftware Configuration."
+      }
+     ],
+     "outcomes": [
+      {
+       "outcome": "SI.PO.20",
+       "process": "SI",
+       "outcomeID": "e",
+       "description": "software architectural and detailed design shall be developed and baselined;",
+       "basePractices": "SI.BP5"
+      },
+      {
+       "outcome": "SI.PO.21",
+       "process": "SI",
+       "outcomeID": "f",
+       "description": "software architectural and detailed design shall describe the software components and their internal and external interfaces;",
+       "basePractices": "SI.BP5"
+      },
+      {
+       "outcome": "SI.PO.22",
+       "process": "SI",
+       "outcomeID": "g",
+       "description": "software components defined by the detailed design shall be produced;",
+       "basePractices": "SI.BP11"
+      },
+      {
+       "outcome": "SI.PO.23",
+       "process": "SI",
+       "outcomeID": "h",
+       "description": "unit test shall be performed to verify the consistency with requirements and the detailed design;",
+       "basePractices": "SI.BP12"
+      },
+      {
+       "outcome": "SI.PO.24",
+       "process": "SI",
+       "outcomeID": "i",
+       "description": "software shall be produced by integrating software components;",
+       "basePractices": "SI.BP16"
+      },
+      {
+       "outcome": "SI.PO.25",
+       "process": "SI",
+       "outcomeID": "j",
+       "description": "software shall be tested and verified, the results shall be recorded;",
+       "basePractices": "SI.BP7, SI.BP8, SI.BP9, SI.BP16, SI.BP17"
+      },
+      {
+       "outcome": "SI.PO.26",
+       "process": "SI",
+       "outcomeID": "k",
+       "description": "consistency and traceability between software requirements, software architectural, software detailed design and software components shall be established;",
+       "basePractices": "SI.BP5, SI.BP9, SI.BP10, SI.BP14, SI.BP15, SI.BP19"
+      },
+      {
+       "outcome": "SI.PO.27",
+       "process": "SI",
+       "outcomeID": "l",
+       "description": "defects identified in reviews, traceability analysis, tests and verifications shall be corrected;",
+       "basePractices": "SI.BP18"
+      },
+      {
+       "outcome": "SI.PO.28",
+       "process": "SI",
+       "outcomeID": "m",
+       "description": "software configuration shall be integrated, baselined and stored in the project repository;",
+       "basePractices": "SI.BP10, SI.BP15, SI.BP20, SI.BP21, SI.BP22, SI.BP23"
       }
      ]
     },
@@ -3319,18 +3965,6 @@
        "link": "produces"
       }
      ],
-     "roles": [
-      {
-       "roleName": "Analyst",
-       "abbreviation": "AN",
-       "tasks": "SI.2.4"
-      },
-      {
-       "roleName": "Customer",
-       "abbreviation": "CUS",
-       "tasks": "SI.2.4"
-      }
-     ],
      "basePractices": [
       {
        "bpID": "SI.BP1",
@@ -3339,6 +3973,22 @@
       {
        "bpID": "SI.BP2",
        "description": "Verify and obtain approval of the Requirements Specification.Verify the\ncorrectness and testability of the Requirements Specification and its\nconsistency with the Product Description. Additionally, review that\nrequirements are complete, unambiguous, and not contradictory. The results\nfound are documented in a Verification Results and corrections are made until\nthe document is approved by AN. If significant changes were needed, initiate a\nChange Request."
+      }
+     ],
+     "outcomes": [
+      {
+       "outcome": "PM.PO.05",
+       "process": "PM",
+       "outcomeID": "e",
+       "description": "planning shall be reviewed and agreed by the customer;",
+       "basePractices": "PM.BP2, PM.BP14, PM.BP22"
+      },
+      {
+       "outcome": "SI.PO.18",
+       "process": "SI",
+       "outcomeID": "c",
+       "description": "software requirements shall be agreed by the customer;",
+       "basePractices": "SI.BP3"
       }
      ]
     },
@@ -3486,38 +4136,6 @@
        "link": "produces"
       }
      ],
-     "roles": [
-      {
-       "roleName": "Analyst",
-       "abbreviation": "AN",
-       "tasks": "SI.2.3, SI.2.6, SI.3.4, SI.3.7, SI.5.10"
-      },
-      {
-       "roleName": "Customer",
-       "abbreviation": "CUS",
-       "tasks": "SI.5.10"
-      },
-      {
-       "roleName": "Designer",
-       "abbreviation": "DES",
-       "tasks": "SI.3.4, SI.3.7, SI.5.8, SI.6.3"
-      },
-      {
-       "roleName": "Programmer",
-       "abbreviation": "PR",
-       "tasks": "SI.5.8"
-      },
-      {
-       "roleName": "Project manager",
-       "abbreviation": "PJM",
-       "tasks": "PM.1.13"
-      },
-      {
-       "roleName": "Technical leader",
-       "abbreviation": "TL",
-       "tasks": "PM.1.13, SI.2.3, SI.2.6, SI.6.3"
-      }
-     ],
      "basePractices": [
       {
        "bpID": "PM.BP11",
@@ -3586,6 +4204,64 @@
       {
        "bpID": "SI.BP23",
        "description": "Incorporate the Maintenance Documentation as baseline for the\nSoftware Configuration."
+      }
+     ],
+     "outcomes": [
+      {
+       "outcome": "SI.PO.16",
+       "process": "SI",
+       "outcomeID": "a",
+       "description": "software requirements shall be defined;",
+       "basePractices": "SI.BP1"
+      },
+      {
+       "outcome": "SI.PO.17",
+       "process": "SI",
+       "outcomeID": "b",
+       "description": "software requirements shall be analysed for correctness and testability;",
+       "basePractices": "SI.BP1, SI.BP2"
+      },
+      {
+       "outcome": "SI.PO.20",
+       "process": "SI",
+       "outcomeID": "e",
+       "description": "software architectural and detailed design shall be developed and baselined;",
+       "basePractices": "SI.BP5"
+      },
+      {
+       "outcome": "SI.PO.21",
+       "process": "SI",
+       "outcomeID": "f",
+       "description": "software architectural and detailed design shall describe the software components and their internal and external interfaces;",
+       "basePractices": "SI.BP5, SI.BP6"
+      },
+      {
+       "outcome": "SI.PO.24",
+       "process": "SI",
+       "outcomeID": "i",
+       "description": "software shall be produced by integrating software components;",
+       "basePractices": "SI.BP16"
+      },
+      {
+       "outcome": "SI.PO.25",
+       "process": "SI",
+       "outcomeID": "j",
+       "description": "software shall be tested and verified, the results shall be recorded;",
+       "basePractices": "SI.BP16"
+      },
+      {
+       "outcome": "SI.PO.26",
+       "process": "SI",
+       "outcomeID": "k",
+       "description": "consistency and traceability between software requirements, software architectural, software detailed design and software components shall be established;",
+       "basePractices": "SI.BP5"
+      },
+      {
+       "outcome": "SI.PO.28",
+       "process": "SI",
+       "outcomeID": "m",
+       "description": "software configuration shall be integrated, baselined and stored in the project repository;",
+       "basePractices": "SI.BP20, SI.BP21, SI.BP22, SI.BP23"
       }
      ]
     }
@@ -4238,28 +4914,6 @@
        "link": "produces"
       }
      ],
-     "roles": [
-      {
-       "roleName": "Analyst",
-       "abbreviation": "AN",
-       "tasks": "SI.2.6, SI.3.2, SI.3.3, SI.3.4, SI.3.7"
-      },
-      {
-       "roleName": "Designer",
-       "abbreviation": "DES",
-       "tasks": "SI.3.2, SI.3.3, SI.3.4, SI.3.6, SI.3.7"
-      },
-      {
-       "roleName": "Programmer",
-       "abbreviation": "PR",
-       "tasks": "SI.4.6, SI.5.6"
-      },
-      {
-       "roleName": "Technical leader",
-       "abbreviation": "TL",
-       "tasks": "SI.2.6, SI.5.11"
-      }
-     ],
      "basePractices": [
       {
        "description": "Document or update the Software Design. Analyse the Requirements\nSpecification to generate the architectural design, its arrangement in\nsubsystems and Software Components defining the internal and external\ninterfaces. Describe in detail, the appearance and the behaviour of the\ninterface, based on the Requirements Specification in a way that Resources for\nits implementation can be foreseen. Provide the detail of Software Components\nand their interfaces to allow the construction in an evident way. Generate or\nupdate the Traceability Record.",
@@ -4321,47 +4975,90 @@
        "description": "Incorporate the Maintenance Documentation as baseline for the\nSoftware Configuration.",
        "bpID": "SI.BP23"
       }
+     ],
+     "outcomes": [
+      {
+       "outcome": "SI.PO.20",
+       "process": "SI",
+       "outcomeID": "e",
+       "description": "software architectural and detailed design shall be developed and baselined;",
+       "basePractices": "SI.BP5"
+      },
+      {
+       "outcome": "SI.PO.21",
+       "process": "SI",
+       "outcomeID": "f",
+       "description": "software architectural and detailed design shall describe the software components and their internal and external interfaces;",
+       "basePractices": "SI.BP5"
+      },
+      {
+       "outcome": "SI.PO.22",
+       "process": "SI",
+       "outcomeID": "g",
+       "description": "software components defined by the detailed design shall be produced;",
+       "basePractices": "SI.BP11"
+      },
+      {
+       "outcome": "SI.PO.23",
+       "process": "SI",
+       "outcomeID": "h",
+       "description": "unit test shall be performed to verify the consistency with requirements and the detailed design;",
+       "basePractices": "SI.BP12"
+      },
+      {
+       "outcome": "SI.PO.24",
+       "process": "SI",
+       "outcomeID": "i",
+       "description": "software shall be produced by integrating software components;",
+       "basePractices": "SI.BP16"
+      },
+      {
+       "outcome": "SI.PO.25",
+       "process": "SI",
+       "outcomeID": "j",
+       "description": "software shall be tested and verified, the results shall be recorded;",
+       "basePractices": "SI.BP7, SI.BP8, SI.BP9, SI.BP16, SI.BP17"
+      },
+      {
+       "outcome": "SI.PO.26",
+       "process": "SI",
+       "outcomeID": "k",
+       "description": "consistency and traceability between software requirements, software architectural, software detailed design and software components shall be established;",
+       "basePractices": "SI.BP5, SI.BP9, SI.BP10, SI.BP14, SI.BP15, SI.BP19"
+      },
+      {
+       "outcome": "SI.PO.27",
+       "process": "SI",
+       "outcomeID": "l",
+       "description": "defects identified in reviews, traceability analysis, tests and verifications shall be corrected;",
+       "basePractices": "SI.BP18"
+      },
+      {
+       "outcome": "SI.PO.28",
+       "process": "SI",
+       "outcomeID": "m",
+       "description": "software configuration shall be integrated, baselined and stored in the project repository;",
+       "basePractices": "SI.BP10, SI.BP15, SI.BP20, SI.BP21, SI.BP22, SI.BP23"
+      }
      ]
     }
    ]
   }
  },
- "searchT1": {
-  "template": "T1",
-  "sparql": "PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>\nSELECT ?task ?taskID ?taskDesc ?activityName\n       (GROUP_CONCAT(DISTINCT ?roleAbbr; separator=\", \") AS ?roles)\n       (GROUP_CONCAT(DISTINCT ?outName; separator=\"; \") AS ?outputs)\nWHERE {\n  { SELECT DISTINCT ?task ?taskDesc WHERE {\n      ?task a iso:Task ; iso:hasTaskDescription ?taskDesc .\n      ?task iso:hasRole ?role . ?role iso:hasRoleName ?roleName . FILTER(str(?roleName) = \"Technical leader\")\n      FILTER(REGEX(str(?taskDesc), \"project\\\\s+plan\", \"i\"))\n      FILTER(REGEX(str(?taskDesc), \"verify\", \"i\") || REGEX(str(?taskDesc), \"review\", \"i\"))\n  } }\n  OPTIONAL { ?task iso:hasTaskID ?taskID . }\n  OPTIONAL { ?task iso:isTaskOf ?a . ?a iso:hasActivityName ?activityName . }\n  OPTIONAL { ?task iso:hasRole ?r . ?r iso:hasRoleAbbreviation ?roleAbbr . }\n  OPTIONAL { ?task iso:hasOutputWorkProduct ?o . ?o iso:representsWorkProduct ?ow . ?ow iso:hasWorkProductName ?outName . }\n}\nGROUP BY ?task ?taskID ?taskDesc ?activityName\nORDER BY ?taskID\n",
-  "rows": [
-   {
-    "task": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#PM.PT.01.13",
-    "taskID": "PM.1.13",
-    "taskDesc": "Verify the project plan:\n- Make corrections until the document is\napproved by PJM.",
-    "activityName": "Project planning",
-    "roles": "PJM, TL",
-    "outputs": "Project Plan; Verification Record"
-   },
-   {
-    "task": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#SI.PT.01.01",
-    "taskID": "SI.1.1",
-    "taskDesc": "Review the current project plan with the work team.",
-    "activityName": "Software implementation initiation",
-    "roles": "PJM, TL, WT",
-    "outputs": "Project Plan"
-   }
-  ]
- },
  "reasoningReport": {
   "reasoner": "Pellet 2.3.1 via OWL API 3.4.3",
-  "runAt": "2026-11-03T18:16:49.877206Z",
+  "runAt": "2026-11-08T15:20:32.339673Z",
   "consistent": true,
   "noRules": false,
   "excludedRules": [],
-  "elapsedMs": 16645,
+  "elapsedMs": 14671,
   "inferred": {
    "types": 88,
-   "objectPropertyValues": 989,
+   "objectPropertyValues": 1000,
    "dataPropertyValues": 0
   },
   "inputs": {
-   "ontology/ISO29110V2_rev06b.ttl": "0f281b67570102c78ce7817576808396a35c10748230c27273c70053e971072f"
+   "ontology/ISO29110V2_rev08.ttl": "84ea349fbcdcf1c8cdc6bd2734eba32a0b3ee6bb4c240bf3b0c595667b7944c7"
   },
   "rules": [
    {
@@ -4419,9 +5116,9 @@
     "headAtoms": 1
    },
    {
-    "label": "RecommendRoleRule",
+    "label": "RecommendOutcomeRule",
     "enabled": true,
-    "bodyAtoms": 2,
+    "bodyAtoms": 5,
     "headAtoms": 1
    },
    {
@@ -4435,6 +5132,123 @@
     "enabled": true,
     "bodyAtoms": 6,
     "headAtoms": 1
+   }
+  ]
+ },
+ "search": {
+  "selected": [
+   "role",
+   "workProduct",
+   "topic"
+  ],
+  "results": [
+   {
+    "query": "tasks",
+    "group": "G1",
+    "title": "Tasks",
+    "parameters": [
+     "role",
+     "topic"
+    ],
+    "sparql": "PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>\nSELECT ?task ?taskID ?taskDesc ?activityName\n       (GROUP_CONCAT(DISTINCT ?roleAbbr; separator=\", \") AS ?roles)\n       (GROUP_CONCAT(DISTINCT ?outName; separator=\"; \") AS ?outputs)\nWHERE {\n  { SELECT DISTINCT ?task ?taskDesc WHERE {\n      ?task a iso:Task ; iso:hasTaskDescription ?taskDesc .\n      ?task iso:hasRole ?role . ?role iso:hasRoleName ?roleName . FILTER(str(?roleName) = \"Technical leader\")\n      FILTER(REGEX(str(?taskDesc), \"verify\", \"i\"))\n  } }\n  OPTIONAL { ?task iso:hasTaskID ?taskID . }\n  OPTIONAL { ?task iso:isTaskOf ?a . ?a iso:hasActivityName ?activityName . }\n  OPTIONAL { ?task iso:hasRole ?r . ?r iso:hasRoleAbbreviation ?roleAbbr . }\n  OPTIONAL { ?task iso:hasOutputWorkProduct ?o . ?o iso:representsWorkProduct ?ow . ?ow iso:hasWorkProductName ?outName . }\n}\nGROUP BY ?task ?taskID ?taskDesc ?activityName\nORDER BY ?taskID\n",
+    "rows": [
+     {
+      "task": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#PM.PT.01.13",
+      "taskID": "PM.1.13",
+      "taskDesc": "Verify the project plan:\n- Make corrections until the document is\napproved by PJM.",
+      "activityName": "Project planning",
+      "roles": "PJM, TL",
+      "outputs": "Project Plan; Verification Record"
+     },
+     {
+      "task": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#PM.PT.02.07",
+      "taskID": "PM.2.7",
+      "taskDesc": "Verify the project repository recovery\nusing the project repository backup.",
+      "activityName": "Project plan execution",
+      "roles": "PJM, TL",
+      "outputs": "Project Repository"
+     },
+     {
+      "task": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#SI.PT.02.03",
+      "taskID": "SI.2.3",
+      "taskDesc": "Verify and obtain approval of the software Requirement specification from the AN:\n- Make corrections until the document is approved by AN.\n- Verify the correctness and testability of the software Requirement specification and its consistency with the product description.\n- Review to check that requirements are complete/ unambiguous and not contradictory. \n- Conditional task: Initiate a change request if significant changes (those affecting project delivery schedule/ project costs/ etc.) were needed.",
+      "activityName": "Software requirements analysis",
+      "roles": "AN, TL",
+      "outputs": "Change Request; Requirement Specification; Verification Record"
+     },
+     {
+      "task": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#SI.PT.02.06",
+      "taskID": "SI.2.6",
+      "taskDesc": "Verify and obtain approval of the *software user documentation from AN:\n- Verify consistency of the *software user documentation with the Requirement specification.\n- Make corrections until the document is approved by AN.\n- Generate the traceability record.",
+      "activityName": "Software requirements analysis",
+      "roles": "AN, TL",
+      "outputs": "Change Request; Software User Documentation; Traceability Record; Verification Record"
+     },
+     {
+      "task": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#SI.PT.06.03",
+      "taskID": "SI.6.3",
+      "taskDesc": "Verify and obtain approval of the maintenance documentation by the TL:\n- Verify consistency of maintenance documentation with software product.\n- Make corrections until the document is approved by TL.",
+      "activityName": "Software product assembly",
+      "roles": "DES, TL",
+      "outputs": "Maintenance Documentation; Verification Record"
+     }
+    ]
+   },
+   {
+    "query": "workProductStatus",
+    "group": "G2",
+    "title": "Tasks and Base Practices that output the work product",
+    "parameters": [
+     "workProduct",
+     "topic"
+    ],
+    "sparql": "PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>\nSELECT ?producer ?producerID ?producerDesc ?wpName ?stateName\n       (GROUP_CONCAT(DISTINCT ?roleAbbr; separator=\", \") AS ?roles)\nWHERE {\n  { SELECT DISTINCT ?owp ?wpName ?stateName ?producer ?producerDesc WHERE {\n      ?owp iso:representsWorkProduct ?wp ; iso:hasFinalState ?st . ?wp iso:hasWorkProductName ?wpName . ?st iso:hasWorkProductStateName ?stateName .\n      FILTER(str(?wpName) = \"Project Plan\")\n      { ?producer a iso:Task ; iso:hasTaskDescription ?producerDesc ; iso:hasOutputWorkProduct ?owp . } UNION\n      { ?producer a iso:BasePractice ; iso:hasBasePracticeDescription ?producerDesc ; iso:hasOutputWorkProduct ?owp . } FILTER(REGEX(str(?producerDesc), \"verify\", \"i\"))\n  } }\n  OPTIONAL { ?producer iso:hasTaskID ?taskID . }\n  OPTIONAL { ?producer iso:hasBasePracticeID ?bpID . }\n  BIND(COALESCE(?taskID, ?bpID) AS ?producerID)\n  OPTIONAL { ?producer iso:hasRole ?r . ?r iso:hasRoleAbbreviation ?roleAbbr . }\n}\nGROUP BY ?producer ?producerID ?producerDesc ?wpName ?stateName\nORDER BY ?producerID\n",
+    "rows": [
+     {
+      "producer": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#PM.PT.01.13",
+      "producerID": "PM.1.13",
+      "producerDesc": "Verify the project plan:\n- Make corrections until the document is\napproved by PJM.",
+      "wpName": "Project Plan",
+      "stateName": "Validated",
+      "roles": "PJM, TL"
+     },
+     {
+      "producer": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#PM.BP.13",
+      "producerID": "PM.BP13",
+      "producerDesc": "Verify and obtain approval of the Project Plan. Verify that all Project\nPlan elements are viable and consistent. The results found are documented in a\nVerification Results and corrections are made until the document is approved\nby PM.",
+      "wpName": "Project Plan",
+      "stateName": "Initiated"
+     },
+     {
+      "producer": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#PM.BP.13",
+      "producerID": "PM.BP13",
+      "producerDesc": "Verify and obtain approval of the Project Plan. Verify that all Project\nPlan elements are viable and consistent. The results found are documented in a\nVerification Results and corrections are made until the document is approved\nby PM.",
+      "wpName": "Project Plan",
+      "stateName": "Validated"
+     }
+    ]
+   },
+   {
+    "query": "basePracticeOutcome",
+    "group": "G3",
+    "title": "Base Practices, process outcomes and output work products",
+    "parameters": [
+     "workProduct",
+     "topic"
+    ],
+    "sparql": "PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>\nSELECT ?bp ?bpID ?bpDesc ?po ?process ?poID ?poDesc\n       (GROUP_CONCAT(DISTINCT ?outName; separator=\"; \") AS ?outputs)\nWHERE {\n  { SELECT DISTINCT ?bp ?bpDesc ?po ?poDesc WHERE {\n      ?bp a iso:BasePractice ; iso:hasBasePracticeDescription ?bpDesc ; iso:hasProcessOutcome ?po .\n      ?po iso:hasProcessOutcomeDescription ?poDesc .\n      BIND(CONCAT(str(?bpDesc), \" \", str(?poDesc)) AS ?text)\n      ?bp iso:hasOutputWorkProduct ?fo . ?fo iso:representsWorkProduct ?fw . ?fw iso:hasWorkProductName ?fwName . FILTER(str(?fwName) = \"Project Plan\")\n      FILTER(REGEX(str(?text), \"verify\", \"i\"))\n  } }\n  OPTIONAL { ?bp iso:hasBasePracticeID ?bpID . }\n  OPTIONAL { ?po iso:hasProcessOutcomeID ?poID . }\n  OPTIONAL { ?proc a iso:Process ; iso:hasBasePractice ?bp . BIND(STRAFTER(str(?proc), \"#\") AS ?process) }\n  OPTIONAL { ?bp iso:hasOutputWorkProduct ?o . ?o iso:representsWorkProduct ?ow . ?ow iso:hasWorkProductName ?outName . }\n}\nGROUP BY ?bp ?bpID ?bpDesc ?po ?process ?poID ?poDesc\nORDER BY ?bp ?po\n",
+    "rows": [
+     {
+      "bp": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#PM.BP.13",
+      "bpID": "PM.BP13",
+      "bpDesc": "Verify and obtain approval of the Project Plan. Verify that all Project\nPlan elements are viable and consistent. The results found are documented in a\nVerification Results and corrections are made until the document is approved\nby PM.",
+      "po": "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#PM.PO.03",
+      "process": "PM",
+      "poID": "c",
+      "poDesc": "planning for the execution of the project shall be developed according to the scope and the tasks defined;",
+      "outputs": "Project Plan; Verification Record"
+     }
+    ]
    }
   ]
  }

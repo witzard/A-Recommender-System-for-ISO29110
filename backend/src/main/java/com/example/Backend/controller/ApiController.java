@@ -51,13 +51,14 @@ public class ApiController {
     }
 
     @GetMapping("/search/options")
-    public Map<String, List<String>> searchOptions() {
+    public Map<String, List<Map<String, String>>> searchOptions() {
         return search.options();
     }
 
-    @PostMapping("/search/{template}")
-    public Map<String, Object> search(@PathVariable String template, @RequestBody Map<String, Object> request) {
-        return search.search(template, request);
+    /** Knowledge search by parameters: the service chooses the queries and returns their results together. */
+    @PostMapping("/search")
+    public Map<String, Object> search(@RequestBody Map<String, Object> request) {
+        return search.search(request);
     }
 
     /** Triples per graph in Fuseki. */

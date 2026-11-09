@@ -3,7 +3,8 @@
   "reasoning": "08_Revisions/2026-11-03_Round5_SWRL/VALIDATION_GUIDE.md (DL queries R1-R10, checked in Protege/Pellet 2026-11-04 00:38)",
   "scores": "08_Revisions/2026-11-03_Round5_SWRL/CHANGELOG.md (Q3 v3 expected process scores)",
   "recommendations": "08_Revisions/2026-11-03_Round5_SWRL/RECOMMENDATION_EXPECTED.md (task IDs written as hasTaskID, e.g. PM.PT.01.01 -> PM.1.1)",
-  "templates": "08_Revisions/2026-11-04_Round6_QueryTemplates/eval_templates.tsv (returned_units) and cq_parameters.json"
+  "templates": "08_Revisions/2026-11-04_Round6_QueryTemplates/eval_templates.tsv (returned_units) and cq_parameters.json",
+  "outcomes": "08_Revisions/2026-11-08_Round8_Outcome/CHANGELOG.md (recommendOutcome, rev08; equal to an independent Python computation)"
  },
  "reasoning": {
   "R1 GapResult": {
@@ -14,17 +15,17 @@
    "sparql": "PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>\nSELECT (COUNT(DISTINCT ?x) AS ?n) WHERE {\n?ae iso:responsibleFor iso:PJ.01 . GRAPH <urn:iso29110:graph:inferred> { ?ae iso:recommendTask ?x }\n}",
    "expected": 7
   },
-  "R3 PJ.01 roles": {
-   "sparql": "PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>\nSELECT (COUNT(DISTINCT ?x) AS ?n) WHERE {\n?ae iso:responsibleFor iso:PJ.01 . GRAPH <urn:iso29110:graph:inferred> { ?ae iso:recommendRole ?x }\n}",
-   "expected": 5
+  "R3 PJ.01 outcomes": {
+   "expected": 2,
+   "sparql": "PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>\nSELECT (COUNT(DISTINCT ?x) AS ?n) WHERE {\n?ae iso:responsibleFor iso:PJ.01 . GRAPH <urn:iso29110:graph:inferred> { ?ae iso:recommendOutcome ?x }\n}"
   },
   "R4 PJ.02 tasks": {
    "sparql": "PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>\nSELECT (COUNT(DISTINCT ?x) AS ?n) WHERE {\n?ae iso:responsibleFor iso:PJ.02 . GRAPH <urn:iso29110:graph:inferred> { ?ae iso:recommendTask ?x }\n}",
    "expected": 32
   },
-  "R5 PJ.02 roles": {
-   "sparql": "PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>\nSELECT (COUNT(DISTINCT ?x) AS ?n) WHERE {\n?ae iso:responsibleFor iso:PJ.02 . GRAPH <urn:iso29110:graph:inferred> { ?ae iso:recommendRole ?x }\n}",
-   "expected": 9
+  "R5 PJ.02 outcomes": {
+   "expected": 22,
+   "sparql": "PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>\nSELECT (COUNT(DISTINCT ?x) AS ?n) WHERE {\n?ae iso:responsibleFor iso:PJ.02 . GRAPH <urn:iso29110:graph:inferred> { ?ae iso:recommendOutcome ?x }\n}"
   },
   "R6 PJ.02 BPs": {
    "sparql": "PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>\nSELECT (COUNT(DISTINCT ?x) AS ?n) WHERE {\n?ae iso:responsibleFor iso:PJ.02 . GRAPH <urn:iso29110:graph:inferred> { ?ae iso:recommendBasePractice ?x }\n}",
@@ -45,6 +46,10 @@
   "R10 AE.PJ01.WP02 tasks": {
    "sparql": "PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>\nSELECT (COUNT(DISTINCT ?x) AS ?n) WHERE {\nGRAPH <urn:iso29110:graph:inferred> { iso:AE.PJ01.WP02 iso:recommendTask ?x }\n}",
    "expected": 7
+  },
+  "R11 no recommendRole (rev08)": {
+   "expected": 0,
+   "sparql": "PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#> SELECT (COUNT(*) AS ?n) WHERE { GRAPH <urn:iso29110:graph:inferred> { ?ae iso:recommendRole ?x } }"
   }
  },
  "processScores": {
@@ -72,24 +77,21 @@
     "PM.1.5",
     "SI.2.2"
    ],
-   "roles": [
-    "Analyst",
-    "Customer",
-    "Project manager",
-    "Technical leader"
-   ],
-   "basePractices": []
+   "basePractices": [],
+   "outcomes": [
+    "PM.PO.01",
+    "PM.PO.02"
+   ]
   },
   "AE.PJ02.WP01": {
    "tasks": [
     "PM.4.1"
    ],
-   "roles": [
-    "Customer",
-    "Project manager"
-   ],
    "basePractices": [
     "PM.BP25"
+   ],
+   "outcomes": [
+    "PM.PO.15"
    ]
   },
   "AE.PJ02.WP03": {
@@ -103,14 +105,6 @@
     "SI.2.6",
     "SI.3.4"
    ],
-   "roles": [
-    "Analyst",
-    "Customer",
-    "Designer",
-    "Project manager",
-    "Technical leader",
-    "Work team"
-   ],
    "basePractices": [
     "PM.BP17",
     "PM.BP18",
@@ -121,6 +115,19 @@
     "PM.BP26",
     "SI.BP1",
     "SI.BP2"
+   ],
+   "outcomes": [
+    "PM.PO.07",
+    "PM.PO.08",
+    "PM.PO.09",
+    "PM.PO.10",
+    "PM.PO.12",
+    "PM.PO.13",
+    "SI.PO.16",
+    "SI.PO.17",
+    "SI.PO.20",
+    "SI.PO.21",
+    "SI.PO.26"
    ]
   },
   "AE.PJ02.WP04": {
@@ -128,25 +135,21 @@
     "PM.2.4",
     "PM.3.2"
    ],
-   "roles": [
-    "Project manager",
-    "Technical leader",
-    "Work team"
-   ],
    "basePractices": [
     "PM.BP18",
     "PM.BP19",
     "PM.BP23"
+   ],
+   "outcomes": [
+    "PM.PO.12",
+    "PM.PO.13",
+    "PM.PO.14"
    ]
   },
   "AE.PJ02.WP06": {
    "tasks": [
     "SI.6.2",
     "SI.6.3"
-   ],
-   "roles": [
-    "Designer",
-    "Technical leader"
    ],
    "basePractices": [
     "SI.BP10",
@@ -155,6 +158,9 @@
     "SI.BP21",
     "SI.BP22",
     "SI.BP23"
+   ],
+   "outcomes": [
+    "SI.PO.28"
    ]
   },
   "AE.PJ02.WP07": {
@@ -163,18 +169,17 @@
     "PM.2.4",
     "PM.2.5"
    ],
-   "roles": [
-    "Customer",
-    "Project manager",
-    "Technical leader",
-    "Work team"
-   ],
    "basePractices": [
     "PM.BP14",
     "PM.BP18",
     "PM.BP19",
     "PM.BP2",
     "PM.BP22"
+   ],
+   "outcomes": [
+    "PM.PO.05",
+    "PM.PO.12",
+    "PM.PO.13"
    ]
   },
   "AE.PJ02.WP09": {
@@ -182,30 +187,30 @@
     "PM.2.1",
     "PM.3.1"
    ],
-   "roles": [
-    "Project manager",
-    "Technical leader",
-    "Work team"
-   ],
    "basePractices": [
     "PM.BP14",
     "PM.BP16",
     "PM.BP2",
     "PM.BP22"
+   ],
+   "outcomes": [
+    "PM.PO.06"
    ]
   },
   "AE.PJ02.WP12": {
    "tasks": [
     "PM.2.6"
    ],
-   "roles": [
-    "Technical leader"
-   ],
    "basePractices": [
     "PM.BP20",
     "PM.BP21",
     "PM.BP24",
     "PM.BP26"
+   ],
+   "outcomes": [
+    "PM.PO.08",
+    "PM.PO.09",
+    "PM.PO.10"
    ]
   },
   "AE.PJ02.WP19": {
@@ -215,12 +220,6 @@
     "SI.4.4",
     "SI.5.11",
     "SI.5.2"
-   ],
-   "roles": [
-    "Analyst",
-    "Designer",
-    "Programmer",
-    "Technical leader"
    ],
    "basePractices": [
     "SI.BP10",
@@ -240,6 +239,13 @@
     "SI.BP7",
     "SI.BP8",
     "SI.BP9"
+   ],
+   "outcomes": [
+    "SI.PO.24",
+    "SI.PO.25",
+    "SI.PO.26",
+    "SI.PO.27",
+    "SI.PO.28"
    ]
   },
   "AE.PJ02.WP20": {
@@ -247,11 +253,6 @@
     "SI.5.11",
     "SI.5.4",
     "SI.5.5"
-   ],
-   "roles": [
-    "Customer",
-    "Programmer",
-    "Technical leader"
    ],
    "basePractices": [
     "SI.BP10",
@@ -266,6 +267,13 @@
     "SI.BP7",
     "SI.BP8",
     "SI.BP9"
+   ],
+   "outcomes": [
+    "SI.PO.24",
+    "SI.PO.25",
+    "SI.PO.26",
+    "SI.PO.27",
+    "SI.PO.28"
    ]
   },
   "AE.PJ02.WP21": {
@@ -279,12 +287,6 @@
     "SI.4.6",
     "SI.5.11",
     "SI.5.6"
-   ],
-   "roles": [
-    "Analyst",
-    "Designer",
-    "Programmer",
-    "Technical leader"
    ],
    "basePractices": [
     "SI.BP10",
@@ -302,19 +304,30 @@
     "SI.BP7",
     "SI.BP8",
     "SI.BP9"
+   ],
+   "outcomes": [
+    "SI.PO.20",
+    "SI.PO.21",
+    "SI.PO.22",
+    "SI.PO.23",
+    "SI.PO.24",
+    "SI.PO.25",
+    "SI.PO.26",
+    "SI.PO.27",
+    "SI.PO.28"
    ]
   },
   "AE.PJ02.WP22": {
    "tasks": [
     "SI.2.4"
    ],
-   "roles": [
-    "Analyst",
-    "Customer"
-   ],
    "basePractices": [
     "SI.BP1",
     "SI.BP2"
+   ],
+   "outcomes": [
+    "PM.PO.05",
+    "SI.PO.18"
    ]
   },
   "AE.PJ02.WP23": {
@@ -327,14 +340,6 @@
     "SI.5.10",
     "SI.5.8",
     "SI.6.3"
-   ],
-   "roles": [
-    "Analyst",
-    "Customer",
-    "Designer",
-    "Programmer",
-    "Project manager",
-    "Technical leader"
    ],
    "basePractices": [
     "PM.BP11",
@@ -354,6 +359,16 @@
     "SI.BP7",
     "SI.BP8",
     "SI.BP9"
+   ],
+   "outcomes": [
+    "SI.PO.16",
+    "SI.PO.17",
+    "SI.PO.20",
+    "SI.PO.21",
+    "SI.PO.24",
+    "SI.PO.25",
+    "SI.PO.26",
+    "SI.PO.28"
    ]
   },
   "AE.PJ03.WP21": {
@@ -367,12 +382,6 @@
     "SI.4.6",
     "SI.5.11",
     "SI.5.6"
-   ],
-   "roles": [
-    "Analyst",
-    "Designer",
-    "Programmer",
-    "Technical leader"
    ],
    "basePractices": [
     "SI.BP10",
@@ -390,6 +399,17 @@
     "SI.BP7",
     "SI.BP8",
     "SI.BP9"
+   ],
+   "outcomes": [
+    "SI.PO.20",
+    "SI.PO.21",
+    "SI.PO.22",
+    "SI.PO.23",
+    "SI.PO.24",
+    "SI.PO.25",
+    "SI.PO.26",
+    "SI.PO.27",
+    "SI.PO.28"
    ]
   }
  },
@@ -426,7 +446,7 @@
   "Q30": "SI.6.6",
   "Q31": "PM.1.15 SI.6.4",
   "Q32": "SI.6.2 SI.6.3 SI.6.4",
-  "Q33": "134 WP-WPC pairs",
+  "Q33": "135 WP-WPC pairs",
   "Q34": "PM.1.10 PM.1.15 PM.2.6 PM.2.7"
  }
 }

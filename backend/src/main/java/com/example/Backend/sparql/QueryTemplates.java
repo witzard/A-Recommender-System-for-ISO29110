@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * The three knowledge-search templates (T1 task finder, T2 work product status, T3 work product criteria).
- * They follow 08_Revisions/_tools/templates.py; the evaluation in 08_Revisions/2026-11-04_Round6_QueryTemplates
- * was made with that file. Differences: values chosen from a drop-down (role, activity, work product) are
+ * Knowledge-search queries, one per parameter group (08_Revisions/2026-11-08_QueryParameterGrouping):
+ * G1 tasks (taskFinder), G2 work product status and criteria (workProductStatus, workProductCriteria),
+ * G3 Base Practice - process outcome - work product (basePracticeOutcome). KnowledgeSearchService chooses which of
+ * them run for the parameters the user selected. taskFinder / workProductStatus / workProductCriteria follow
+ * 08_Revisions/_tools/templates.py (T1-T3 of Round 6, evaluated there). Differences: values chosen from a drop-down (role, activity, work product) are
  * compared with "=" because they are exact names read from the ontology, and each template is wrapped in an
  * outer query that only adds columns for display (IDs, roles, activity, work products). The outer query never
  * removes or adds a matching task.
@@ -15,7 +17,8 @@ import java.util.List;
  */
 public final class QueryTemplates {
 
-    public static final String PREFIX = "PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>\n";
+    public static final String ISO = "http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#";
+    public static final String PREFIX = "PREFIX iso: <" + ISO + ">\n";
 
     private QueryTemplates() {
     }
@@ -62,17 +65,17 @@ public final class QueryTemplates {
                 + "ORDER BY ?taskID\n";
     }
 
-    /** T2: tasks and Base Practices that output the work product in the chosen final state. */
-    public static String workProductStatus(String workProduct, String state, String kwProducer) {
-        String f = present(kwProducer)
-                ? " FILTER(REGEX(str(?producerDesc), " + lit(keywordRegex(kwProducer.trim())) + ", \"i\"))" : "";
+    /** G2 (T2): tasks and Base Practices that output the work product (in the chosen final state, if any). */
+    public static String workProductStatus(String workProduct, String state, List<String> kwAll, List<String> kwAny) {
+        String f = keywordFilters("?producerDesc", kwAll, kwAny);
+        String st = present(state) ? " FILTER(str(?stateName) = " + lit(state) + ")" : "";
         return PREFIX
                 + "SELECT ?producer ?producerID ?producerDesc ?wpName ?stateName\n"
                 + "       (GROUP_CONCAT(DISTINCT ?roleAbbr; separator=\", \") AS ?roles)\n"
                 + "WHERE {\n"
                 + "  { SELECT DISTINCT ?owp ?wpName ?stateName ?producer ?producerDesc WHERE {\n"
                 + "      ?owp iso:representsWorkProduct ?wp ; iso:hasFinalState ?st . ?wp iso:hasWorkProductName ?wpName . ?st iso:hasWorkProductStateName ?stateName .\n"
-                + "      FILTER(str(?wpName) = " + lit(workProduct) + ") FILTER(str(?stateName) = " + lit(state) + ")\n"
+                + "      FILTER(str(?wpName) = " + lit(workProduct) + ")" + st + "\n"
                 + "      { ?producer a iso:Task ; iso:hasTaskDescription ?producerDesc ; iso:hasOutputWorkProduct ?owp . } UNION\n"
                 + "      { ?producer a iso:BasePractice ; iso:hasBasePracticeDescription ?producerDesc ; iso:hasOutputWorkProduct ?owp . }" + f + "\n"
                 + "  } }\n"
@@ -83,6 +86,50 @@ public final class QueryTemplates {
                 + "}\n"
                 + "GROUP BY ?producer ?producerID ?producerDesc ?wpName ?stateName\n"
                 + "ORDER BY ?producerID\n";
+    }
+
+    /**
+     * G3: Base Practices with their process outcomes and the work products they output (asserted hasOutputWorkProduct).
+     * process / basePractice / outcome are local names already checked against the ontology values; keywords are
+     * matched in the Base Practice or the outcome description.
+     */
+    public static String basePracticeOutcome(String process, String basePractice, String outcome, String workProduct,
+                                             List<String> kwAll, List<String> kwAny) {
+        List<String> w = new ArrayList<>();
+        w.add("?bp a iso:BasePractice ; iso:hasBasePracticeDescription ?bpDesc ; iso:hasProcessOutcome ?po .");
+        w.add("?po iso:hasProcessOutcomeDescription ?poDesc .");
+        w.add("BIND(CONCAT(str(?bpDesc), \" \", str(?poDesc)) AS ?text)");
+        if (present(process)) {
+            w.add("<" + ISO + process + "> iso:hasBasePractice ?bp .");
+        }
+        if (present(basePractice)) {
+            w.add("FILTER(?bp = <" + ISO + basePractice + ">)");
+        }
+        if (present(outcome)) {
+            w.add("FILTER(?po = <" + ISO + outcome + ">)");
+        }
+        if (present(workProduct)) {
+            w.add("?bp iso:hasOutputWorkProduct ?fo . ?fo iso:representsWorkProduct ?fw . ?fw iso:hasWorkProductName ?fwName . "
+                    + "FILTER(str(?fwName) = " + lit(workProduct) + ")");
+        }
+        String f = keywordFilters("?text", kwAll, kwAny);
+        if (!f.isEmpty()) {
+            w.add(f.trim());
+        }
+        return PREFIX
+                + "SELECT ?bp ?bpID ?bpDesc ?po ?process ?poID ?poDesc\n"
+                + "       (GROUP_CONCAT(DISTINCT ?outName; separator=\"; \") AS ?outputs)\n"
+                + "WHERE {\n"
+                + "  { SELECT DISTINCT ?bp ?bpDesc ?po ?poDesc WHERE {\n"
+                + "      " + String.join("\n      ", w) + "\n"
+                + "  } }\n"
+                + "  OPTIONAL { ?bp iso:hasBasePracticeID ?bpID . }\n"
+                + "  OPTIONAL { ?po iso:hasProcessOutcomeID ?poID . }\n"
+                + "  OPTIONAL { ?proc a iso:Process ; iso:hasBasePractice ?bp . BIND(STRAFTER(str(?proc), \"#\") AS ?process) }\n"
+                + "  OPTIONAL { ?bp iso:hasOutputWorkProduct ?o . ?o iso:representsWorkProduct ?ow . ?ow iso:hasWorkProductName ?outName . }\n"
+                + "}\n"
+                + "GROUP BY ?bp ?bpID ?bpDesc ?po ?process ?poID ?poDesc\n"
+                + "ORDER BY ?bp ?po\n";
     }
 
     /** T3: assessment characteristics of one work product (or of all when none is chosen). */
@@ -98,6 +145,23 @@ public final class QueryTemplates {
                 + "  OPTIONAL { ?wp iso:hasWorkProductID ?wpID . }\n"
                 + "}\n"
                 + "ORDER BY ?wpID ?wpc\n";
+    }
+
+    /** FILTERs for "contains all of" / "contains any of" on one variable (empty string when there is no keyword). */
+    static String keywordFilters(String var, List<String> kwAll, List<String> kwAny) {
+        StringBuilder sb = new StringBuilder();
+        for (String k : clean(kwAll)) {
+            sb.append(" FILTER(REGEX(str(").append(var).append("), ").append(lit(keywordRegex(k))).append(", \"i\"))");
+        }
+        List<String> any = clean(kwAny);
+        if (!any.isEmpty()) {
+            List<String> parts = new ArrayList<>();
+            for (String k : any) {
+                parts.add("REGEX(str(" + var + "), " + lit(keywordRegex(k)) + ", \"i\")");
+            }
+            sb.append(" FILTER(").append(String.join(" || ", parts)).append(")");
+        }
+        return sb.toString();
     }
 
     /** Keyword to regex: regex characters escaped, any white space matches one or more white-space characters. */

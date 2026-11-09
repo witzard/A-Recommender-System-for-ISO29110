@@ -1,7 +1,7 @@
 // UI tests: the real App component with the API answered from fixtures.json (responses of the backend services
-// computed on ontology/ISO29110V2_rev06b.ttl and kb/inferred.nt).
+// computed on ontology/ISO29110V2_rev08.ttl and kb/inferred.nt; see fixtures._note).
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { cleanup, fireEvent, render, screen, waitFor, within } from '@testing-library/react';
+import { cleanup, fireEvent, render, screen, within } from '@testing-library/react';
 import fixtures from './fixtures.json';
 
 const calls = [];
@@ -9,7 +9,7 @@ vi.mock('../api', () => ({
   API_BASE_URL: 'test',
   api: {
     options: () => Promise.resolve(fixtures.options),
-    search: (template, params) => { calls.push([template, params]); return Promise.resolve(fixtures.searchT1); },
+    search: (params) => { calls.push(['search', params]); return Promise.resolve(fixtures.search); },
     projects: () => Promise.resolve(fixtures.projects),
     assessment: (id) => { calls.push(['assessment', id]); return Promise.resolve(fixtures.assessments[id]); },
     reasoningReport: () => Promise.resolve(fixtures.reasoningReport),
@@ -20,33 +20,43 @@ import App from '../App';
 beforeEach(() => { calls.length = 0; });
 afterEach(cleanup);
 
-describe('knowledge search', () => {
-  it('offers the drop-down values read from the ontology', async () => {
+describe('knowledge search by parameters', () => {
+  it('offers the parameter values read from the ontology and no example questions', async () => {
     render(<App />);
     const role = await screen.findByLabelText('Role');
     expect(within(role).getAllByRole('option')).toHaveLength(1 + 7);
     expect(within(screen.getByLabelText('Activity')).getAllByRole('option')).toHaveLength(1 + 10);
-    expect(within(screen.getByLabelText('Work product (input or output)')).getAllByRole('option')).toHaveLength(1 + 23);
+    expect(within(screen.getByLabelText('Process')).getAllByRole('option')).toHaveLength(1 + 2);
+    expect(within(screen.getByLabelText('Base Practice')).getAllByRole('option')).toHaveLength(1 + 50);
+    expect(within(screen.getByLabelText('Process outcome')).getAllByRole('option')).toHaveLength(1 + 28);
+    expect(within(screen.getByLabelText('Work product')).getAllByRole('option')).toHaveLength(1 + 23);
+    expect(within(screen.getByLabelText('Work product state')).getAllByRole('option')).toHaveLength(1 + 24);
+    expect(screen.queryByText('Example questions')).toBeNull();
+    expect(screen.queryByRole('tab', { name: /T1/ })).toBeNull();
   });
 
-  it('sends T1 parameters and shows the rows', async () => {
+  it('limits Base Practices and outcomes to the chosen process', async () => {
+    render(<App />);
+    fireEvent.change(await screen.findByLabelText('Process'), { target: { value: 'SI' } });
+    expect(within(screen.getByLabelText('Base Practice')).getAllByRole('option')).toHaveLength(1 + 23);
+    expect(within(screen.getByLabelText('Process outcome')).getAllByRole('option')).toHaveLength(1 + 13);
+  });
+
+  it('sends only parameters and shows the results of every matched query together', async () => {
     render(<App />);
     fireEvent.change(await screen.findByLabelText('Role'), { target: { value: 'Technical leader' } });
-    fireEvent.change(screen.getByLabelText('Task contains all of'), { target: { value: 'project plan' } });
-    fireEvent.change(screen.getByLabelText('Task contains any of'), { target: { value: 'verify, review' } });
+    fireEvent.change(screen.getByLabelText('Work product'), { target: { value: 'Project Plan' } });
+    fireEvent.change(screen.getByLabelText('Topic: contains all of'), { target: { value: 'verify' } });
     fireEvent.click(screen.getByRole('button', { name: 'Search' }));
-    await screen.findByText(`${fixtures.searchT1.rows.length} rows.`);
-    expect(calls[0]).toEqual(['T1', { role: 'Technical leader', activity: '', workProduct: '', kwAll: ['project plan'], kwAny: ['verify', 'review'] }]);
+    await screen.findByText('3 queries matched the selected parameters; 9 rows in total.');
+    expect(calls[0]).toEqual(['search', { role: 'Technical leader', activity: '', process: '', basePractice: '', outcome: '',
+      workProduct: 'Project Plan', state: '', kwAll: ['verify'], kwAny: [] }]);
+    expect(screen.getByRole('heading', { name: 'G1 Tasks (5 rows)' })).toBeTruthy();
+    expect(screen.getByRole('heading', { name: 'G2 Tasks and Base Practices that output the work product (3 rows)' })).toBeTruthy();
+    const g3 = screen.getByRole('heading', { name: 'G3 Base Practices, process outcomes and output work products (1 row)' }).parentElement;
+    expect(within(g3).getByText('PM.BP13')).toBeTruthy();
+    expect(within(g3).getByText('PM c)')).toBeTruthy();
     expect(screen.queryByText('SPARQL query')).toBeNull();
-    expect(screen.getByText(fixtures.searchT1.rows[0].taskID)).toBeTruthy();
-  });
-
-  it('an example question fills the template parameters', async () => {
-    render(<App />);
-    await screen.findByLabelText('Role');
-    fireEvent.click(screen.getByText(/As a PM, how does the team know project details/));
-    await waitFor(() => expect(calls).toHaveLength(1));
-    expect(calls[0]).toEqual(['T1', { role: '', activity: '', workProduct: '', kwAll: ['project plan'], kwAny: ['work team', 'deliverables'] }]);
   });
 });
 
@@ -75,7 +85,7 @@ describe('assessment results and recommendations', () => {
     const side = await open();
     await screen.findByText('Recommendations (1 work product)');
     fireEvent.click(within(side).getByText('Mock Company B (start-up, mock data)'));
-    await screen.findByText('Recommendations (12 work products)');
+    await screen.findByText('Recommendations (3 work products)');
     expect(screen.getByText(/It is not data of a real company/)).toBeTruthy();
     expect(screen.getByText('WP.08 Product Operation Guide; WP.18 Software User Documentation')).toBeTruthy();
     expect(processScores()).toEqual([['PM', '27', '0.56'], ['SI', '23', '0.52']]);
@@ -89,5 +99,28 @@ describe('assessment results and recommendations', () => {
     expect(within(tasks).getAllByRole('row')).toHaveLength(1 + 7);
     expect(within(rec).getByText(/0%, Not achieved/)).toBeTruthy();
     expect(within(tasks).getAllByText('Uses WP.02 as input')).toHaveLength(7);
+    expect(within(rec).queryByText('Recommended role')).toBeNull();
+  });
+
+  it('shows the process outcomes linked to WP.02 of PJ.01 (RecommendOutcomeRule)', async () => {
+    await open();
+    await screen.findByText('Recommendations (1 work product)');
+    const rec = screen.getByRole('heading', { name: /WP\.02 Agreement/ }).parentElement;
+    const outcomes = within(rec).getByRole('columnheader', { name: 'Process outcome' }).closest('table');
+    const rows = within(outcomes).getAllByRole('row').slice(1).map((r) => within(r).getAllByRole('cell').map((c) => c.textContent));
+    expect(rows.map((r) => [r[0], r[2]])).toEqual([['PM a)', 'PM.BP1'], ['PM b)', 'PM.BP3, PM.BP4, PM.BP5, PM.BP6, PM.BP7, PM.BP8']]);
+  });
+
+  it('separates gaps rated Not achieved and Partially achieved', async () => {
+    const side = await open();
+    await screen.findByText('Recommendations (1 work product)');
+    fireEvent.click(within(side).getByText('Mock Company B (start-up, mock data)'));
+    await screen.findByText('Recommendations (3 work products)');
+    expect(screen.getByText('Characteristics not achieved (18)')).toBeTruthy();
+    fireEvent.change(screen.getByLabelText('Show gaps rated'), { target: { value: 'Partially_achieved' } });
+    expect(screen.getByText('Characteristics partially achieved (63)')).toBeTruthy();
+    expect(screen.getByText('Recommendations (11 work products)')).toBeTruthy();
+    fireEvent.change(screen.getByLabelText('Show gaps rated'), { target: { value: '' } });
+    expect(screen.getByText('Recommendations (12 work products)')).toBeTruthy();
   });
 });

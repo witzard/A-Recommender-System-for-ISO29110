@@ -1,5 +1,33 @@
 # Changelog
 
+## 2026-11-08 - ontology rev08, outcomes, parameter search (not committed)
+
+### Ontology
+- `ontology/ISO29110V2_rev08.ttl` = `08_Revisions/2026-11-08_Round8_Outcome/ISO29110V2_rev08.ttl`
+  (SHA-256 `84ea349fbcdcf1c8cdc6bd2734eba32a0b3ee6bb4c240bf3b0c595667b7944c7`): recommendRole and RecommendRoleRule
+  removed, recommendOutcome and RecommendOutcomeRule added, WPC.15.02 added. `kb/` regenerated with `scripts/reason.sh`
+  (consistent; inferred facts differ from rev06b only by -52 recommendRole / +63 recommendOutcome).
+- rev06b copy moved to `_TRASH/06_Prototype_removed_2026-11-08/`.
+
+### Assessment page
+- No recommended roles; the roles of each recommended task stay in the task table.
+- Process outcomes per work product (`recommended-outcomes.rq`, with the Base Practices that link them).
+- Drop-down "Show gaps rated": Not achieved / Partially achieved / both, applied to the gap table and the recommendations.
+
+### Knowledge search
+- `POST /api/search` replaces `POST /api/search/{T1|T2|T3}`: parameters only; `KnowledgeSearchService.choose` picks the
+  queries (accepted / required parameters, most specific wins) and the results are returned together.
+- New query G3 `QueryTemplates.basePracticeOutcome`; T2 accepts an optional state and topic phrases (all / any).
+- `GET /api/search/options` returns `{value, label}` for every parameter (process, Base Practice, outcome added).
+- The example questions (`frontend/src/examples.json`) are removed from the page; the 34 CQs are in `tests/cq_parameters.json`.
+
+### Checked (Linux VM, 2026-11-08) / not checked
+- Frontend tests 8/8 with a Node + jsdom runner that loads the same test file (Vitest itself needs the Windows binaries).
+- Query code compiled with javac 11 (Spring/Jena stubbed) and the generated SPARQL run with rdflib on rev08 + kb:
+  R1-R11 pass, outcomes of the 14 assessed entities equal tests/expected.json, the 33 CQs (all but Q33) return the
+  Round 6 IDs on their group, Q33 = 135 pairs. Union adds Base Practice rows (G3) to 15 topic-only CQs.
+- NOT checked: Maven build, Spring Boot run, Fuseki, `tests/run_checks.py` against the running system, `npm test`.
+
 ## 2026-11-04 - branch web/rev06b
 
 ### Ontology

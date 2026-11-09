@@ -1,10 +1,10 @@
 """Checks the running prototype against the expected values in tests/expected.json.
 
-  1. Reasoning   - R1-R10 counted with SPARQL on the Fuseki dataset (named graph of Pellet output).
+  1. Reasoning   - R1-R11 counted with SPARQL on the Fuseki dataset (named graph of Pellet output).
   2. Scores      - process scores of PJ.01-PJ.03 from GET /api/projects/{id}/assessment.
-  3. Recommend.  - tasks, roles and Base Practices of every assessed entity with a gap.
-  4. Templates   - the 34 example questions sent to POST /api/search/{T1|T2|T3}; the task / BP IDs
-                   returned must equal eval_templates.tsv of Round 6.
+  3. Recommend.  - tasks, Base Practices and process outcomes (rev08) of every assessed entity with a gap.
+  4. CQs         - the 34 competency questions sent as parameters to POST /api/search (tests/cq_parameters.json);
+                   the task / BP IDs of the answering query must equal eval_templates.tsv of Round 6 (Q33: 135 pairs, rev08).
 
 Needs Python 3.8+ only (standard library). Start Fuseki (data loaded) and the backend first:
   python tests/run_checks.py [--fuseki http://localhost:3030/ISO29110_RecommenderSystems/query] [--api http://localhost:8080/api]
@@ -59,7 +59,7 @@ def main():
     ap.add_argument('--api', default='http://localhost:8080/api')
     a = ap.parse_args()
     exp = json.load(open(os.path.join(HERE, 'expected.json'), encoding='utf-8'))
-    examples = json.load(open(os.path.join(ROOT, 'frontend', 'src', 'examples.json'), encoding='utf-8'))
+    cq = json.load(open(os.path.join(HERE, 'cq_parameters.json'), encoding='utf-8'))
     results = []
 
     def check(name, ok, detail=''):
@@ -79,25 +79,36 @@ def main():
         check('%s process scores' % pj, got == want, 'got %s, expected %s' % (got, want))
         for r in data['recommendations']:
             got_recs[r['ae']] = {'tasks': sorted(t['taskID'] for t in r['tasks']),
-                                 'roles': sorted(x['roleName'] for x in r['roles']),
+                                 'outcomes': sorted(x['outcome'] for x in r['outcomes']),
                                  'basePractices': sorted(b['bpID'] for b in r['basePractices'])}
     check('assessed entities with recommendations', sorted(got_recs) == sorted(exp['recommendations']),
           'got %s' % sorted(got_recs))
     for ae, want in exp['recommendations'].items():
         g = got_recs.get(ae, {})
-        for k in ('tasks', 'roles', 'basePractices'):
+        for k in ('tasks', 'outcomes', 'basePractices'):
             check('%s %s' % (ae, k), g.get(k) == sorted(want[k]), 'got %s, expected %s' % (g.get(k), sorted(want[k])))
 
-    print('4. Templates (API)')
-    for x in examples:
-        res = post('%s/search/%s' % (a.api, x['template']), x['params'])
-        want = exp['templates'][x['id']]
-        if x['template'] == 'T3':
-            pairs = {(r.get('wp'), r.get('wpc')) for r in res['rows'] if '#WPC.' in (r.get('wpc') or '')}
+    print('4. Competency questions through the parameter search (API)')
+    # Each CQ is sent as parameters only (tests/cq_parameters.json). The service may run several queries (union);
+    # the CQ is checked on the query of the group that answers it, with the same task / BP IDs as Round 6.
+    wp_names = [o['value'] for o in get('%s/search/options' % a.api)['workProduct']]
+    for qid, c in cq.items():
+        want = exp['templates'][qid]
+        if c['answeredBy'] == 'workProductCriteria':
+            pairs = set()
+            for name in wp_names:  # union of the criteria of every work product
+                for r in post('%s/search' % a.api, {'workProduct': name})['results']:
+                    if r['query'] == 'workProductCriteria':
+                        pairs |= {(x.get('wp'), x.get('wpc')) for x in r['rows'] if '#WPC.' in (x.get('wpc') or '')}
             got = '%d WP-WPC pairs' % len(pairs)
-        else:
-            got = ' '.join(sorted(units(res['rows'])))
-        check('%s (%s)' % (x['id'], x['template']), got == want, 'got [%s], expected [%s]' % (got, want))
+            check('%s (criteria of all work products)' % qid, got == want, 'got [%s], expected [%s]' % (got, want))
+            continue
+        res = post('%s/search' % a.api, c['request'])['results']
+        mine = [r for r in res if r['query'] == c['answeredBy']]
+        got = ' '.join(sorted(units(mine[0]['rows']))) if mine else '(query not chosen)'
+        others = sorted(r['query'] for r in res if r['query'] != c['answeredBy'])
+        check('%s (%s%s)' % (qid, c['answeredBy'], ' + ' + ', '.join(others) if others else ''), got == want,
+              'got [%s], expected [%s]' % (got, want))
 
     failed = results.count(False)
     print('\n%d checks, %d failed' % (len(results), failed))

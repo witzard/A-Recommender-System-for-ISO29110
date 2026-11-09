@@ -1,13 +1,13 @@
 {
   "reasoner": "Pellet 2.3.1 via OWL API 3.4.3",
-  "runAt": "2026-11-03T18:16:49.877206Z",
+  "runAt": "2026-11-09T14:54:25.841453200Z",
   "consistent": true,
   "noRules": false,
   "excludedRules": [],
-  "elapsedMs": 16645,
-  "inferred": {"types": 88, "objectPropertyValues": 989, "dataPropertyValues": 0},
+  "elapsedMs": 10657,
+  "inferred": {"types": 88, "objectPropertyValues": 1000, "dataPropertyValues": 0},
   "inputs": {
-    "ontology/ISO29110V2_rev06b.ttl": "0f281b67570102c78ce7817576808396a35c10748230c27273c70053e971072f"
+    "ontology\\ISO29110V2_rev08.ttl": "84ea349fbcdcf1c8cdc6bd2734eba32a0b3ee6bb4c240bf3b0c595667b7944c7"
   },
   "rules": [
     {"label": "BasePracticeOutputWPRule", "enabled": true, "bodyAtoms": 4, "headAtoms": 1},
@@ -19,7 +19,7 @@
     {"label": "RatingNotAchievedRule", "enabled": true, "bodyAtoms": 3, "headAtoms": 1},
     {"label": "RatingPartiallyAchievedRule", "enabled": true, "bodyAtoms": 4, "headAtoms": 1},
     {"label": "RecommendBasePracticeRule", "enabled": true, "bodyAtoms": 6, "headAtoms": 1},
-    {"label": "RecommendRoleRule", "enabled": true, "bodyAtoms": 2, "headAtoms": 1},
+    {"label": "RecommendOutcomeRule", "enabled": true, "bodyAtoms": 5, "headAtoms": 1},
     {"label": "RecommendTaskForExternalInputRule", "enabled": true, "bodyAtoms": 8, "headAtoms": 1},
     {"label": "RecommendTaskRule", "enabled": true, "bodyAtoms": 6, "headAtoms": 1}
   ]

@@ -34,11 +34,6 @@ table.profile th { width: 220px; }
 details { margin: 8px 0; }
 summary { cursor: pointer; color: #1f3f6b; }
 details pre { border: 1px solid #cccccc; background: #f7f7f7; padding: 8px; overflow-x: auto; white-space: pre; }
-.examples { max-height: 320px; overflow-y: auto; border: 1px solid #cccccc; margin: 4px 0; padding: 0; list-style: none; }
-.examples li { border-bottom: 1px solid #e5e5e5; }
-.examples button { display: block; width: 100%; text-align: left; border: none; background: #ffffff; padding: 4px 8px; cursor: pointer; }
-.examples button:hover { background: #f0f0f0; }
-.examples .qid { display: inline-block; width: 40px; font-weight: bold; }
 
 .rec { border-top: 1px solid #cccccc; padding-top: 4px; margin-top: 16px; }
 .rec ul { margin: 4px 0 8px 18px; padding: 0; }

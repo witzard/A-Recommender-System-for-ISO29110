@@ -16,7 +16,7 @@ const post = (path, data) => request(path, { method: 'POST', headers: { 'Content
 
 export const api = {
   options: () => request('/search/options'),
-  search: (template, params) => post(`/search/${template}`, params),
+  search: (params) => post('/search', params),
   projects: () => request('/projects'),
   assessment: (id) => request(`/projects/${encodeURIComponent(id)}/assessment`),
   reasoningReport: () => request('/reasoning-report'),

@@ -12846,9 +12846,9 @@ ISO29110V2:recommendTask rdf:type owl:ObjectProperty ;
     rdfs:domain ISO29110V2:AssessedEntity ; rdfs:range ISO29110V2:Task ;
     rdfs:comment "Inferred by RecommendTaskRule: ISO/IEC 29110 task that produces the work product with a gap." .
 
-ISO29110V2:recommendRole rdf:type owl:ObjectProperty ;
-    rdfs:domain ISO29110V2:AssessedEntity ; rdfs:range ISO29110V2:Role ;
-    rdfs:comment "Inferred by RecommendRoleRule: role responsible for a recommended task." .
+ISO29110V2:recommendOutcome rdf:type owl:ObjectProperty ;
+    rdfs:domain ISO29110V2:AssessedEntity ; rdfs:range ISO29110V2:ProcessOutcome ;
+    rdfs:comment "Inferred by RecommendOutcomeRule (rev08): process outcome of a base practice whose pre-assessment uses the work product with a gap (same BP -> WP evidence set as the advisor's Pre-Assessment sheet)." .
 
 ISO29110V2:recommendBasePractice rdf:type owl:ObjectProperty ;
     rdfs:domain ISO29110V2:AssessedEntity ; rdfs:range ISO29110V2:BasePractice ;
@@ -16979,6 +16979,42 @@ ISO29110V2:WP.21 ISO29110V2:isEntityOf ISO29110V2:AE.PJ03.WP21 .
 ISO29110V2:WP.22 ISO29110V2:isEntityOf ISO29110V2:AE.PJ03.WP22 .
 ISO29110V2:WP.23 ISO29110V2:isEntityOf ISO29110V2:AE.PJ03.WP23 .
 
+###  http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#WPC.15.02
+ISO29110V2:WPC.15.02 rdf:type owl:NamedIndividual ,
+        ISO29110V2:WorkProductCharacteristic ;
+    ISO29110V2:isCharacteristicsOf ISO29110V2:WP.16 ;
+    ISO29110V2:hasWorkProductCharacteristicDetail "Textual and graphical information on the software structure" ;
+    ISO29110V2:hasWorkProductCharacteristicID "WPC.15" ;
+    ISO29110V2:hasWorkProductCharacteristicList "# Low-level or detailed software design\n- Provides detailed design (could be represented as a prototype, flow chart, entity-relationship diagram, pseudo-code, etc.)\n- Provides format of input/output data\n- Provides specification of data storage needs\n- Establishes required data naming conventions\n- Defines the format of required data structures\n- Defines the data fields and purpose of each required data element\n- Provides the specifications of the program structure" ;
+    ISO29110V2:hasWorkProductCharacteristicName "Software Design" .
+
+#  rev07/rev08: WP.16 low-level design characteristic (PDTR 29110-5-1-2 Table 38) + assessment links
+ISO29110V2:WP.16 ISO29110V2:hasCharacteristics ISO29110V2:WPC.15.02 .
+ISO29110V2:AR.PJ01.WP16.06 ISO29110V2:hasAssessedCharacteristic ISO29110V2:WPC.15.02 .
+ISO29110V2:AR.PJ01.WP16.07 ISO29110V2:hasAssessedCharacteristic ISO29110V2:WPC.15.02 .
+ISO29110V2:AR.PJ01.WP16.08 ISO29110V2:hasAssessedCharacteristic ISO29110V2:WPC.15.02 .
+ISO29110V2:AR.PJ01.WP16.09 ISO29110V2:hasAssessedCharacteristic ISO29110V2:WPC.15.02 .
+ISO29110V2:AR.PJ01.WP16.10 ISO29110V2:hasAssessedCharacteristic ISO29110V2:WPC.15.02 .
+ISO29110V2:AR.PJ01.WP16.11 ISO29110V2:hasAssessedCharacteristic ISO29110V2:WPC.15.02 .
+ISO29110V2:AR.PJ01.WP16.12 ISO29110V2:hasAssessedCharacteristic ISO29110V2:WPC.15.02 .
+ISO29110V2:AR.PJ01.WP16.13 ISO29110V2:hasAssessedCharacteristic ISO29110V2:WPC.15.02 .
+ISO29110V2:AR.PJ02.WP16.06 ISO29110V2:hasAssessedCharacteristic ISO29110V2:WPC.15.02 .
+ISO29110V2:AR.PJ02.WP16.07 ISO29110V2:hasAssessedCharacteristic ISO29110V2:WPC.15.02 .
+ISO29110V2:AR.PJ02.WP16.08 ISO29110V2:hasAssessedCharacteristic ISO29110V2:WPC.15.02 .
+ISO29110V2:AR.PJ02.WP16.09 ISO29110V2:hasAssessedCharacteristic ISO29110V2:WPC.15.02 .
+ISO29110V2:AR.PJ02.WP16.10 ISO29110V2:hasAssessedCharacteristic ISO29110V2:WPC.15.02 .
+ISO29110V2:AR.PJ02.WP16.11 ISO29110V2:hasAssessedCharacteristic ISO29110V2:WPC.15.02 .
+ISO29110V2:AR.PJ02.WP16.12 ISO29110V2:hasAssessedCharacteristic ISO29110V2:WPC.15.02 .
+ISO29110V2:AR.PJ02.WP16.13 ISO29110V2:hasAssessedCharacteristic ISO29110V2:WPC.15.02 .
+ISO29110V2:AR.PJ03.WP16.06 ISO29110V2:hasAssessedCharacteristic ISO29110V2:WPC.15.02 .
+ISO29110V2:AR.PJ03.WP16.07 ISO29110V2:hasAssessedCharacteristic ISO29110V2:WPC.15.02 .
+ISO29110V2:AR.PJ03.WP16.08 ISO29110V2:hasAssessedCharacteristic ISO29110V2:WPC.15.02 .
+ISO29110V2:AR.PJ03.WP16.09 ISO29110V2:hasAssessedCharacteristic ISO29110V2:WPC.15.02 .
+ISO29110V2:AR.PJ03.WP16.10 ISO29110V2:hasAssessedCharacteristic ISO29110V2:WPC.15.02 .
+ISO29110V2:AR.PJ03.WP16.11 ISO29110V2:hasAssessedCharacteristic ISO29110V2:WPC.15.02 .
+ISO29110V2:AR.PJ03.WP16.12 ISO29110V2:hasAssessedCharacteristic ISO29110V2:WPC.15.02 .
+ISO29110V2:AR.PJ03.WP16.13 ISO29110V2:hasAssessedCharacteristic ISO29110V2:WPC.15.02 .
+
 #################################################################
 #    Rules (rev06: rewritten; removed ImprovementRecommendationRule, ApprovedRequirementSpecRule, ApprovedTestCaseRule)
 #################################################################
@@ -17001,7 +17037,7 @@ ISO29110V2:WP.23 ISO29110V2:isEntityOf ISO29110V2:AE.PJ03.WP23 .
 
 :po rdf:type ns1:Variable .
 
-:r rdf:type ns1:Variable .
+:pas rdf:type ns1:Variable .
 
 :score rdf:type ns1:Variable .
 
@@ -17163,13 +17199,16 @@ ISO29110V2:WP.23 ISO29110V2:isEntityOf ISO29110V2:AE.PJ03.WP23 .
  ] .
 
 [ ns2:isRuleEnabled "true"^^xsd:boolean ;
-   rdfs:comment "Recommended task -> recommend the roles that perform it" ;
-   rdfs:label "RecommendRoleRule" ;
+   rdfs:comment "Gap on a work product -> process outcomes of the base practices whose pre-assessment uses that work product (rev08; replaces RecommendRoleRule)" ;
+   rdfs:label "RecommendOutcomeRule" ;
    rdf:type ns1:Imp ;
-   ns1:body [ rdf:type ns1:AtomList ; rdf:first [ rdf:type ns1:IndividualPropertyAtom ; ns1:propertyPredicate ISO29110V2:recommendTask ; ns1:argument1 :ae ; ns1:argument2 :t ] ;
-      rdf:rest [ rdf:type ns1:AtomList ; rdf:first [ rdf:type ns1:IndividualPropertyAtom ; ns1:propertyPredicate ISO29110V2:hasRole ; ns1:argument1 :t ; ns1:argument2 :r ] ;
-      rdf:rest rdf:nil ] ] ;
-   ns1:head [ rdf:type ns1:AtomList ; rdf:first [ rdf:type ns1:IndividualPropertyAtom ; ns1:propertyPredicate ISO29110V2:recommendRole ; ns1:argument1 :ae ; ns1:argument2 :r ] ;
+   ns1:body [ rdf:type ns1:AtomList ; rdf:first [ rdf:type ns1:ClassAtom ; ns1:classPredicate ISO29110V2:GapResult ; ns1:argument1 :ar ] ;
+      rdf:rest [ rdf:type ns1:AtomList ; rdf:first [ rdf:type ns1:IndividualPropertyAtom ; ns1:propertyPredicate ISO29110V2:isAssessmentResultOf ; ns1:argument1 :ar ; ns1:argument2 :ae ] ;
+      rdf:rest [ rdf:type ns1:AtomList ; rdf:first [ rdf:type ns1:IndividualPropertyAtom ; ns1:propertyPredicate ISO29110V2:isAssessedEntityOf ; ns1:argument1 :ae ; ns1:argument2 :pas ] ;
+      rdf:rest [ rdf:type ns1:AtomList ; rdf:first [ rdf:type ns1:IndividualPropertyAtom ; ns1:propertyPredicate ISO29110V2:hasBasePractice ; ns1:argument1 :pas ; ns1:argument2 :bp ] ;
+      rdf:rest [ rdf:type ns1:AtomList ; rdf:first [ rdf:type ns1:IndividualPropertyAtom ; ns1:propertyPredicate ISO29110V2:hasProcessOutcome ; ns1:argument1 :bp ; ns1:argument2 :po ] ;
+      rdf:rest rdf:nil ] ] ] ] ] ;
+   ns1:head [ rdf:type ns1:AtomList ; rdf:first [ rdf:type ns1:IndividualPropertyAtom ; ns1:propertyPredicate ISO29110V2:recommendOutcome ; ns1:argument1 :ae ; ns1:argument2 :po ] ;
       rdf:rest rdf:nil ]
  ] .
 
