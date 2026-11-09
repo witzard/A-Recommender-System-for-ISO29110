@@ -123,16 +123,14 @@ ISO29110V2:hasInputWorkProduct rdf:type owl:ObjectProperty ;
     rdfs:subPropertyOf owl:topObjectProperty ;
     owl:inverseOf ISO29110V2:isInputWorkProductOf ;
     rdfs:domain ISO29110V2:Task ;
-    rdfs:range ISO29110V2:InputWorkProduct ,
-        ISO29110V2:WorkProduct .
+    rdfs:range ISO29110V2:InputWorkProduct .
 
 
 ###  http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#hasOutputWorkProduct
 ISO29110V2:hasOutputWorkProduct rdf:type owl:ObjectProperty ;
     rdfs:subPropertyOf owl:topObjectProperty ;
     owl:inverseOf ISO29110V2:isOutputWorkProductOf ;
-    rdfs:range ISO29110V2:OutputWorkProduct ,
-        ISO29110V2:WorkProduct ;
+    rdfs:range ISO29110V2:OutputWorkProduct ;
     rdfs:domain [ rdf:type owl:Class ;
           owl:unionOf ( ISO29110V2:Task ISO29110V2:BasePractice )
         ] .
@@ -426,8 +424,7 @@ ISO29110V2:hasExpertType rdf:type owl:DatatypeProperty ;
 ###  http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#hasInputWorkProductName
 ISO29110V2:hasInputWorkProductName rdf:type owl:DatatypeProperty ;
     rdfs:subPropertyOf owl:topDataProperty ;
-    rdfs:domain ISO29110V2:InputWorkProduct ,
-        ISO29110V2:WorkProduct ;
+    rdfs:domain ISO29110V2:InputWorkProduct ;
     rdfs:range xsd:string .
 
 
@@ -455,8 +452,7 @@ ISO29110V2:hasNumberofStaff rdf:type owl:DatatypeProperty ;
 ###  http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#hasOutputWorkProductName
 ISO29110V2:hasOutputWorkProductName rdf:type owl:DatatypeProperty ;
     rdfs:subPropertyOf owl:topDataProperty ;
-    rdfs:domain ISO29110V2:OutputWorkProduct ,
-        ISO29110V2:WorkProduct ;
+    rdfs:domain ISO29110V2:OutputWorkProduct ;
     rdfs:range xsd:string .
 
 
@@ -738,10 +734,6 @@ ISO29110V2:AssessedEntity rdf:type owl:Class ;
                                           [ rdf:type owl:Restriction ;
                                             owl:onProperty ISO29110V2:responsibleFor ;
                                             owl:someValuesFrom ISO29110V2:Project
-                                          ] ,
-                                          [ rdf:type owl:Restriction ;
-                                            owl:onProperty ISO29110V2:recommend ;
-                                            owl:someValuesFrom ISO29110V2:RecommendedPractice
                                           ] .
 
 
@@ -17044,6 +17036,64 @@ ISO29110V2:WP.23 ISO29110V2:hasCharacteristics ISO29110V2:WPC.22.12 .
 ISO29110V2:AR.PJ01.WP23.11 ISO29110V2:hasAssessedCharacteristic ISO29110V2:WPC.22.12 .
 ISO29110V2:AR.PJ02.WP23.11 ISO29110V2:hasAssessedCharacteristic ISO29110V2:WPC.22.12 .
 ISO29110V2:AR.PJ03.WP23.11 ISO29110V2:hasAssessedCharacteristic ISO29110V2:WPC.22.12 .
+
+#  rev10: process outcomes of each process (= outcomes of its Base Practices; restriction Process ⊑ hasProcessOutcome some ProcessOutcome)
+ISO29110V2:PM ISO29110V2:hasProcessOutcome ISO29110V2:PM.PO.01 .
+ISO29110V2:PM.PO.01 ISO29110V2:isProcessOutcomeOf ISO29110V2:PM .
+ISO29110V2:PM ISO29110V2:hasProcessOutcome ISO29110V2:PM.PO.02 .
+ISO29110V2:PM.PO.02 ISO29110V2:isProcessOutcomeOf ISO29110V2:PM .
+ISO29110V2:PM ISO29110V2:hasProcessOutcome ISO29110V2:PM.PO.03 .
+ISO29110V2:PM.PO.03 ISO29110V2:isProcessOutcomeOf ISO29110V2:PM .
+ISO29110V2:PM ISO29110V2:hasProcessOutcome ISO29110V2:PM.PO.04 .
+ISO29110V2:PM.PO.04 ISO29110V2:isProcessOutcomeOf ISO29110V2:PM .
+ISO29110V2:PM ISO29110V2:hasProcessOutcome ISO29110V2:PM.PO.05 .
+ISO29110V2:PM.PO.05 ISO29110V2:isProcessOutcomeOf ISO29110V2:PM .
+ISO29110V2:PM ISO29110V2:hasProcessOutcome ISO29110V2:PM.PO.06 .
+ISO29110V2:PM.PO.06 ISO29110V2:isProcessOutcomeOf ISO29110V2:PM .
+ISO29110V2:PM ISO29110V2:hasProcessOutcome ISO29110V2:PM.PO.07 .
+ISO29110V2:PM.PO.07 ISO29110V2:isProcessOutcomeOf ISO29110V2:PM .
+ISO29110V2:PM ISO29110V2:hasProcessOutcome ISO29110V2:PM.PO.08 .
+ISO29110V2:PM.PO.08 ISO29110V2:isProcessOutcomeOf ISO29110V2:PM .
+ISO29110V2:PM ISO29110V2:hasProcessOutcome ISO29110V2:PM.PO.09 .
+ISO29110V2:PM.PO.09 ISO29110V2:isProcessOutcomeOf ISO29110V2:PM .
+ISO29110V2:PM ISO29110V2:hasProcessOutcome ISO29110V2:PM.PO.10 .
+ISO29110V2:PM.PO.10 ISO29110V2:isProcessOutcomeOf ISO29110V2:PM .
+ISO29110V2:PM ISO29110V2:hasProcessOutcome ISO29110V2:PM.PO.11 .
+ISO29110V2:PM.PO.11 ISO29110V2:isProcessOutcomeOf ISO29110V2:PM .
+ISO29110V2:PM ISO29110V2:hasProcessOutcome ISO29110V2:PM.PO.12 .
+ISO29110V2:PM.PO.12 ISO29110V2:isProcessOutcomeOf ISO29110V2:PM .
+ISO29110V2:PM ISO29110V2:hasProcessOutcome ISO29110V2:PM.PO.13 .
+ISO29110V2:PM.PO.13 ISO29110V2:isProcessOutcomeOf ISO29110V2:PM .
+ISO29110V2:PM ISO29110V2:hasProcessOutcome ISO29110V2:PM.PO.14 .
+ISO29110V2:PM.PO.14 ISO29110V2:isProcessOutcomeOf ISO29110V2:PM .
+ISO29110V2:PM ISO29110V2:hasProcessOutcome ISO29110V2:PM.PO.15 .
+ISO29110V2:PM.PO.15 ISO29110V2:isProcessOutcomeOf ISO29110V2:PM .
+ISO29110V2:SI ISO29110V2:hasProcessOutcome ISO29110V2:SI.PO.16 .
+ISO29110V2:SI.PO.16 ISO29110V2:isProcessOutcomeOf ISO29110V2:SI .
+ISO29110V2:SI ISO29110V2:hasProcessOutcome ISO29110V2:SI.PO.17 .
+ISO29110V2:SI.PO.17 ISO29110V2:isProcessOutcomeOf ISO29110V2:SI .
+ISO29110V2:SI ISO29110V2:hasProcessOutcome ISO29110V2:SI.PO.18 .
+ISO29110V2:SI.PO.18 ISO29110V2:isProcessOutcomeOf ISO29110V2:SI .
+ISO29110V2:SI ISO29110V2:hasProcessOutcome ISO29110V2:SI.PO.19 .
+ISO29110V2:SI.PO.19 ISO29110V2:isProcessOutcomeOf ISO29110V2:SI .
+ISO29110V2:SI ISO29110V2:hasProcessOutcome ISO29110V2:SI.PO.20 .
+ISO29110V2:SI.PO.20 ISO29110V2:isProcessOutcomeOf ISO29110V2:SI .
+ISO29110V2:SI ISO29110V2:hasProcessOutcome ISO29110V2:SI.PO.21 .
+ISO29110V2:SI.PO.21 ISO29110V2:isProcessOutcomeOf ISO29110V2:SI .
+ISO29110V2:SI ISO29110V2:hasProcessOutcome ISO29110V2:SI.PO.22 .
+ISO29110V2:SI.PO.22 ISO29110V2:isProcessOutcomeOf ISO29110V2:SI .
+ISO29110V2:SI ISO29110V2:hasProcessOutcome ISO29110V2:SI.PO.23 .
+ISO29110V2:SI.PO.23 ISO29110V2:isProcessOutcomeOf ISO29110V2:SI .
+ISO29110V2:SI ISO29110V2:hasProcessOutcome ISO29110V2:SI.PO.24 .
+ISO29110V2:SI.PO.24 ISO29110V2:isProcessOutcomeOf ISO29110V2:SI .
+ISO29110V2:SI ISO29110V2:hasProcessOutcome ISO29110V2:SI.PO.25 .
+ISO29110V2:SI.PO.25 ISO29110V2:isProcessOutcomeOf ISO29110V2:SI .
+ISO29110V2:SI ISO29110V2:hasProcessOutcome ISO29110V2:SI.PO.26 .
+ISO29110V2:SI.PO.26 ISO29110V2:isProcessOutcomeOf ISO29110V2:SI .
+ISO29110V2:SI ISO29110V2:hasProcessOutcome ISO29110V2:SI.PO.27 .
+ISO29110V2:SI.PO.27 ISO29110V2:isProcessOutcomeOf ISO29110V2:SI .
+ISO29110V2:SI ISO29110V2:hasProcessOutcome ISO29110V2:SI.PO.28 .
+ISO29110V2:SI.PO.28 ISO29110V2:isProcessOutcomeOf ISO29110V2:SI .
 
 #################################################################
 #    Rules (rev06: rewritten; removed ImprovementRecommendationRule, ApprovedRequirementSpecRule, ApprovedTestCaseRule)

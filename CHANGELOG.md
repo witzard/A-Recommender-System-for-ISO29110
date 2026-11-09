@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-09 - ontology rev10 (restriction clean-up)
+
+- `ontology/ISO29110V2_rev10.ttl` = `08_Revisions/2026-11-09_Round10_Restriction/ISO29110V2_rev10.ttl`
+  (SHA-256 `1fb307df45a35ea0aa563e10fa60b9a9525e90db30d509ad6e09c70bfbfc7cc4`): AssessedEntity no longer requires
+  `recommend some RecommendedPractice`; redundant WorkProduct removed from the range/domain of has(Input|Output)WorkProduct(Name);
+  PM and SI hasProcessOutcome their 15 / 13 outcomes. `kb/inferred.nt` is identical to rev09; tests/expected.json unchanged.
+
 ## 2026-11-09 - ontology rev09 (advisor BP-WP table)
 
 ### Ontology
