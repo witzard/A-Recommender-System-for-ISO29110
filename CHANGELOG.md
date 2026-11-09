@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-11-09 - ontology rev11 (BasePracticeOutputWPRule removed)
+
+- `ontology/ISO29110V2_rev11.ttl` = `08_Revisions/2026-11-09_Round11_RemoveR5/ISO29110V2_rev11.ttl`
+  (SHA-256 `967ab17b36fb26a9e148d6672f99e540b252d9716b8ac2691d537a9ef4d80c31`): rule BasePracticeOutputWPRule (R5) removed;
+  11 rules. Every fact it produced was already asserted, so `kb/inferred.nt` is identical to rev10; tests unchanged.
+
 ## 2026-11-09 - ontology rev10 (restriction clean-up)
 
 - `ontology/ISO29110V2_rev10.ttl` = `08_Revisions/2026-11-09_Round10_Restriction/ISO29110V2_rev10.ttl`

@@ -19,7 +19,7 @@ and `recommendOutcome` that Pellet infers from the SWRL rules of the ontology; t
 
 | Path | Content |
 |---|---|
-| `ontology/ISO29110V2_rev10.ttl` | Ontology (copy of `08_Revisions/2026-11-09_Round10_Restriction/ISO29110V2_rev10.ttl`, not modified) |
+| `ontology/ISO29110V2_rev11.ttl` | Ontology (copy of `08_Revisions/2026-11-09_Round11_RemoveR5/ISO29110V2_rev11.ttl`, not modified) |
 | `reasoner/` | `SwrlReasoningRunner` (Pellet 2.3.1 + OWL API 3.4.3) and its libraries |
 | `scripts/reason.cmd`, `scripts/load-fuseki.cmd` | Run the reasoner; load the ontology and the inferred facts into Fuseki (`.sh` versions for Linux/macOS) |
 | `kb/inferred.nt`, `kb/reasoning-report.json` | Output of the last reasoner run |
@@ -37,7 +37,7 @@ Requirements: Java 17 or later (backend; the reasoner needs 11 or later), Node.j
 1. **Fuseki**: `cd C:\apache-jena-fuseki-6.2.0` then `.\fuseki-server.bat`. Create the dataset `ISO29110_RecommenderSystems`
    (in-memory or TDB2; leave *union default graph* off).
 2. **Load the data** (from the repository root): `scripts\load-fuseki.cmd`
-   - default graph: `ontology/ISO29110V2_rev10.ttl`
+   - default graph: `ontology/ISO29110V2_rev11.ttl`
    - named graph `urn:iso29110:graph:inferred`: `kb/inferred.nt`
 3. **Backend**: `cd backend` then `.\mvnw.cmd spring-boot:run` (http://localhost:8080/api/projects lists 3 projects).
 4. **Frontend**: `cd frontend`, `npm install`, `npm run dev`, open http://localhost:5173.
