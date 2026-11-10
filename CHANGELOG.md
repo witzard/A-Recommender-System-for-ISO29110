@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-11-10 - collapsible gap and recommendation sections (UI only)
+
+- Assessment tab: the "Characteristics ..." table and each work product under "Recommendations" are collapsible
+  (`<details>`), collapsed by default, with "Expand all" / "Collapse all". Each work product summary shows the number of
+  characteristics, tasks, outcomes and Base Practices. No change to the backend, ontology or inferred facts.
+
 ## 2026-11-09 - ontology rev11 (BasePracticeOutputWPRule removed)
 
 - `ontology/ISO29110V2_rev11.ttl` = `08_Revisions/2026-11-09_Round11_RemoveR5/ISO29110V2_rev11.ttl`

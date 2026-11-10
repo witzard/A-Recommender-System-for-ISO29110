@@ -35,7 +35,12 @@ details { margin: 8px 0; }
 summary { cursor: pointer; color: #1f3f6b; }
 details pre { border: 1px solid #cccccc; background: #f7f7f7; padding: 8px; overflow-x: auto; white-space: pre; }
 
-.rec { border-top: 1px solid #cccccc; padding-top: 4px; margin-top: 16px; }
+.rec { border-top: 1px solid #cccccc; padding-top: 4px; margin-top: 8px; }
+.rec > summary h3, .gaps > summary h2 { display: inline; margin: 0; }
+.rec > summary h3 { font-size: 16px; }
+.rec > summary, .gaps > summary { padding: 4px 0; color: inherit; }
+.rec[open] > summary, .gaps[open] > summary { margin-bottom: 6px; }
+.section-actions { display: flex; gap: 8px; margin: 12px 0 4px; }
 .rec ul { margin: 4px 0 8px 18px; padding: 0; }
 .footer { margin-top: 32px; border-top: 1px solid #cccccc; padding-top: 6px; color: #666666; font-size: 12px; }
 

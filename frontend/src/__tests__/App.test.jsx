@@ -94,7 +94,8 @@ describe('assessment results and recommendations', () => {
   it('shows for WP.02 of PJ.01 the 7 tasks inferred by the reasoner and the reason', async () => {
     await open();
     await screen.findByText('Recommendations (1 work product)');
-    const rec = screen.getByRole('heading', { name: /WP\.02 Agreement/ }).parentElement;
+    fireEvent.click(screen.getByRole('button', { name: 'Expand all' }));
+    const rec = screen.getByRole('heading', { name: /WP\.02 Agreement/ }).closest('details');
     const tasks = within(rec).getAllByRole('table')[0];
     expect(within(tasks).getAllByRole('row')).toHaveLength(1 + 7);
     expect(within(rec).getByText(/0%, Not achieved/)).toBeTruthy();
@@ -105,7 +106,8 @@ describe('assessment results and recommendations', () => {
   it('shows the process outcomes linked to WP.02 of PJ.01 (RecommendOutcomeRule)', async () => {
     await open();
     await screen.findByText('Recommendations (1 work product)');
-    const rec = screen.getByRole('heading', { name: /WP\.02 Agreement/ }).parentElement;
+    fireEvent.click(screen.getByRole('button', { name: 'Expand all' }));
+    const rec = screen.getByRole('heading', { name: /WP\.02 Agreement/ }).closest('details');
     const outcomes = within(rec).getByRole('columnheader', { name: 'Process outcome' }).closest('table');
     const rows = within(outcomes).getAllByRole('row').slice(1).map((r) => within(r).getAllByRole('cell').map((c) => c.textContent));
     expect(rows.map((r) => [r[0], r[2]])).toEqual([['PM a)', 'PM.BP1'], ['PM b)', 'PM.BP3, PM.BP4, PM.BP5, PM.BP6, PM.BP7, PM.BP8']]);
@@ -120,6 +122,13 @@ describe('assessment results and recommendations', () => {
     fireEvent.change(screen.getByLabelText('Show gaps rated'), { target: { value: 'Partially_achieved' } });
     expect(screen.getByText('Characteristics partially achieved (63)')).toBeTruthy();
     expect(screen.getByText('Recommendations (11 work products)')).toBeTruthy();
+    const sections = () => [...document.querySelectorAll('details.gaps, details.rec')];
+    expect(sections()).toHaveLength(1 + 11);
+    expect(sections().filter((d) => d.open)).toHaveLength(0);
+    fireEvent.click(screen.getByRole('button', { name: 'Expand all' }));
+    expect(sections().filter((d) => d.open)).toHaveLength(1 + 11);
+    fireEvent.click(screen.getByRole('button', { name: 'Collapse all' }));
+    expect(sections().filter((d) => d.open)).toHaveLength(0);
     fireEvent.change(screen.getByLabelText('Show gaps rated'), { target: { value: '' } });
     expect(screen.getByText('Recommendations (12 work products)')).toBeTruthy();
   });

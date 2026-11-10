@@ -247,11 +247,30 @@ function Gaps({ gaps }) {
   );
 }
 
-function Recommendation({ rec, gaps }) {
-  const link = (l) => (l === 'produces' ? `Produces ${rec.wpID}` : l === 'uses' ? `Uses ${rec.wpID} as input` : '');
+// Collapsible section whose open state is kept by the parent, so "Expand all" / "Collapse all" can drive it.
+function Section({ id, open, setOpen, className, summary, children }) {
   return (
-    <div className="rec">
-      <h3>{rec.wpID} {rec.wpName} <span className="note">({rec.ae})</span></h3>
+    <details className={className} open={open.has(id)}
+      onToggle={(e) => { const o = e.currentTarget.open; setOpen((prev) => {
+        if (prev.has(id) === o) return prev;
+        const next = new Set(prev); if (o) next.add(id); else next.delete(id); return next;
+      }); }}>
+      <summary>{summary}</summary>
+      {children}
+    </details>
+  );
+}
+
+function Recommendation({ rec, gaps, open, setOpen }) {
+  const link = (l) => (l === 'produces' ? `Produces ${rec.wpID}` : l === 'uses' ? `Uses ${rec.wpID} as input` : '');
+  const plural = (n, word) => `${n} ${word}${n === 1 ? '' : 's'}`;
+  return (
+    <Section id={rec.wpID} open={open} setOpen={setOpen} className="rec"
+      summary={<>
+        <h3>{rec.wpID} {rec.wpName} <span className="note">({rec.ae})</span></h3>
+        <span className="note"> {plural(gaps.length, 'characteristic')}, {plural(rec.tasks.length, 'task')},{' '}
+          {plural(rec.outcomes.length, 'outcome')}, {plural(rec.basePractices.length, 'Base Practice')}</span>
+      </>}>
       <p>Reason: {gaps.length} characteristic{gaps.length === 1 ? ' is' : 's are'} rated {gaps.length ? [...new Set(gaps.map((g) => ratingLabel(g.rating)))].join(' / ') : ''}:</p>
       <ul>{gaps.map((g, i) => (
         <li key={`${g.characteristic}-${i}`}>{g.characteristic}: <span className="multiline">{g.item}</span> ({g.percentage}%, {ratingLabel(g.rating)})</li>))}</ul>
@@ -276,7 +295,7 @@ function Recommendation({ rec, gaps }) {
             <tr key={b.bpID}><td className="id">{b.bpID}</td><td><span className="multiline">{b.description}</span></td></tr>))}</tbody>
         </table>
       ) : <p className="note">No Base Practice has {rec.wpID} as output in the ontology, so no Base Practice is recommended.</p>}
-    </div>
+    </Section>
   );
 }
 
@@ -287,6 +306,9 @@ function GapsAndRecommendations({ data, rating, setRating }) {
   const gaps = data.gaps.filter(keep);
   const recs = data.recommendations.map((r) => ({ rec: r, gaps: r.gaps.filter(keep) })).filter((x) => x.gaps.length > 0);
   const count = (k) => data.gaps.filter((g) => !k || g.rating === k).length;
+  // Sections are collapsed by default so the page stays short; the open state survives a change of the rating filter.
+  const [open, setOpen] = useState(() => new Set());
+  const allIds = ['gaps', ...recs.map((x) => x.rec.wpID)];
   return (
     <>
       <form className="form" onSubmit={(e) => e.preventDefault()}>
@@ -295,15 +317,21 @@ function GapsAndRecommendations({ data, rating, setRating }) {
           {GAP_FILTERS.map(([k, label]) => <option key={k || 'all'} value={k}>{label} ({count(k)})</option>)}
         </select>
       </form>
-      <h2>Characteristics {rating ? ratingLabel(rating).toLowerCase() : 'not achieved or partially achieved'} ({gaps.length})</h2>
-      <Gaps gaps={gaps} />
+      <div className="section-actions">
+        <button type="button" className="plain-button" onClick={() => setOpen(new Set(allIds))}>Expand all</button>
+        <button type="button" className="plain-button" onClick={() => setOpen(new Set())}>Collapse all</button>
+      </div>
+      <Section id="gaps" open={open} setOpen={setOpen} className="gaps"
+        summary={<h2>Characteristics {rating ? ratingLabel(rating).toLowerCase() : 'not achieved or partially achieved'} ({gaps.length})</h2>}>
+        <Gaps gaps={gaps} />
+      </Section>
       <h2>Recommendations ({recs.length} work product{recs.length === 1 ? '' : 's'})</h2>
       <p className="note">
         The tasks, Base Practices and process outcomes below are inferred by the reasoner from the rules of the ISO/IEC 29110
         knowledge base. The roles are those that perform each recommended task.
       </p>
       {recs.length === 0 && <p>No recommendation for the gaps shown.</p>}
-      {recs.map((x) => <Recommendation key={x.rec.wpID} rec={x.rec} gaps={x.gaps} />)}
+      {recs.map((x) => <Recommendation key={x.rec.wpID} rec={x.rec} gaps={x.gaps} open={open} setOpen={setOpen} />)}
     </>
   );
 }
