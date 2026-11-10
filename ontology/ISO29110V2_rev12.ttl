@@ -17178,6 +17178,19 @@ ISO29110V2:SI.PO.28 ISO29110V2:isProcessOutcomeOf ISO29110V2:SI .
  ] .
 
 [ ns2:isRuleEnabled "true"^^xsd:boolean ;
+   rdfs:comment "unchanged from rev05" ;
+   rdfs:label "BasePracticeOutputWPRule" ;
+   rdf:type ns1:Imp ;
+   ns1:body [ rdf:type ns1:AtomList ; rdf:first [ rdf:type ns1:ClassAtom ; ns1:classPredicate ISO29110V2:OutputWorkProduct ; ns1:argument1 :owp ] ;
+      rdf:rest [ rdf:type ns1:AtomList ; rdf:first [ rdf:type ns1:IndividualPropertyAtom ; ns1:propertyPredicate ISO29110V2:hasProcessOutcome ; ns1:argument1 :owp ; ns1:argument2 :po ] ;
+      rdf:rest [ rdf:type ns1:AtomList ; rdf:first [ rdf:type ns1:ClassAtom ; ns1:classPredicate ISO29110V2:BasePractice ; ns1:argument1 :bp ] ;
+      rdf:rest [ rdf:type ns1:AtomList ; rdf:first [ rdf:type ns1:IndividualPropertyAtom ; ns1:propertyPredicate ISO29110V2:hasProcessOutcome ; ns1:argument1 :bp ; ns1:argument2 :po ] ;
+      rdf:rest rdf:nil ] ] ] ] ;
+   ns1:head [ rdf:type ns1:AtomList ; rdf:first [ rdf:type ns1:IndividualPropertyAtom ; ns1:propertyPredicate ISO29110V2:isOutputWorkProductOf ; ns1:argument1 :owp ; ns1:argument2 :bp ] ;
+      rdf:rest rdf:nil ]
+ ] .
+
+[ ns2:isRuleEnabled "true"^^xsd:boolean ;
    rdfs:comment "Not achieved result is a gap" ;
    rdfs:label "GapNotAchievedRule" ;
    rdf:type ns1:Imp ;

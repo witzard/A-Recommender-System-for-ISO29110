@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-10 - ontology rev12 (BasePracticeOutputWPRule restored)
+
+- `ontology/ISO29110V2_rev12.ttl` = `08_Revisions/2026-11-10_Round12_RestoreR5/ISO29110V2_rev12.ttl`
+  (SHA-256 `1fb307df45a35ea0aa563e10fa60b9a9525e90db30d509ad6e09c70bfbfc7cc4`, byte-identical to rev10): rule
+  BasePracticeOutputWPRule (R5) restored at the advisor's request (2026-11-10); 12 rules. `kb/` regenerated with
+  `scripts/reason.sh` (consistent; inferred facts identical to rev11); tests/expected.json unchanged.
+
 ## 2026-11-10 - collapsible gap and recommendation sections (UI only)
 
 - Assessment tab: the "Characteristics ..." table and each work product under "Recommendations" are collapsible

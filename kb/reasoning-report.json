@@ -1,15 +1,16 @@
 {
   "reasoner": "Pellet 2.3.1 via OWL API 3.4.3",
-  "runAt": "2026-11-09T16:20:23.236845Z",
+  "runAt": "2026-11-10T07:12:13.482318Z",
   "consistent": true,
   "noRules": false,
   "excludedRules": [],
-  "elapsedMs": 11126,
+  "elapsedMs": 14148,
   "inferred": {"types": 88, "objectPropertyValues": 993, "dataPropertyValues": 0},
   "inputs": {
-    "ontology/ISO29110V2_rev11.ttl": "967ab17b36fb26a9e148d6672f99e540b252d9716b8ac2691d537a9ef4d80c31"
+    "ontology/ISO29110V2_rev12.ttl": "1fb307df45a35ea0aa563e10fa60b9a9525e90db30d509ad6e09c70bfbfc7cc4"
   },
   "rules": [
+    {"label": "BasePracticeOutputWPRule", "enabled": true, "bodyAtoms": 4, "headAtoms": 1},
     {"label": "ExcludedConditionalWorkProductRule", "enabled": true, "bodyAtoms": 12, "headAtoms": 1},
     {"label": "GapNotAchievedRule", "enabled": true, "bodyAtoms": 1, "headAtoms": 1},
     {"label": "GapPartiallyAchievedRule", "enabled": true, "bodyAtoms": 1, "headAtoms": 1},
