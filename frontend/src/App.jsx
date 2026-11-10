@@ -196,9 +196,9 @@ function Scores({ data }) {
     <>
       <h3>Process</h3>
       <table style={{ width: 'auto', minWidth: 360 }}>
-        <thead><tr><th>Process</th><th className="num">Base Practices</th><th className="num">Score</th></tr></thead>
+        <thead><tr><th>Process</th><th className="num">Score</th></tr></thead>
         <tbody>{data.processScores.map((p) => (
-          <tr key={p.process}><td>{p.process}</td><td className="num">{p.nBP}</td><td className="num">{score(p.score)}</td></tr>))}</tbody>
+          <tr key={p.process}><td>{p.process}</td><td className="num">{score(p.score)}</td></tr>))}</tbody>
       </table>
       <h3>Work products</h3>
       <p className="note">

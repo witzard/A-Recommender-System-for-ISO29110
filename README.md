@@ -19,7 +19,7 @@ and `recommendOutcome` that Pellet infers from the SWRL rules of the ontology; t
 
 | Path | Content |
 |---|---|
-| `ontology/ISO29110V2_rev13.ttl` | Ontology (copy of `08_Revisions/2026-11-10_Round13_Scenarios/ISO29110V2_rev13.ttl`, not modified) |
+| `ontology/ISO29110V2_rev14.ttl` | Ontology (copy of `08_Revisions/2026-11-10_Round14_ScenariosOnly/ISO29110V2_rev14.ttl`, not modified) |
 | `reasoner/` | `SwrlReasoningRunner` (Pellet 2.3.1 + OWL API 3.4.3) and its libraries |
 | `scripts/reason.cmd`, `scripts/load-fuseki.cmd` | Run the reasoner; load the ontology and the inferred facts into Fuseki (`.sh` versions for Linux/macOS) |
 | `kb/inferred.nt`, `kb/reasoning-report.json` | Output of the last reasoner run |
@@ -27,10 +27,11 @@ and `recommendOutcome` that Pellet infers from the SWRL rules of the ontology; t
 | `frontend/` | React page (Vite) |
 | `tests/run_checks.py`, `tests/expected.json`, `tests/cq_parameters.json` | Checks of the running system (reasoning, scores, recommendations, the 34 CQs as parameter searches) |
 
-Company A (ENT.01 / PJ.01) is the case from the advisor's table. Companies B and C (ENT.02 / PJ.02, ENT.03 / PJ.03) are
-mock data (`rdfs:comment "MOCK DATA"`) and are labelled as such on the page. Case scenarios S1-S3 (ENT.04-06 /
-PJ.04-06, rev13, also mock data) have 25 % / 50 % / 80 % of their 23 work products assessed (Partial and Fully); the other
-work products keep their assessment results without a percentage (see `08_Revisions/2026-11-10_Round13_Scenarios`).
+The ontology (rev14) holds three mock case-scenario companies (`rdfs:comment "MOCK DATA"`, labelled as such on the page):
+S1 (ENT.04 / PJ.04), S2 (ENT.05 / PJ.05) and S3 (ENT.06 / PJ.06) with 25 % / 50 % / 80 % of their 23 work products assessed
+(Partial and Fully); the other work products keep their assessment results without a percentage. S1 does not deliver WP.08
+and WP.18 (ExcludedConditionalWorkProductRule). The earlier companies A-C (PJ.01-PJ.03) were removed in rev14
+(see `08_Revisions/2026-11-10_Round14_ScenariosOnly`).
 
 ## Run
 
@@ -39,9 +40,9 @@ Requirements: Java 17 or later (backend; the reasoner needs 11 or later), Node.j
 1. **Fuseki**: `cd C:\apache-jena-fuseki-6.2.0` then `.\fuseki-server.bat`. Create the dataset `ISO29110_RecommenderSystems`
    (in-memory or TDB2; leave *union default graph* off).
 2. **Load the data** (from the repository root): `scripts\load-fuseki.cmd`
-   - default graph: `ontology/ISO29110V2_rev13.ttl`
+   - default graph: `ontology/ISO29110V2_rev14.ttl`
    - named graph `urn:iso29110:graph:inferred`: `kb/inferred.nt`
-3. **Backend**: `cd backend` then `.\mvnw.cmd spring-boot:run` (http://localhost:8080/api/projects lists 6 projects).
+3. **Backend**: `cd backend` then `.\mvnw.cmd spring-boot:run` (http://localhost:8080/api/projects lists 3 projects).
 4. **Frontend**: `cd frontend`, `npm install`, `npm run dev`, open http://localhost:5173.
 
 After a change to the ontology, run `scripts\reason.cmd` (writes `kb/inferred.nt` and `kb/reasoning-report.json`) and
@@ -55,8 +56,9 @@ With Fuseki and the backend running:
 python tests\run_checks.py
 ```
 
-148 checks: R1-R11 and S1-S3 counts (reasoning; R11 = no recommendRole), process scores of the six projects, tasks /
-process outcomes / Base Practices of the 29 assessed entities with recommendations, and the 34 competency questions sent as parameters
+96 checks: inferred-fact counts (GapResult, S1-S3 tasks / Base Practices / outcomes, R8, R10, no recommendRole), process
+scores of the three scenario projects, tasks / process outcomes / Base Practices of the 15 assessed entities with
+recommendations, and the 34 competency questions sent as parameters
 (the query of the answering group must return the same task / Base Practice IDs as Round 6; Q33 = 137 pairs, rev09).
 
 Frontend: `cd frontend` then `npm test` (Vitest; the API is answered from `src/__tests__/fixtures.json`).

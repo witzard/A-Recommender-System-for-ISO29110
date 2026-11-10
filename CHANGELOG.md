@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-11-10 - ontology rev14 (scenario companies only) and process table
+
+- `ontology/ISO29110V2_rev14.ttl` = `08_Revisions/2026-11-10_Round14_ScenariosOnly/ISO29110V2_rev14.ttl`
+  (SHA-256 `05e6c7fb25676b6b2e1b8a61b3d1bef2a8fb8b674acb004e95213c181514f8f8`): companies A-C (ENT/PJ.01-03, their
+  AE/AR/PAS, AE.01) removed; scenarios S1-S3 regenerated with company profiles and N/P/L/F ratings, S1 excludes WP.08 and
+  WP.18 (R8) and has a gap on the Agreement (R10). No TBox or rule change. `kb/` regenerated (consistent, 12 rules).
+  `tests/expected.json` rebuilt for PJ.04-PJ.06 (96 checks).
+- Assessment tab: the Process table no longer shows the number of Base Practices (process and score only); test updated.
+- Not run yet on Windows: run_checks.py, npm test (the VM cannot run vitest with the Windows node_modules).
+
 ## 2026-11-10 - ontology rev13 (case scenarios S1-S3)
 
 - `ontology/ISO29110V2_rev13.ttl` = `08_Revisions/2026-11-10_Round13_Scenarios/ISO29110V2_rev13.ttl`

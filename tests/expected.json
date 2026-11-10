@@ -1,70 +1,25 @@
 {
   "_sources": {
-    "reasoning": "08_Revisions/2026-11-03_Round5_SWRL/VALIDATION_GUIDE.md (DL queries R1-R10, checked in Protege/Pellet 2026-11-04 00:38)",
-    "scores": "08_Revisions/2026-11-03_Round5_SWRL/CHANGELOG.md (Q3 v3 expected process scores)",
-    "recommendations": "08_Revisions/2026-11-03_Round5_SWRL/RECOMMENDATION_EXPECTED.md (task IDs written as hasTaskID, e.g. PM.PT.01.01 -> PM.1.1)",
     "templates": "08_Revisions/2026-11-04_Round6_QueryTemplates/eval_templates.tsv (returned_units) and cq_parameters.json",
-    "outcomes": "08_Revisions/2026-11-08_Round8_Outcome/CHANGELOG.md (recommendOutcome, rev08; equal to an independent Python computation)",
-    "basePractices": "08_Revisions/2026-11-09_Round9_AdvisorTable/CHANGELOG.md (rev09 RecommendBasePracticeRule via PreAssessment = advisor BP-WP table; equal to an independent Python computation, 14/14 AE)",
     "Q33": "rev09: 135 + WPC.22.11, WPC.22.12",
-    "scenarios": "08_Revisions/2026-11-10_Round13_Scenarios (rev13 case scenarios S1-S3 = PJ.04-PJ.06; Pellet inferred facts; process scores by an independent Python computation of q1-q3 v3, which reproduces PJ.01-PJ.03)"
+    "scenarios": "08_Revisions/2026-11-10_Round14_ScenariosOnly (rev14: companies A-C removed; case scenarios S1-S3 = PJ.04-PJ.06). Counts and recommendations = Pellet inferred facts; process scores = independent Python computation of q1-q3 v3 (_tools/scenario_results.py, which reproduced PJ.01-PJ.03 of rev13)"
   },
   "reasoning": {
     "R1 GapResult": {
       "sparql": "PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>\nSELECT (COUNT(DISTINCT ?x) AS ?n) WHERE {\nGRAPH <urn:iso29110:graph:inferred> { ?x a iso:GapResult }\n}",
-      "expected": 153
-    },
-    "R2 PJ.01 tasks": {
-      "sparql": "PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>\nSELECT (COUNT(DISTINCT ?x) AS ?n) WHERE {\n?ae iso:responsibleFor iso:PJ.01 . GRAPH <urn:iso29110:graph:inferred> { ?ae iso:recommendTask ?x }\n}",
-      "expected": 7
-    },
-    "R3 PJ.01 outcomes": {
-      "expected": 2,
-      "sparql": "PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>\nSELECT (COUNT(DISTINCT ?x) AS ?n) WHERE {\n?ae iso:responsibleFor iso:PJ.01 . GRAPH <urn:iso29110:graph:inferred> { ?ae iso:recommendOutcome ?x }\n}"
-    },
-    "R4 PJ.02 tasks": {
-      "sparql": "PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>\nSELECT (COUNT(DISTINCT ?x) AS ?n) WHERE {\n?ae iso:responsibleFor iso:PJ.02 . GRAPH <urn:iso29110:graph:inferred> { ?ae iso:recommendTask ?x }\n}",
-      "expected": 32
-    },
-    "R5 PJ.02 outcomes": {
-      "expected": 22,
-      "sparql": "PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>\nSELECT (COUNT(DISTINCT ?x) AS ?n) WHERE {\n?ae iso:responsibleFor iso:PJ.02 . GRAPH <urn:iso29110:graph:inferred> { ?ae iso:recommendOutcome ?x }\n}"
-    },
-    "R6 PJ.02 BPs": {
-      "sparql": "PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>\nSELECT (COUNT(DISTINCT ?x) AS ?n) WHERE {\n?ae iso:responsibleFor iso:PJ.02 . GRAPH <urn:iso29110:graph:inferred> { ?ae iso:recommendBasePractice ?x }\n}",
-      "expected": 35
-    },
-    "R7 PJ.03 tasks": {
-      "sparql": "PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>\nSELECT (COUNT(DISTINCT ?x) AS ?n) WHERE {\n?ae iso:responsibleFor iso:PJ.03 . GRAPH <urn:iso29110:graph:inferred> { ?ae iso:recommendTask ?x }\n}",
-      "expected": 9
-    },
-    "R8 PJ.03 BPs": {
-      "sparql": "PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>\nSELECT (COUNT(DISTINCT ?x) AS ?n) WHERE {\n?ae iso:responsibleFor iso:PJ.03 . GRAPH <urn:iso29110:graph:inferred> { ?ae iso:recommendBasePractice ?x }\n}",
-      "expected": 17
-    },
-    "R9 PJ.02 Not_applicable": {
-      "sparql": "PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>\nSELECT (COUNT(DISTINCT ?x) AS ?n) WHERE {\n?ae iso:responsibleFor iso:PJ.02 ; iso:hasAssessmentResult ?x . GRAPH <urn:iso29110:graph:inferred> { ?x iso:hasDegreeAchievement iso:Not_applicable }\n}",
-      "expected": 20
-    },
-    "R10 AE.PJ01.WP02 tasks": {
-      "sparql": "PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>\nSELECT (COUNT(DISTINCT ?x) AS ?n) WHERE {\nGRAPH <urn:iso29110:graph:inferred> { iso:AE.PJ01.WP02 iso:recommendTask ?x }\n}",
-      "expected": 7
-    },
-    "R11 no recommendRole (rev08)": {
-      "expected": 0,
-      "sparql": "PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#> SELECT (COUNT(*) AS ?n) WHERE { GRAPH <urn:iso29110:graph:inferred> { ?ae iso:recommendRole ?x } }"
+      "expected": 67
     },
     "S1 PJ.04 tasks": {
       "sparql": "PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>\nSELECT (COUNT(DISTINCT ?x) AS ?n) WHERE {\n?ae iso:responsibleFor iso:PJ.04 . GRAPH <urn:iso29110:graph:inferred> { ?ae iso:recommendTask ?x }\n}",
-      "expected": 12
+      "expected": 15
     },
     "S1 PJ.04 BPs": {
       "sparql": "PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>\nSELECT (COUNT(DISTINCT ?x) AS ?n) WHERE {\n?ae iso:responsibleFor iso:PJ.04 . GRAPH <urn:iso29110:graph:inferred> { ?ae iso:recommendBasePractice ?x }\n}",
-      "expected": 8
+      "expected": 11
     },
     "S1 PJ.04 outcomes": {
       "sparql": "PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>\nSELECT (COUNT(DISTINCT ?x) AS ?n) WHERE {\n?ae iso:responsibleFor iso:PJ.04 . GRAPH <urn:iso29110:graph:inferred> { ?ae iso:recommendOutcome ?x }\n}",
-      "expected": 7
+      "expected": 6
     },
     "S2 PJ.05 tasks": {
       "sparql": "PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>\nSELECT (COUNT(DISTINCT ?x) AS ?n) WHERE {\n?ae iso:responsibleFor iso:PJ.05 . GRAPH <urn:iso29110:graph:inferred> { ?ae iso:recommendTask ?x }\n}",
@@ -89,36 +44,36 @@
     "S3 PJ.06 outcomes": {
       "sparql": "PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>\nSELECT (COUNT(DISTINCT ?x) AS ?n) WHERE {\n?ae iso:responsibleFor iso:PJ.06 . GRAPH <urn:iso29110:graph:inferred> { ?ae iso:recommendOutcome ?x }\n}",
       "expected": 9
+    },
+    "R8 PJ.04 Not_applicable": {
+      "sparql": "PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>\nSELECT (COUNT(DISTINCT ?x) AS ?n) WHERE {\n?ae iso:responsibleFor iso:PJ.04 ; iso:hasAssessmentResult ?x . GRAPH <urn:iso29110:graph:inferred> { ?x iso:hasDegreeAchievement iso:Not_applicable }\n}",
+      "expected": 20
+    },
+    "R10 AE.PJ04.WP02 tasks": {
+      "sparql": "PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>\nSELECT (COUNT(DISTINCT ?x) AS ?n) WHERE {\nGRAPH <urn:iso29110:graph:inferred> { iso:AE.PJ04.WP02 iso:recommendTask ?x }\n}",
+      "expected": 7
+    },
+    "no recommendRole (rev08)": {
+      "expected": 0,
+      "sparql": "PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#> SELECT (COUNT(*) AS ?n) WHERE { GRAPH <urn:iso29110:graph:inferred> { ?ae iso:recommendRole ?x } }"
     }
   },
   "processScores": {
-    "PJ.01": {
-      "PM": 0.404,
-      "SI": 0.0152
-    },
-    "PJ.02": {
-      "PM": 0.5596,
-      "SI": 0.5188
-    },
-    "PJ.03": {
-      "PM": 0.9609,
-      "SI": 0.8807
-    },
     "PJ.04": {
-      "PM": 0.6683,
+      "PM": 0.6067,
       "SI": 0.0853
     },
     "PJ.05": {
-      "PM": 0.821,
-      "SI": 0.335
+      "PM": 0.796,
+      "SI": 0.299
     },
     "PJ.06": {
       "PM": 0.8846,
-      "SI": 0.7071
+      "SI": 0.6713
     }
   },
   "recommendations": {
-    "AE.PJ01.WP02": {
+    "AE.PJ04.WP02": {
       "tasks": [
         "PM.1.1",
         "PM.1.12",
@@ -142,345 +97,12 @@
         "PM.PO.02"
       ]
     },
-    "AE.PJ02.WP01": {
-      "tasks": [
-        "PM.4.1"
-      ],
-      "basePractices": [
-        "PM.BP25"
-      ],
-      "outcomes": [
-        "PM.PO.15"
-      ]
-    },
-    "AE.PJ02.WP03": {
-      "tasks": [
-        "PM.2.2",
-        "PM.2.3",
-        "PM.2.5",
-        "PM.3.3",
-        "SI.2.3",
-        "SI.2.4",
-        "SI.2.6",
-        "SI.3.4"
-      ],
-      "basePractices": [
-        "PM.BP17",
-        "PM.BP18",
-        "PM.BP19",
-        "PM.BP20",
-        "PM.BP21",
-        "PM.BP24",
-        "PM.BP26",
-        "PM.BP9",
-        "SI.BP1",
-        "SI.BP2",
-        "SI.BP5",
-        "SI.BP6"
-      ],
-      "outcomes": [
-        "PM.PO.07",
-        "PM.PO.08",
-        "PM.PO.09",
-        "PM.PO.10",
-        "PM.PO.12",
-        "PM.PO.13",
-        "SI.PO.16",
-        "SI.PO.17",
-        "SI.PO.20",
-        "SI.PO.21",
-        "SI.PO.26"
-      ]
-    },
-    "AE.PJ02.WP04": {
-      "tasks": [
-        "PM.2.4",
-        "PM.3.2"
-      ],
-      "basePractices": [
-        "PM.BP18",
-        "PM.BP19",
-        "PM.BP23"
-      ],
-      "outcomes": [
-        "PM.PO.12",
-        "PM.PO.13",
-        "PM.PO.14"
-      ]
-    },
-    "AE.PJ02.WP06": {
-      "tasks": [
-        "SI.6.2",
-        "SI.6.3"
-      ],
-      "basePractices": [
-        "SI.BP20",
-        "SI.BP21",
-        "SI.BP22",
-        "SI.BP23"
-      ],
-      "outcomes": [
-        "SI.PO.28"
-      ]
-    },
-    "AE.PJ02.WP07": {
-      "tasks": [
-        "PM.1.14",
-        "PM.2.4",
-        "PM.2.5"
-      ],
-      "basePractices": [
-        "PM.BP14",
-        "PM.BP19",
-        "PM.BP2",
-        "PM.BP22"
-      ],
-      "outcomes": [
-        "PM.PO.05",
-        "PM.PO.12",
-        "PM.PO.13"
-      ]
-    },
-    "AE.PJ02.WP09": {
-      "tasks": [
-        "PM.2.1",
-        "PM.3.1"
-      ],
-      "basePractices": [
-        "PM.BP16"
-      ],
-      "outcomes": [
-        "PM.PO.06"
-      ]
-    },
-    "AE.PJ02.WP12": {
-      "tasks": [
-        "PM.2.6"
-      ],
-      "basePractices": [
-        "PM.BP20",
-        "PM.BP21",
-        "PM.BP24",
-        "PM.BP26"
-      ],
-      "outcomes": [
-        "PM.PO.08",
-        "PM.PO.09",
-        "PM.PO.10"
-      ]
-    },
-    "AE.PJ02.WP19": {
-      "tasks": [
-        "SI.3.5",
-        "SI.3.7",
-        "SI.4.4",
-        "SI.5.11",
-        "SI.5.2"
-      ],
-      "basePractices": [
-        "SI.BP16",
-        "SI.BP17",
-        "SI.BP18",
-        "SI.BP20",
-        "SI.BP21",
-        "SI.BP22",
-        "SI.BP23",
-        "SI.BP7",
-        "SI.BP8",
-        "SI.BP9"
-      ],
-      "outcomes": [
-        "SI.PO.24",
-        "SI.PO.25",
-        "SI.PO.26",
-        "SI.PO.27",
-        "SI.PO.28"
-      ]
-    },
-    "AE.PJ02.WP20": {
-      "tasks": [
-        "SI.5.11",
-        "SI.5.4",
-        "SI.5.5"
-      ],
-      "basePractices": [
-        "SI.BP16",
-        "SI.BP17",
-        "SI.BP18",
-        "SI.BP20",
-        "SI.BP21",
-        "SI.BP22",
-        "SI.BP23",
-        "SI.BP7",
-        "SI.BP8",
-        "SI.BP9"
-      ],
-      "outcomes": [
-        "SI.PO.24",
-        "SI.PO.25",
-        "SI.PO.26",
-        "SI.PO.27",
-        "SI.PO.28"
-      ]
-    },
-    "AE.PJ02.WP21": {
-      "tasks": [
-        "SI.2.6",
-        "SI.3.2",
-        "SI.3.3",
-        "SI.3.4",
-        "SI.3.6",
-        "SI.3.7",
-        "SI.4.6",
-        "SI.5.11",
-        "SI.5.6"
-      ],
-      "basePractices": [
-        "SI.BP10",
-        "SI.BP11",
-        "SI.BP12",
-        "SI.BP14",
-        "SI.BP15",
-        "SI.BP16",
-        "SI.BP17",
-        "SI.BP18",
-        "SI.BP19",
-        "SI.BP20",
-        "SI.BP21",
-        "SI.BP22",
-        "SI.BP23",
-        "SI.BP5",
-        "SI.BP7",
-        "SI.BP8",
-        "SI.BP9"
-      ],
-      "outcomes": [
-        "SI.PO.20",
-        "SI.PO.21",
-        "SI.PO.22",
-        "SI.PO.23",
-        "SI.PO.24",
-        "SI.PO.25",
-        "SI.PO.26",
-        "SI.PO.27",
-        "SI.PO.28"
-      ]
-    },
-    "AE.PJ02.WP22": {
-      "tasks": [
-        "SI.2.4"
-      ],
-      "basePractices": [
-        "PM.BP14",
-        "PM.BP2",
-        "PM.BP22",
-        "SI.BP3"
-      ],
-      "outcomes": [
-        "PM.PO.05",
-        "SI.PO.18"
-      ]
-    },
-    "AE.PJ02.WP23": {
-      "tasks": [
-        "PM.1.13",
-        "SI.2.3",
-        "SI.2.6",
-        "SI.3.4",
-        "SI.3.7",
-        "SI.5.10",
-        "SI.5.8",
-        "SI.6.3"
-      ],
-      "basePractices": [
-        "SI.BP1",
-        "SI.BP16",
-        "SI.BP2",
-        "SI.BP20",
-        "SI.BP21",
-        "SI.BP22",
-        "SI.BP23",
-        "SI.BP5",
-        "SI.BP6"
-      ],
-      "outcomes": [
-        "SI.PO.16",
-        "SI.PO.17",
-        "SI.PO.20",
-        "SI.PO.21",
-        "SI.PO.24",
-        "SI.PO.25",
-        "SI.PO.26",
-        "SI.PO.28"
-      ]
-    },
-    "AE.PJ03.WP21": {
-      "tasks": [
-        "SI.2.6",
-        "SI.3.2",
-        "SI.3.3",
-        "SI.3.4",
-        "SI.3.6",
-        "SI.3.7",
-        "SI.4.6",
-        "SI.5.11",
-        "SI.5.6"
-      ],
-      "basePractices": [
-        "SI.BP10",
-        "SI.BP11",
-        "SI.BP12",
-        "SI.BP14",
-        "SI.BP15",
-        "SI.BP16",
-        "SI.BP17",
-        "SI.BP18",
-        "SI.BP19",
-        "SI.BP20",
-        "SI.BP21",
-        "SI.BP22",
-        "SI.BP23",
-        "SI.BP5",
-        "SI.BP7",
-        "SI.BP8",
-        "SI.BP9"
-      ],
-      "outcomes": [
-        "SI.PO.20",
-        "SI.PO.21",
-        "SI.PO.22",
-        "SI.PO.23",
-        "SI.PO.24",
-        "SI.PO.25",
-        "SI.PO.26",
-        "SI.PO.27",
-        "SI.PO.28"
-      ]
-    },
     "AE.PJ04.WP05": {
       "tasks": [
         "SI.1.2"
       ],
       "basePractices": [],
       "outcomes": []
-    },
-    "AE.PJ04.WP07": {
-      "tasks": [
-        "PM.1.14",
-        "PM.2.4",
-        "PM.2.5"
-      ],
-      "basePractices": [
-        "PM.BP14",
-        "PM.BP19",
-        "PM.BP2",
-        "PM.BP22"
-      ],
-      "outcomes": [
-        "PM.PO.05",
-        "PM.PO.12",
-        "PM.PO.13"
-      ]
     },
     "AE.PJ04.WP11": {
       "tasks": [

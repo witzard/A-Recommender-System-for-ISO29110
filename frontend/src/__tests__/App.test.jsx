@@ -61,7 +61,7 @@ describe('knowledge search by parameters', () => {
 });
 
 const processScores = () => {
-  const table = screen.getByRole('columnheader', { name: 'Base Practices' }).closest('table');
+  const table = screen.getByRole('heading', { name: 'Process' }).nextElementSibling;
   return within(table).getAllByRole('row').slice(1).map((r) => within(r).getAllByRole('cell').map((c) => c.textContent));
 };
 
@@ -78,7 +78,7 @@ describe('assessment results and recommendations', () => {
     await screen.findByText('Recommendations (1 work product)');
     expect(calls).toContainEqual(['assessment', 'PJ.01']);
     expect(within(screen.getByLabelText('Project')).getAllByRole('option')).toHaveLength(1);
-    expect(processScores()).toEqual([['PM', '27', '0.40'], ['SI', '23', '0.02']]);
+    expect(processScores()).toEqual([['PM', '0.40'], ['SI', '0.02']]);
   });
 
   it('marks mock data and shows the work products not delivered', async () => {
@@ -88,7 +88,7 @@ describe('assessment results and recommendations', () => {
     await screen.findByText('Recommendations (3 work products)');
     expect(screen.getByText(/It is not data of a real company/)).toBeTruthy();
     expect(screen.getByText('WP.08 Product Operation Guide; WP.18 Software User Documentation')).toBeTruthy();
-    expect(processScores()).toEqual([['PM', '27', '0.56'], ['SI', '23', '0.52']]);
+    expect(processScores()).toEqual([['PM', '0.56'], ['SI', '0.52']]);
   });
 
   it('shows for WP.02 of PJ.01 the 7 tasks inferred by the reasoner and the reason', async () => {

@@ -1,3 +1,3 @@
 *.ttl text eol=lf
-ontology/ISO29110V2_rev13.ttl -text
+ontology/ISO29110V2_rev14.ttl -text
 *.nt text eol=lf
