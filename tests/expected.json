@@ -6,12 +6,13 @@
     "templates": "08_Revisions/2026-11-04_Round6_QueryTemplates/eval_templates.tsv (returned_units) and cq_parameters.json",
     "outcomes": "08_Revisions/2026-11-08_Round8_Outcome/CHANGELOG.md (recommendOutcome, rev08; equal to an independent Python computation)",
     "basePractices": "08_Revisions/2026-11-09_Round9_AdvisorTable/CHANGELOG.md (rev09 RecommendBasePracticeRule via PreAssessment = advisor BP-WP table; equal to an independent Python computation, 14/14 AE)",
-    "Q33": "rev09: 135 + WPC.22.11, WPC.22.12"
+    "Q33": "rev09: 135 + WPC.22.11, WPC.22.12",
+    "scenarios": "08_Revisions/2026-11-10_Round13_Scenarios (rev13 case scenarios S1-S3 = PJ.04-PJ.06; Pellet inferred facts; process scores by an independent Python computation of q1-q3 v3, which reproduces PJ.01-PJ.03)"
   },
   "reasoning": {
     "R1 GapResult": {
       "sparql": "PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>\nSELECT (COUNT(DISTINCT ?x) AS ?n) WHERE {\nGRAPH <urn:iso29110:graph:inferred> { ?x a iso:GapResult }\n}",
-      "expected": 88
+      "expected": 153
     },
     "R2 PJ.01 tasks": {
       "sparql": "PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>\nSELECT (COUNT(DISTINCT ?x) AS ?n) WHERE {\n?ae iso:responsibleFor iso:PJ.01 . GRAPH <urn:iso29110:graph:inferred> { ?ae iso:recommendTask ?x }\n}",
@@ -52,6 +53,42 @@
     "R11 no recommendRole (rev08)": {
       "expected": 0,
       "sparql": "PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#> SELECT (COUNT(*) AS ?n) WHERE { GRAPH <urn:iso29110:graph:inferred> { ?ae iso:recommendRole ?x } }"
+    },
+    "S1 PJ.04 tasks": {
+      "sparql": "PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>\nSELECT (COUNT(DISTINCT ?x) AS ?n) WHERE {\n?ae iso:responsibleFor iso:PJ.04 . GRAPH <urn:iso29110:graph:inferred> { ?ae iso:recommendTask ?x }\n}",
+      "expected": 12
+    },
+    "S1 PJ.04 BPs": {
+      "sparql": "PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>\nSELECT (COUNT(DISTINCT ?x) AS ?n) WHERE {\n?ae iso:responsibleFor iso:PJ.04 . GRAPH <urn:iso29110:graph:inferred> { ?ae iso:recommendBasePractice ?x }\n}",
+      "expected": 8
+    },
+    "S1 PJ.04 outcomes": {
+      "sparql": "PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>\nSELECT (COUNT(DISTINCT ?x) AS ?n) WHERE {\n?ae iso:responsibleFor iso:PJ.04 . GRAPH <urn:iso29110:graph:inferred> { ?ae iso:recommendOutcome ?x }\n}",
+      "expected": 7
+    },
+    "S2 PJ.05 tasks": {
+      "sparql": "PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>\nSELECT (COUNT(DISTINCT ?x) AS ?n) WHERE {\n?ae iso:responsibleFor iso:PJ.05 . GRAPH <urn:iso29110:graph:inferred> { ?ae iso:recommendTask ?x }\n}",
+      "expected": 25
+    },
+    "S2 PJ.05 BPs": {
+      "sparql": "PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>\nSELECT (COUNT(DISTINCT ?x) AS ?n) WHERE {\n?ae iso:responsibleFor iso:PJ.05 . GRAPH <urn:iso29110:graph:inferred> { ?ae iso:recommendBasePractice ?x }\n}",
+      "expected": 35
+    },
+    "S2 PJ.05 outcomes": {
+      "sparql": "PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>\nSELECT (COUNT(DISTINCT ?x) AS ?n) WHERE {\n?ae iso:responsibleFor iso:PJ.05 . GRAPH <urn:iso29110:graph:inferred> { ?ae iso:recommendOutcome ?x }\n}",
+      "expected": 22
+    },
+    "S3 PJ.06 tasks": {
+      "sparql": "PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>\nSELECT (COUNT(DISTINCT ?x) AS ?n) WHERE {\n?ae iso:responsibleFor iso:PJ.06 . GRAPH <urn:iso29110:graph:inferred> { ?ae iso:recommendTask ?x }\n}",
+      "expected": 15
+    },
+    "S3 PJ.06 BPs": {
+      "sparql": "PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>\nSELECT (COUNT(DISTINCT ?x) AS ?n) WHERE {\n?ae iso:responsibleFor iso:PJ.06 . GRAPH <urn:iso29110:graph:inferred> { ?ae iso:recommendBasePractice ?x }\n}",
+      "expected": 19
+    },
+    "S3 PJ.06 outcomes": {
+      "sparql": "PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>\nSELECT (COUNT(DISTINCT ?x) AS ?n) WHERE {\n?ae iso:responsibleFor iso:PJ.06 . GRAPH <urn:iso29110:graph:inferred> { ?ae iso:recommendOutcome ?x }\n}",
+      "expected": 9
     }
   },
   "processScores": {
@@ -66,6 +103,18 @@
     "PJ.03": {
       "PM": 0.9609,
       "SI": 0.8807
+    },
+    "PJ.04": {
+      "PM": 0.6683,
+      "SI": 0.0853
+    },
+    "PJ.05": {
+      "PM": 0.821,
+      "SI": 0.335
+    },
+    "PJ.06": {
+      "PM": 0.8846,
+      "SI": 0.7071
     }
   },
   "recommendations": {
@@ -401,6 +450,403 @@
         "SI.PO.21",
         "SI.PO.22",
         "SI.PO.23",
+        "SI.PO.24",
+        "SI.PO.25",
+        "SI.PO.26",
+        "SI.PO.27",
+        "SI.PO.28"
+      ]
+    },
+    "AE.PJ04.WP05": {
+      "tasks": [
+        "SI.1.2"
+      ],
+      "basePractices": [],
+      "outcomes": []
+    },
+    "AE.PJ04.WP07": {
+      "tasks": [
+        "PM.1.14",
+        "PM.2.4",
+        "PM.2.5"
+      ],
+      "basePractices": [
+        "PM.BP14",
+        "PM.BP19",
+        "PM.BP2",
+        "PM.BP22"
+      ],
+      "outcomes": [
+        "PM.PO.05",
+        "PM.PO.12",
+        "PM.PO.13"
+      ]
+    },
+    "AE.PJ04.WP11": {
+      "tasks": [
+        "PM.1.15",
+        "PM.1.16",
+        "PM.2.7",
+        "PM.4.2",
+        "SI.3.8",
+        "SI.4.7",
+        "SI.5.11",
+        "SI.6.5"
+      ],
+      "basePractices": [
+        "PM.BP10",
+        "PM.BP15",
+        "PM.BP26",
+        "PM.BP27"
+      ],
+      "outcomes": [
+        "PM.PO.04",
+        "PM.PO.09",
+        "PM.PO.10",
+        "PM.PO.11"
+      ]
+    },
+    "AE.PJ05.WP03": {
+      "tasks": [
+        "PM.2.2",
+        "PM.2.3",
+        "PM.2.5",
+        "PM.3.3",
+        "SI.2.3",
+        "SI.2.4",
+        "SI.2.6",
+        "SI.3.4"
+      ],
+      "basePractices": [
+        "PM.BP17",
+        "PM.BP18",
+        "PM.BP19",
+        "PM.BP20",
+        "PM.BP21",
+        "PM.BP24",
+        "PM.BP26",
+        "PM.BP9",
+        "SI.BP1",
+        "SI.BP2",
+        "SI.BP5",
+        "SI.BP6"
+      ],
+      "outcomes": [
+        "PM.PO.07",
+        "PM.PO.08",
+        "PM.PO.09",
+        "PM.PO.10",
+        "PM.PO.12",
+        "PM.PO.13",
+        "SI.PO.16",
+        "SI.PO.17",
+        "SI.PO.20",
+        "SI.PO.21",
+        "SI.PO.26"
+      ]
+    },
+    "AE.PJ05.WP13": {
+      "tasks": [
+        "SI.2.2",
+        "SI.2.3",
+        "SI.2.4",
+        "SI.3.2"
+      ],
+      "basePractices": [
+        "SI.BP1",
+        "SI.BP10",
+        "SI.BP14",
+        "SI.BP15",
+        "SI.BP16",
+        "SI.BP19",
+        "SI.BP2",
+        "SI.BP3",
+        "SI.BP4",
+        "SI.BP6",
+        "SI.BP9"
+      ],
+      "outcomes": [
+        "SI.PO.16",
+        "SI.PO.17",
+        "SI.PO.18",
+        "SI.PO.19",
+        "SI.PO.21",
+        "SI.PO.24",
+        "SI.PO.25",
+        "SI.PO.26",
+        "SI.PO.28"
+      ]
+    },
+    "AE.PJ05.WP17": {
+      "tasks": [
+        "PM.4.1",
+        "SI.2.7",
+        "SI.4.7",
+        "SI.6.4",
+        "SI.6.5",
+        "SI.6.6"
+      ],
+      "basePractices": [
+        "PM.BP25",
+        "PM.BP26",
+        "PM.BP27",
+        "PM.BP9",
+        "SI.BP10",
+        "SI.BP14",
+        "SI.BP15",
+        "SI.BP19",
+        "SI.BP20",
+        "SI.BP21",
+        "SI.BP22",
+        "SI.BP23",
+        "SI.BP4",
+        "SI.BP5",
+        "SI.BP9"
+      ],
+      "outcomes": [
+        "PM.PO.07",
+        "PM.PO.09",
+        "PM.PO.10",
+        "PM.PO.11",
+        "PM.PO.15",
+        "SI.PO.19",
+        "SI.PO.20",
+        "SI.PO.21",
+        "SI.PO.25",
+        "SI.PO.26",
+        "SI.PO.28"
+      ]
+    },
+    "AE.PJ05.WP18": {
+      "tasks": [
+        "SI.2.5",
+        "SI.2.6",
+        "SI.5.10",
+        "SI.5.11",
+        "SI.5.9"
+      ],
+      "basePractices": [],
+      "outcomes": []
+    },
+    "AE.PJ05.WP21": {
+      "tasks": [
+        "SI.2.6",
+        "SI.3.2",
+        "SI.3.3",
+        "SI.3.4",
+        "SI.3.6",
+        "SI.3.7",
+        "SI.4.6",
+        "SI.5.11",
+        "SI.5.6"
+      ],
+      "basePractices": [
+        "SI.BP10",
+        "SI.BP11",
+        "SI.BP12",
+        "SI.BP14",
+        "SI.BP15",
+        "SI.BP16",
+        "SI.BP17",
+        "SI.BP18",
+        "SI.BP19",
+        "SI.BP20",
+        "SI.BP21",
+        "SI.BP22",
+        "SI.BP23",
+        "SI.BP5",
+        "SI.BP7",
+        "SI.BP8",
+        "SI.BP9"
+      ],
+      "outcomes": [
+        "SI.PO.20",
+        "SI.PO.21",
+        "SI.PO.22",
+        "SI.PO.23",
+        "SI.PO.24",
+        "SI.PO.25",
+        "SI.PO.26",
+        "SI.PO.27",
+        "SI.PO.28"
+      ]
+    },
+    "AE.PJ05.WP22": {
+      "tasks": [
+        "SI.2.4"
+      ],
+      "basePractices": [
+        "PM.BP14",
+        "PM.BP2",
+        "PM.BP22",
+        "SI.BP3"
+      ],
+      "outcomes": [
+        "PM.PO.05",
+        "SI.PO.18"
+      ]
+    },
+    "AE.PJ06.WP08": {
+      "tasks": [
+        "SI.5.11",
+        "SI.5.7",
+        "SI.5.8"
+      ],
+      "basePractices": [],
+      "outcomes": []
+    },
+    "AE.PJ06.WP14": {
+      "tasks": [
+        "SI.5.11",
+        "SI.5.3",
+        "SI.5.4",
+        "SI.5.5"
+      ],
+      "basePractices": [
+        "SI.BP10",
+        "SI.BP14",
+        "SI.BP15",
+        "SI.BP16",
+        "SI.BP17",
+        "SI.BP18",
+        "SI.BP19",
+        "SI.BP20",
+        "SI.BP21",
+        "SI.BP22",
+        "SI.BP23",
+        "SI.BP5",
+        "SI.BP7",
+        "SI.BP8",
+        "SI.BP9"
+      ],
+      "outcomes": [
+        "SI.PO.20",
+        "SI.PO.21",
+        "SI.PO.24",
+        "SI.PO.25",
+        "SI.PO.26",
+        "SI.PO.27",
+        "SI.PO.28"
+      ]
+    },
+    "AE.PJ06.WP15": {
+      "tasks": [
+        "SI.4.3",
+        "SI.4.5"
+      ],
+      "basePractices": [
+        "SI.BP10",
+        "SI.BP11",
+        "SI.BP12",
+        "SI.BP13",
+        "SI.BP14",
+        "SI.BP15",
+        "SI.BP16",
+        "SI.BP17",
+        "SI.BP19",
+        "SI.BP20",
+        "SI.BP21",
+        "SI.BP22",
+        "SI.BP23",
+        "SI.BP5",
+        "SI.BP7",
+        "SI.BP8",
+        "SI.BP9"
+      ],
+      "outcomes": [
+        "SI.PO.20",
+        "SI.PO.21",
+        "SI.PO.22",
+        "SI.PO.23",
+        "SI.PO.24",
+        "SI.PO.25",
+        "SI.PO.26",
+        "SI.PO.28"
+      ]
+    },
+    "AE.PJ06.WP16": {
+      "tasks": [
+        "SI.3.3",
+        "SI.3.4",
+        "SI.4.2"
+      ],
+      "basePractices": [
+        "SI.BP10",
+        "SI.BP11",
+        "SI.BP12",
+        "SI.BP14",
+        "SI.BP15",
+        "SI.BP16",
+        "SI.BP17",
+        "SI.BP19",
+        "SI.BP20",
+        "SI.BP21",
+        "SI.BP22",
+        "SI.BP23",
+        "SI.BP5",
+        "SI.BP6",
+        "SI.BP7",
+        "SI.BP8",
+        "SI.BP9"
+      ],
+      "outcomes": [
+        "SI.PO.20",
+        "SI.PO.21",
+        "SI.PO.22",
+        "SI.PO.23",
+        "SI.PO.24",
+        "SI.PO.25",
+        "SI.PO.26",
+        "SI.PO.28"
+      ]
+    },
+    "AE.PJ06.WP19": {
+      "tasks": [
+        "SI.3.5",
+        "SI.3.7",
+        "SI.4.4",
+        "SI.5.11",
+        "SI.5.2"
+      ],
+      "basePractices": [
+        "SI.BP16",
+        "SI.BP17",
+        "SI.BP18",
+        "SI.BP20",
+        "SI.BP21",
+        "SI.BP22",
+        "SI.BP23",
+        "SI.BP7",
+        "SI.BP8",
+        "SI.BP9"
+      ],
+      "outcomes": [
+        "SI.PO.24",
+        "SI.PO.25",
+        "SI.PO.26",
+        "SI.PO.27",
+        "SI.PO.28"
+      ]
+    },
+    "AE.PJ06.WP20": {
+      "tasks": [
+        "SI.5.11",
+        "SI.5.4",
+        "SI.5.5"
+      ],
+      "basePractices": [
+        "SI.BP16",
+        "SI.BP17",
+        "SI.BP18",
+        "SI.BP20",
+        "SI.BP21",
+        "SI.BP22",
+        "SI.BP23",
+        "SI.BP7",
+        "SI.BP8",
+        "SI.BP9"
+      ],
+      "outcomes": [
         "SI.PO.24",
         "SI.PO.25",
         "SI.PO.26",

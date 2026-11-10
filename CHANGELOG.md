@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-11-10 - ontology rev13 (case scenarios S1-S3)
+
+- `ontology/ISO29110V2_rev13.ttl` = `08_Revisions/2026-11-10_Round13_Scenarios/ISO29110V2_rev13.ttl`
+  (SHA-256 `c1fc221b8242eff7a89ca3514db8a68d586de2d237ad88161cea31698ba0ecb3`): rev12 + three mock case-scenario
+  companies ENT.04-06 / PJ.04-06 (25 / 50 / 80 % of the work products assessed, Partial and Fully; cloned from the PJ.01
+  checklist and pre-assessment structure). No TBox or rule change. `kb/` regenerated (consistent, 12 rules; facts of
+  PJ.01-PJ.03 unchanged; +65 GapResult). `tests/expected.json`: R1 GapResult 88 -> 153, S1-S3 counts, process scores
+  and recommendations of PJ.04-PJ.06 (148 checks). Not run yet on Windows.
+
 ## 2026-11-10 - ontology rev12 (BasePracticeOutputWPRule restored)
 
 - `ontology/ISO29110V2_rev12.ttl` = `08_Revisions/2026-11-10_Round12_RestoreR5/ISO29110V2_rev12.ttl`
