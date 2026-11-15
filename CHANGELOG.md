@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-11-15 - ontology rev16 (case scenario S4 = PJ.07)
+
+- `ontology/ISO29110V2_rev16.ttl` = `08_Revisions/2026-11-15_Round16_S4/ISO29110V2_rev16.ttl`
+  (SHA-256 `49ddf51bdcaacb1a4e68de27cd8f168577a59b70872fd8cfabd6f51e60e970bd`): the complete case of rev15 renamed so the
+  four mock companies form one series: ENT.01/PJ.01 -> ENT.07/PJ.07 "Scenario S4" (AE/AR/PAS ...PJ01 -> ...PJ07). Same
+  data and inferred facts as rev15 with the new IDs. `kb/` regenerated; `tests/expected.json` keys and queries renamed
+  (S4 PJ.07 ..., AE.PJ07.*; 113 checks).
+
 ## 2026-11-15 - ontology rev15 (case PJ.01 with all work products assessed)
 
 - `ontology/ISO29110V2_rev15.ttl` = `08_Revisions/2026-11-15_Round15_PJ01Complete/ISO29110V2_rev15.ttl`
