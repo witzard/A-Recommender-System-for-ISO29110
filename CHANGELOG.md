@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-11-15 - ontology rev15 (case PJ.01 with all work products assessed)
+
+- `ontology/ISO29110V2_rev15.ttl` = `08_Revisions/2026-11-15_Round15_PJ01Complete/ISO29110V2_rev15.ttl`
+  (SHA-256 `a2175c14e9560445d9909789845cd229cd64102953e5af3f805bb9fe72d61918`): rev14 + ENT.01 / PJ.01 (mock) with all
+  23 work products assessed (178 assessment results with a percentage; 19 Fully, 4 Partial: WP.03, WP.13, WP.17, WP.20).
+  No TBox or rule change. `kb/` regenerated (consistent, 12 rules, types 86 / objectProps 1426; rev14 facts unchanged).
+- `tests/expected.json`: R1 GapResult 67 -> 86, PJ.01 tasks 19 / BPs 30 / outcomes 19 / no Not_applicable, PJ.01 process
+  scores (PM 0.9307, SI 0.8528) and recommendations of AE.PJ01.WP03/13/17/20 (113 checks). PJ.04-PJ.06 unchanged.
+- Not run yet on Windows: reason.cmd, load-fuseki.cmd, run_checks.py, npm test.
+
 ## 2026-11-10 - ontology rev14 (scenario companies only) and process table
 
 - `ontology/ISO29110V2_rev14.ttl` = `08_Revisions/2026-11-10_Round14_ScenariosOnly/ISO29110V2_rev14.ttl`
