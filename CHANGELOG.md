@@ -6,6 +6,8 @@
   side bar (company name + "mock data"), project drop-down, Profile rows Enterprise / Project, and the heading of each
   work-product recommendation. The IDs are still used internally (drop-down values, API calls). ISO/IEC 29110 IDs
   (WP, BP, outcome, characteristic, task) are still shown.
+- Test names in `App.test.jsx` no longer say "three companies" / "PJ.01" (they describe the fixture: mock backend
+  responses in `fixtures.json`, not the ontology). Assertions unchanged.
 
 ## 2026-11-15 - ontology rev16 (case scenario S4 = PJ.07)
 

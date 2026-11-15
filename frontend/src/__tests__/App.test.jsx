@@ -72,7 +72,7 @@ describe('assessment results and recommendations', () => {
     return screen.findByRole('complementary', { name: 'Companies' });
   };
 
-  it('lists the three companies in the side bar and loads the first project', async () => {
+  it('lists the companies of the fixture in the side bar and loads the first project', async () => {
     const side = await open();
     expect(within(side).getAllByRole('button')).toHaveLength(3);
     await screen.findByText('Recommendations (1 work product)');
@@ -91,7 +91,7 @@ describe('assessment results and recommendations', () => {
     expect(processScores()).toEqual([['PM', '0.56'], ['SI', '0.52']]);
   });
 
-  it('shows for WP.02 of PJ.01 the 7 tasks inferred by the reasoner and the reason', async () => {
+  it('shows for WP.02 of the first fixture project the 7 tasks inferred by the reasoner and the reason', async () => {
     await open();
     await screen.findByText('Recommendations (1 work product)');
     fireEvent.click(screen.getByRole('button', { name: 'Expand all' }));
@@ -103,7 +103,7 @@ describe('assessment results and recommendations', () => {
     expect(within(rec).queryByText('Recommended role')).toBeNull();
   });
 
-  it('shows the process outcomes linked to WP.02 of PJ.01 (RecommendOutcomeRule)', async () => {
+  it('shows the process outcomes linked to WP.02 of the first fixture project (RecommendOutcomeRule)', async () => {
     await open();
     await screen.findByText('Recommendations (1 work product)');
     fireEvent.click(screen.getByRole('button', { name: 'Expand all' }));
