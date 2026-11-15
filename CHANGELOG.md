@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-15 - assessment page shows names only (no internal IDs)
+
+- The internal ontology IDs of companies, projects and assessed entities (ENT.xx, PJ.xx, AE.PJxx.WPxx) are no longer shown:
+  side bar (company name + "mock data"), project drop-down, Profile rows Enterprise / Project, and the heading of each
+  work-product recommendation. The IDs are still used internally (drop-down values, API calls). ISO/IEC 29110 IDs
+  (WP, BP, outcome, characteristic, task) are still shown.
+
 ## 2026-11-15 - ontology rev16 (case scenario S4 = PJ.07)
 
 - `ontology/ISO29110V2_rev16.ttl` = `08_Revisions/2026-11-15_Round16_S4/ISO29110V2_rev16.ttl`

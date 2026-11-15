@@ -168,8 +168,8 @@ function KnowledgeSearch() {
 
 function Profile({ project }) {
   const rows = [
-    ['Enterprise', `${project.enterprise} - ${project.enterpriseName}`],
-    ['Project', `${project.id} - ${project.projectName}`],
+    ['Enterprise', project.enterpriseName],
+    ['Project', project.projectName],
     ['Description', project.hasProjectDescription],
     ['Number of staff', project.hasNumberofStaff],
     ['Duration', project.hasTotalDuration],
@@ -267,7 +267,7 @@ function Recommendation({ rec, gaps, open, setOpen }) {
   return (
     <Section id={rec.wpID} open={open} setOpen={setOpen} className="rec"
       summary={<>
-        <h3>{rec.wpID} {rec.wpName} <span className="note">({rec.ae})</span></h3>
+        <h3>{rec.wpID} {rec.wpName}</h3>
         <span className="note"> {plural(gaps.length, 'characteristic')}, {plural(rec.tasks.length, 'task')},{' '}
           {plural(rec.outcomes.length, 'outcome')}, {plural(rec.basePractices.length, 'Base Practice')}</span>
       </>}>
@@ -379,7 +379,7 @@ function Assessment() {
           {enterprises.map((e) => (
             <li key={e.id}>
               <button type="button" aria-current={e.id === enterprise} onClick={() => chooseEnterprise(projects, e.id)}>
-                {e.name}<br /><span className="note">{e.id}{e.mock ? ' - mock data' : ''}</span>
+                {e.name}{e.mock && <><br /><span className="note">mock data</span></>}
               </button>
             </li>
           ))}
@@ -390,7 +390,7 @@ function Assessment() {
           <form className="form" onSubmit={(e) => e.preventDefault()}>
             <label htmlFor="project">Project</label>
             <select id="project" value={selected} onChange={(e) => load(e.target.value)}>
-              {own.map((p) => <option key={p.id} value={p.id}>{p.id} {p.projectName}</option>)}
+              {own.map((p) => <option key={p.id} value={p.id}>{p.projectName}</option>)}
             </select>
           </form>
         )}
