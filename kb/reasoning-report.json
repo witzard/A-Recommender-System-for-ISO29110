@@ -1,17 +1,17 @@
 {
   "reasoner": "Pellet 2.3.1 via OWL API 3.4.3",
-  "runAt": "2026-11-15T10:37:43.899776056Z",
+  "runAt": "2026-11-16T03:14:10.307836Z",
   "consistent": true,
   "noRules": false,
   "excludedRules": [],
-  "elapsedMs": 7274,
+  "elapsedMs": 11656,
   "inferred": {"types": 86, "objectPropertyValues": 1426, "dataPropertyValues": 0},
   "inputs": {
-    "ontology/ISO29110V2_rev16.ttl": "49ddf51bdcaacb1a4e68de27cd8f168577a59b70872fd8cfabd6f51e60e970bd"
+    "ontology/ISO29110V2_rev17.ttl": "356f4f59502260b1207ba5a3d6fd3aa858d0c88b60ec9f22ea16ed6172febc51"
   },
   "rules": [
     {"label": "BasePracticeOutputWPRule", "enabled": true, "bodyAtoms": 4, "headAtoms": 1},
-    {"label": "ExcludedConditionalWorkProductRule", "enabled": true, "bodyAtoms": 12, "headAtoms": 1},
+    {"label": "ExcludedConditionalWorkProductRule", "enabled": true, "bodyAtoms": 13, "headAtoms": 1},
     {"label": "GapNotAchievedRule", "enabled": true, "bodyAtoms": 1, "headAtoms": 1},
     {"label": "GapPartiallyAchievedRule", "enabled": true, "bodyAtoms": 1, "headAtoms": 1},
     {"label": "RatingCompletelyAchievedRule", "enabled": true, "bodyAtoms": 3, "headAtoms": 1},

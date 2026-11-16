@@ -18480,7 +18480,7 @@ ISO29110V2:WP.23 ISO29110V2:isEntityOf ISO29110V2:AE.PJ07.WP23 .
  ] .
 
 [ ns2:isRuleEnabled "true"^^xsd:boolean ;
-   rdfs:comment "Context: a conditional work product that the project excludes from its delivery instructions is Not applicable" ;
+   rdfs:comment "Context: a conditional work product that the project excludes from its delivery instructions is Not applicable. rev17: the task note must say Conditional task AND mention the delivery instructions (WP.08, WP.18)" ;
    rdfs:label "ExcludedConditionalWorkProductRule" ;
    rdf:type ns1:Imp ;
    ns1:body [ rdf:type ns1:AtomList ; rdf:first [ rdf:type ns1:ClassAtom ; ns1:classPredicate ISO29110V2:Project ; ns1:argument1 :pj ] ;
@@ -18491,11 +18491,12 @@ ISO29110V2:WP.23 ISO29110V2:isEntityOf ISO29110V2:AE.PJ07.WP23 .
       rdf:rest [ rdf:type ns1:AtomList ; rdf:first [ rdf:type ns1:ClassAtom ; ns1:classPredicate ISO29110V2:Task ; ns1:argument1 :t ] ;
       rdf:rest [ rdf:type ns1:AtomList ; rdf:first [ rdf:type ns1:DatavaluedPropertyAtom ; ns1:propertyPredicate ISO29110V2:hasTaskNote ; ns1:argument1 :t ; ns1:argument2 :note ] ;
       rdf:rest [ rdf:type ns1:AtomList ; rdf:first [ rdf:type ns1:BuiltinAtom ; ns1:builtin <http://www.w3.org/2003/11/swrlb#containsIgnoreCase> ; ns1:arguments ( :note "Conditional task" ) ] ;
+      rdf:rest [ rdf:type ns1:AtomList ; rdf:first [ rdf:type ns1:BuiltinAtom ; ns1:builtin <http://www.w3.org/2003/11/swrlb#containsIgnoreCase> ; ns1:arguments ( :note "delivery instructions" ) ] ;
       rdf:rest [ rdf:type ns1:AtomList ; rdf:first [ rdf:type ns1:BuiltinAtom ; ns1:builtin <http://www.w3.org/2003/11/swrlb#containsIgnoreCase> ; ns1:arguments ( :note :n ) ] ;
       rdf:rest [ rdf:type ns1:AtomList ; rdf:first [ rdf:type ns1:IndividualPropertyAtom ; ns1:propertyPredicate ISO29110V2:isResponsibilityOf ; ns1:argument1 :pj ; ns1:argument2 :ae ] ;
       rdf:rest [ rdf:type ns1:AtomList ; rdf:first [ rdf:type ns1:IndividualPropertyAtom ; ns1:propertyPredicate ISO29110V2:hasEntity ; ns1:argument1 :ae ; ns1:argument2 :wp ] ;
       rdf:rest [ rdf:type ns1:AtomList ; rdf:first [ rdf:type ns1:IndividualPropertyAtom ; ns1:propertyPredicate ISO29110V2:hasAssessmentResult ; ns1:argument1 :ae ; ns1:argument2 :ar ] ;
-      rdf:rest rdf:nil ] ] ] ] ] ] ] ] ] ] ] ] ;
+      rdf:rest rdf:nil ] ] ] ] ] ] ] ] ] ] ] ] ] ;
    ns1:head [ rdf:type ns1:AtomList ; rdf:first [ rdf:type ns1:IndividualPropertyAtom ; ns1:propertyPredicate ISO29110V2:hasDegreeAchievement ; ns1:argument1 :ar ; ns1:argument2 ISO29110V2:Not_applicable ] ;
       rdf:rest rdf:nil ]
  ] .

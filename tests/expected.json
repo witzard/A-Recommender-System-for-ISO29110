@@ -2,7 +2,7 @@
   "_sources": {
     "templates": "08_Revisions/2026-11-04_Round6_QueryTemplates/eval_templates.tsv (returned_units) and cq_parameters.json",
     "Q33": "rev09: 135 + WPC.22.11, WPC.22.12",
-    "scenarios": "08_Revisions/2026-11-15_Round16_S4 (rev16 = rev14 + case scenario S4 = ENT.07/PJ.07 with all 23 work products assessed; S1-S3 = PJ.04-PJ.06 unchanged; S4 holds the data of PJ.01 in rev15, renamed). Counts and recommendations = Pellet inferred facts; process scores = independent Python computation of q1-q3 v3 (_tools/scenario_results.py)"
+    "scenarios": "08_Revisions/2026-11-15_Round16_S4 and 2026-11-16_Round17_R8Delivery (rev17 = rev16 with ExcludedConditionalWorkProductRule limited to task notes that mention the delivery instructions; inferred facts identical to rev16) (rev16 = rev14 + case scenario S4 = ENT.07/PJ.07 with all 23 work products assessed; S1-S3 = PJ.04-PJ.06 unchanged; S4 holds the data of PJ.01 in rev15, renamed). Counts and recommendations = Pellet inferred facts; process scores = independent Python computation of q1-q3 v3 (_tools/scenario_results.py)"
   },
   "reasoning": {
     "R1 GapResult": {

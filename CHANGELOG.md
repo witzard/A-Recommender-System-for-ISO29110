@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-11-16 - ontology rev17 (R8: delivery instructions only)
+
+- `ontology/ISO29110V2_rev17.ttl` = `08_Revisions/2026-11-16_Round17_R8Delivery/ISO29110V2_rev17.ttl`
+  (SHA-256 `356f4f59502260b1207ba5a3d6fd3aa858d0c88b60ec9f22ea16ed6172febc51`): rev16 + one more body atom in
+  ExcludedConditionalWorkProductRule, `swrlb:containsIgnoreCase(?note, "delivery instructions")` (12 -> 13 atoms). WP.03
+  Change Request is no longer treated as a conditional work product (it matched only through the PM.3.3 note text);
+  conditional work products are now WP.08 and WP.18. Researcher approved 2026-11-16.
+- `kb/` regenerated: consistent, 12 rules, types 86 / objectProps 1426; `kb/inferred.nt` identical to rev16 (no scenario
+  excludes WP.03). `tests/expected.json` checks unchanged (113).
+
 ## 2026-11-15 - assessment page shows names only (no internal IDs)
 
 - The internal ontology IDs of companies, projects and assessed entities (ENT.xx, PJ.xx, AE.PJxx.WPxx) are no longer shown:
