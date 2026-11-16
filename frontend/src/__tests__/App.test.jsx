@@ -1,7 +1,7 @@
 // UI tests: the real App component with the API answered from fixtures.json (responses of the backend services
 // computed on ontology/ISO29110V2_rev09.ttl and kb/inferred.nt; see fixtures._note).
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { cleanup, fireEvent, render, screen, within } from '@testing-library/react';
+import { cleanup, fireEvent, render, screen, waitFor, within } from '@testing-library/react';
 import fixtures from './fixtures.json';
 
 const calls = [];
@@ -78,7 +78,7 @@ describe('assessment results and recommendations', () => {
     await screen.findByText('Recommendations (1 work product)');
     expect(calls).toContainEqual(['assessment', 'PJ.01']);
     expect(within(screen.getByLabelText('Project')).getAllByRole('option')).toHaveLength(1);
-    expect(processScores()).toEqual([['PM', '0.40'], ['SI', '0.02']]);
+    expect(processScores()).toEqual([['PM', '0.40', '0.63'], ['SI', '0.02', '0.70']]);
   });
 
   it('marks mock data and shows the work products not delivered', async () => {
@@ -88,7 +88,7 @@ describe('assessment results and recommendations', () => {
     await screen.findByText('Recommendations (3 work products)');
     expect(screen.getByText(/It is not data of a real company/)).toBeTruthy();
     expect(screen.getByText('WP.08 Product Operation Guide; WP.18 Software User Documentation')).toBeTruthy();
-    expect(processScores()).toEqual([['PM', '0.56'], ['SI', '0.52']]);
+    expect(processScores()).toEqual([['PM', '0.56', '0.62'], ['SI', '0.52', '0.55']]);
   });
 
   it('shows for WP.02 of the first fixture project the 7 tasks inferred by the reasoner and the reason', async () => {
@@ -111,6 +111,30 @@ describe('assessment results and recommendations', () => {
     const outcomes = within(rec).getByRole('columnheader', { name: 'Process outcome' }).closest('table');
     const rows = within(outcomes).getAllByRole('row').slice(1).map((r) => within(r).getAllByRole('cell').map((c) => c.textContent));
     expect(rows.map((r) => [r[0], r[2]])).toEqual([['PM a)', 'PM.BP1'], ['PM b)', 'PM.BP3, PM.BP4, PM.BP5, PM.BP6, PM.BP7, PM.BP8']]);
+  });
+
+  it('shows the assessment coverage and both scores of each work product (two score modes)', async () => {
+    await open();
+    await screen.findByText('Recommendations (1 work product)');
+    const cov = screen.getByLabelText('Assessment coverage');
+    expect(within(cov).getByText('Assessed: 2 of 23 work products (9 %)')).toBeTruthy();
+    expect(within(cov).getByText(/Not assessed yet \(21\): WP\.01 Acceptance Record; WP\.03 Change Request/)).toBeTruthy();
+    const wp = screen.getByRole('heading', { name: 'Work products' }).nextElementSibling.nextElementSibling;
+    const row = (id) => within(wp).getAllByRole('row').map((r) => [...r.querySelectorAll('td')].map((c) => c.textContent)).find((c) => c[0] === id);
+    expect(row('WP.02').slice(2, 3).concat(row('WP.02').slice(-2))).toEqual(['Assessed', '0.56', '0.56']);
+    expect(row('WP.01').slice(2, 3).concat(row('WP.01').slice(-2))).toEqual(['Not assessed yet', '0.00', '']);
+  });
+
+  it('lists Not applicable work products in the coverage and copes with a backend without coverage', async () => {
+    const side = await open();
+    await screen.findByText('Recommendations (1 work product)');
+    fireEvent.click(within(side).getByText('Mock Company B (start-up, mock data)'));
+    await screen.findByText('Recommendations (3 work products)');
+    expect(within(screen.getByLabelText('Assessment coverage'))
+      .getByText(/Not applicable .*: WP\.08 Product Operation Guide; WP\.18 Software User Documentation/)).toBeTruthy();
+    fireEvent.click(within(side).getByText('Mock Company C (established VSE, mock data)'));
+    await waitFor(() => expect(processScores()).toEqual([['PM', '0.96', ''], ['SI', '0.88', '']]));
+    expect(screen.queryByLabelText('Assessment coverage')).toBeNull();
   });
 
   it('separates gaps rated Not achieved and Partially achieved', async () => {

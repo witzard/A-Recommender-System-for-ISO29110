@@ -21,6 +21,8 @@
 .note { color: #555555; }
 .error { border: 1px solid #a00000; color: #a00000; padding: 6px 8px; margin: 8px 0; }
 .mock { border: 1px solid #999999; background: #f5f5f5; padding: 6px 8px; margin: 8px 0; }
+.coverage { border: 1px solid #999999; padding: 6px 8px; margin: 8px 0; }
+.coverage p, .coverage ul { margin: 4px 0; }
 
 table { border-collapse: collapse; width: 100%; margin: 6px 0 12px; }
 th, td { border: 1px solid #bbbbbb; padding: 4px 6px; text-align: left; vertical-align: top; }

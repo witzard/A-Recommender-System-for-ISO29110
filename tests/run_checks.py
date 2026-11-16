@@ -2,7 +2,8 @@
 
   1. Reasoning   - inferred-fact counts (GapResult, S1-S3 recommendations, R8 Not applicable, R10, no recommendRole)
                    counted with SPARQL on the Fuseki dataset (named graph of Pellet output).
-  2. Scores      - process scores of the case scenarios S1-S4 = PJ.04-PJ.07 (rev16/rev17) from GET /api/projects/{id}/assessment.
+  2. Scores      - process scores of the case scenarios S1-S4 = PJ.04-PJ.07 (rev16/rev17) from GET /api/projects/{id}/assessment,
+                   in both modes (all items / assessed items only, 2026-11-16) + the assessment coverage.
   3. Recommend.  - tasks, Base Practices and process outcomes (rev09: BPs from the advisor BP-WP table) of every assessed entity with a gap.
   4. CQs         - the 34 competency questions sent as parameters to POST /api/search (tests/cq_parameters.json);
                    the task / BP IDs of the answering query must equal eval_templates.tsv of Round 6 (Q33: 137 pairs, rev09).
@@ -78,6 +79,18 @@ def main():
         data = get('%s/projects/%s/assessment' % (a.api, pj))
         got = {p['process']: round(float(p['score']), 4) for p in data['processScores']}
         check('%s process scores' % pj, got == want, 'got %s, expected %s' % (got, want))
+        if pj in exp.get('processScoresAssessed', {}):
+            wa = exp['processScoresAssessed'][pj]
+            ga = {p['process']: round(float(p['scoreAssessed']), 4) for p in data['processScores'] if p.get('scoreAssessed') not in (None, '')}
+            check('%s process scores (assessed items only)' % pj, ga == wa, 'got %s, expected %s' % (ga, wa))
+        if pj in exp.get('coverage', {}):
+            wc = exp['coverage'][pj]
+            c = data.get('coverage') or {}
+            gc = dict(c, notApplicable=sorted(w['wpID'] for w in c.get('notApplicable', [])),
+                      notAssessed=sorted(w['wpID'] for w in c.get('notAssessed', [])))
+            check('%s assessment coverage' % pj, gc == wc, 'got %s, expected %s' % (gc, wc))
+            st = sorted(w['wpID'] for w in data['workProducts'] if w.get('status') == 'assessed')
+            check('%s work products with status assessed' % pj, len(st) == wc['assessed'], 'got %d, expected %d' % (len(st), wc['assessed']))
         for r in data['recommendations']:
             got_recs[r['ae']] = {'tasks': sorted(t['taskID'] for t in r['tasks']),
                                  'outcomes': sorted(x['outcome'] for x in r['outcomes']),

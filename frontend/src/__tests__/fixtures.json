@@ -1,5 +1,5 @@
 {
- "_note": "API responses produced by running the backend services (AssessmentService, KnowledgeSearchService) and the SPARQL files on ontology/ISO29110V2_rev08.ttl + kb/inferred.nt (2026-11-04). 2026-11-08 (rev08): recommendations[].roles removed and recommendations[].outcomes added by computing them in Python from ontology/ISO29110V2_rev08.ttl + kb/inferred.nt (same fields as AssessmentService); reasoningReport = kb/reasoning-report.json of rev08. options and search (request role=Technical leader, workProduct=Project Plan, kwAll=[verify]) regenerated 2026-11-08 from the backend query code (compiled) run with rdflib on rev08 + kb/inferred.nt. 2026-11-09 (rev09): only the G3 title changed; row values are still the rev08 output (mock data for the page tests).",
+ "_note": "API responses produced by running the backend services (AssessmentService, KnowledgeSearchService) and the SPARQL files on ontology/ISO29110V2_rev08.ttl + kb/inferred.nt (2026-11-04). 2026-11-08 (rev08): recommendations[].roles removed and recommendations[].outcomes added by computing them in Python from ontology/ISO29110V2_rev08.ttl + kb/inferred.nt (same fields as AssessmentService); reasoningReport = kb/reasoning-report.json of rev08. options and search (request role=Technical leader, workProduct=Project Plan, kwAll=[verify]) regenerated 2026-11-08 from the backend query code (compiled) run with rdflib on rev08 + kb/inferred.nt. 2026-11-09 (rev09): only the G3 title changed; row values are still the rev08 output (mock data for the page tests). 2026-11-16 (two score modes): PJ.01 and PJ.02 got coverage, workProducts[].status / scoreAssessed (computed in Python from their ratings, as AssessmentService.coverage and q1-*-assessed.rq) and processScores[].scoreAssessed (illustrative values, not computed); PJ.03 is left without these fields (page must cope with an older backend).",
  "options": {
   "role": [
    {
@@ -632,16 +632,113 @@
     "hasTotalDuration": "0",
     "excludedWorkProducts": []
    },
+   "coverage": {
+    "workProducts": 23,
+    "assessed": 2,
+    "notApplicable": [],
+    "notAssessed": [
+     {
+      "wpID": "WP.01",
+      "wpName": "Acceptance Record"
+     },
+     {
+      "wpID": "WP.03",
+      "wpName": "Change Request"
+     },
+     {
+      "wpID": "WP.04",
+      "wpName": "Correction Register"
+     },
+     {
+      "wpID": "WP.05",
+      "wpName": "Implementation Environment"
+     },
+     {
+      "wpID": "WP.06",
+      "wpName": "Maintenance Documentation"
+     },
+     {
+      "wpID": "WP.07",
+      "wpName": "Meeting Record"
+     },
+     {
+      "wpID": "WP.08",
+      "wpName": "Product Operation Guide"
+     },
+     {
+      "wpID": "WP.09",
+      "wpName": "Progress Status Record"
+     },
+     {
+      "wpID": "WP.11",
+      "wpName": "Project Repository"
+     },
+     {
+      "wpID": "WP.12",
+      "wpName": "Project Repository Backup"
+     },
+     {
+      "wpID": "WP.13",
+      "wpName": "Requirement Specification"
+     },
+     {
+      "wpID": "WP.14",
+      "wpName": "Software"
+     },
+     {
+      "wpID": "WP.15",
+      "wpName": "Software Components"
+     },
+     {
+      "wpID": "WP.16",
+      "wpName": "Software Design"
+     },
+     {
+      "wpID": "WP.17",
+      "wpName": "Software Product"
+     },
+     {
+      "wpID": "WP.18",
+      "wpName": "Software User Documentation"
+     },
+     {
+      "wpID": "WP.19",
+      "wpName": "Test Cases and Test Procedures"
+     },
+     {
+      "wpID": "WP.20",
+      "wpName": "Test Report"
+     },
+     {
+      "wpID": "WP.21",
+      "wpName": "Traceability Record"
+     },
+     {
+      "wpID": "WP.22",
+      "wpName": "Validation Record"
+     },
+     {
+      "wpID": "WP.23",
+      "wpName": "Verification Record"
+     }
+    ],
+    "items": 178,
+    "itemsAssessed": 19,
+    "itemsNotApplicable": 0,
+    "itemsNotAssessed": 159
+   },
    "processScores": [
     {
      "nBP": "27",
      "process": "PM",
-     "score": "0.4040123456790123456790123452"
+     "score": "0.4040123456790123456790123452",
+     "scoreAssessed": "0.63"
     },
     {
      "nBP": "23",
      "process": "SI",
-     "score": "0.01521739130434782608695652174"
+     "score": "0.01521739130434782608695652174",
+     "scoreAssessed": "0.7"
     }
    ],
    "basePracticeScores": [
@@ -954,7 +1051,9 @@
      "score": "0",
      "ratings": {
       "Not_rated": "6"
-     }
+     },
+     "status": "not_assessed",
+     "scoreAssessed": null
     },
     {
      "ae": "AE.PJ01.WP02",
@@ -964,7 +1063,9 @@
      "ratings": {
       "Largely_achieved": "4",
       "Not_achieved": "1"
-     }
+     },
+     "status": "assessed",
+     "scoreAssessed": "0.56"
     },
     {
      "ae": "AE.PJ01.WP03",
@@ -973,7 +1074,9 @@
      "score": "0",
      "ratings": {
       "Not_rated": "8"
-     }
+     },
+     "status": "not_assessed",
+     "scoreAssessed": null
     },
     {
      "ae": "AE.PJ01.WP04",
@@ -982,7 +1085,9 @@
      "score": "0",
      "ratings": {
       "Not_rated": "8"
-     }
+     },
+     "status": "not_assessed",
+     "scoreAssessed": null
     },
     {
      "ae": "AE.PJ01.WP05",
@@ -991,7 +1096,9 @@
      "score": "0",
      "ratings": {
       "Not_rated": "1"
-     }
+     },
+     "status": "not_assessed",
+     "scoreAssessed": null
     },
     {
      "ae": "AE.PJ01.WP06",
@@ -1000,7 +1107,9 @@
      "score": "0",
      "ratings": {
       "Not_rated": "2"
-     }
+     },
+     "status": "not_assessed",
+     "scoreAssessed": null
     },
     {
      "ae": "AE.PJ01.WP07",
@@ -1009,7 +1118,9 @@
      "score": "0",
      "ratings": {
       "Not_rated": "10"
-     }
+     },
+     "status": "not_assessed",
+     "scoreAssessed": null
     },
     {
      "ae": "AE.PJ01.WP08",
@@ -1018,7 +1129,9 @@
      "score": "0",
      "ratings": {
       "Not_rated": "10"
-     }
+     },
+     "status": "not_assessed",
+     "scoreAssessed": null
     },
     {
      "ae": "AE.PJ01.WP09",
@@ -1027,7 +1140,9 @@
      "score": "0",
      "ratings": {
       "Not_rated": "8"
-     }
+     },
+     "status": "not_assessed",
+     "scoreAssessed": null
     },
     {
      "ae": "AE.PJ01.WP10",
@@ -1036,7 +1151,9 @@
      "score": "0.7",
      "ratings": {
       "Largely_achieved": "14"
-     }
+     },
+     "status": "assessed",
+     "scoreAssessed": "0.7"
     },
     {
      "ae": "AE.PJ01.WP11",
@@ -1045,7 +1162,9 @@
      "score": "0",
      "ratings": {
       "Not_rated": "11"
-     }
+     },
+     "status": "not_assessed",
+     "scoreAssessed": null
     },
     {
      "ae": "AE.PJ01.WP12",
@@ -1054,7 +1173,9 @@
      "score": "0",
      "ratings": {
       "Not_rated": "1"
-     }
+     },
+     "status": "not_assessed",
+     "scoreAssessed": null
     },
     {
      "ae": "AE.PJ01.WP13",
@@ -1063,7 +1184,9 @@
      "score": "0",
      "ratings": {
       "Not_rated": "12"
-     }
+     },
+     "status": "not_assessed",
+     "scoreAssessed": null
     },
     {
      "ae": "AE.PJ01.WP14",
@@ -1072,7 +1195,9 @@
      "score": "0",
      "ratings": {
       "Not_rated": "1"
-     }
+     },
+     "status": "not_assessed",
+     "scoreAssessed": null
     },
     {
      "ae": "AE.PJ01.WP15",
@@ -1081,7 +1206,9 @@
      "score": "0",
      "ratings": {
       "Not_rated": "1"
-     }
+     },
+     "status": "not_assessed",
+     "scoreAssessed": null
     },
     {
      "ae": "AE.PJ01.WP16",
@@ -1090,7 +1217,9 @@
      "score": "0",
      "ratings": {
       "Not_rated": "13"
-     }
+     },
+     "status": "not_assessed",
+     "scoreAssessed": null
     },
     {
      "ae": "AE.PJ01.WP17",
@@ -1099,7 +1228,9 @@
      "score": "0",
      "ratings": {
       "Not_rated": "10"
-     }
+     },
+     "status": "not_assessed",
+     "scoreAssessed": null
     },
     {
      "ae": "AE.PJ01.WP18",
@@ -1108,7 +1239,9 @@
      "score": "0",
      "ratings": {
       "Not_rated": "10"
-     }
+     },
+     "status": "not_assessed",
+     "scoreAssessed": null
     },
     {
      "ae": "AE.PJ01.WP19",
@@ -1117,7 +1250,9 @@
      "score": "0",
      "ratings": {
       "Not_rated": "15"
-     }
+     },
+     "status": "not_assessed",
+     "scoreAssessed": null
     },
     {
      "ae": "AE.PJ01.WP20",
@@ -1126,7 +1261,9 @@
      "score": "0",
      "ratings": {
       "Not_rated": "8"
-     }
+     },
+     "status": "not_assessed",
+     "scoreAssessed": null
     },
     {
      "ae": "AE.PJ01.WP21",
@@ -1135,7 +1272,9 @@
      "score": "0",
      "ratings": {
       "Not_rated": "2"
-     }
+     },
+     "status": "not_assessed",
+     "scoreAssessed": null
     },
     {
      "ae": "AE.PJ01.WP22",
@@ -1144,7 +1283,9 @@
      "score": "0",
      "ratings": {
       "Not_rated": "11"
-     }
+     },
+     "status": "not_assessed",
+     "scoreAssessed": null
     },
     {
      "ae": "AE.PJ01.WP23",
@@ -1153,7 +1294,9 @@
      "score": "0",
      "ratings": {
       "Not_rated": "11"
-     }
+     },
+     "status": "not_assessed",
+     "scoreAssessed": null
     }
    ],
    "gaps": [
@@ -1270,16 +1413,37 @@
      }
     ]
    },
+   "coverage": {
+    "workProducts": 23,
+    "assessed": 21,
+    "notApplicable": [
+     {
+      "wpID": "WP.08",
+      "wpName": "Product Operation Guide"
+     },
+     {
+      "wpID": "WP.18",
+      "wpName": "Software User Documentation"
+     }
+    ],
+    "notAssessed": [],
+    "items": 178,
+    "itemsAssessed": 158,
+    "itemsNotApplicable": 20,
+    "itemsNotAssessed": 0
+   },
    "processScores": [
     {
      "score": "0.5596219135802469135802469130",
      "process": "PM",
-     "nBP": "27"
+     "nBP": "27",
+     "scoreAssessed": "0.62"
     },
     {
      "score": "0.5188297964113181504485852322",
      "process": "SI",
-     "nBP": "23"
+     "nBP": "23",
+     "scoreAssessed": "0.55"
     }
    ],
    "basePracticeScores": [
@@ -1592,7 +1756,9 @@
      "score": "0.3",
      "ratings": {
       "Partially_achieved": "6"
-     }
+     },
+     "status": "assessed",
+     "scoreAssessed": "0.3"
     },
     {
      "ae": "AE.PJ02.WP02",
@@ -1601,7 +1767,9 @@
      "score": "0.7",
      "ratings": {
       "Largely_achieved": "5"
-     }
+     },
+     "status": "assessed",
+     "scoreAssessed": "0.7"
     },
     {
      "ae": "AE.PJ02.WP03",
@@ -1611,7 +1779,9 @@
      "ratings": {
       "Not_achieved": "7",
       "Partially_achieved": "1"
-     }
+     },
+     "status": "assessed",
+     "scoreAssessed": "0.0375"
     },
     {
      "ae": "AE.PJ02.WP04",
@@ -1620,7 +1790,9 @@
      "score": "0.3",
      "ratings": {
       "Partially_achieved": "8"
-     }
+     },
+     "status": "assessed",
+     "scoreAssessed": "0.3"
     },
     {
      "ae": "AE.PJ02.WP05",
@@ -1629,7 +1801,9 @@
      "score": "0.7",
      "ratings": {
       "Largely_achieved": "1"
-     }
+     },
+     "status": "assessed",
+     "scoreAssessed": "0.7"
     },
     {
      "ae": "AE.PJ02.WP06",
@@ -1638,7 +1812,9 @@
      "score": "0.3",
      "ratings": {
       "Partially_achieved": "2"
-     }
+     },
+     "status": "assessed",
+     "scoreAssessed": "0.3"
     },
     {
      "ae": "AE.PJ02.WP07",
@@ -1648,7 +1824,9 @@
      "ratings": {
       "Largely_achieved": "9",
       "Partially_achieved": "1"
-     }
+     },
+     "status": "assessed",
+     "scoreAssessed": "0.66"
     },
     {
      "ae": "AE.PJ02.WP08",
@@ -1657,7 +1835,9 @@
      "score": "0",
      "ratings": {
       "Not_applicable": "10"
-     }
+     },
+     "status": "not_applicable",
+     "scoreAssessed": null
     },
     {
      "ae": "AE.PJ02.WP09",
@@ -1666,7 +1846,9 @@
      "score": "0.3",
      "ratings": {
       "Partially_achieved": "8"
-     }
+     },
+     "status": "assessed",
+     "scoreAssessed": "0.3"
     },
     {
      "ae": "AE.PJ02.WP10",
@@ -1675,7 +1857,9 @@
      "score": "0.7",
      "ratings": {
       "Largely_achieved": "14"
-     }
+     },
+     "status": "assessed",
+     "scoreAssessed": "0.7"
     },
     {
      "ae": "AE.PJ02.WP11",
@@ -1684,7 +1868,9 @@
      "score": "0.7",
      "ratings": {
       "Largely_achieved": "11"
-     }
+     },
+     "status": "assessed",
+     "scoreAssessed": "0.7"
     },
     {
      "ae": "AE.PJ02.WP12",
@@ -1693,7 +1879,9 @@
      "score": "0",
      "ratings": {
       "Not_achieved": "1"
-     }
+     },
+     "status": "assessed",
+     "scoreAssessed": "0.0"
     },
     {
      "ae": "AE.PJ02.WP13",
@@ -1702,7 +1890,9 @@
      "score": "0.7",
      "ratings": {
       "Largely_achieved": "12"
-     }
+     },
+     "status": "assessed",
+     "scoreAssessed": "0.7"
     },
     {
      "ae": "AE.PJ02.WP14",
@@ -1711,7 +1901,9 @@
      "score": "0.7",
      "ratings": {
       "Largely_achieved": "1"
-     }
+     },
+     "status": "assessed",
+     "scoreAssessed": "0.7"
     },
     {
      "ae": "AE.PJ02.WP15",
@@ -1720,7 +1912,9 @@
      "score": "0.7",
      "ratings": {
       "Largely_achieved": "1"
-     }
+     },
+     "status": "assessed",
+     "scoreAssessed": "0.7"
     },
     {
      "ae": "AE.PJ02.WP16",
@@ -1729,7 +1923,9 @@
      "score": "0.7",
      "ratings": {
       "Largely_achieved": "13"
-     }
+     },
+     "status": "assessed",
+     "scoreAssessed": "0.7"
     },
     {
      "ae": "AE.PJ02.WP17",
@@ -1738,7 +1934,9 @@
      "score": "0.7",
      "ratings": {
       "Largely_achieved": "10"
-     }
+     },
+     "status": "assessed",
+     "scoreAssessed": "0.7"
     },
     {
      "ae": "AE.PJ02.WP18",
@@ -1747,7 +1945,9 @@
      "score": "0",
      "ratings": {
       "Not_applicable": "10"
-     }
+     },
+     "status": "not_applicable",
+     "scoreAssessed": null
     },
     {
      "ae": "AE.PJ02.WP19",
@@ -1757,7 +1957,9 @@
      "ratings": {
       "Not_achieved": "10",
       "Partially_achieved": "5"
-     }
+     },
+     "status": "assessed",
+     "scoreAssessed": "0.1"
     },
     {
      "ae": "AE.PJ02.WP20",
@@ -1766,7 +1968,9 @@
      "score": "0.3",
      "ratings": {
       "Partially_achieved": "8"
-     }
+     },
+     "status": "assessed",
+     "scoreAssessed": "0.3"
     },
     {
      "ae": "AE.PJ02.WP21",
@@ -1775,7 +1979,9 @@
      "score": "0.3",
      "ratings": {
       "Partially_achieved": "2"
-     }
+     },
+     "status": "assessed",
+     "scoreAssessed": "0.3"
     },
     {
      "ae": "AE.PJ02.WP22",
@@ -1784,7 +1990,9 @@
      "score": "0.3",
      "ratings": {
       "Partially_achieved": "11"
-     }
+     },
+     "status": "assessed",
+     "scoreAssessed": "0.3"
     },
     {
      "ae": "AE.PJ02.WP23",
@@ -1793,7 +2001,9 @@
      "score": "0.3",
      "ratings": {
       "Partially_achieved": "11"
-     }
+     },
+     "status": "assessed",
+     "scoreAssessed": "0.3"
     }
    ],
    "gaps": [

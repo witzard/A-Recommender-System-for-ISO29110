@@ -191,41 +191,66 @@ const RATING_COLUMNS = [
   ['Not_applicable', 'N/A'], ['Not_rated', 'No %'],
 ];
 
+const WP_STATUS = { assessed: 'Assessed', not_applicable: 'Not applicable', not_assessed: 'Not assessed yet' };
+const wpList = (wps) => wps.map((w) => `${w.wpID} ${w.wpName}`).join('; ');
+
+// What the assessment covers so far (2026-11-16): which work products have percentages, which are Not applicable (R8)
+// and which are still missing. Older backends send no "coverage": nothing is shown.
+function Coverage({ coverage }) {
+  if (!coverage) return null;
+  const c = coverage;
+  const pct = c.workProducts ? Math.round((100 * c.assessed) / c.workProducts) : 0;
+  return (
+    <div className="coverage" aria-label="Assessment coverage">
+      <p><strong>Assessed: {c.assessed} of {c.workProducts} work products ({pct} %)</strong>; {c.itemsAssessed} of {c.items} characteristics have a percentage.</p>
+      <ul>
+        <li>Not applicable (not delivered in this project, not counted in the assessed-only score): {c.notApplicable.length ? wpList(c.notApplicable) : 'None'}</li>
+        <li>Not assessed yet ({c.notAssessed.length}): {c.notAssessed.length ? wpList(c.notAssessed) : 'None'}</li>
+      </ul>
+    </div>
+  );
+}
+
 function Scores({ data }) {
   return (
     <>
       <h3>Process</h3>
       <table style={{ width: 'auto', minWidth: 360 }}>
-        <thead><tr><th>Process</th><th className="num">Score</th></tr></thead>
+        <thead><tr><th>Process</th><th className="num">Score (all items)</th><th className="num">Score (assessed items only)</th></tr></thead>
         <tbody>{data.processScores.map((p) => (
-          <tr key={p.process}><td>{p.process}</td><td className="num">{score(p.score)}</td></tr>))}</tbody>
+          <tr key={p.process}><td>{p.process}</td><td className="num">{score(p.score)}</td>
+            <td className="num">{score(p.scoreAssessed)}</td></tr>))}</tbody>
       </table>
       <h3>Work products</h3>
       <p className="note">
         N = Not achieved (0-15%), P = Partially achieved (16-50%), L = Largely achieved (51-90%), F = Completely achieved (91-100%),
-        N/A = Not applicable (work product not delivered in this project), No % = no percentage recorded (counted as 0).
+        N/A = Not applicable (work product not delivered in this project), No % = no percentage recorded (0 in the all-items score,
+        left out of the assessed-only score).
       </p>
       <div className="table-wrap">
         <table>
           <thead>
-            <tr><th rowSpan={2}>WP ID</th><th rowSpan={2}>Work product</th><th colSpan={RATING_COLUMNS.length}>Number of characteristics by rating</th>
-              <th rowSpan={2} className="num">Score</th></tr>
+            <tr><th rowSpan={2}>WP ID</th><th rowSpan={2}>Work product</th><th rowSpan={2}>Status</th>
+              <th colSpan={RATING_COLUMNS.length}>Number of characteristics by rating</th>
+              <th rowSpan={2} className="num">Score (all items)</th><th rowSpan={2} className="num">Score (assessed items only)</th></tr>
             <tr>{RATING_COLUMNS.map(([k, label]) => <th key={k} className="num" title={ratingLabel(k)}>{label}</th>)}</tr>
           </thead>
           <tbody>{data.workProducts.map((w) => (
-            <tr key={w.wpID}><td className="id">{w.wpID}</td><td>{w.wpName}</td>
+            <tr key={w.wpID}><td className="id">{w.wpID}</td><td>{w.wpName}</td><td>{WP_STATUS[w.status] || ''}</td>
               {RATING_COLUMNS.map(([k]) => <td key={k} className="num">{w.ratings[k] || ''}</td>)}
-              <td className="num">{score(w.score)}</td></tr>))}</tbody>
+              <td className="num">{score(w.score)}</td><td className="num">{score(w.scoreAssessed)}</td></tr>))}</tbody>
         </table>
       </div>
       <details>
         <summary>Base Practices ({data.basePracticeScores.length})</summary>
         <div className="table-wrap">
           <table>
-            <thead><tr><th>BP ID</th><th>Base Practice</th><th className="num">Work products</th><th className="num">Score</th></tr></thead>
+            <thead><tr><th>BP ID</th><th>Base Practice</th><th className="num">Work products</th><th className="num">Assessed</th>
+              <th className="num">Score (all items)</th><th className="num">Score (assessed items only)</th></tr></thead>
             <tbody>{data.basePracticeScores.map((b) => (
               <tr key={b.bpID}><td className="id">{b.bpID}</td><td><span className="multiline">{b.description}</span></td>
-                <td className="num">{b.nWP}</td><td className="num">{score(b.score)}</td></tr>))}</tbody>
+                <td className="num">{b.nWP}</td><td className="num">{b.nWPAssessed ?? ''}</td>
+                <td className="num">{score(b.score)}</td><td className="num">{score(b.scoreAssessed)}</td></tr>))}</tbody>
           </table>
         </div>
       </details>
@@ -402,10 +427,14 @@ function Assessment() {
             <h2>Profile</h2>
             <Profile project={data.project} />
             <h2>Scores</h2>
+            <Coverage coverage={data.coverage} />
             <p className="note">
-              Computed from the recorded percentages (score of each rating: N 0, P 0.3, L 0.7, F 1; an item without a percentage
-              counts as 0). Work product score = mean of its characteristics; Base Practice score = mean of its work products;
-              process score = mean of its Base Practices.
+              Computed from the recorded percentages (score of each rating: N 0, P 0.3, L 0.7, F 1). Work product score = mean of
+              its characteristics; Base Practice score = mean of its work products; process score = mean of its Base Practices.
+              Two scores are shown. All items: every characteristic counts, and one without a percentage (not assessed yet, or
+              Not applicable) counts as 0, so the score shows the position against the whole profile. Assessed items only: only
+              characteristics with a percentage count, and work products or Base Practices with none are left out, so the score
+              shows how well the assessed part is done. Read it together with the coverage above.
             </p>
             <Scores data={data} />
             <GapsAndRecommendations data={data} rating={gapRating} setRating={setGapRating} />

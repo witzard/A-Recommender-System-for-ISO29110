@@ -1,5 +1,24 @@
 # Changelog
 
+## 2026-11-16 - two score modes, assessment coverage, one script for all tests
+
+- Scores in two modes (researcher 2026-11-16): `score` = q1-q3-*-v3.rq as before (every assessment result counts; no
+  percentage or Not applicable = 0, advisor convention) and `scoreAssessed` = new `q1/q2/q3-*-assessed.rq` (only results
+  with a percentage; a work product with none is left out of the Base Practice mean, a Base Practice with no assessed work
+  product is left out of the process mean). The API also returns `coverage` (work products assessed / Not applicable by R8 /
+  not assessed yet, with counts of characteristics) and `status` per work product (`AssessmentService.coverage`).
+- Page: coverage box above the scores (assessed x of 23, the Not applicable and not-yet-assessed work products listed);
+  process, work-product and Base Practice tables show both scores; work-product table has a Status column.
+- `tests/expected.json`: `processScoresAssessed` and `coverage` of S1-S4 from the independent Python computation
+  `08_Revisions/_tools/score_modes.py` (its "all" mode reproduces `processScores`); `tests/run_checks.py` checks them
+  (113 -> 125 checks). Fixtures: PJ.01/PJ.02 got coverage / status / scoreAssessed, PJ.03 left without (older backend);
+  App tests 8 -> 10.
+- `tests/run_all.py` + `scripts/run-all-tests.cmd` (`.sh`): reasoner, reasoning test cases, Fuseki, load, backend,
+  run_checks, knowledge-search test cases and npm test in one run with one summary. `tests/results/` is ignored by git.
+- Not run yet on Windows (no Fuseki / Maven / npm registry in the review VM): backend, run_checks, api test cases, npm test.
+  Checked here: reasoner + reasoning test cases through run_all.py (28/28), AssessmentService compiled with stubs and
+  coverage() tested, the score / coverage components rendered with the fixtures.
+
 ## 2026-11-16 - ontology rev17 (R8: delivery instructions only)
 
 - `ontology/ISO29110V2_rev17.ttl` = `08_Revisions/2026-11-16_Round17_R8Delivery/ISO29110V2_rev17.ttl`

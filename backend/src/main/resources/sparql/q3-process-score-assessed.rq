@@ -1,0 +1,21 @@
+PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>
+# Score mode "assessed" (2026-11-16): process score = mean of the "assessed" BP scores (q2-base-practice-score-assessed.rq);
+# BPs with no assessed work product are left out. Mode "all" = q3-process-score-v3.rq.
+SELECT ?pj ?proc (COUNT(?bp) AS ?nBP) (SUM(?bpScore) AS ?sumBP) (AVG(?bpScore) AS ?processScore)
+WHERE {
+  { SELECT ?pj ?pas ?bp (AVG(?wpScore) AS ?bpScore)
+    WHERE {
+      ?pas a iso:PreAssessment ; iso:hasBasePractice ?bp ; iso:hasAssessedEntity ?ae .
+      ?ae iso:responsibleFor ?pj .
+      { SELECT ?ae (AVG(?sc) AS ?wpScore)
+        WHERE {
+          ?ae iso:hasAssessmentResult ?ar .
+          ?ar iso:hasPercentageAchievement ?pct .
+          ?r a iso:Rating ; iso:hasMinPercentage ?mn ; iso:hasMaxPercentage ?mx ; iso:hasAssignedScore ?sc .
+          FILTER (?pct >= ?mn && ?pct <= ?mx)
+        } GROUP BY ?ae }
+    } GROUP BY ?pj ?pas ?bp }
+  ?pas iso:hasProcess ?proc .
+}
+GROUP BY ?pj ?proc
+ORDER BY ?pj ?proc

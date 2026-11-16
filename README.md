@@ -50,14 +50,27 @@ then `scripts\load-fuseki.cmd` again. The reasoner stops without writing anythin
 
 ## Tests
 
-With Fuseki and the backend running:
+**All tests in one go** (from the repository root):
+
+```
+scripts\run-all-tests.cmd                    (add --restart-backend after a change to the Java code)
+```
+
+`tests/run_all.py` runs, in order: the reasoner (`kb/`), the 28 reasoning test cases of TEST_CASES (rev + test data /
+conflict data, in `../08_Revisions`), Fuseki (started from `--fuseki-home` and the dataset created in memory if needed),
+the data load, the backend (started with `mvnw spring-boot:run` if it is not running, and stopped again at the end unless
+`--keep-backend`), `tests/run_checks.py`, the knowledge-search test cases (`../08_Revisions/2026-11-14_TestCases/run_api_testcases.py`)
+and `npm test`; then it prints one summary and writes `tests/results/run_all_latest.json` / `.log`. Skip a step with
+`--skip <step>` (reason, reasoning-tc, fuseki, load, backend, run-checks, api-tc, npm-test).
+
+The single steps, with Fuseki and the backend running:
 
 ```
 python tests\run_checks.py
 ```
 
-96 checks: inferred-fact counts (GapResult, S1-S3 tasks / Base Practices / outcomes, R8, R10, no recommendRole), process
-scores of the three scenario projects, tasks / process outcomes / Base Practices of the 15 assessed entities with
+125 checks: inferred-fact counts (GapResult, S1-S3 tasks / Base Practices / outcomes, R8, R10, no recommendRole), process
+scores of the four scenario projects in both modes (all items / assessed items only) and their assessment coverage, tasks / process outcomes / Base Practices of the 15 assessed entities with
 recommendations, and the 34 competency questions sent as parameters
 (the query of the answering group must return the same task / Base Practice IDs as Round 6; Q33 = 137 pairs, rev09).
 
@@ -72,6 +85,6 @@ Frontend: `cd frontend` then `npm test` (Vitest; the API is answered from `src/_
 | POST | `/api/search/T2` | `{workProduct, state, kwProducer}` -> `{sparql, rows}` |
 | POST | `/api/search/T3` | `{workProduct}` (empty = all) -> `{sparql, rows}` |
 | GET | `/api/projects` | projects with assessment data |
-| GET | `/api/projects/{id}/assessment` | profile, scores, characteristics not achieved, recommendations |
+| GET | `/api/projects/{id}/assessment` | profile, coverage (work products assessed / Not applicable / not assessed yet), scores in two modes (`score` = all items, an item without a percentage = 0; `scoreAssessed` = items with a percentage only), characteristics not achieved, recommendations |
 | GET | `/api/status` | number of triples in the default graph and in the inferred graph |
 | GET | `/api/reasoning-report` | `kb/reasoning-report.json` |

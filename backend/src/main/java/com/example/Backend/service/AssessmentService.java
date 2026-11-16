@@ -16,6 +16,9 @@ import java.util.TreeMap;
  * achieved from Q4 v3, and ratings, recommended tasks / Base Practices and linked process outcomes from the facts
  * inferred by Pellet (SWRL rules in the ontology). Roles are not recommended (rev08): the roles of each recommended task
  * are read from Task hasRole. This class only groups and formats rows; it contains no recommendation logic.
+ * Two score modes (2026-11-16): "score" = Q1-Q3 v3, every assessment result counts (no percentage or N/A = 0, advisor
+ * convention); "scoreAssessed" = q1-q3-*-assessed.rq, only results with a percentage. "coverage" says how many work
+ * products are assessed, Not applicable (R8) or not assessed yet, from the ratings inferred by Pellet.
  */
 @Service
 public class AssessmentService {
@@ -71,15 +74,35 @@ public class AssessmentService {
         project.put("excludedWorkProducts", excluded);
 
         // (b) scores: Q3 process, Q2 Base Practice, Q1 work product (rows of all projects, filtered here)
+        Map<String, Map<String, String>> processAssessed = new LinkedHashMap<>();
+        for (Map<String, String> r : select("q3-process-score-assessed.rq", Map.of())) {
+            if (pj.equals(r.get("pj"))) {
+                processAssessed.put(local(r.get("proc")), r);
+            }
+        }
         List<Map<String, String>> processScores = new ArrayList<>();
         for (Map<String, String> r : select("q3-process-score-v3.rq", Map.of())) {
             if (pj.equals(r.get("pj"))) {
-                processScores.add(Map.of("process", local(r.get("proc")), "nBP", r.get("nBP"), "score", r.get("processScore")));
+                String proc = local(r.get("proc"));
+                Map<String, String> a = processAssessed.getOrDefault(proc, Map.of());
+                Map<String, String> p = new LinkedHashMap<>();
+                p.put("process", proc);
+                p.put("nBP", r.get("nBP"));
+                p.put("score", r.get("processScore"));
+                p.put("nBPAssessed", a.getOrDefault("nBP", "0"));
+                p.put("scoreAssessed", a.get("processScore"));
+                processScores.add(p);
             }
         }
         Map<String, Map<String, String>> bpInfo = new LinkedHashMap<>();
         for (Map<String, String> r : select("base-practices.rq", Map.of())) {
             bpInfo.put(r.get("bp"), r);
+        }
+        Map<String, Map<String, String>> bpAssessed = new LinkedHashMap<>();
+        for (Map<String, String> r : select("q2-base-practice-score-assessed.rq", Map.of())) {
+            if (pj.equals(r.get("pj"))) {
+                bpAssessed.put(r.get("bp"), r);
+            }
         }
         List<Map<String, String>> bpScores = new ArrayList<>();
         for (Map<String, String> r : select("q2-base-practice-score-v3.rq", Map.of())) {
@@ -90,6 +113,9 @@ public class AssessmentService {
                 b.put("description", info.getOrDefault("description", ""));
                 b.put("nWP", r.get("nWP"));
                 b.put("score", r.get("bpScore"));
+                Map<String, String> a = bpAssessed.getOrDefault(r.get("bp"), Map.of());
+                b.put("nWPAssessed", a.getOrDefault("nWP", "0"));
+                b.put("scoreAssessed", a.get("bpScore"));
                 bpScores.add(b);
             }
         }
@@ -102,6 +128,12 @@ public class AssessmentService {
                 wpScore.put(r.get("ae"), r.get("wpScore"));
             }
         }
+        Map<String, String> wpScoreAssessed = new LinkedHashMap<>();
+        for (Map<String, String> r : select("q1-work-product-score-assessed.rq", Map.of())) {
+            if (pj.equals(r.get("pj"))) {
+                wpScoreAssessed.put(r.get("ae"), r.get("wpScore"));
+            }
+        }
         Map<String, Map<String, Object>> workProducts = new TreeMap<>();
         Map<String, String> wpOfAe = new LinkedHashMap<>();
         Map<String, Map<String, Object>> byWp = new LinkedHashMap<>();
@@ -112,6 +144,7 @@ public class AssessmentService {
                 m.put("wpID", r.get("wpID"));
                 m.put("wpName", r.get("wpName"));
                 m.put("score", wpScore.get(r.get("ae")));
+                m.put("scoreAssessed", wpScoreAssessed.get(r.get("ae")));
                 m.put("ratings", new LinkedHashMap<String, String>());
                 return m;
             });
@@ -121,6 +154,7 @@ public class AssessmentService {
             wpOfAe.put(r.get("ae"), r.get("wp"));
             byWp.put(r.get("wp"), w);
         }
+        Map<String, Object> coverage = coverage(workProducts.values());
 
         // (c) characteristics rated Not achieved / Partially achieved (Q4 v3)
         List<Map<String, String>> gaps = new ArrayList<>();
@@ -171,6 +205,7 @@ public class AssessmentService {
 
         Map<String, Object> out = new LinkedHashMap<>();
         out.put("project", project);
+        out.put("coverage", coverage);
         out.put("processScores", processScores);
         out.put("basePracticeScores", bpScores);
         out.put("workProducts", new ArrayList<>(workProducts.values()));
@@ -185,6 +220,57 @@ public class AssessmentService {
             out.put(r.get("graph"), r.get("triples"));
         }
         return out;
+    }
+
+    /**
+     * Assessment coverage from the ratings of each work product (Pellet facts): "not_applicable" when a result is
+     * Not applicable (R8), "assessed" when a result has a rating N/P/L/F (= has a percentage), else "not_assessed".
+     * Sets "status" on each work product.
+     */
+    static Map<String, Object> coverage(java.util.Collection<Map<String, Object>> wps) {
+        List<Map<String, String>> notApplicable = new ArrayList<>();
+        List<Map<String, String>> notAssessed = new ArrayList<>();
+        int assessed = 0, items = 0, itemsAssessed = 0, itemsNotApplicable = 0, itemsNotAssessed = 0;
+        for (Map<String, Object> w : wps) {
+            @SuppressWarnings("unchecked")
+            Map<String, String> ratings = (Map<String, String>) w.get("ratings");
+            int na = 0, rated = 0, none = 0;
+            for (Map.Entry<String, String> e : ratings.entrySet()) {
+                int n = Integer.parseInt(e.getValue());
+                if ("Not_applicable".equals(e.getKey())) {
+                    na += n;
+                } else if ("Not_rated".equals(e.getKey())) {
+                    none += n;
+                } else {
+                    rated += n;
+                }
+            }
+            items += na + rated + none;
+            itemsAssessed += rated;
+            itemsNotApplicable += na;
+            itemsNotAssessed += none;
+            Map<String, String> id = Map.of("wpID", String.valueOf(w.get("wpID")), "wpName", String.valueOf(w.get("wpName")));
+            if (na > 0) {
+                w.put("status", "not_applicable");
+                notApplicable.add(id);
+            } else if (rated > 0) {
+                w.put("status", "assessed");
+                assessed++;
+            } else {
+                w.put("status", "not_assessed");
+                notAssessed.add(id);
+            }
+        }
+        Map<String, Object> c = new LinkedHashMap<>();
+        c.put("workProducts", wps.size());
+        c.put("assessed", assessed);
+        c.put("notApplicable", notApplicable);
+        c.put("notAssessed", notAssessed);
+        c.put("items", items);
+        c.put("itemsAssessed", itemsAssessed);
+        c.put("itemsNotApplicable", itemsNotApplicable);
+        c.put("itemsNotAssessed", itemsNotAssessed);
+        return c;
     }
 
     private List<Map<String, String>> select(String file, Map<String, String> iriBindings) {

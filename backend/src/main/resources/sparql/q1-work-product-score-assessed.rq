@@ -1,0 +1,12 @@
+PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>
+# Score mode "assessed" (2026-11-16): only assessment results that have a percentage count. A work product with no
+# result with a percentage (not assessed yet, or Not applicable by R8) has no row. Mode "all" = q1-work-product-score-v3.rq.
+SELECT ?pj ?ae ?wp (COUNT(?ar) AS ?nItems) (AVG(?sc) AS ?wpScore)
+WHERE {
+  ?ae a iso:AssessedEntity ; iso:responsibleFor ?pj ; iso:hasEntity ?wp ; iso:hasAssessmentResult ?ar .
+  ?ar iso:hasPercentageAchievement ?pct .
+  ?r a iso:Rating ; iso:hasMinPercentage ?mn ; iso:hasMaxPercentage ?mx ; iso:hasAssignedScore ?sc .
+  FILTER (?pct >= ?mn && ?pct <= ?mx)
+}
+GROUP BY ?pj ?ae ?wp
+ORDER BY ?pj ?wp
