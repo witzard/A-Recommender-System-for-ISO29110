@@ -2,7 +2,7 @@
 
   1. Reasoning   - inferred-fact counts (GapResult, S1-S3 recommendations, R8 Not applicable, R10, no recommendRole)
                    counted with SPARQL on the Fuseki dataset (named graph of Pellet output).
-  2. Scores      - process scores of the case scenarios S1-S4 = PJ.04-PJ.07 (rev16/rev17) from GET /api/projects/{id}/assessment,
+  2. Scores      - process scores of the case scenarios S1-S4 = PJ.04-PJ.07 (rev16-rev18) from GET /api/projects/{id}/assessment,
                    in both modes (all items / assessed items only, 2026-11-16) + the assessment coverage.
   3. Recommend.  - tasks, Base Practices and process outcomes (rev09: BPs from the advisor BP-WP table) of every assessed entity with a gap.
   4. CQs         - the 34 competency questions sent as parameters to POST /api/search (tests/cq_parameters.json);

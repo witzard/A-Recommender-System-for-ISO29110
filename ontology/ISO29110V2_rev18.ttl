@@ -9,7 +9,10 @@
 @prefix ISO29110V2: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#> .
 @base <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2/> .
 
-<http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2> rdf:type owl:Ontology .
+<http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2> rdf:type owl:Ontology ;
+    owl:versionInfo "rev18 (2026-11-16)" ;
+    rdfs:label "ISO/IEC 29110 Basic Profile QA compliance ontology" ;
+    rdfs:comment "Knowledge of ISO/IEC 29110 Basic Profile (PM and SI processes: activities, tasks, roles, work products, states, characteristics, base practices, outcomes) after ISO/IEC TR 29110-5-1-2:2020 and ISO/IEC TR 29110-3-1:2017, assessment data of four mock case scenarios (S1-S4) and 12 SWRL rules that rate, find gaps and recommend tasks, base practices and process outcomes. Research prototype: Recommender Framework for ISO/IEC 29110 QA Compliance." .
 
 #################################################################
 #    Annotation properties
@@ -397,7 +400,7 @@ ISO29110V2:hasConsultantName rdf:type owl:DatatypeProperty ;
 ISO29110V2:hasEndingDate rdf:type owl:DatatypeProperty ;
     rdfs:subPropertyOf owl:topDataProperty ;
     rdfs:domain ISO29110V2:Project ;
-    rdfs:range xsd:string .
+    rdfs:range xsd:date .
 
 
 ###  http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#hasEnterpriseName
@@ -586,7 +589,7 @@ ISO29110V2:hasRoleRequiredCompetency rdf:type owl:DatatypeProperty ;
 ISO29110V2:hasStartingDate rdf:type owl:DatatypeProperty ;
     rdfs:subPropertyOf owl:topDataProperty ;
     rdfs:domain ISO29110V2:Project ;
-    rdfs:range xsd:string .
+    rdfs:range xsd:date .
 
 
 ###  http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#hasSummaryOfAchievementScore
@@ -1450,10 +1453,11 @@ ISO29110V2:AR-T08 rdf:type owl:NamedIndividual ,
 ###  http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#CS.01
 ISO29110V2:CS.01 rdf:type owl:NamedIndividual ,
         ISO29110V2:Consultant ;
-    ISO29110V2:hasAffiliation "Affiliation_01" ;
-    ISO29110V2:hasConsultantName "Consultant_Name_01" ;
-    ISO29110V2:hasExperienceYear 0 ;
-    ISO29110V2:hasExpertType "Expert_type_01" .
+    ISO29110V2:hasAffiliation "Mock: independent ISO/IEC 29110 consultancy" ;
+    ISO29110V2:hasConsultantName "Mock consultant (assessor of case scenarios S1-S4)" ;
+    ISO29110V2:hasExperienceYear 8 ;
+    ISO29110V2:hasExpertType "ISO/IEC 29110 Basic Profile assessor (mock)" ;
+    rdfs:comment "MOCK DATA - consultant of the case scenarios S1-S4 (rev18; was a placeholder)" .
 
 
 ###  http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#Completely_achieved
@@ -1487,11 +1491,6 @@ ISO29110V2:Not_applicable rdf:type owl:NamedIndividual ,
         ISO29110V2:Rating .
 
 
-###  http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#PAS.01
-ISO29110V2:PAS.01 rdf:type owl:NamedIndividual ,
-        ISO29110V2:PreAssessment ;
-    ISO29110V2:hasPreAssessedAchievementScore 0 ;
-    ISO29110V2:hasSummaryOfAchievementScore 0 .
 
 
 
@@ -2249,16 +2248,6 @@ ISO29110V2:PM.IWP.01.12.WP10 rdf:type owl:NamedIndividual ,
     ISO29110V2:hasInputWorkProductName "Project plan" .
 
 
-###  http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#PM.IWP.01.13.WP10.1
-ISO29110V2:PM.IWP.01.13.WP10.1 rdf:type owl:NamedIndividual ,
-        ISO29110V2:InputWorkProduct ,
-        ISO29110V2:WorkProduct ;
-    ISO29110V2:hasCurrentState ISO29110V2:WPS.03 ;
-    ISO29110V2:hasFinalState ISO29110V2:WPS.02 ;
-    ISO29110V2:hasProcessOutcome ISO29110V2:PM.PO.03 ;
-    ISO29110V2:isInputWorkProductOf ISO29110V2:PM.PT.01.13 ;
-    ISO29110V2:representsWorkProduct ISO29110V2:WP.10 ;
-    ISO29110V2:hasInputWorkProductName "Project plan" .
 
 
 ###  http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#PM.IWP.01.13.WP10.2
@@ -2508,8 +2497,8 @@ ISO29110V2:PM.IWP.03.03.WP09 rdf:type owl:NamedIndividual ,
 ISO29110V2:PM.IWP.04.01.WP10 rdf:type owl:NamedIndividual ,
         ISO29110V2:InputWorkProduct ,
         ISO29110V2:WorkProduct ;
-    ISO29110V2:hasCurrentState ISO29110V2:WPS.03 ;
-    ISO29110V2:hasFinalState ISO29110V2:WPS.03 ;
+    ISO29110V2:hasCurrentState ISO29110V2:WPS.02 ;
+    ISO29110V2:hasFinalState ISO29110V2:WPS.02 ;
     ISO29110V2:hasProcessOutcome ISO29110V2:PM.PO.15 ;
     ISO29110V2:isInputWorkProductOf ISO29110V2:PM.PT.04.01 ;
     ISO29110V2:representsWorkProduct ISO29110V2:WP.10 ;
@@ -3111,7 +3100,6 @@ ISO29110V2:PM.PO.03 rdf:type owl:NamedIndividual ,
         ISO29110V2:PM.IWP.01.11.WP10 ,
         ISO29110V2:PM.IWP.01.12.WP02 ,
         ISO29110V2:PM.IWP.01.12.WP10 ,
-        ISO29110V2:PM.IWP.01.13.WP10.1 ,
         ISO29110V2:PM.IWP.01.13.WP10.2 ,
         ISO29110V2:PM.OWP.01.11.WP10 ,
         ISO29110V2:PM.OWP.01.12.WP10 ,
@@ -3449,8 +3437,7 @@ ISO29110V2:PM.PT.01.12 rdf:type owl:NamedIndividual ,
 ###  http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#PM.PT.01.13
 ISO29110V2:PM.PT.01.13 rdf:type owl:NamedIndividual ,
         ISO29110V2:Task ;
-    ISO29110V2:hasInputWorkProduct ISO29110V2:PM.IWP.01.13.WP10.1 ,
-        ISO29110V2:PM.IWP.01.13.WP10.2 ;
+    ISO29110V2:hasInputWorkProduct ISO29110V2:PM.IWP.01.13.WP10.2 ;
     ISO29110V2:hasOutputWorkProduct ISO29110V2:PM.OWP.01.13.WP10 ,
         ISO29110V2:PM.OWP.01.13.WP23 ;
     ISO29110V2:hasRole ISO29110V2:PM.ROLE.02 ,
@@ -3884,11 +3871,6 @@ ISO29110V2:Partially_achieved rdf:type owl:NamedIndividual ,
     ISO29110V2:hasMinPercentage 16 .
 
 
-###  http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#RP.01
-ISO29110V2:RP.01 rdf:type owl:NamedIndividual ,
-        ISO29110V2:RecommendedPractice ;
-    ISO29110V2:hasPracticeDescription "Practice_Description_01" ;
-    ISO29110V2:hasPracticeName "Practice_Name_01" .
 
 
 ###  http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#SI
@@ -9388,7 +9370,6 @@ ISO29110V2:WPS.02 rdf:type owl:NamedIndividual ,
                                             ISO29110V2:PM.IWP.01.03.WP02 ,
                                             ISO29110V2:PM.IWP.01.05.WP02.1 ,
                                             ISO29110V2:PM.IWP.01.12.WP02 ,
-                                            ISO29110V2:PM.IWP.01.13.WP10.1 ,
                                             ISO29110V2:PM.IWP.01.14.WP10 ,
                                             ISO29110V2:PM.IWP.01.15.WP10 ,
                                             ISO29110V2:PM.IWP.02.01.WP10 ,
@@ -9451,8 +9432,6 @@ ISO29110V2:WPS.03 rdf:type owl:NamedIndividual ,
                                                  ISO29110V2:WP.20 ,
                                                  ISO29110V2:WP.21 ;
                   ISO29110V2:isCurrentStateOf ISO29110V2:PM.IWP.01.05.WP02.2 ,
-                                              ISO29110V2:PM.IWP.01.13.WP10.1 ,
-                                              ISO29110V2:PM.IWP.04.01.WP10 ,
                                               ISO29110V2:PM.IWP.04.01.WP17 ,
                                               ISO29110V2:PM.OWP.04.1.WP17 ,
                                               ISO29110V2:SI.IWP.02.02.WP02 ,
@@ -9477,7 +9456,6 @@ ISO29110V2:WPS.03 rdf:type owl:NamedIndividual ,
                   ISO29110V2:isFinalStateOf ISO29110V2:PM.IWP.01.05.WP02.2 ,
                                             ISO29110V2:PM.IWP.01.16.WP02 ,
                                             ISO29110V2:PM.IWP.01.16.WP10 ,
-                                            ISO29110V2:PM.IWP.04.01.WP10 ,
                                             ISO29110V2:PM.IWP.04.01.WP17 ,
                                             ISO29110V2:PM.IWP.04.02.WP01 ,
                                             ISO29110V2:SI.IWP.02.02.WP02 ,
@@ -10277,8 +10255,8 @@ ISO29110V2:PJ.04 rdf:type owl:NamedIndividual , ISO29110V2:Project ;
     ISO29110V2:hasProjectDescription "Mock scenario S1 (early stage, about 25 % of the work products assessed): first ISO/IEC 29110 project of a start-up; online booking web application for a local clinic. The delivery instructions do not include a product operation guide or software user documentation." ;
     ISO29110V2:hasNumberofStaff 4 ;
     ISO29110V2:hasTotalDuration "3 months" ;
-    ISO29110V2:hasStartingDate "2026-09-01" ;
-    ISO29110V2:hasEndingDate "2026-11-30" ;
+    ISO29110V2:hasStartingDate "2026-09-01"^^xsd:date ;
+    ISO29110V2:hasEndingDate "2026-11-30"^^xsd:date ;
     ISO29110V2:hasReason "Mock: the customer asks for evidence of a defined process before signing the maintenance contract" ;
     ISO29110V2:isProjectOf ISO29110V2:ENT.04 ;
     ISO29110V2:hasProcess ISO29110V2:PM , ISO29110V2:SI ;
@@ -12234,8 +12212,8 @@ ISO29110V2:PJ.05 rdf:type owl:NamedIndividual , ISO29110V2:Project ;
     ISO29110V2:hasProjectDescription "Mock scenario S2 (mid stage, about 50 % of the work products assessed): inventory management system for a wholesale distributor; requirements work products only partly complete." ;
     ISO29110V2:hasNumberofStaff 6 ;
     ISO29110V2:hasTotalDuration "5 months" ;
-    ISO29110V2:hasStartingDate "2026-06-01" ;
-    ISO29110V2:hasEndingDate "2026-10-30" ;
+    ISO29110V2:hasStartingDate "2026-06-01"^^xsd:date ;
+    ISO29110V2:hasEndingDate "2026-10-30"^^xsd:date ;
     ISO29110V2:hasReason "Mock: improving the development process after two late deliveries" ;
     ISO29110V2:isProjectOf ISO29110V2:ENT.05 ;
     ISO29110V2:hasProcess ISO29110V2:PM , ISO29110V2:SI ;
@@ -14242,8 +14220,8 @@ ISO29110V2:PJ.06 rdf:type owl:NamedIndividual , ISO29110V2:Project ;
     ISO29110V2:hasProjectDescription "Mock scenario S3 (near complete, about 80 % of the work products assessed): new release of the sales module of an in-house ERP product; design, construction and test work products only partly complete." ;
     ISO29110V2:hasNumberofStaff 9 ;
     ISO29110V2:hasTotalDuration "8 months" ;
-    ISO29110V2:hasStartingDate "2026-03-02" ;
-    ISO29110V2:hasEndingDate "2026-10-30" ;
+    ISO29110V2:hasStartingDate "2026-03-02"^^xsd:date ;
+    ISO29110V2:hasEndingDate "2026-10-30"^^xsd:date ;
     ISO29110V2:hasReason "Mock: preparing for ISO/IEC 29110 Basic Profile certification" ;
     ISO29110V2:isProjectOf ISO29110V2:ENT.06 ;
     ISO29110V2:hasProcess ISO29110V2:PM , ISO29110V2:SI ;
@@ -16298,8 +16276,8 @@ ISO29110V2:PJ.07 rdf:type owl:NamedIndividual , ISO29110V2:Project ;
     ISO29110V2:hasProjectDescription "Mock scenario S4 (complete, all 23 work products assessed): customer service portal for a regional utility company; most work products fully achieved, a few partly complete (Change Request, Requirement Specification, Software Product, Test Report)." ;
     ISO29110V2:hasNumberofStaff 12 ;
     ISO29110V2:hasTotalDuration "10 months" ;
-    ISO29110V2:hasStartingDate "2026-01-05" ;
-    ISO29110V2:hasEndingDate "2026-10-30" ;
+    ISO29110V2:hasStartingDate "2026-01-05"^^xsd:date ;
+    ISO29110V2:hasEndingDate "2026-10-30"^^xsd:date ;
     ISO29110V2:hasReason "Mock: annual internal QA review against ISO/IEC 29110 Basic Profile before a re-assessment" ;
     ISO29110V2:isProjectOf ISO29110V2:ENT.07 ;
     ISO29110V2:hasProcess ISO29110V2:PM , ISO29110V2:SI ;
@@ -18363,6 +18341,19 @@ ISO29110V2:WP.21 ISO29110V2:isEntityOf ISO29110V2:AE.PJ07.WP21 .
 ISO29110V2:WP.22 ISO29110V2:isEntityOf ISO29110V2:AE.PJ07.WP22 .
 ISO29110V2:WP.23 ISO29110V2:isEntityOf ISO29110V2:AE.PJ07.WP23 .
 
+
+
+#  rev18: test fixtures kept in the ontology (TC-RAT-01 boundary values) and the new state links of PM.IWP.04.01.WP10
+ISO29110V2:AR-T01 rdfs:comment "Test fixture (TC-RAT-01): rating boundary value, not part of a case scenario" .
+ISO29110V2:AR-T02 rdfs:comment "Test fixture (TC-RAT-01): rating boundary value, not part of a case scenario" .
+ISO29110V2:AR-T03 rdfs:comment "Test fixture (TC-RAT-01): rating boundary value, not part of a case scenario" .
+ISO29110V2:AR-T04 rdfs:comment "Test fixture (TC-RAT-01): rating boundary value, not part of a case scenario" .
+ISO29110V2:AR-T05 rdfs:comment "Test fixture (TC-RAT-01): rating boundary value, not part of a case scenario" .
+ISO29110V2:AR-T06 rdfs:comment "Test fixture (TC-RAT-01): rating boundary value, not part of a case scenario" .
+ISO29110V2:AR-T07 rdfs:comment "Test fixture (TC-RAT-01): rating boundary value, not part of a case scenario" .
+ISO29110V2:AR-T08 rdfs:comment "Test fixture (TC-RAT-01): rating boundary value, not part of a case scenario" .
+ISO29110V2:WPS.02 ISO29110V2:isCurrentStateOf ISO29110V2:PM.IWP.04.01.WP10 .
+ISO29110V2:WPS.02 ISO29110V2:isFinalStateOf ISO29110V2:PM.IWP.04.01.WP10 .
 
 #################################################################
 #    Rules (rev06: rewritten; removed ImprovementRecommendationRule, ApprovedRequirementSpecRule, ApprovedTestCaseRule)

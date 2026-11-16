@@ -1,13 +1,13 @@
 {
   "reasoner": "Pellet 2.3.1 via OWL API 3.4.3",
-  "runAt": "2026-11-16T03:14:10.307836Z",
+  "runAt": "2026-11-16T05:11:34.617726Z",
   "consistent": true,
   "noRules": false,
   "excludedRules": [],
-  "elapsedMs": 11656,
+  "elapsedMs": 12296,
   "inferred": {"types": 86, "objectPropertyValues": 1426, "dataPropertyValues": 0},
   "inputs": {
-    "ontology/ISO29110V2_rev17.ttl": "356f4f59502260b1207ba5a3d6fd3aa858d0c88b60ec9f22ea16ed6172febc51"
+    "ontology/ISO29110V2_rev18.ttl": "42cd1464b41554419265d0c1895d2d4336c6924df6965dd33ae0e0f9c3edb8da"
   },
   "rules": [
     {"label": "BasePracticeOutputWPRule", "enabled": true, "bodyAtoms": 4, "headAtoms": 1},

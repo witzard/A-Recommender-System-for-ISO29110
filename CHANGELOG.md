@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-11-16 - ontology rev18 (data clean-up, same inferred facts)
+
+- `ontology/ISO29110V2_rev18.ttl` = `08_Revisions/2026-11-16_Round18_Cleanup/ISO29110V2_rev18.ttl`
+  (SHA-256 `42cd1464b41554419265d0c1895d2d4336c6924df6965dd33ae0e0f9c3edb8da`): two input-work-product states set after
+  PDTR 29110-5-1-2:2020 (PM.4.1 Project plan approved; extra PM.1.13 input removed), placeholders PAS.01 / RP.01 removed,
+  CS.01 given a mock profile, ontology header (versionInfo, label, comment), project dates typed xsd:date.
+- `kb/` regenerated: `kb/inferred.nt` identical to rev17. Checks unchanged (125).
+
 ## 2026-11-16 - check of the assessment data before the reasoner
 
 - `tests/validate_data.py` (standard library only): V1 a percentage on a work product the project excludes (R8 would
@@ -35,7 +43,7 @@
 - `ontology/ISO29110V2_rev17.ttl` = `08_Revisions/2026-11-16_Round17_R8Delivery/ISO29110V2_rev17.ttl`
   (SHA-256 `356f4f59502260b1207ba5a3d6fd3aa858d0c88b60ec9f22ea16ed6172febc51`): rev16 + one more body atom in
   ExcludedConditionalWorkProductRule, `swrlb:containsIgnoreCase(?note, "delivery instructions")` (12 -> 13 atoms). WP.03
-  Change Request is no longer treated as a conditional work product (it matched only through the PM.3.3 note text);
+  Change Request is no longer treated as a conditional work product (it matched through the notes of PM.3.3 and SI.2.4, which are conditional on a change happening, not on the delivery instructions);
   conditional work products are now WP.08 and WP.18. Researcher approved 2026-11-16.
 - `kb/` regenerated: consistent, 12 rules, types 86 / objectProps 1426; `kb/inferred.nt` identical to rev16 (no scenario
   excludes WP.03). `tests/expected.json` checks unchanged (113).
