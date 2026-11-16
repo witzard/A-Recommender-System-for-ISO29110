@@ -1,6 +1,8 @@
 """Runs every test of the prototype in one go (2026-11-16) and prints one summary.
 
 Steps (each can be skipped with --skip <name>):
+  validate      application-level check of the assessment data (tests/validate_data.py): no percentage on an excluded
+                work product, percentages 0-100, one percentage per result; also checks that the conflict test data is caught
   reason        Pellet + SWRL over ontology/*.ttl -> kb/inferred.nt, kb/reasoning-report.json (= scripts/reason.cmd)
   reasoning-tc  reasoning test cases of TEST_CASES (28): rev + test data, rev + conflict data, check_reasoning_<rev>.py
                 (files in ../08_Revisions; skipped when that folder is not there)
@@ -40,7 +42,7 @@ WIN = os.name == 'nt'
 DATASET = 'ISO29110_RecommenderSystems'
 FUSEKI = 'http://localhost:3030'
 API = 'http://localhost:8080/api'
-STEPS = ['reason', 'reasoning-tc', 'fuseki', 'load', 'backend', 'run-checks', 'api-tc', 'npm-test']
+STEPS = ['validate', 'reason', 'reasoning-tc', 'fuseki', 'load', 'backend', 'run-checks', 'api-tc', 'npm-test']
 LOG = []
 
 
@@ -113,6 +115,22 @@ def reasoner(inputs, out_nt, report):
 
 
 # ------------------------------------------------------------------ steps
+
+def step_validate(a):
+    onto = ontology_file()
+    code, out = run([sys.executable, os.path.join(HERE, 'validate_data.py'), onto])
+    if code != 0:
+        return False, 'problems in the data (see above); the reasoner would stop as inconsistent'
+    detail = '0 problems'
+    conflict = os.path.join(RESEARCH, '08_Revisions', '2026-11-14_TestCases', 'testdata_conflict.ttl')
+    if os.path.isfile(conflict):  # the check itself: the conflict data of TC-OWL-03 must be reported
+        code2, out2 = run([sys.executable, os.path.join(HERE, 'validate_data.py'), onto, conflict])
+        caught = code2 == 1 and 'V1 PJ.TCX excludes WP.08, but AR.TCX.WP08.01' in out2
+        if not caught:
+            return False, '0 problems, but the conflict test data was NOT caught'
+        detail += '; conflict test data caught (TC-VAL-01)'
+    return True, detail
+
 
 def step_reason(a):
     onto = ontology_file()
@@ -258,9 +276,9 @@ def step_npm_test(a):
     return code == 0, re.sub(r'\x1b\[[0-9;]*m', '', m.group(1)).strip() if m else 'exit code %d' % code
 
 
-FUNCS = {'reason': step_reason, 'reasoning-tc': step_reasoning_tc, 'fuseki': step_fuseki, 'load': step_load,
+FUNCS = {'validate': step_validate, 'reason': step_reason, 'reasoning-tc': step_reasoning_tc, 'fuseki': step_fuseki, 'load': step_load,
          'backend': step_backend, 'run-checks': step_run_checks, 'api-tc': step_api_tc, 'npm-test': step_npm_test}
-NEEDS = {'load': 'fuseki', 'run-checks': 'backend', 'api-tc': 'backend'}
+NEEDS = {'reason': 'validate', 'load': 'fuseki', 'run-checks': 'backend', 'api-tc': 'backend'}
 
 
 def main():

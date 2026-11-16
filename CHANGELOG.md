@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-11-16 - check of the assessment data before the reasoner
+
+- `tests/validate_data.py` (standard library only): V1 a percentage on a work product the project excludes (R8 would
+  give Not applicable and R1-R4 a rating -> Pellet: whole ontology inconsistent, no message where), V2 a percentage outside
+  0-100, V3 more than one percentage on a result. Exit code 1 with one line per finding naming the project / result.
+  SWRL cannot express these (no negation, open world); the OWL axioms stay as the safety net (TC-OWL-03).
+- `scripts/reason.cmd` / `.sh` run it before Pellet; `tests/run_all.py` has a first step `validate`, which also checks that
+  the conflict test data of TC-OWL-03 is reported (TC-VAL-01); the reasoner step is skipped when the data has problems.
+- Checked: rev17 0 problems; rev17 + testdata_conflict.ttl -> V1 PJ.TCX / WP.08 / AR.TCX.WP08.01; rev17 + testdata_rev14.ttl
+  0 problems; a small file with 120 % and two percentages -> V2 and V3.
+
 ## 2026-11-16 - two score modes, assessment coverage, one script for all tests
 
 - Scores in two modes (researcher 2026-11-16): `score` = q1-q3-*-v3.rq as before (every assessment result counts; no

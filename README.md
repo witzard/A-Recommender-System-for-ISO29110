@@ -45,7 +45,7 @@ Requirements: Java 17 or later (backend; the reasoner needs 11 or later), Node.j
 3. **Backend**: `cd backend` then `.\mvnw.cmd spring-boot:run` (http://localhost:8080/api/projects lists 3 projects).
 4. **Frontend**: `cd frontend`, `npm install`, `npm run dev`, open http://localhost:5173.
 
-After a change to the ontology, run `scripts\reason.cmd` (writes `kb/inferred.nt` and `kb/reasoning-report.json`) and
+After a change to the ontology, run `scripts\reason.cmd` (it first checks the assessment data with `tests/validate_data.py`: no percentage on a work product the project excludes, percentages 0-100, one percentage per result; a finding stops it with a message naming the entry, because Pellet would only report the whole ontology inconsistent) (writes `kb/inferred.nt` and `kb/reasoning-report.json`) and
 then `scripts\load-fuseki.cmd` again. The reasoner stops without writing anything if the ontology is inconsistent.
 
 ## Tests
@@ -56,12 +56,12 @@ then `scripts\load-fuseki.cmd` again. The reasoner stops without writing anythin
 scripts\run-all-tests.cmd                    (add --restart-backend after a change to the Java code)
 ```
 
-`tests/run_all.py` runs, in order: the reasoner (`kb/`), the 28 reasoning test cases of TEST_CASES (rev + test data /
+`tests/run_all.py` runs, in order: the data check (`tests/validate_data.py`), the reasoner (`kb/`), the 28 reasoning test cases of TEST_CASES (rev + test data /
 conflict data, in `../08_Revisions`), Fuseki (started from `--fuseki-home` and the dataset created in memory if needed),
 the data load, the backend (started with `mvnw spring-boot:run` if it is not running, and stopped again at the end unless
 `--keep-backend`), `tests/run_checks.py`, the knowledge-search test cases (`../08_Revisions/2026-11-14_TestCases/run_api_testcases.py`)
 and `npm test`; then it prints one summary and writes `tests/results/run_all_latest.json` / `.log`. Skip a step with
-`--skip <step>` (reason, reasoning-tc, fuseki, load, backend, run-checks, api-tc, npm-test).
+`--skip <step>` (validate, reason, reasoning-tc, fuseki, load, backend, run-checks, api-tc, npm-test).
 
 The single steps, with Fuseki and the backend running:
 
