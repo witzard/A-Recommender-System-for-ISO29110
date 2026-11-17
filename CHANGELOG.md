@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-11-17 - unused frontend dependencies removed
+
+- `npm uninstall @mui/material @mui/icons-material @emotion/react @emotion/styled axios` (no file in `src/` imported them;
+  81 packages removed). `scripts\run-all-tests.cmd` on Windows after the change: ALL PASSED (validate, reasoning 28/28,
+  run_checks 125/125, knowledge-search test cases 16/16, npm test 10/10).
+
 ## 2026-11-16 - ontology rev18 (data clean-up, same inferred facts)
 
 - `ontology/ISO29110V2_rev18.ttl` = `08_Revisions/2026-11-16_Round18_Cleanup/ISO29110V2_rev18.ttl`
