@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-11-18 - ontology rev20 (task outputs of the baseline tasks; outcomes limited to work product indicators)
+
+- `ontology/ISO29110V2_rev20.ttl` = `08_Revisions/2026-11-18_Round22_OutcomeIndicator/ISO29110V2_rev20.ttl` (SHA-256 `44e7c799e7a6d3dcee9249c7d69cf12577b19eabc1845c44e96f423bac9b7632`).
+- rev19: SI.2.7, SI.3.8 and SI.4.7 also output each baseline sub-item work product (as SI.5.11 already did), after
+  ISO/IEC PDTR 29110-5-1-2:2020 -> 9 more task recommendations, Knowledge Search
+  `workProductStatus` gains these tasks (e.g. Software Design Baselined -> SI.3.8).
+- rev20: new property `isWorkProductIndicatorOf` (86 facts from ISO/IEC TR 29110-3-1:2017 Annex B.4.2) and RecommendOutcomeRule
+  needs the gap work product to be an indicator of the outcome -> 41 fewer outcome recommendations; nothing else changes.
+- Tests: tests/expected.json (counts + recommendations from the rev20 Pellet output), knowledge-search expected values
+  (tc_oracle on rev20: SI.3.8 added in TC-KS-M3, M5-M9), reasoning regression check_reasoning_rev20.py (30 cases).
+- F-measure of the recommendations S1-S4 (Macro F1): rev18 0.918 -> rev20 0.983 (08_Revisions/2026-11-17_Round20_FMeasure).
+
 ## 2026-11-17 - unused frontend dependencies removed
 
 - `npm uninstall @mui/material @mui/icons-material @emotion/react @emotion/styled axios` (no file in `src/` imported them;

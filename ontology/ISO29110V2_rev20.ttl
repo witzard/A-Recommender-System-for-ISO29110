@@ -5650,6 +5650,17 @@ ISO29110V2:SI.OWP.02.07.WP17.1 rdf:type owl:NamedIndividual ,
     ISO29110V2:hasOutputWorkProductName "Software product (Requirement specification)" .
 
 
+###  http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#SI.OWP.02.07.WP13.1
+ISO29110V2:SI.OWP.02.07.WP13.1 rdf:type owl:NamedIndividual ,
+        ISO29110V2:OutputWorkProduct ,
+        ISO29110V2:WorkProduct ;
+    ISO29110V2:hasCurrentState ISO29110V2:WPS.02 ;
+    ISO29110V2:hasFinalState ISO29110V2:WPS.02 ;
+    ISO29110V2:isOutputWorkProductOf ISO29110V2:SI.PT.02.07 ;
+    ISO29110V2:representsWorkProduct ISO29110V2:WP.13 ;
+    ISO29110V2:hasOutputWorkProductName "Requirement specification (Software product)" .
+
+
 ###  http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#SI.OWP.02.07.WP17.2
 ISO29110V2:SI.OWP.02.07.WP17.2 rdf:type owl:NamedIndividual ,
         ISO29110V2:OutputWorkProduct ,
@@ -5659,6 +5670,17 @@ ISO29110V2:SI.OWP.02.07.WP17.2 rdf:type owl:NamedIndividual ,
     ISO29110V2:isOutputWorkProductOf ISO29110V2:SI.PT.02.07 ;
     ISO29110V2:representsWorkProduct ISO29110V2:WP.17 ;
     ISO29110V2:hasOutputWorkProductName "Software product (Requirement specification)" .
+
+
+###  http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#SI.OWP.02.07.WP13.2
+ISO29110V2:SI.OWP.02.07.WP13.2 rdf:type owl:NamedIndividual ,
+        ISO29110V2:OutputWorkProduct ,
+        ISO29110V2:WorkProduct ;
+    ISO29110V2:hasCurrentState ISO29110V2:WPS.02 ;
+    ISO29110V2:hasFinalState ISO29110V2:WPS.03 ;
+    ISO29110V2:isOutputWorkProductOf ISO29110V2:SI.PT.02.07 ;
+    ISO29110V2:representsWorkProduct ISO29110V2:WP.13 ;
+    ISO29110V2:hasOutputWorkProductName "Requirement specification (Software product)" .
 
 
 ###  http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#SI.OWP.02.07.WP17.3
@@ -5672,6 +5694,17 @@ ISO29110V2:SI.OWP.02.07.WP17.3 rdf:type owl:NamedIndividual ,
     ISO29110V2:hasOutputWorkProductName "Software product (Traceability record)" .
 
 
+###  http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#SI.OWP.02.07.WP21
+ISO29110V2:SI.OWP.02.07.WP21 rdf:type owl:NamedIndividual ,
+        ISO29110V2:OutputWorkProduct ,
+        ISO29110V2:WorkProduct ;
+    ISO29110V2:hasCurrentState ISO29110V2:WPS.12 ;
+    ISO29110V2:hasFinalState ISO29110V2:WPS.12 ;
+    ISO29110V2:isOutputWorkProductOf ISO29110V2:SI.PT.02.07 ;
+    ISO29110V2:representsWorkProduct ISO29110V2:WP.21 ;
+    ISO29110V2:hasOutputWorkProductName "Traceability record (Software product)" .
+
+
 ###  http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#SI.OWP.02.07.WP17.4
 ISO29110V2:SI.OWP.02.07.WP17.4 rdf:type owl:NamedIndividual ,
         ISO29110V2:OutputWorkProduct ,
@@ -5683,6 +5716,17 @@ ISO29110V2:SI.OWP.02.07.WP17.4 rdf:type owl:NamedIndividual ,
     ISO29110V2:hasOutputWorkProductName "Software product (*Software user documentation)" .
 
 
+###  http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#SI.OWP.02.07.WP18.1
+ISO29110V2:SI.OWP.02.07.WP18.1 rdf:type owl:NamedIndividual ,
+        ISO29110V2:OutputWorkProduct ,
+        ISO29110V2:WorkProduct ;
+    ISO29110V2:hasCurrentState ISO29110V2:WPS.22 ;
+    ISO29110V2:hasFinalState ISO29110V2:WPS.14 ;
+    ISO29110V2:isOutputWorkProductOf ISO29110V2:SI.PT.02.07 ;
+    ISO29110V2:representsWorkProduct ISO29110V2:WP.18 ;
+    ISO29110V2:hasOutputWorkProductName "*Software user documentation (Software product)" .
+
+
 ###  http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#SI.OWP.02.07.WP17.5
 ISO29110V2:SI.OWP.02.07.WP17.5 rdf:type owl:NamedIndividual ,
         ISO29110V2:OutputWorkProduct ,
@@ -5692,6 +5736,17 @@ ISO29110V2:SI.OWP.02.07.WP17.5 rdf:type owl:NamedIndividual ,
     ISO29110V2:isOutputWorkProductOf ISO29110V2:SI.PT.02.07 ;
     ISO29110V2:representsWorkProduct ISO29110V2:WP.17 ;
     ISO29110V2:hasOutputWorkProductName "Software product (*Software user documentation)" .
+
+
+###  http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#SI.OWP.02.07.WP18.2
+ISO29110V2:SI.OWP.02.07.WP18.2 rdf:type owl:NamedIndividual ,
+        ISO29110V2:OutputWorkProduct ,
+        ISO29110V2:WorkProduct ;
+    ISO29110V2:hasCurrentState ISO29110V2:WPS.22 ;
+    ISO29110V2:hasFinalState ISO29110V2:WPS.22 ;
+    ISO29110V2:isOutputWorkProductOf ISO29110V2:SI.PT.02.07 ;
+    ISO29110V2:representsWorkProduct ISO29110V2:WP.18 ;
+    ISO29110V2:hasOutputWorkProductName "*Software user documentation (Software product)" .
 
 
 ###  http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#SI.OWP.03.01.WP10
@@ -5930,6 +5985,23 @@ ISO29110V2:SI.OWP.03.08.WP11.1 rdf:type owl:NamedIndividual ,
     ISO29110V2:hasOutputWorkProductName "Project repository (Software design)" .
 
 
+###  http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#SI.OWP.03.08.WP16
+ISO29110V2:SI.OWP.03.08.WP16 rdf:type owl:NamedIndividual ,
+        ISO29110V2:OutputWorkProduct ,
+        ISO29110V2:WorkProduct ;
+    ISO29110V2:hasCurrentState ISO29110V2:WPS.02 ;
+    ISO29110V2:hasFinalState ISO29110V2:WPS.03 ;
+    ISO29110V2:hasProcessOutcome ISO29110V2:SI.PO.25 ;
+    ISO29110V2:isOutputWorkProductOf ISO29110V2:SI.BP.07 ,
+        ISO29110V2:SI.BP.08 ,
+        ISO29110V2:SI.BP.09 ,
+        ISO29110V2:SI.BP.16 ,
+        ISO29110V2:SI.BP.17 ,
+        ISO29110V2:SI.PT.03.08 ;
+    ISO29110V2:representsWorkProduct ISO29110V2:WP.16 ;
+    ISO29110V2:hasOutputWorkProductName "Software design (Project repository)" .
+
+
 ###  http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#SI.OWP.03.08.WP11.2
 ISO29110V2:SI.OWP.03.08.WP11.2 rdf:type owl:NamedIndividual ,
         ISO29110V2:OutputWorkProduct ,
@@ -5947,6 +6019,23 @@ ISO29110V2:SI.OWP.03.08.WP11.2 rdf:type owl:NamedIndividual ,
     ISO29110V2:hasOutputWorkProductName "Project repository (Test cases and test procedures)" .
 
 
+###  http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#SI.OWP.03.08.WP19
+ISO29110V2:SI.OWP.03.08.WP19 rdf:type owl:NamedIndividual ,
+        ISO29110V2:OutputWorkProduct ,
+        ISO29110V2:WorkProduct ;
+    ISO29110V2:hasCurrentState ISO29110V2:WPS.02 ;
+    ISO29110V2:hasFinalState ISO29110V2:WPS.22 ;
+    ISO29110V2:hasProcessOutcome ISO29110V2:SI.PO.25 ;
+    ISO29110V2:isOutputWorkProductOf ISO29110V2:SI.BP.07 ,
+        ISO29110V2:SI.BP.08 ,
+        ISO29110V2:SI.BP.09 ,
+        ISO29110V2:SI.BP.16 ,
+        ISO29110V2:SI.BP.17 ,
+        ISO29110V2:SI.PT.03.08 ;
+    ISO29110V2:representsWorkProduct ISO29110V2:WP.19 ;
+    ISO29110V2:hasOutputWorkProductName "Test cases and test procedures (Project repository)" .
+
+
 ###  http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#SI.OWP.03.08.WP11.3
 ISO29110V2:SI.OWP.03.08.WP11.3 rdf:type owl:NamedIndividual ,
         ISO29110V2:OutputWorkProduct ,
@@ -5962,6 +6051,23 @@ ISO29110V2:SI.OWP.03.08.WP11.3 rdf:type owl:NamedIndividual ,
         ISO29110V2:SI.PT.03.08 ;
     ISO29110V2:representsWorkProduct ISO29110V2:WP.11 ;
     ISO29110V2:hasOutputWorkProductName "Project repository | Project repository (Traceability record)" .
+
+
+###  http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#SI.OWP.03.08.WP21
+ISO29110V2:SI.OWP.03.08.WP21 rdf:type owl:NamedIndividual ,
+        ISO29110V2:OutputWorkProduct ,
+        ISO29110V2:WorkProduct ;
+    ISO29110V2:hasCurrentState ISO29110V2:WPS.21 ;
+    ISO29110V2:hasFinalState ISO29110V2:WPS.21 ;
+    ISO29110V2:hasProcessOutcome ISO29110V2:SI.PO.25 ;
+    ISO29110V2:isOutputWorkProductOf ISO29110V2:SI.BP.07 ,
+        ISO29110V2:SI.BP.08 ,
+        ISO29110V2:SI.BP.09 ,
+        ISO29110V2:SI.BP.16 ,
+        ISO29110V2:SI.BP.17 ,
+        ISO29110V2:SI.PT.03.08 ;
+    ISO29110V2:representsWorkProduct ISO29110V2:WP.21 ;
+    ISO29110V2:hasOutputWorkProductName "Traceability record (Project repository)" .
 
 
 ###  http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#SI.OWP.04.01.WP10
@@ -6091,6 +6197,29 @@ ISO29110V2:SI.OWP.04.07.WP17.1 rdf:type owl:NamedIndividual ,
     ISO29110V2:hasOutputWorkProductName "Software product (Traceability record)" .
 
 
+###  http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#SI.OWP.04.07.WP21
+ISO29110V2:SI.OWP.04.07.WP21 rdf:type owl:NamedIndividual ,
+        ISO29110V2:OutputWorkProduct ,
+        ISO29110V2:WorkProduct ;
+    ISO29110V2:hasCurrentState ISO29110V2:WPS.21 ;
+    ISO29110V2:hasFinalState ISO29110V2:WPS.21 ;
+    ISO29110V2:hasProcessOutcome ISO29110V2:SI.PO.26 ,
+        ISO29110V2:SI.PO.28 ;
+    ISO29110V2:isOutputWorkProductOf ISO29110V2:SI.BP.05 ,
+        ISO29110V2:SI.BP.09 ,
+        ISO29110V2:SI.BP.10 ,
+        ISO29110V2:SI.BP.14 ,
+        ISO29110V2:SI.BP.15 ,
+        ISO29110V2:SI.BP.19 ,
+        ISO29110V2:SI.BP.20 ,
+        ISO29110V2:SI.BP.21 ,
+        ISO29110V2:SI.BP.22 ,
+        ISO29110V2:SI.BP.23 ,
+        ISO29110V2:SI.PT.04.07 ;
+    ISO29110V2:representsWorkProduct ISO29110V2:WP.21 ;
+    ISO29110V2:hasOutputWorkProductName "Traceability record (Software product)" .
+
+
 ###  http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#SI.OWP.04.07.WP17.2
 ISO29110V2:SI.OWP.04.07.WP17.2 rdf:type owl:NamedIndividual ,
         ISO29110V2:OutputWorkProduct ,
@@ -6112,6 +6241,29 @@ ISO29110V2:SI.OWP.04.07.WP17.2 rdf:type owl:NamedIndividual ,
         ISO29110V2:SI.PT.04.07 ;
     ISO29110V2:representsWorkProduct ISO29110V2:WP.17 ;
     ISO29110V2:hasOutputWorkProductName "Software product (Software components)" .
+
+
+###  http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#SI.OWP.04.07.WP15
+ISO29110V2:SI.OWP.04.07.WP15 rdf:type owl:NamedIndividual ,
+        ISO29110V2:OutputWorkProduct ,
+        ISO29110V2:WorkProduct ;
+    ISO29110V2:hasCurrentState ISO29110V2:WPS.22 ;
+    ISO29110V2:hasFinalState ISO29110V2:WPS.03 ;
+    ISO29110V2:hasProcessOutcome ISO29110V2:SI.PO.26 ,
+        ISO29110V2:SI.PO.28 ;
+    ISO29110V2:isOutputWorkProductOf ISO29110V2:SI.BP.05 ,
+        ISO29110V2:SI.BP.09 ,
+        ISO29110V2:SI.BP.10 ,
+        ISO29110V2:SI.BP.14 ,
+        ISO29110V2:SI.BP.15 ,
+        ISO29110V2:SI.BP.19 ,
+        ISO29110V2:SI.BP.20 ,
+        ISO29110V2:SI.BP.21 ,
+        ISO29110V2:SI.BP.22 ,
+        ISO29110V2:SI.BP.23 ,
+        ISO29110V2:SI.PT.04.07 ;
+    ISO29110V2:representsWorkProduct ISO29110V2:WP.15 ;
+    ISO29110V2:hasOutputWorkProductName "Software components (Software product)" .
 
 
 ###  http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#SI.OWP.05.01.WP10
@@ -6913,7 +7065,12 @@ ISO29110V2:SI.PT.02.07 rdf:type owl:NamedIndividual ,
         ISO29110V2:SI.OWP.02.07.WP17.2 ,
         ISO29110V2:SI.OWP.02.07.WP17.3 ,
         ISO29110V2:SI.OWP.02.07.WP17.4 ,
-        ISO29110V2:SI.OWP.02.07.WP17.5 ;
+        ISO29110V2:SI.OWP.02.07.WP17.5 ,
+        ISO29110V2:SI.OWP.02.07.WP13.1 ,
+        ISO29110V2:SI.OWP.02.07.WP13.2 ,
+        ISO29110V2:SI.OWP.02.07.WP21 ,
+        ISO29110V2:SI.OWP.02.07.WP18.1 ,
+        ISO29110V2:SI.OWP.02.07.WP18.2 ;
     ISO29110V2:hasRole ISO29110V2:SI.ROLE.10 ;
     ISO29110V2:isTaskOf ISO29110V2:SI.ACT.02 ;
     ISO29110V2:hasTaskDescription "Add the software Requirement specification/ traceability record and *software user documentation to the software product in the specification baseline." ;
@@ -7044,7 +7201,10 @@ ISO29110V2:SI.PT.03.08 rdf:type owl:NamedIndividual ,
         ISO29110V2:SI.IWP.03.08.WP21 ;
     ISO29110V2:hasOutputWorkProduct ISO29110V2:SI.OWP.03.08.WP11.1 ,
         ISO29110V2:SI.OWP.03.08.WP11.2 ,
-        ISO29110V2:SI.OWP.03.08.WP11.3 ;
+        ISO29110V2:SI.OWP.03.08.WP11.3 ,
+        ISO29110V2:SI.OWP.03.08.WP16 ,
+        ISO29110V2:SI.OWP.03.08.WP19 ,
+        ISO29110V2:SI.OWP.03.08.WP21 ;
     ISO29110V2:hasRole ISO29110V2:SI.ROLE.10 ;
     ISO29110V2:isTaskOf ISO29110V2:SI.ACT.03 ;
     ISO29110V2:hasTaskDescription "Incorporate work products to the design baseline." ;
@@ -7137,7 +7297,9 @@ ISO29110V2:SI.PT.04.07 rdf:type owl:NamedIndividual ,
         ISO29110V2:SI.IWP.04.07.WP21 ;
     ISO29110V2:hasOutputWorkProduct ISO29110V2:SI.OWP.04.07.WP11 ,
         ISO29110V2:SI.OWP.04.07.WP17.1 ,
-        ISO29110V2:SI.OWP.04.07.WP17.2 ;
+        ISO29110V2:SI.OWP.04.07.WP17.2 ,
+        ISO29110V2:SI.OWP.04.07.WP21 ,
+        ISO29110V2:SI.OWP.04.07.WP15 ;
     ISO29110V2:hasRole ISO29110V2:SI.ROLE.10 ;
     ISO29110V2:isTaskOf ISO29110V2:SI.ACT.04 ;
     ISO29110V2:hasTaskDescription "Add the software components and traceability record to the software product as part of the baseline." ;
@@ -10125,11 +10287,15 @@ ISO29110V2:recommendTask rdf:type owl:ObjectProperty ;
 
 ISO29110V2:recommendOutcome rdf:type owl:ObjectProperty ;
     rdfs:domain ISO29110V2:AssessedEntity ; rdfs:range ISO29110V2:ProcessOutcome ;
-    rdfs:comment "Inferred by RecommendOutcomeRule (rev08): process outcome of a base practice whose pre-assessment uses the work product with a gap (same BP -> WP evidence set as the advisor's Pre-Assessment sheet)." .
+    rdfs:comment "Inferred by RecommendOutcomeRule (rev08): process outcome of a base practice whose pre-assessment uses the work product with a gap (same BP -> WP evidence set as the advisor's Pre-Assessment sheet). rev20: limited to outcomes of which that work product is an indicator (isWorkProductIndicatorOf, 29110-3-1 Annex B.4.2)." .
 
 ISO29110V2:recommendBasePractice rdf:type owl:ObjectProperty ;
     rdfs:domain ISO29110V2:AssessedEntity ; rdfs:range ISO29110V2:BasePractice ;
     rdfs:comment "Inferred by RecommendBasePracticeRule (rev09): base practice whose pre-assessment (advisor BP-WP table) uses the work product with a gap." .
+
+ISO29110V2:isWorkProductIndicatorOf rdf:type owl:ObjectProperty ;
+    rdfs:domain ISO29110V2:WorkProduct ; rdfs:range ISO29110V2:ProcessOutcome ;
+    rdfs:comment "rev20: the work product is an input or output work product indicator of the process outcome (ISO/IEC TR 29110-3-1:2017 Annex B.4.2, work products indicators of PM and SI). Used by RecommendOutcomeRule." .
 
 ISO29110V2:excludesWorkProduct rdf:type owl:ObjectProperty ;
     rdfs:domain ISO29110V2:Project ; rdfs:range ISO29110V2:WorkProduct ;
@@ -18355,6 +18521,117 @@ ISO29110V2:AR-T08 rdfs:comment "Test fixture (TC-RAT-01): rating boundary value,
 ISO29110V2:WPS.02 ISO29110V2:isCurrentStateOf ISO29110V2:PM.IWP.04.01.WP10 .
 ISO29110V2:WPS.02 ISO29110V2:isFinalStateOf ISO29110V2:PM.IWP.04.01.WP10 .
 
+
+#################################################################
+#    rev20: work product indicators (ISO/IEC TR 29110-3-1:2017 Annex B.4.2)
+#################################################################
+
+ISO29110V2:WP.01 ISO29110V2:isWorkProductIndicatorOf ISO29110V2:PM.PO.15 .
+
+ISO29110V2:WP.02 ISO29110V2:isWorkProductIndicatorOf ISO29110V2:PM.PO.01 ,
+        ISO29110V2:PM.PO.02 .
+
+ISO29110V2:WP.03 ISO29110V2:isWorkProductIndicatorOf ISO29110V2:PM.PO.07 ,
+        ISO29110V2:PM.PO.08 ,
+        ISO29110V2:PM.PO.09 ,
+        ISO29110V2:PM.PO.13 ,
+        ISO29110V2:SI.PO.17 ,
+        ISO29110V2:SI.PO.21 .
+
+ISO29110V2:WP.04 ISO29110V2:isWorkProductIndicatorOf ISO29110V2:PM.PO.12 ,
+        ISO29110V2:PM.PO.13 ,
+        ISO29110V2:PM.PO.14 .
+
+ISO29110V2:WP.06 ISO29110V2:isWorkProductIndicatorOf ISO29110V2:SI.PO.28 .
+
+ISO29110V2:WP.07 ISO29110V2:isWorkProductIndicatorOf ISO29110V2:PM.PO.05 ,
+        ISO29110V2:PM.PO.12 ,
+        ISO29110V2:PM.PO.13 .
+
+ISO29110V2:WP.09 ISO29110V2:isWorkProductIndicatorOf ISO29110V2:PM.PO.05 ,
+        ISO29110V2:PM.PO.08 ,
+        ISO29110V2:PM.PO.09 ,
+        ISO29110V2:PM.PO.12 ,
+        ISO29110V2:PM.PO.13 ,
+        ISO29110V2:PM.PO.14 .
+
+ISO29110V2:WP.10 ISO29110V2:isWorkProductIndicatorOf ISO29110V2:PM.PO.02 ,
+        ISO29110V2:PM.PO.03 ,
+        ISO29110V2:PM.PO.04 ,
+        ISO29110V2:PM.PO.05 ,
+        ISO29110V2:PM.PO.07 ,
+        ISO29110V2:PM.PO.09 ,
+        ISO29110V2:PM.PO.11 ,
+        ISO29110V2:PM.PO.12 ,
+        ISO29110V2:PM.PO.13 ,
+        ISO29110V2:PM.PO.15 ,
+        ISO29110V2:SI.PO.16 ,
+        ISO29110V2:SI.PO.17 .
+
+ISO29110V2:WP.11 ISO29110V2:isWorkProductIndicatorOf ISO29110V2:PM.PO.04 ,
+        ISO29110V2:PM.PO.10 ,
+        ISO29110V2:PM.PO.11 .
+
+ISO29110V2:WP.12 ISO29110V2:isWorkProductIndicatorOf ISO29110V2:PM.PO.09 .
+
+ISO29110V2:WP.13 ISO29110V2:isWorkProductIndicatorOf ISO29110V2:SI.PO.16 ,
+        ISO29110V2:SI.PO.17 ,
+        ISO29110V2:SI.PO.18 ,
+        ISO29110V2:SI.PO.19 ,
+        ISO29110V2:SI.PO.20 ,
+        ISO29110V2:SI.PO.21 ,
+        ISO29110V2:SI.PO.25 ,
+        ISO29110V2:SI.PO.26 .
+
+ISO29110V2:WP.14 ISO29110V2:isWorkProductIndicatorOf ISO29110V2:SI.PO.24 ,
+        ISO29110V2:SI.PO.25 ,
+        ISO29110V2:SI.PO.26 ,
+        ISO29110V2:SI.PO.27 ,
+        ISO29110V2:SI.PO.28 .
+
+ISO29110V2:WP.15 ISO29110V2:isWorkProductIndicatorOf ISO29110V2:SI.PO.22 ,
+        ISO29110V2:SI.PO.23 ,
+        ISO29110V2:SI.PO.25 ,
+        ISO29110V2:SI.PO.26 ,
+        ISO29110V2:SI.PO.28 .
+
+ISO29110V2:WP.16 ISO29110V2:isWorkProductIndicatorOf ISO29110V2:SI.PO.20 ,
+        ISO29110V2:SI.PO.21 ,
+        ISO29110V2:SI.PO.22 ,
+        ISO29110V2:SI.PO.25 ,
+        ISO29110V2:SI.PO.26 ,
+        ISO29110V2:SI.PO.28 .
+
+ISO29110V2:WP.17 ISO29110V2:isWorkProductIndicatorOf ISO29110V2:PM.PO.07 ,
+        ISO29110V2:PM.PO.10 ,
+        ISO29110V2:PM.PO.11 ,
+        ISO29110V2:PM.PO.15 ,
+        ISO29110V2:SI.PO.19 ,
+        ISO29110V2:SI.PO.26 ,
+        ISO29110V2:SI.PO.28 .
+
+ISO29110V2:WP.19 ISO29110V2:isWorkProductIndicatorOf ISO29110V2:SI.PO.25 ,
+        ISO29110V2:SI.PO.27 ,
+        ISO29110V2:SI.PO.28 .
+
+ISO29110V2:WP.20 ISO29110V2:isWorkProductIndicatorOf ISO29110V2:SI.PO.25 ,
+        ISO29110V2:SI.PO.27 ,
+        ISO29110V2:SI.PO.28 .
+
+ISO29110V2:WP.21 ISO29110V2:isWorkProductIndicatorOf ISO29110V2:SI.PO.22 ,
+        ISO29110V2:SI.PO.25 ,
+        ISO29110V2:SI.PO.26 ,
+        ISO29110V2:SI.PO.27 ,
+        ISO29110V2:SI.PO.28 .
+
+ISO29110V2:WP.22 ISO29110V2:isWorkProductIndicatorOf ISO29110V2:SI.PO.18 .
+
+ISO29110V2:WP.23 ISO29110V2:isWorkProductIndicatorOf ISO29110V2:PM.PO.05 ,
+        ISO29110V2:SI.PO.17 ,
+        ISO29110V2:SI.PO.21 ,
+        ISO29110V2:SI.PO.25 ,
+        ISO29110V2:SI.PO.28 .
+
 #################################################################
 #    Rules (rev06: rewritten; removed ImprovementRecommendationRule, ApprovedRequirementSpecRule, ApprovedTestCaseRule)
 #################################################################
@@ -18538,7 +18815,7 @@ ISO29110V2:WPS.02 ISO29110V2:isFinalStateOf ISO29110V2:PM.IWP.04.01.WP10 .
  ] .
 
 [ ns2:isRuleEnabled "true"^^xsd:boolean ;
-   rdfs:comment "Gap on a work product -> process outcomes of the base practices whose pre-assessment uses that work product (rev08; replaces RecommendRoleRule)" ;
+   rdfs:comment "Gap on a work product -> process outcomes of the base practices whose pre-assessment uses that work product (rev08; replaces RecommendRoleRule); rev20: only outcomes of which the work product is a work product indicator in ISO/IEC TR 29110-3-1 Annex B.4.2" ;
    rdfs:label "RecommendOutcomeRule" ;
    rdf:type ns1:Imp ;
    ns1:body [ rdf:type ns1:AtomList ; rdf:first [ rdf:type ns1:ClassAtom ; ns1:classPredicate ISO29110V2:GapResult ; ns1:argument1 :ar ] ;
@@ -18546,7 +18823,9 @@ ISO29110V2:WPS.02 ISO29110V2:isFinalStateOf ISO29110V2:PM.IWP.04.01.WP10 .
       rdf:rest [ rdf:type ns1:AtomList ; rdf:first [ rdf:type ns1:IndividualPropertyAtom ; ns1:propertyPredicate ISO29110V2:isAssessedEntityOf ; ns1:argument1 :ae ; ns1:argument2 :pas ] ;
       rdf:rest [ rdf:type ns1:AtomList ; rdf:first [ rdf:type ns1:IndividualPropertyAtom ; ns1:propertyPredicate ISO29110V2:hasBasePractice ; ns1:argument1 :pas ; ns1:argument2 :bp ] ;
       rdf:rest [ rdf:type ns1:AtomList ; rdf:first [ rdf:type ns1:IndividualPropertyAtom ; ns1:propertyPredicate ISO29110V2:hasProcessOutcome ; ns1:argument1 :bp ; ns1:argument2 :po ] ;
-      rdf:rest rdf:nil ] ] ] ] ] ;
+      rdf:rest [ rdf:type ns1:AtomList ; rdf:first [ rdf:type ns1:IndividualPropertyAtom ; ns1:propertyPredicate ISO29110V2:hasEntity ; ns1:argument1 :ae ; ns1:argument2 :wp ] ;
+      rdf:rest [ rdf:type ns1:AtomList ; rdf:first [ rdf:type ns1:IndividualPropertyAtom ; ns1:propertyPredicate ISO29110V2:isWorkProductIndicatorOf ; ns1:argument1 :wp ; ns1:argument2 :po ] ;
+      rdf:rest rdf:nil ] ] ] ] ] ] ] ;
    ns1:head [ rdf:type ns1:AtomList ; rdf:first [ rdf:type ns1:IndividualPropertyAtom ; ns1:propertyPredicate ISO29110V2:recommendOutcome ; ns1:argument1 :ae ; ns1:argument2 :po ] ;
       rdf:rest rdf:nil ]
  ] .

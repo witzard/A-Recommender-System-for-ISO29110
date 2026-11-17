@@ -19,7 +19,7 @@ and `recommendOutcome` that Pellet infers from the SWRL rules of the ontology; t
 
 | Path | Content |
 |---|---|
-| `ontology/ISO29110V2_rev18.ttl` | Ontology (copy of `08_Revisions/2026-11-16_Round18_Cleanup/ISO29110V2_rev18.ttl`, not modified) |
+| `ontology/ISO29110V2_rev20.ttl` | Ontology (copy of `08_Revisions/2026-11-18_Round22_OutcomeIndicator/ISO29110V2_rev20.ttl`, not modified) |
 | `reasoner/` | `SwrlReasoningRunner` (Pellet 2.3.1 + OWL API 3.4.3) and its libraries |
 | `scripts/reason.cmd`, `scripts/load-fuseki.cmd` | Run the reasoner; load the ontology and the inferred facts into Fuseki (`.sh` versions for Linux/macOS) |
 | `kb/inferred.nt`, `kb/reasoning-report.json` | Output of the last reasoner run |
@@ -27,11 +27,11 @@ and `recommendOutcome` that Pellet infers from the SWRL rules of the ontology; t
 | `frontend/` | React page (Vite) |
 | `tests/run_checks.py`, `tests/expected.json`, `tests/cq_parameters.json` | Checks of the running system (reasoning, scores, recommendations, the 34 CQs as parameter searches) |
 
-The ontology (rev18) holds four mock case-scenario companies (`rdfs:comment "MOCK DATA"`, labelled as such on the page):
+The ontology (rev20) holds four mock case-scenario companies (`rdfs:comment "MOCK DATA"`, labelled as such on the page):
 S1 (ENT.04 / PJ.04), S2 (ENT.05 / PJ.05), S3 (ENT.06 / PJ.06) and S4 (ENT.07 / PJ.07) with 25 % / 50 % / 80 % / 100 % of
 their 23 work products assessed (Partial and Fully); in S1-S3 the other work products keep their assessment results without
 a percentage. S1 does not deliver WP.08 and WP.18 (ExcludedConditionalWorkProductRule). See
-`08_Revisions/2026-11-10_Round14_ScenariosOnly` (S1-S3) and `2026-11-15_Round16_S4` (S4); rev17 (`2026-11-16_Round17_R8Delivery`) only narrows ExcludedConditionalWorkProductRule and rev18 (`2026-11-16_Round18_Cleanup`) only cleans data (two input states after PDTR, placeholders, header, xsd:date); both keep the same inferred facts.
+`08_Revisions/2026-11-10_Round14_ScenariosOnly` (S1-S3) and `2026-11-15_Round16_S4` (S4); rev17 (`2026-11-16_Round17_R8Delivery`) only narrows ExcludedConditionalWorkProductRule and rev18 (`2026-11-16_Round18_Cleanup`) only cleans data (two input states after PDTR, placeholders, header, xsd:date); both keep the same inferred facts. rev19 (`2026-11-18_Round21_BaselineOutputs`) adds the baseline sub-item outputs of SI.2.7, SI.3.8 and SI.4.7 (9 more task recommendations) and rev20 (`2026-11-18_Round22_OutcomeIndicator`) adds the work product indicators of ISO/IEC TR 29110-3-1 Annex B.4.2 (`isWorkProductIndicatorOf`) and limits RecommendOutcomeRule to them (41 fewer outcome recommendations); both follow the F-measure evaluation of 2026-11-17.
 
 ## Run
 
@@ -40,7 +40,7 @@ Requirements: Java 17 or later (backend; the reasoner needs 11 or later), Node.j
 1. **Fuseki**: `cd C:\apache-jena-fuseki-6.2.0` then `.\fuseki-server.bat`. Create the dataset `ISO29110_RecommenderSystems`
    (in-memory or TDB2; leave *union default graph* off).
 2. **Load the data** (from the repository root): `scripts\load-fuseki.cmd`
-   - default graph: `ontology/ISO29110V2_rev18.ttl`
+   - default graph: `ontology/ISO29110V2_rev20.ttl`
    - named graph `urn:iso29110:graph:inferred`: `kb/inferred.nt`
 3. **Backend**: `cd backend` then `.\mvnw.cmd spring-boot:run` (http://localhost:8080/api/projects lists 3 projects).
 4. **Frontend**: `cd frontend`, `npm install`, `npm run dev`, open http://localhost:5173.
