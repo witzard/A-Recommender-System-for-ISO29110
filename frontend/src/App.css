@@ -14,6 +14,13 @@
 .form label { color: #333333; }
 .form select, .form input { width: 100%; padding: 3px 4px; border: 1px solid #999999; background: #ffffff; }
 .form .hint { grid-column: 2; color: #666666; font-size: 12px; margin-top: -4px; }
+.form fieldset { grid-column: 1 / -1; display: grid; grid-template-columns: 188px minmax(0, 420px); gap: 6px 12px; align-items: center;
+  border: 1px solid #bbbbbb; margin: 0; padding: 4px 10px 8px; }
+.form legend { font-weight: bold; padding: 0 4px; }
+.form .group-note { grid-column: 1 / -1; color: #666666; font-size: 12px; }
+.score-help { display: grid; grid-template-columns: max-content 1fr; gap: 2px 12px; margin: 6px 0; }
+.score-help dt { font-weight: bold; }
+.score-help dd { margin: 0; }
 .actions { grid-column: 2; display: flex; gap: 8px; }
 .actions button, .plain-button { padding: 3px 14px; border: 1px solid #666666; background: #f3f3f3; cursor: pointer; }
 .actions button:disabled { color: #999999; cursor: default; }

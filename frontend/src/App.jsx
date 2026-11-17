@@ -9,6 +9,13 @@ const PARAMS = [
   ['outcome', 'Process outcome'], ['workProduct', 'Work product'], ['state', 'Work product state'],
 ];
 const PARAM_LABELS = { ...Object.fromEntries(PARAMS), topic: 'Topic' };
+// Form sections by query group (QUERY_RULE_GROUPING G1-G3; advisor meeting 17 Nov: search by task / by work product /
+// by Base Practice; G1 split into role, activity and topic). Layout only: the backend still chooses the queries.
+const GROUPS = [
+  ['Search by task (G1)', 'Who does what: tasks by role, by activity, or by topic (below).', ['role', 'activity']],
+  ['Search by work product (G2)', 'How a work product reaches a state, who produces it, and its criteria.', ['workProduct', 'state']],
+  ['Search by Base Practice (G3)', 'Base Practices with their process outcomes and work products.', ['process', 'basePractice', 'outcome']],
+];
 const EMPTY_FORM = { ...Object.fromEntries(PARAMS.map(([k]) => [k, ''])), kwAll: '', kwAny: '' };
 
 const local = (iri) => (iri ? iri.slice(iri.lastIndexOf('#') + 1) : '');
@@ -128,17 +135,28 @@ function KnowledgeSearch() {
   return (
     <div className="panel">
       <p className="note">
-        Select any of the parameters (values come from the ISO/IEC 29110 knowledge base) and, if needed, a topic. The system runs
-        every query that uses the selected parameters, choosing the most specific ones, and shows their results together.
+        Select any of the parameters (values come from the ISO/IEC 29110 knowledge base) and, if needed, a topic. Parameters from
+        several groups can be combined. The system runs every query that uses the selected parameters, choosing the most
+        specific ones, and shows their results together.
       </p>
       {!options && !error && <p>Loading values from the ontology...</p>}
       {options && (
         <form className="form" onSubmit={(e) => { e.preventDefault(); if (canRun(form)) run(); }}>
-          {PARAMS.map(([k, label]) => (
-            <Select key={k} id={`p-${k}`} label={label} value={form[k]} values={valuesFor(k, options, form)} onChange={(v) => set(k, v)} />
+          {GROUPS.map(([title, note, keys]) => (
+            <fieldset key={title}>
+              <legend>{title}</legend>
+              <span className="group-note">{note}</span>
+              {keys.map((k) => (
+                <Select key={k} id={`p-${k}`} label={PARAM_LABELS[k]} value={form[k]} values={valuesFor(k, options, form)} onChange={(v) => set(k, v)} />
+              ))}
+            </fieldset>
           ))}
-          <Text id="p-all" label="Topic: contains all of" value={form.kwAll} onChange={(v) => set('kwAll', v)} hint="Phrases separated by commas, e.g. project plan, verify" />
-          <Text id="p-any" label="Topic: contains any of" value={form.kwAny} onChange={(v) => set('kwAny', v)} hint="Phrases separated by commas" />
+          <fieldset>
+            <legend>Topic (all groups)</legend>
+            <span className="group-note">Words in the task, work product or Base Practice text. Can be used alone or with the parameters above.</span>
+            <Text id="p-all" label="Topic: contains all of" value={form.kwAll} onChange={(v) => set('kwAll', v)} hint="Phrases separated by commas, e.g. project plan, verify" />
+            <Text id="p-any" label="Topic: contains any of" value={form.kwAny} onChange={(v) => set('kwAny', v)} hint="Phrases separated by commas" />
+          </fieldset>
           <div className="actions">
             <button type="submit" disabled={busy || !canRun(form)}>{busy ? 'Searching...' : 'Search'}</button>
             <button type="button" onClick={() => { setForm(EMPTY_FORM); setResult(null); setError(''); }}>Clear</button>
@@ -202,10 +220,11 @@ function Coverage({ coverage }) {
   const pct = c.workProducts ? Math.round((100 * c.assessed) / c.workProducts) : 0;
   return (
     <div className="coverage" aria-label="Assessment coverage">
-      <p><strong>Assessed: {c.assessed} of {c.workProducts} work products ({pct} %)</strong>; {c.itemsAssessed} of {c.items} characteristics have a percentage.</p>
+      <p><strong>Assessed {c.assessed} of {c.workProducts} work products ({pct} %)</strong> · {c.notApplicable.length} not applicable
+        · {c.notAssessed.length} not assessed yet ({c.itemsAssessed} of {c.items} characteristics have a percentage)</p>
       <ul>
-        <li>Not applicable (not delivered in this project, not counted in the assessed-only score): {c.notApplicable.length ? wpList(c.notApplicable) : 'None'}</li>
-        <li>Not assessed yet ({c.notAssessed.length}): {c.notAssessed.length ? wpList(c.notAssessed) : 'None'}</li>
+        <li>Not applicable (not delivered in this project, left out of both scores): {c.notApplicable.length ? wpList(c.notApplicable) : 'None'}</li>
+        <li>Not assessed yet ({c.notAssessed.length}; 0 in the overall score): {c.notAssessed.length ? wpList(c.notAssessed) : 'None'}</li>
       </ul>
     </div>
   );
@@ -216,7 +235,7 @@ function Scores({ data }) {
     <>
       <h3>Process</h3>
       <table style={{ width: 'auto', minWidth: 360 }}>
-        <thead><tr><th>Process</th><th className="num">Score (all items)</th><th className="num">Score (assessed items only)</th></tr></thead>
+        <thead><tr><th>Process</th><th className="num">Overall score</th><th className="num">Assessed-only score</th></tr></thead>
         <tbody>{data.processScores.map((p) => (
           <tr key={p.process}><td>{p.process}</td><td className="num">{score(p.score)}</td>
             <td className="num">{score(p.scoreAssessed)}</td></tr>))}</tbody>
@@ -224,15 +243,15 @@ function Scores({ data }) {
       <h3>Work products</h3>
       <p className="note">
         N = Not achieved (0-15%), P = Partially achieved (16-50%), L = Largely achieved (51-90%), F = Completely achieved (91-100%),
-        N/A = Not applicable (work product not delivered in this project), No % = no percentage recorded (0 in the all-items score,
-        left out of the assessed-only score).
+        N/A = Not applicable (work product not delivered in this project; left out of both scores), No % = no percentage recorded
+        yet (0 in the overall score, left out of the assessed-only score).
       </p>
       <div className="table-wrap">
         <table>
           <thead>
             <tr><th rowSpan={2}>WP ID</th><th rowSpan={2}>Work product</th><th rowSpan={2}>Status</th>
               <th colSpan={RATING_COLUMNS.length}>Number of characteristics by rating</th>
-              <th rowSpan={2} className="num">Score (all items)</th><th rowSpan={2} className="num">Score (assessed items only)</th></tr>
+              <th rowSpan={2} className="num">Overall score</th><th rowSpan={2} className="num">Assessed-only score</th></tr>
             <tr>{RATING_COLUMNS.map(([k, label]) => <th key={k} className="num" title={ratingLabel(k)}>{label}</th>)}</tr>
           </thead>
           <tbody>{data.workProducts.map((w) => (
@@ -246,7 +265,7 @@ function Scores({ data }) {
         <div className="table-wrap">
           <table>
             <thead><tr><th>BP ID</th><th>Base Practice</th><th className="num">Work products</th><th className="num">Assessed</th>
-              <th className="num">Score (all items)</th><th className="num">Score (assessed items only)</th></tr></thead>
+              <th className="num">Overall score</th><th className="num">Assessed-only score</th></tr></thead>
             <tbody>{data.basePracticeScores.map((b) => (
               <tr key={b.bpID}><td className="id">{b.bpID}</td><td><span className="multiline">{b.description}</span></td>
                 <td className="num">{b.nWP}</td><td className="num">{b.nWPAssessed ?? ''}</td>
@@ -428,13 +447,17 @@ function Assessment() {
             <Profile project={data.project} />
             <h2>Scores</h2>
             <Coverage coverage={data.coverage} />
+            <dl className="score-help">
+              <dt>Overall score</dt>
+              <dd>How close the whole project is to the profile. Characteristics not assessed yet count as 0; Not applicable
+                ones are left out.</dd>
+              <dt>Assessed-only score</dt>
+              <dd>How well the work assessed so far is done. Only characteristics with a percentage count.</dd>
+            </dl>
             <p className="note">
-              Computed from the recorded percentages (score of each rating: N 0, P 0.3, L 0.7, F 1). Work product score = mean of
-              its characteristics; Base Practice score = mean of its work products; process score = mean of its Base Practices.
-              Two scores are shown. All items: every characteristic counts, and one without a percentage (not assessed yet, or
-              Not applicable) counts as 0, so the score shows the position against the whole profile. Assessed items only: only
-              characteristics with a percentage count, and work products or Base Practices with none are left out, so the score
-              shows how well the assessed part is done. Read it together with the coverage above.
+              Both are computed from the recorded percentages (score of each rating: N 0, P 0.3, L 0.7, F 1). Work product score =
+              mean of its characteristics; Base Practice score = mean of its work products; process score = mean of its Base
+              Practices. A work product or Base Practice with nothing to count is left out of the mean above it.
             </p>
             <Scores data={data} />
             <GapsAndRecommendations data={data} rating={gapRating} setRating={setGapRating} />

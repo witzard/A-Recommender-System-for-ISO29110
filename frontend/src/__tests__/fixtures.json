@@ -1,5 +1,5 @@
 {
- "_note": "API responses produced by running the backend services (AssessmentService, KnowledgeSearchService) and the SPARQL files on ontology/ISO29110V2_rev08.ttl + kb/inferred.nt (2026-11-04). 2026-11-08 (rev08): recommendations[].roles removed and recommendations[].outcomes added by computing them in Python from ontology/ISO29110V2_rev08.ttl + kb/inferred.nt (same fields as AssessmentService); reasoningReport = kb/reasoning-report.json of rev08. options and search (request role=Technical leader, workProduct=Project Plan, kwAll=[verify]) regenerated 2026-11-08 from the backend query code (compiled) run with rdflib on rev08 + kb/inferred.nt. 2026-11-09 (rev09): only the G3 title changed; row values are still the rev08 output (mock data for the page tests). 2026-11-16 (two score modes): PJ.01 and PJ.02 got coverage, workProducts[].status / scoreAssessed (computed in Python from their ratings, as AssessmentService.coverage and q1-*-assessed.rq) and processScores[].scoreAssessed (illustrative values, not computed); PJ.03 is left without these fields (page must cope with an older backend).",
+ "_note": "API responses produced by running the backend services (AssessmentService, KnowledgeSearchService) and the SPARQL files on ontology/ISO29110V2_rev08.ttl + kb/inferred.nt (2026-11-04). 2026-11-08 (rev08): recommendations[].roles removed and recommendations[].outcomes added by computing them in Python from ontology/ISO29110V2_rev08.ttl + kb/inferred.nt (same fields as AssessmentService); reasoningReport = kb/reasoning-report.json of rev08. options and search (request role=Technical leader, workProduct=Project Plan, kwAll=[verify]) regenerated 2026-11-08 from the backend query code (compiled) run with rdflib on rev08 + kb/inferred.nt. 2026-11-09 (rev09): only the G3 title changed; row values are still the rev08 output (mock data for the page tests). 2026-11-16 (two score modes): PJ.01 and PJ.02 got coverage, workProducts[].status / scoreAssessed (computed in Python from their ratings, as AssessmentService.coverage and q1-*-assessed.rq) and processScores[].scoreAssessed (illustrative values, not computed); PJ.03 is left without these fields (page must cope with an older backend). 2026-11-17 (D8): in PJ.02 the overall score (\"score\") of WP.08 and WP.18 (Not applicable) is null, as Q1 v3 now leaves N/A results out.",
  "options": {
   "role": [
    {
@@ -1832,7 +1832,7 @@
      "ae": "AE.PJ02.WP08",
      "wpID": "WP.08",
      "wpName": "Product Operation Guide",
-     "score": "0",
+     "score": null,
      "ratings": {
       "Not_applicable": "10"
      },
@@ -1942,7 +1942,7 @@
      "ae": "AE.PJ02.WP18",
      "wpID": "WP.18",
      "wpName": "Software User Documentation",
-     "score": "0",
+     "score": null,
      "ratings": {
       "Not_applicable": "10"
      },

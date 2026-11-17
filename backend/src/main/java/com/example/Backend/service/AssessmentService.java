@@ -16,8 +16,9 @@ import java.util.TreeMap;
  * achieved from Q4 v3, and ratings, recommended tasks / Base Practices and linked process outcomes from the facts
  * inferred by Pellet (SWRL rules in the ontology). Roles are not recommended (rev08): the roles of each recommended task
  * are read from Task hasRole. This class only groups and formats rows; it contains no recommendation logic.
- * Two score modes (2026-11-16): "score" = Q1-Q3 v3, every assessment result counts (no percentage or N/A = 0, advisor
- * convention); "scoreAssessed" = q1-q3-*-assessed.rq, only results with a percentage. "coverage" says how many work
+ * Two score modes (2026-11-16): "score" = Q1-Q3 v3, every assessment result counts and one with no percentage = 0
+ * (advisor convention), Not applicable results are left out (D8, 2026-11-17); "scoreAssessed" = q1-q3-*-assessed.rq,
+ * only results with a percentage. "coverage" says how many work
  * products are assessed, Not applicable (R8) or not assessed yet, from the ratings inferred by Pellet.
  */
 @Service

@@ -1,9 +1,12 @@
 PREFIX iso: <http://www.semanticweb.org/mrwit/ontologies/2026/3/ISO29110V2#>
-# v3 (rev06): as v2, grouped by project (several companies in one ontology). N/A or blank item = 0 (advisor convention)
+# v3 (rev06): as v2, grouped by project (several companies in one ontology). Blank item = 0 (advisor convention)
+# D8 (2026-11-17): Not applicable results (R8, inferred graph) are left out; a work product whose results are all N/A has no
+# score and is left out of the means above it. A result with no percentage still counts as 0.
 SELECT ?pj ?ae ?wp (COUNT(?ar) AS ?nItems) (SUM(?s) / COUNT(?ar) AS ?wpScore)
 WHERE {
   ?ae a iso:AssessedEntity ; iso:responsibleFor ?pj ; iso:hasEntity ?wp ; iso:hasAssessmentResult ?ar .
   OPTIONAL { ?ar iso:hasPercentageAchievement ?pct . ?r a iso:Rating ; iso:hasMinPercentage ?mn ; iso:hasMaxPercentage ?mx ; iso:hasAssignedScore ?sc . FILTER (?pct >= ?mn && ?pct <= ?mx) }
+  FILTER NOT EXISTS { { ?ar iso:hasDegreeAchievement iso:Not_applicable } UNION { GRAPH <urn:iso29110:graph:inferred> { ?ar iso:hasDegreeAchievement iso:Not_applicable } } }
   BIND (COALESCE(?sc, 0) AS ?s)
 }
 GROUP BY ?pj ?ae ?wp

@@ -83,6 +83,11 @@ def main():
             wa = exp['processScoresAssessed'][pj]
             ga = {p['process']: round(float(p['scoreAssessed']), 4) for p in data['processScores'] if p.get('scoreAssessed') not in (None, '')}
             check('%s process scores (assessed items only)' % pj, ga == wa, 'got %s, expected %s' % (ga, wa))
+        if pj in exp.get('wpScores', {}):
+            # D8 (2026-11-17): Not applicable results are left out of the all-items score; WP with only N/A -> no score
+            gw = {w['wpID']: (None if w.get('score') in (None, '') else round(float(w['score']), 4)) for w in data['workProducts']}
+            check('%s work product scores (all items, N/A left out)' % pj, gw == exp['wpScores'][pj],
+                  'differs at %s' % sorted(k for k in set(gw) | set(exp['wpScores'][pj]) if gw.get(k) != exp['wpScores'][pj].get(k)))
         if pj in exp.get('coverage', {}):
             wc = exp['coverage'][pj]
             c = data.get('coverage') or {}

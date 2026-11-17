@@ -35,6 +35,17 @@ describe('knowledge search by parameters', () => {
     expect(screen.queryByRole('tab', { name: /T1/ })).toBeNull();
   });
 
+  it('groups the parameters by query group: task (G1), work product (G2), Base Practice (G3), topic', async () => {
+    render(<App />);
+    await screen.findByLabelText('Role');
+    const labels = (name) => within(screen.getByRole('group', { name })).getAllByRole('combobox', { hidden: true })
+      .map((el) => el.id);
+    expect(labels('Search by task (G1)')).toEqual(['p-role', 'p-activity']);
+    expect(labels('Search by work product (G2)')).toEqual(['p-workProduct', 'p-state']);
+    expect(labels('Search by Base Practice (G3)')).toEqual(['p-process', 'p-basePractice', 'p-outcome']);
+    expect(within(screen.getByRole('group', { name: 'Topic (all groups)' })).getByLabelText('Topic: contains all of')).toBeTruthy();
+  });
+
   it('limits Base Practices and outcomes to the chosen process', async () => {
     render(<App />);
     fireEvent.change(await screen.findByLabelText('Process'), { target: { value: 'SI' } });
@@ -117,8 +128,10 @@ describe('assessment results and recommendations', () => {
     await open();
     await screen.findByText('Recommendations (1 work product)');
     const cov = screen.getByLabelText('Assessment coverage');
-    expect(within(cov).getByText('Assessed: 2 of 23 work products (9 %)')).toBeTruthy();
-    expect(within(cov).getByText(/Not assessed yet \(21\): WP\.01 Acceptance Record; WP\.03 Change Request/)).toBeTruthy();
+    expect(within(cov).getByText('Assessed 2 of 23 work products (9 %)')).toBeTruthy();
+    expect(within(cov).getByText(/Not assessed yet \(21; 0 in the overall score\): WP\.01 Acceptance Record; WP\.03 Change Request/)).toBeTruthy();
+    expect(screen.getByText('Overall score', { selector: 'dt' })).toBeTruthy();
+    expect(screen.getByText('Assessed-only score', { selector: 'dt' })).toBeTruthy();
     const wp = screen.getByRole('heading', { name: 'Work products' }).nextElementSibling.nextElementSibling;
     const row = (id) => within(wp).getAllByRole('row').map((r) => [...r.querySelectorAll('td')].map((c) => c.textContent)).find((c) => c[0] === id);
     expect(row('WP.02').slice(2, 3).concat(row('WP.02').slice(-2))).toEqual(['Assessed', '0.56', '0.56']);
@@ -131,7 +144,11 @@ describe('assessment results and recommendations', () => {
     fireEvent.click(within(side).getByText('Mock Company B (start-up, mock data)'));
     await screen.findByText('Recommendations (3 work products)');
     expect(within(screen.getByLabelText('Assessment coverage'))
-      .getByText(/Not applicable .*: WP\.08 Product Operation Guide; WP\.18 Software User Documentation/)).toBeTruthy();
+      .getByText(/Not applicable .*left out of both scores.*: WP\.08 Product Operation Guide; WP\.18 Software User Documentation/)).toBeTruthy();
+    // D8 (17 Nov): a Not applicable work product has no overall score
+    const wp = screen.getByRole('heading', { name: 'Work products' }).nextElementSibling.nextElementSibling;
+    const wp08 = within(wp).getAllByRole('row').map((r) => [...r.querySelectorAll('td')].map((c) => c.textContent)).find((c) => c[0] === 'WP.08');
+    expect([wp08[2], ...wp08.slice(-2)]).toEqual(['Not applicable', '', '']);
     fireEvent.click(within(side).getByText('Mock Company C (established VSE, mock data)'));
     await waitFor(() => expect(processScores()).toEqual([['PM', '0.96', ''], ['SI', '0.88', '']]));
     expect(screen.queryByLabelText('Assessment coverage')).toBeNull();
